@@ -1,0 +1,19 @@
+# Виртуальное окружение Python для обработки фотографий
+# (создаётся заново: python3 -m venv .venv-img && .venv-img/bin/pip install pillow)
+/.venv-img/
+
+# Производные данные: карта похожих статей.
+# Пересобирается сама после правки реестра или текстов — см. domexpert_related_map().
+/cache/
+
+# Приёмник оригиналов снимков: полный размер, EXIF и GPS-координаты съёмки.
+# Наружу отдаются только обработанные копии из assets/img/photos/.
+/photos-inbox/*
+!/photos-inbox/.gitkeep
+
+# Служебное
+__pycache__/
+*.pyc
+.DS_Store
+*.tmp
+/.idea/

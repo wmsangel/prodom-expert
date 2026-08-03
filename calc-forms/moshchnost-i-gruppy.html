@@ -1,0 +1,202 @@
+<form class="calc" data-calc="moshchnost-i-gruppy">
+  <fieldset>
+    <legend>Квартира</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="mg-ploshchad">Площадь квартиры, м²</label>
+        <input type="number" id="mg-ploshchad" name="ploshchad" value="58" min="10" max="500" step="1" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="mg-komnat">Жилых комнат</label>
+        <input type="number" id="mg-komnat" name="komnat" value="2" min="1" max="10" step="1" inputmode="numeric">
+      </div>
+      <div class="calc-field">
+        <label for="mg-sanuzlov">Санузлов</label>
+        <input type="number" id="mg-sanuzlov" name="sanuzlov" value="1" min="1" max="5" step="1" inputmode="numeric">
+      </div>
+      <div class="calc-field">
+        <label for="mg-vydeleno">Выделенная мощность, кВт</label>
+        <input type="number" id="mg-vydeleno" name="vydeleno" value="10" min="1" max="100" step="0.5" inputmode="decimal">
+        <span class="calc-field-hint">Указана в документах на квартиру или у управляющей компании</span>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Мощная техника</legend>
+    <div class="calc-fields">
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="mg-varochnaya" name="varochnaya" checked>
+        <label for="mg-varochnaya">Электрическая варочная панель, 7 кВт</label>
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="mg-duhovka" name="duhovka" checked>
+        <label for="mg-duhovka">Духовой шкаф, 3 кВт</label>
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="mg-posudomoyka" name="posudomoyka" checked>
+        <label for="mg-posudomoyka">Посудомоечная машина, 2 кВт</label>
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="mg-stiralka" name="stiralka" checked>
+        <label for="mg-stiralka">Стиральная машина, 2,2 кВт</label>
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="mg-boyler" name="boyler">
+        <label for="mg-boyler">Водонагреватель, 2 кВт</label>
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="mg-teplyypol" name="teplyypol">
+        <label for="mg-teplyypol">Электрический тёплый пол, 1,5 кВт</label>
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="mg-kondicioner" name="kondicioner">
+        <label for="mg-kondicioner">Кондиционеры, 1,5 кВт</label>
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="mg-suhilka" name="suhilka">
+        <label for="mg-suhilka">Сушильная машина, 2,5 кВт</label>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<div class="calc-result" data-calc-result="moshchnost-i-gruppy" role="status" aria-live="polite"></div>
+
+<section class="calc-article">
+  <h2>Установленная и расчётная мощность — разные вещи</h2>
+  <p>Установленная мощность — это сумма паспортных значений всей техники. Она нужна только как исходные данные и почти всегда пугает: набирается 16–20 кВт при выделенных на квартиру 10. Но одновременно варочная панель на полной мощности, духовка, чайник, стиралка и посудомойка не работают никогда.</p>
+  <p>Поэтому ввод считают по <strong>расчётной</strong> мощности — установленной, умноженной на коэффициент спроса. Чем больше приборов, тем ниже вероятность их одновременной работы и тем меньше коэффициент.</p>
+
+  <table>
+    <thead><tr><th>Установленная мощность</th><th>Коэффициент спроса</th></tr></thead>
+    <tbody>
+      <tr><td>до 8 кВт</td><td>0,8</td></tr>
+      <tr><td>8–14 кВт</td><td>0,65</td></tr>
+      <tr><td>14–22 кВт</td><td>0,55</td></tr>
+      <tr><td>свыше 22 кВт</td><td>0,48</td></tr>
+    </tbody>
+  </table>
+
+  <p>Розеточная нагрузка принимается около 30 Вт на м², освещение — около 10 Вт на м². Это усреднённые значения для жилых помещений со светодиодным светом.</p>
+
+  <h2>Сколько групп нужно в щите</h2>
+  <p>Группа — это отдельная линия со своим автоматом. Расчёт складывается так:</p>
+  <ul>
+    <li><strong>Свет</strong> — одна группа на каждые две комнаты плюс одна на коридор и санузел.</li>
+    <li><strong>Розетки</strong> — по одной на комнату плюс отдельная на кухню.</li>
+    <li><strong>Санузел</strong> — своя группа с УЗО 10–30 мА на каждый санузел.</li>
+    <li><strong>Отдельные линии</strong> на каждый мощный прибор: варочная панель, духовка, посудомойка, стиральная и сушильная машины, водонагреватель, тёплый пол.</li>
+  </ul>
+  <p>Кондиционеры обычно вешают на групповую линию комнаты, если их немного. Размер бокса подбирают с запасом: расчётное число модулей округляется вверх до кратности 12, потому что через несколько лет почти всегда что-то добавляется.</p>
+
+  <h2>Пример</h2>
+  <div class="calc-example">
+    <p><strong>Двушка 58 м², варочная панель, духовка, посудомойка, стиральная машина.</strong></p>
+    <p>Установленная мощность — 16,5 кВт, коэффициент спроса 0,55, расчётная — 9,1 кВт. Ток ввода 41,6 А, вводной автомат 50 А. Групп в щите — 11: 2 на свет, 3 на розетки, 1 на санузел, 4 отдельных на технику, плюс запас. Бокс на 24 модуля.</p>
+  </div>
+
+  <h2>Что делать, если не хватает выделенной мощности</h2>
+  <p>Стандартная выделенная мощность для квартиры — 5–10 кВт в старом фонде и 10–15 кВт в новостройках. Если расчёт превышает лимит, есть три пути:</p>
+  <ol>
+    <li><strong>Пересмотреть набор техники</strong> — например, оставить газовую плиту вместо электрической варочной панели: это сразу минус 7 кВт.</li>
+    <li><strong>Поставить реле приоритета нагрузок</strong> — оно временно отключает второстепенные приборы (бойлер, тёплый пол), когда включается мощная нагрузка.</li>
+    <li><strong>Запросить увеличение мощности</strong> в сетевой организации. Это отдельная процедура со сроком в несколько месяцев и не всегда выполнимая: зависит от возможностей дома.</li>
+  </ol>
+
+  <h2>Частые вопросы</h2>
+  <h3>Почему вводной автомат больше расчётного тока?</h3>
+  <p>Номинал выбирается из стандартного ряда вверх от расчётного тока и одновременно ограничен выделенной мощностью и сечением вводного кабеля. Ставить автомат с большим запасом нельзя: он должен защищать ввод, а не пропускать любую нагрузку.</p>
+
+  <h3>Обязательно ли отдельная линия на каждый прибор?</h3>
+  <p>Для варочной панели, духовки, посудомоечной и стиральной машин — да: у них высокая мощность и постоянная работа, а при аварии удобно отключить один прибор, не обесточивая квартиру. Для холодильника отдельная линия строго не обязательна, но желательна — размороженные продукты во время отпуска обойдутся дороже пары метров кабеля.</p>
+
+  <h3>Учитывать ли будущую технику?</h3>
+  <p>Да, и это дешевле сделать сразу: заложить линию и место в щите при ремонте стоит несколько тысяч рублей, а протянуть её потом по готовой отделке — десятки тысяч. Особенно это касается сушильной машины, посудомойки и точки под электромобиль.</p>
+</section>
+
+<script>
+DomCalc.register('moshchnost-i-gruppy', function (v, f) {
+  var DEVICES = [
+    ['varochnaya',   7,    'Варочная панель',      true],
+    ['duhovka',      3,    'Духовой шкаф',         true],
+    ['posudomoyka',  2,    'Посудомоечная машина', true],
+    ['stiralka',     2.2,  'Стиральная машина',    true],
+    ['boyler',       2,    'Водонагреватель',      true],
+    ['teplyypol',    1.5,  'Тёплый пол',           true],
+    ['kondicioner',  1.5,  'Кондиционеры',         false],
+    ['suhilka',      2.5,  'Сушильная машина',     true]
+  ];
+
+  var area = Math.max(0, v.ploshchad || 0);
+  if (area <= 0) { return f.note('Укажите площадь квартиры.'); }
+
+  var heavy = 0, dedicated = 0, rows = [];
+  for (var i = 0; i < DEVICES.length; i++) {
+    var d = DEVICES[i];
+    if (!v[d[0]]) { continue; }
+    heavy += d[1];
+    if (d[3]) { dedicated++; }
+    rows.push(f.row(d[2], f.num(d[1], 1) + ' кВт', d[3] ? 'отдельная линия' : 'своя группа на комнату'));
+  }
+
+  // Розетки и свет: розеточная нагрузка ≈ 30 Вт/м², освещение ≈ 10 Вт/м²
+  var sockets = area * 0.03;
+  var light = area * 0.01;
+  var installed = heavy + sockets + light;
+
+  // Коэффициент спроса: чем больше приборов, тем меньше вероятность одновременной работы
+  var demand = installed <= 8 ? 0.8 : (installed <= 14 ? 0.65 : (installed <= 22 ? 0.55 : 0.48));
+  var calculated = installed * demand;
+  var current = calculated * 1000 / (230 * 0.95);
+
+  var AUTOMATS = [16, 20, 25, 32, 40, 50, 63];
+  var input = AUTOMATS[AUTOMATS.length - 1];
+  for (var j = 0; j < AUTOMATS.length; j++) {
+    if (AUTOMATS[j] >= current) { input = AUTOMATS[j]; break; }
+  }
+
+  // Группы: свет и розетки по комнатам плюс отдельные линии на мощную технику
+  var lightGroups = Math.max(1, Math.ceil((v.komnat || 1) / 2) + 1);
+  var socketGroups = Math.max(2, (v.komnat || 1) + 1);
+  var bathGroups = Math.max(1, v.sanuzlov || 1);
+  var groups = lightGroups + socketGroups + bathGroups + dedicated;
+  var modules = groups * 1.5 + 6;   // автомат 1 модуль, дифзащита и вводной аппарат — с запасом
+
+  var html = f.total('Расчётная мощность', f.num(calculated, 1) + ' кВт',
+    'ток ввода ' + f.num(current, 1) + ' А, вводной автомат ' + input + ' А');
+
+  rows.push(f.row('Розетки', f.num(sockets, 1) + ' кВт', '≈ 30 Вт на м²'));
+  rows.push(f.row('Освещение', f.num(light, 2) + ' кВт', '≈ 10 Вт на м²'));
+  html += f.table(rows, 'Установленная мощность: ' + f.num(installed, 1) + ' кВт');
+
+  html += f.table([
+    f.row('Коэффициент спроса', f.num(demand, 2), 'приборы не включаются одновременно'),
+    f.row('Групп в щите', f.num(groups, 0) + ' шт.',
+      lightGroups + ' свет + ' + socketGroups + ' розетки + ' + bathGroups + ' санузел + ' + dedicated + ' на технику'),
+    f.row('Модулей в щите', '≈ ' + f.num(Math.ceil(modules / 12) * 12, 0),
+      'бокс на ' + Math.ceil(modules / 12) * 12 + ' модулей с запасом на будущее'),
+    f.row('УЗО или дифавтоматы', f.num(Math.max(2, bathGroups + 2), 0) + ' шт.',
+      'мокрые зоны — обязательно 30 мА')
+  ], 'Щит');
+
+  var warn = '';
+  var limit = Math.max(0, v.vydeleno || 0);
+  if (limit > 0 && calculated > limit) {
+    warn = 'Расчётная мощность ' + f.num(calculated, 1) + ' кВт больше выделенной на квартиру (' +
+      f.num(limit, 1) + ' кВт). Варианты: отказаться от части техники, поставить реле приоритета ' +
+      'нагрузок или запрашивать увеличение мощности в сетевой организации — это отдельная процедура ' +
+      'со сроком в несколько месяцев.';
+  } else if (limit > 0) {
+    warn = 'Расчёт укладывается в выделенные ' + f.num(limit, 1) + ' кВт, запас — ' +
+      f.num(limit - calculated, 1) + ' кВт.';
+  }
+  if (warn) { html += f.note(warn); }
+
+  html += f.note('Установленная мощность — это сумма паспортных значений, она нужна только для ' +
+    'расчёта. Ввод считают по расчётной: одновременно варочная панель, духовка, чайник и стиралка ' +
+    'на полной мощности в реальной жизни не работают.');
+
+  return html;
+});
+</script>

@@ -1,0 +1,189 @@
+<form class="calc" data-calc="kraska">
+  <fieldset>
+    <legend>Что красим</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="kr-poverhnost">Поверхность</label>
+        <select id="kr-poverhnost" name="poverhnost">
+          <option value="steny" selected>Стены комнаты</option>
+          <option value="potolok">Потолок</option>
+          <option value="ploshchad">Задать площадь вручную</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="kr-dlina">Длина комнаты, м</label>
+        <input type="number" id="kr-dlina" name="dlina" value="4.2" min="0" max="30" step="0.1" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="kr-shirina">Ширина комнаты, м</label>
+        <input type="number" id="kr-shirina" name="shirina" value="3.4" min="0" max="30" step="0.1" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="kr-vysota">Высота потолка, м</label>
+        <input type="number" id="kr-vysota" name="vysota" value="2.7" min="0" max="5" step="0.05" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="kr-ruchnaya">Площадь вручную, м²</label>
+        <input type="number" id="kr-ruchnaya" name="ruchnaya" value="0" min="0" max="2000" step="1" inputmode="decimal">
+        <span class="calc-field-hint">Работает при выборе «задать площадь вручную»</span>
+      </div>
+      <div class="calc-field">
+        <label for="kr-proemy">Площадь проёмов, м²</label>
+        <input type="number" id="kr-proemy" name="proemy" value="3.9" min="0" max="200" step="0.1" inputmode="decimal">
+        <span class="calc-field-hint">Окна и двери: типовое окно 2,1 м², дверь 1,8 м²</span>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Краска</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="kr-rashod">Расход по банке, м²/л</label>
+        <select id="kr-rashod" name="rashod">
+          <option value="8">8 м²/л — плотная матовая</option>
+          <option value="10" selected>10 м²/л — типовая интерьерная</option>
+          <option value="12">12 м²/л — экономичная</option>
+          <option value="14">14 м²/л — тонкослойная</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="kr-sloi">Слоёв краски</label>
+        <select id="kr-sloi" name="sloi">
+          <option value="2" selected>2 слоя — стандарт</option>
+          <option value="3">3 слоя — тёмный цвет или контрастная база</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="kr-osnovanie">Основание</label>
+        <select id="kr-osnovanie" name="osnovanie">
+          <option value="1.35">Шпаклёвка без грунта — сильно впитывает</option>
+          <option value="1.1" selected>Загрунтованная шпаклёвка</option>
+          <option value="1">Ранее окрашенная поверхность</option>
+          <option value="1.25">Обои под покраску — фактура</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="kr-cena">Цена краски, ₽ за литр</label>
+        <input type="number" id="kr-cena" name="cena" value="650" min="0" max="20000" step="10" inputmode="numeric">
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="kr-grunt" name="grunt" checked>
+        <label for="kr-grunt">Считать грунтовку</label>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<div class="calc-result" data-calc-result="kraska" role="status" aria-live="polite"></div>
+
+<section class="calc-article">
+  <h2>Почему расход всегда больше, чем на банке</h2>
+  <p>Производитель указывает расход для идеального основания в один слой: гладкая, загрунтованная, невпитывающая поверхность, нанесение краскопультом. В реальности красят валиком по шпаклёвке, которая тянет краску, и минимум в два слоя. Разница между паспортным и фактическим расходом составляет от 10 до 35%.</p>
+
+  <p>Калькулятор считает слои по-разному: первый расходуется по коэффициенту основания полностью, последующие — с понижением на 15%, потому что ложатся уже по укрытой поверхности.</p>
+
+  <table>
+    <thead><tr><th>Основание</th><th>Коэффициент</th><th>Комментарий</th></tr></thead>
+    <tbody>
+      <tr><td>Шпаклёвка без грунта</td><td>1,35</td><td>Сильно впитывает, краска уходит в поры</td></tr>
+      <tr><td>Загрунтованная шпаклёвка</td><td>1,1</td><td>Норма при правильной подготовке</td></tr>
+      <tr><td>Ранее окрашенная поверхность</td><td>1,0</td><td>Не впитывает, расход минимальный</td></tr>
+      <tr><td>Обои под покраску</td><td>1,25</td><td>Фактура увеличивает площадь</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Сколько слоёв нужно</h2>
+  <ul>
+    <li><strong>Два слоя</strong> — стандарт для светлых тонов по подготовленному основанию.</li>
+    <li><strong>Три слоя</strong> — при насыщенном или тёмном цвете, при переходе с тёмного на светлое, а также для интенсивных пигментов (красный, синий, жёлтый), которые сами по себе укрывают хуже.</li>
+    <li><strong>Грунт</strong> считается отдельно: расход около 8 м²/л в один слой. Пропустить его — значит увеличить расход краски на треть и получить пятнистость на впитывающих участках.</li>
+  </ul>
+
+  <h2>Пример</h2>
+  <div class="calc-example">
+    <p><strong>Комната 4,2 × 3,4 м, потолок 2,7 м, проёмы 3,9 м², краска 10 м²/л, два слоя по загрунтованной шпаклёвке.</strong></p>
+    <p>Площадь стен 37,1 м². Первый слой — 4,1 л, второй — 3,5 л, итого 7,6 л, с запасом 7% — <strong>8,1 л</strong>. Удобная фасовка: одна банка 9 л. Плюс около 4,6 л грунта.</p>
+  </div>
+
+  <h2>Практические правила</h2>
+  <ol>
+    <li><strong>Колеруйте весь объём разом.</strong> Между двумя замесами оттенок отличается, и стык партий виден на стене при боковом свете. Если краски не хватило — смешайте остаток новой банки со старой в одной ёмкости.</li>
+    <li><strong>Записывайте код колеровки</strong> и храните этикетку: через год понадобится подкрасить участок.</li>
+    <li><strong>Матовая краска прощает неровности</strong>, полуматовая и сатиновая — подчёркивают. Для потолка берут только глубокоматовую.</li>
+    <li><strong>Класс истираемости</strong> важнее цены: для коридора и кухни нужен класс 1–2 (моющиеся), для спальни достаточно 3–4.</li>
+    <li><strong>Один валик на всю комнату.</strong> Разные валики дают разную шагрень, и это заметно на готовой стене.</li>
+  </ol>
+
+  <h2>Частые вопросы</h2>
+  <h3>Можно ли красить в один слой?</h3>
+  <p>Только при перекраске в тот же цвет по неповреждённому покрытию. В любом другом случае один слой даёт просвечивание основания и пятнистость — особенно заметно там, где шпаклёвка чередуется с загрунтованными участками.</p>
+
+  <h3>Как считать площадь потолка?</h3>
+  <p>Выберите в поле «поверхность» вариант «потолок»: тогда площадь считается как длина × ширина комнаты, без учёта высоты и проёмов. Расход на потолке обычно выше на 10–15%, потому что работать приходится над головой и часть краски теряется.</p>
+
+  <h3>Нужен ли запас краски?</h3>
+  <p>Калькулятор уже добавляет 7% — этого хватает на подкраску и потери в валике и лотке. Отдельно стоит оставить пол-литра в закрытой банке на будущие ремонты мелких повреждений: подобрать оттенок заново сложнее, чем кажется.</p>
+</section>
+
+<script>
+DomCalc.register('kraska', function (v, f) {
+  var area = 0;
+  var what = '';
+  if (v.poverhnost === 'potolok') {
+    area = (v.dlina || 0) * (v.shirina || 0);
+    what = 'потолок';
+  } else if (v.poverhnost === 'ploshchad') {
+    area = v.ruchnaya || 0;
+    what = 'заданная площадь';
+  } else {
+    area = 2 * ((v.dlina || 0) + (v.shirina || 0)) * (v.vysota || 0) - (v.proemy || 0);
+    what = 'стены комнаты';
+  }
+
+  if (area <= 0) { return f.note('Укажите размеры или площадь окрашиваемой поверхности.'); }
+
+  var rashod = parseFloat(v.rashod) || 10;
+  var sloi = parseInt(v.sloi, 10) || 2;
+  var k = parseFloat(v.osnovanie) || 1;
+
+  // Первый слой всегда прожорливее: основание тянет краску сильнее
+  var litersFirst = area / rashod * k;
+  var litersRest = (area / rashod) * (sloi - 1) * (k * 0.85);
+  var liters = litersFirst + litersRest;
+  var withReserve = liters * 1.07;
+
+  // Фасовки, из которых реально собирают объём
+  var packs = [0.9, 2.5, 4.5, 9, 10];
+  var chosen = packs[packs.length - 1];
+  for (var i = 0; i < packs.length; i++) {
+    if (packs[i] >= withReserve) { chosen = packs[i]; break; }
+  }
+  var buckets = Math.max(1, Math.ceil(withReserve / chosen));
+
+  var rows = [
+    f.row('Площадь окраски', f.num(area, 1) + ' м²', what),
+    f.row('Первый слой', f.num(litersFirst, 1) + ' л', 'основание впитывает сильнее'),
+    f.row('Остальные слои', f.num(litersRest, 1) + ' л', (sloi - 1) + ' слоя по укрытому основанию'),
+    f.row('С запасом 7%', f.num(withReserve, 1) + ' л', 'на подкраску и потери в валике')
+  ];
+
+  if (v.grunt) {
+    var gruntL = area / 8;   // грунт глубокого проникновения ≈ 8 м²/л
+    rows.push(f.row('Грунтовка', f.num(gruntL, 1) + ' л', 'расход ≈ 8 м²/л в один слой'));
+  }
+
+  rows.push(f.row('Стоимость краски', f.money(withReserve * (v.cena || 0)), ''));
+
+  var html = f.total('Нужно краски', f.num(withReserve, 1) + ' л',
+    'например ' + buckets + ' × ' + f.num(chosen, 1) + ' л');
+
+  html += f.table(rows, 'Как получилось');
+
+  html += f.note('Расход на банке указан для идеального основания в один слой — в реальности он ' +
+    'выше на 10–35%. Всю краску одного цвета колеруйте разом: между замесами оттенок отличается, ' +
+    'и стык двух партий на стене виден при боковом свете.');
+
+  return html;
+});
+</script>

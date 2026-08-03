@@ -1,0 +1,48 @@
+User-agent: *
+Allow: /
+
+# Закрываем служебные директории
+Disallow: /includes/
+Disallow: /assets/js/
+Disallow: /photos-inbox/
+
+# Разрешаем CSS/JS для рендеринга
+Allow: /assets/css/
+Allow: /assets/js/main.js
+Allow: /assets/js/calc.js
+
+# Не индексировать поиск с пустыми/мусорными параметрами
+Disallow: /search.php?q=
+Disallow: /*?utm_
+
+# Sitemap: индекс карт — из него обходчик берёт sitemap.xml и sitemap-feeds.xml
+Sitemap: https://prodom-expert.ru/sitemap_index.xml
+
+# Публичный контент: явно разрешаем распространённым обходчикам (при необходимости ограничьте сами)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&from
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Директива Host удалена: Яндекс её больше не учитывает, склейка зеркал
+# делается 301-редиректом на https://prodom-expert.ru (см. .htaccess).

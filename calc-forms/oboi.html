@@ -1,0 +1,179 @@
+<form class="calc" data-calc="oboi">
+  <fieldset>
+    <legend>Комната</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="ob-dlina">Длина комнаты, м</label>
+        <input type="number" id="ob-dlina" name="dlina" value="4.2" min="0.5" max="30" step="0.1" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="ob-shirina">Ширина комнаты, м</label>
+        <input type="number" id="ob-shirina" name="shirina" value="3.4" min="0.5" max="30" step="0.1" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="ob-vysota">Высота потолка, м</label>
+        <input type="number" id="ob-vysota" name="vysota" value="2.7" min="2" max="5" step="0.05" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="ob-okna">Окон в комнате</label>
+        <input type="number" id="ob-okna" name="okna" value="1" min="0" max="10" step="1" inputmode="numeric">
+      </div>
+      <div class="calc-field">
+        <label for="ob-dveri">Дверей в комнате</label>
+        <input type="number" id="ob-dveri" name="dveri" value="1" min="0" max="10" step="1" inputmode="numeric">
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Обои</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="ob-rulon-shirina">Ширина рулона, м</label>
+        <select id="ob-rulon-shirina" name="rulonShirina">
+          <option value="0.53" selected>0,53 м — стандарт</option>
+          <option value="1.06">1,06 м — метровые</option>
+          <option value="0.7">0,70 м — импортные</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="ob-rulon-dlina">Длина рулона, м</label>
+        <select id="ob-rulon-dlina" name="rulonDlina">
+          <option value="10.05" selected>10,05 м — стандарт</option>
+          <option value="15">15 м</option>
+          <option value="25">25 м — под покраску</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="ob-rapport">Раппорт рисунка, см</label>
+        <select id="ob-rapport" name="rapport">
+          <option value="0" selected>Без рисунка — 0</option>
+          <option value="32">32 см</option>
+          <option value="64">64 см</option>
+          <option value="0.5">Со смещением, половина полосы</option>
+        </select>
+        <span class="calc-field-hint">Шаг повтора узора: каждая полоса подрезается под него</span>
+      </div>
+      <div class="calc-field">
+        <label for="ob-cena">Цена рулона, ₽</label>
+        <input type="number" id="ob-cena" name="cena" value="2200" min="0" max="200000" step="50" inputmode="numeric">
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="ob-okna-uchest" name="oknaUchest" checked>
+        <label for="ob-okna-uchest">Вычитать проёмы окон и дверей</label>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<div class="calc-result" data-calc-result="oboi" role="status" aria-live="polite"></div>
+
+<section class="calc-article">
+  <h2>Почему обои считают полосами, а не площадью</h2>
+  <p>Самая частая ошибка — разделить площадь стен на площадь рулона. Так не работает: обои клеятся вертикальными полосами на всю высоту стены, и остаток рулона короче этой высоты в дело уже не идёт. При потолке 2,7 м из стандартного рулона длиной 10,05 м выходит ровно три полосы, а оставшиеся 1,65 м — отход. По площади рулон закрывает 5,3 м², фактически — около 4,4 м².</p>
+
+  <h2>Порядок расчёта</h2>
+  <ol>
+    <li><strong>Периметр комнаты</strong> минус ширина проёмов. Типовое окно вычитается как 1,4 м, дверь — 0,9 м. Обрезки из-под окна на другие участки почти никогда не подходят.</li>
+    <li><strong>Число полос</strong> = рабочая длина ÷ ширина рулона, с округлением вверх.</li>
+    <li><strong>Длина полосы</strong> = высота потолка + 10 см на подрезку сверху и снизу. При рисунке с раппортом длина округляется вверх до кратности шагу узора, при смещении на половину полосы добавляется около 15% высоты.</li>
+    <li><strong>Полос из рулона</strong> = длина рулона ÷ длина полосы, с округлением <em>вниз</em>.</li>
+    <li><strong>Рулонов</strong> = полос всего ÷ полос из рулона, плюс 7% запаса на брак и подрезку, минимум один рулон.</li>
+  </ol>
+
+  <h2>Раппорт: откуда берётся перерасход</h2>
+  <table>
+    <thead><tr><th>Рисунок</th><th>Перерасход</th><th>Что происходит</th></tr></thead>
+    <tbody>
+      <tr><td>Без рисунка</td><td>0%</td><td>Полосы режутся встык по длине</td></tr>
+      <tr><td>Раппорт 32 см</td><td>5–10%</td><td>Длина полосы округляется до кратности 32 см</td></tr>
+      <tr><td>Раппорт 64 см</td><td>10–20%</td><td>Отход до 64 см на каждой полосе</td></tr>
+      <tr><td>Со смещением</td><td>10–15%</td><td>Каждая вторая полоса сдвигается на половину раппорта</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Пример</h2>
+  <div class="calc-example">
+    <p><strong>Комната 4,2 × 3,4 м, потолок 2,7 м, одно окно и одна дверь, обои 0,53 × 10,05 м без рисунка.</strong></p>
+    <p>Периметр 15,2 м, минус проёмы 2,3 м → 12,9 м. Полос: 12,9 ÷ 0,53 = 25. Длина полосы 2,8 м, из рулона выходит 3 полосы. Рулонов: 25 ÷ 3 = 9, плюс запас → <strong>10 рулонов</strong> и 2 пачки клея.</p>
+  </div>
+
+  <h2>Что учесть при покупке</h2>
+  <ul>
+    <li><strong>Номер партии.</strong> Рулоны берут из одной партии — оттенок между партиями отличается, и это видно на стыке при боковом свете. Номер указан на этикетке рядом с артикулом.</li>
+    <li><strong>Запас лучше избыточный.</strong> Докупить тот же оттенок через полгода почти невозможно, а один лишний рулон стоит дешевле переклейки стены.</li>
+    <li><strong>Клей по типу полотна.</strong> Для флизелиновых обоев клей наносится на стену, для бумажных — на полотно; расход около 30 м² на пачку 250–300 г.</li>
+    <li><strong>Метровые обои</strong> дают меньше стыков и быстрее клеятся, но требуют второго человека и ровных стен: на кривой стене широкая полоса «уводит» рисунок.</li>
+  </ul>
+
+  <h2>Частые вопросы</h2>
+  <h3>Вычитать ли окна и двери?</h3>
+  <p>По ширине — да, полосы над проёмом обычно клеятся из обрезков. Но если проёмов много и они узкие, лучше галочку снять: обрезки не всегда стыкуются по рисунку, и запас окажется кстати.</p>
+
+  <h3>Сколько запаса брать на стены под покраску?</h3>
+  <p>Для обоев под покраску (рулоны по 25 м) отход меньше, потому что рисунка нет, но добавьте 5–10% на подрезку у откосов и труб. Такие обои обычно клеят с перехлёстом и подрезкой стыка — это тоже расход.</p>
+
+  <h3>Почему калькулятор не считает потолок?</h3>
+  <p>Потолочные обои клеятся по другой схеме — вдоль или поперёк комнаты цельными полотнами, и расчёт зависит от направления укладки. Для потолка проще посчитать вручную: длина комнаты ÷ ширина рулона даёт число полос, а из рулона выходит ровно столько полос, сколько раз в него укладывается ширина комнаты.</p>
+</section>
+
+<script>
+DomCalc.register('oboi', function (v, f) {
+  var perimeter = 2 * ((v.dlina || 0) + (v.shirina || 0));
+  if (perimeter <= 0 || !v.vysota) { return f.note('Укажите размеры комнаты.'); }
+
+  // Проёмы: типовое окно 1,4 м по ширине, дверь 0,9 м
+  var openings = v.oknaUchest ? (v.okna || 0) * 1.4 + (v.dveri || 0) * 0.9 : 0;
+  var workLength = Math.max(0, perimeter - openings);
+
+  var rollW = parseFloat(v.rulonShirina) || 0.53;
+  var rollL = parseFloat(v.rulonDlina) || 10.05;
+  var rapport = parseFloat(v.rapport) || 0;
+
+  // Полос всего — округляем вверх, обрезки под окнами в дело идут редко
+  var strips = Math.ceil(workLength / rollW);
+
+  // Длина полосы: высота + запас 10 см на подрезку сверху и снизу.
+  // При раппорте каждая полоса подгоняется под шаг узора.
+  var base = (v.vysota || 2.7) + 0.1;
+  var stripLen = base;
+  if (rapport === 0.5) {
+    stripLen = base + (v.vysota || 2.7) * 0.15;      // смещение на половину полосы
+  } else if (rapport > 0) {
+    var step = rapport / 100;
+    stripLen = Math.ceil(base / step) * step;
+  }
+
+  var stripsPerRoll = Math.floor(rollL / stripLen);
+  if (stripsPerRoll < 1) {
+    return f.note('При такой высоте потолка из рулона не выходит ни одной целой полосы — ' +
+      'нужны обои большей длины.');
+  }
+
+  var rolls = Math.ceil(strips / stripsPerRoll);
+  var reserve = Math.max(1, Math.ceil(rolls * 0.07));  // запас на брак и докупку из другой партии
+  var total = rolls + reserve;
+
+  var wallArea = perimeter * (v.vysota || 0) - (v.oknaUchest ? (v.okna || 0) * 2.1 + (v.dveri || 0) * 1.8 : 0);
+  var glue = Math.ceil(wallArea / 30);                 // пачка клея ≈ 30 м²
+
+  var html = f.total('Купить рулонов', f.num(total, 0) + ' шт.',
+    f.num(rolls, 0) + ' по расчёту + ' + f.num(reserve, 0) + ' запас на брак и подрезку');
+
+  html += f.table([
+    f.row('Периметр за вычетом проёмов', f.num(workLength, 1) + ' м', 'рабочая длина стен'),
+    f.row('Полос обоев', f.num(strips, 0) + ' шт.', 'ширина полосы ' + f.num(rollW * 100, 0) + ' см'),
+    f.row('Длина одной полосы', f.num(stripLen, 2) + ' м', rapport > 0 ? 'с подгонкой рисунка' : 'высота + 10 см запаса'),
+    f.row('Полос из рулона', f.num(stripsPerRoll, 0) + ' шт.', 'остаток рулона в дело не идёт'),
+    f.row('Площадь стен', f.num(wallArea, 1) + ' м²', ''),
+    f.row('Клей', f.num(glue, 0) + ' пачки', 'по 250–300 г, расход ≈ 30 м² на пачку'),
+    f.row('Стоимость обоев', f.money(total * (v.cena || 0)), '')
+  ], 'Как получилось');
+
+  html += f.note('Обои считают полосами, а не площадью: остаток рулона короче высоты стены — это отход. ' +
+    'Рулоны берите из одной партии: номер партии указан на этикетке, оттенок между партиями отличается. ' +
+    'При рисунке с раппортом расход выше на 10–20%, и это уже учтено.');
+
+  return html;
+});
+</script>

@@ -1,0 +1,202 @@
+<form class="calc" data-calc="sekcii-radiatorov">
+  <fieldset>
+    <legend>Комната</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="rd-ploshchad">Площадь комнаты, м²</label>
+        <input type="number" id="rd-ploshchad" name="ploshchad" value="18" min="2" max="200" step="0.5" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="rd-vysota">Высота потолка, м</label>
+        <input type="number" id="rd-vysota" name="vysota" value="2.7" min="2" max="5" step="0.05" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="rd-sten">Наружных стен</label>
+        <select id="rd-sten" name="sten">
+          <option value="1" selected>1 — рядовая комната</option>
+          <option value="2">2 — угловая</option>
+          <option value="3">3 — торцевая угловая</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="rd-okna">Окон в комнате</label>
+        <input type="number" id="rd-okna" name="okna" value="1" min="0" max="8" step="1" inputmode="numeric">
+      </div>
+      <div class="calc-field">
+        <label for="rd-osteklenie">Остекление</label>
+        <select id="rd-osteklenie" name="osteklenie">
+          <option value="1.27">Одинарное или старое деревянное</option>
+          <option value="1" selected>Двухкамерный стеклопакет</option>
+          <option value="0.85">Энергосберегающий стеклопакет</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="rd-etazh">Положение по этажам</label>
+        <select id="rd-etazh" name="etazh">
+          <option value="1" selected>Между тёплыми этажами</option>
+          <option value="1.15">Первый этаж над подвалом</option>
+          <option value="1.2">Последний этаж под кровлей</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="rd-uteplenie">Утепление стен</label>
+        <select id="rd-uteplenie" name="uteplenie">
+          <option value="1.3">Панель без утепления</option>
+          <option value="1" selected>Типовой дом, норма</option>
+          <option value="0.85">Утеплённый фасад</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Радиатор</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="rd-tip">Тип секции</label>
+        <select id="rd-tip" name="tip">
+          <option value="170">Алюминиевый, 170 Вт</option>
+          <option value="150" selected>Биметаллический, 150 Вт</option>
+          <option value="120">Чугунный, 120 Вт</option>
+        </select>
+        <span class="calc-field-hint">Паспортная мощность указана для ΔT = 70 °C</span>
+      </div>
+      <div class="calc-field">
+        <label for="rd-temperatura">Температура теплоносителя</label>
+        <select id="rd-temperatura" name="temperatura">
+          <option value="1">Норматив, 90/70 °C</option>
+          <option value="0.72" selected>Реальная городская, 75/65 °C</option>
+          <option value="0.51">Низкотемпературная, 55/45 °C</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="rd-podkl">Подключение</label>
+        <select id="rd-podkl" name="podkl">
+          <option value="1" selected>Диагональное — без потерь</option>
+          <option value="0.97">Боковое одностороннее</option>
+          <option value="0.88">Нижнее или седельное</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="rd-nisha">Экран или ниша</label>
+        <select id="rd-nisha" name="nisha">
+          <option value="1" selected>Открыто под окном</option>
+          <option value="0.93">В нише</option>
+          <option value="0.85">Закрыт декоративным экраном</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<div class="calc-result" data-calc-result="sekcii-radiatorov" role="status" aria-live="polite"></div>
+
+<section class="calc-article">
+  <h2>Почему «100 ватт на квадрат» почти всегда мало</h2>
+  <p>Формула «100 Вт на м²» верна только для рядовой комнаты в типовом доме с одной наружной стеной, одним окном со стеклопакетом и потолком 2,7 м. Любое отклонение меняет результат: угловая комната теряет на 20% больше тепла, торцевая — на 30%, каждое дополнительное окно добавляет 15%, первый этаж над холодным подвалом — ещё 15%.</p>
+  <p>Калькулятор берёт базовые 100 Вт/м² с поправкой на высоту потолка и последовательно умножает на коэффициенты наружных стен, окон, остекления, положения по этажам и утепления фасада. К результату добавляется 10% на аномальные морозы и недотоп в сети.</p>
+
+  <h2>Главная поправка: температура теплоносителя</h2>
+  <p>Паспортная мощность секции на коробке указана для ΔT = 70 °C — это норматив 90/70 °C, которого в городских сетях почти не бывает. Реальный режим 75/65 °C даёт ΔT около 50 °C, и секция отдаёт примерно две трети паспорта. Именно поэтому расчёт «по паспорту» стабильно приводит к недотопу, а жильцы потом жалуются на холод при формально правильном радиаторе.</p>
+
+  <table>
+    <thead><tr><th>Режим сети</th><th>Доля от паспорта</th><th>Где встречается</th></tr></thead>
+    <tbody>
+      <tr><td>90/70 °C</td><td>100%</td><td>Норматив, на практике редко</td></tr>
+      <tr><td>75/65 °C</td><td>≈ 72%</td><td>Типичная городская сеть</td></tr>
+      <tr><td>55/45 °C</td><td>≈ 51%</td><td>Низкотемпературные системы, ИТП</td></tr>
+    </tbody>
+  </table>
+
+  <p>Дополнительно снижают отдачу способ подключения (боковое — минус 3%, нижнее — минус 12%) и экранирование: радиатор в нише теряет около 7%, закрытый декоративным экраном — до 15%.</p>
+
+  <h2>Пример</h2>
+  <div class="calc-example">
+    <p><strong>Комната 18 м², потолок 2,7 м, одна наружная стена, одно окно со стеклопакетом, средний этаж, биметалл 150 Вт, сеть 75/65 °C, диагональное подключение, открытый монтаж.</strong></p>
+    <p>Потребность 1 800 Вт, с запасом — 1 980 Вт. По паспорту вышло бы 14 секций, но реальная отдача секции 108 Вт, поэтому нужно <strong>19 секций</strong>. Практический вывод: одним прибором тут не обойтись — лучше два радиатора по 9–10 секций.</p>
+  </div>
+
+  <h2>Практические ограничения</h2>
+  <ul>
+    <li><strong>Больше 12 секций в одном приборе</strong> ставить не стоит: дальние секции почти не прогреваются, теплоноситель успевает остыть. Делят на два радиатора.</li>
+    <li><strong>Ширина радиатора</strong> считается примерно как 8 см на секцию — проверьте, что он помещается под окном.</li>
+    <li><strong>Расположение под окном</strong> обязательно: радиатор отсекает холодный поток от стекла. Перенос на внутреннюю стену оставляет зону холода у окна и конденсат.</li>
+    <li><strong>Отступы</strong> — 10 см от подоконника, 10–12 см от пола, 3–5 см от стены. Меньше — падает конвекция.</li>
+    <li><strong>Терморегулятор</strong> на подводке позволяет снизить температуру в комнате, но не увеличивает мощность: запас по секциям всё равно нужен.</li>
+  </ul>
+
+  <h2>Частые вопросы</h2>
+  <h3>Почему результат больше, чем в других калькуляторах?</h3>
+  <p>Потому что большинство калькуляторов делят потребность на паспортную мощность секции при ΔT = 70 °C. Мы показываем обе цифры: «по паспорту» и «с поправкой на реальные условия». Первая пригодится для сравнения с продавцом, вторая — чтобы зимой было тепло.</p>
+
+  <h3>Можно ли поставить меньше секций, чем в расчёте?</h3>
+  <p>Можно, если дом тёплый, соседи сверху и снизу отапливаются, а окна энергосберегающие — тогда фактические теплопотери ниже расчётных. Но помните, что уменьшить мощность работающего радиатора легко (терморегулятор), а увеличить — только заменой прибора со сливом стояка.</p>
+
+  <h3>Нужно ли согласовывать замену радиатора?</h3>
+  <p>Да, замена приборов на общедомовом стояке требует уведомления управляющей компании и слива стояка её силами. Самовольная замена с увеличением числа секций может ухудшить циркуляцию у соседей и стать основанием для предписания.</p>
+</section>
+
+<script>
+DomCalc.register('sekcii-radiatorov', function (v, f) {
+  var area = Math.max(0, v.ploshchad || 0);
+  if (area <= 0) { return f.note('Укажите площадь комнаты.'); }
+
+  // База: 100 Вт на м² при потолке 2,7 м — дальше поправки на реальные условия
+  var base = area * 100 * ((v.vysota || 2.7) / 2.7);
+
+  var walls = parseInt(v.sten, 10) || 1;
+  var kWalls = walls === 1 ? 1 : (walls === 2 ? 1.2 : 1.3);
+  var kWindows = 1 + Math.max(0, (v.okna || 0) - 1) * 0.15;
+  var kGlass = parseFloat(v.osteklenie) || 1;
+  var kFloor = parseFloat(v.etazh) || 1;
+  var kWall = parseFloat(v.uteplenie) || 1;
+
+  var need = base * kWalls * kWindows * kGlass * kFloor * kWall;
+  var reserve = need * 1.1;   // запас на аномальные морозы и недотоп в сети
+
+  var perSection = (parseFloat(v.tip) || 150) *
+                   (parseFloat(v.temperatura) || 1) *
+                   (parseFloat(v.podkl) || 1) *
+                   (parseFloat(v.nisha) || 1);
+
+  var sections = Math.ceil(reserve / perSection);
+
+  var html = f.total('Секций радиатора', f.num(sections, 0) + ' шт.',
+    'на тепловую мощность ' + f.num(reserve, 0) + ' Вт');
+
+  html += f.table([
+    f.row('Базовая потребность', f.num(base, 0) + ' Вт', '100 Вт/м² с поправкой на высоту'),
+    f.row('Наружные стены', '× ' + f.num(kWalls, 2), walls + ' стены'),
+    f.row('Окна', '× ' + f.num(kWindows, 2), f.num(v.okna || 0, 0) + ' шт.'),
+    f.row('Остекление', '× ' + f.num(kGlass, 2), ''),
+    f.row('Этаж', '× ' + f.num(kFloor, 2), ''),
+    f.row('Утепление стен', '× ' + f.num(kWall, 2), ''),
+    f.row('С запасом 10%', f.num(reserve, 0) + ' Вт', 'на морозы и недотоп в сети')
+  ], 'Тепловая мощность');
+
+  var byPassport = Math.ceil(reserve / (parseFloat(v.tip) || 150));
+  html += f.table([
+    f.row('Паспорт секции', f.num(parseFloat(v.tip) || 150, 0) + ' Вт', 'при ΔT = 70 °C'),
+    f.row('Если считать по паспорту', f.num(byPassport, 0) + ' шт.',
+      'так считает большинство калькуляторов'),
+    f.row('Реальная отдача секции', f.num(perSection, 0) + ' Вт',
+      'с поправкой на температуру, подключение и экран'),
+    f.row('С поправкой на реальные условия', f.num(sections, 0) + ' шт.',
+      'ширина радиатора ≈ ' + f.num(sections * 8, 0) + ' см')
+  ], 'Секции');
+
+  var notes = 'Паспортные ватты на коробке указаны для ΔT = 70 °C — это норматив 90/70 °C, ' +
+    'которого в городских сетях почти не бывает. При реальных 75/65 °C секция отдаёт около ' +
+    'двух третей паспорта, поэтому расчёт «по паспорту» стабильно даёт недотоп.';
+  if (parseFloat(v.nisha) < 1) {
+    notes += ' Декоративный экран и ниша съедают ещё 7–15% мощности — это уже учтено.';
+  }
+  if (sections > 12) {
+    notes += ' Больше 12 секций в одном приборе ставить не стоит: дальние секции почти не греются, ' +
+      'лучше разделить на два радиатора.';
+  }
+  html += f.note(notes);
+
+  return html;
+});
+</script>

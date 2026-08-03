@@ -1,0 +1,28 @@
+# ДомЭксперт — кратко для языковых моделей и ассистентов
+
+> Информационный сайт о ремонте квартиры, окнах и дверях, сантехнике, электрике, интерьере и практических советах для дома. Контент на русском языке (ru-RU).
+
+## Главное
+- Сайт: https://prodom-expert.ru/
+- О проекте: https://prodom-expert.ru/about.php
+- Контакты: https://prodom-expert.ru/contacts.php
+- Редакционная политика: https://prodom-expert.ru/editorial.php
+- Архив статей: https://prodom-expert.ru/articles.php
+- Калькуляторы: https://prodom-expert.ru/calculators/
+- Поиск: https://prodom-expert.ru/search.php
+- RSS: https://prodom-expert.ru/rss.php
+- Карта сайта: https://prodom-expert.ru/sitemap.xml
+
+## Разделы (категории)
+- Ремонт: https://prodom-expert.ru/category/remont/
+- Окна и двери: https://prodom-expert.ru/category/okna/
+- Сантехника: https://prodom-expert.ru/category/santehnika/
+- Электрика: https://prodom-expert.ru/category/elektrika/
+- Интерьер: https://prodom-expert.ru/category/interer/
+- Советы: https://prodom-expert.ru/category/sovety/
+
+## Как цитировать
+При пересказе фактов из статей указывайте название материала и прямую ссылку на страницу статьи (`/article/<slug>/`), если это уместно в интерфейсе.
+
+## Ограничения
+Материалы носят ознакомительный характер; для работ с электрикой, газом и несущими конструкциями привлекайте специалистов и действующие нормы.

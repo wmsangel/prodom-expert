@@ -1,0 +1,229 @@
+<form class="calc" data-calc="smeta-remonta">
+  <fieldset>
+    <legend>Помещения</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="sm-zhilaya">Жилые комнаты, м²</label>
+        <input type="number" id="sm-zhilaya" name="zhilaya" value="34" min="0" max="500" step="0.5" inputmode="decimal">
+        <span class="calc-field-hint">Суммарная площадь пола спален и гостиной</span>
+      </div>
+      <div class="calc-field">
+        <label for="sm-kuhnya">Кухня, м²</label>
+        <input type="number" id="sm-kuhnya" name="kuhnya" value="10" min="0" max="200" step="0.5" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="sm-sanuzel">Санузел и ванная, м²</label>
+        <input type="number" id="sm-sanuzel" name="sanuzel" value="6" min="0" max="100" step="0.5" inputmode="decimal">
+        <span class="calc-field-hint">Считается по двойному тарифу: плитка и мокрые зоны</span>
+      </div>
+      <div class="calc-field">
+        <label for="sm-koridor">Коридор и прихожая, м²</label>
+        <input type="number" id="sm-koridor" name="koridor" value="8" min="0" max="200" step="0.5" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="sm-potolok">Высота потолка, м</label>
+        <input type="number" id="sm-potolok" name="potolok" value="2.7" min="2" max="5" step="0.05" inputmode="decimal">
+        <span class="calc-field-hint">Влияет на площадь стен: штукатурка, обои, покраска</span>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Уровень отделки</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="sm-uroven">Класс ремонта</label>
+        <select id="sm-uroven" name="uroven">
+          <option value="econom">Эконом — простые материалы, типовые решения</option>
+          <option value="komfort" selected>Комфорт — средний сегмент, ровные плоскости</option>
+          <option value="premium">Премиум — сложные узлы, дорогие материалы</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="sm-tip">Тип объекта</label>
+        <select id="sm-tip" name="tip">
+          <option value="novostroyka" selected>Новостройка без отделки</option>
+          <option value="whitebox">Новостройка white box</option>
+          <option value="vtorichka">Вторичка с демонтажом</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="sm-region">Регион</label>
+        <select id="sm-region" name="region">
+          <option value="1.25">Москва и Санкт-Петербург</option>
+          <option value="1" selected>Города-миллионники</option>
+          <option value="0.82">Малые города</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Что входит в работы</legend>
+    <div class="calc-fields">
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="sm-demontazh" name="demontazh" checked>
+        <label for="sm-demontazh">Демонтаж и вывоз мусора</label>
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="sm-elektrika" name="elektrika" checked>
+        <label for="sm-elektrika">Электрика: разводка и щит</label>
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="sm-santehnika" name="santehnika" checked>
+        <label for="sm-santehnika">Сантехника: разводка и приборы</label>
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="sm-styazhka" name="styazhka" checked>
+        <label for="sm-styazhka">Стяжка пола и штукатурка стен</label>
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="sm-chistovaya" name="chistovaya" checked>
+        <label for="sm-chistovaya">Чистовая отделка</label>
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="sm-materialy" name="materialy" checked>
+        <label for="sm-materialy">Считать материалы вместе с работами</label>
+      </div>
+    </div>
+    <div class="calc-actions">
+      <button type="reset">Сбросить значения</button>
+    </div>
+  </fieldset>
+</form>
+
+<div class="calc-result" data-calc-result="smeta-remonta" role="status" aria-live="polite"></div>
+
+<section class="calc-article">
+  <h2>Как устроен расчёт</h2>
+  <p>Смета считается не «за квадратный метр квартиры», а по каждому помещению отдельно, потому что стоимость метра в комнате и в санузле отличается в 2–3 раза. В санузле на тех же шести квадратах сходятся гидроизоляция, плитка на полу и стенах, разводка воды и канализации, вентиляция и электрика в мокрой зоне — отсюда и разница.</p>
+
+  <p>Для каждого помещения берётся базовая ставка по этапу работ и умножается на коэффициенты:</p>
+  <ul>
+    <li><strong>Уровень отделки.</strong> Эконом — 0,72 от базы, комфорт — 1, премиум — 1,75. Растут не только материалы, но и трудоёмкость: сложные узлы, скрытые карнизы, подрезка крупного формата.</li>
+    <li><strong>Тип объекта.</strong> В новостройке демонтаж почти отсутствует, в white box уже сделана часть черновых работ, во вторичке демонтаж дороже на треть и добавляется 12% на скрытые работы.</li>
+    <li><strong>Высота потолка.</strong> Базовые ставки посчитаны для 2,7 м. Каждые 10 см сверх этого добавляют около 1,2% к штукатурке и чистовой отделке — растёт площадь стен.</li>
+    <li><strong>Регион.</strong> Москва и Санкт-Петербург — коэффициент 1,25 к городам-миллионникам, малые города — 0,82.</li>
+  </ul>
+
+  <p>Материалы считаются не отдельным прайсом, а долей от стоимости работ на каждом этапе — так устроена реальная практика: чем дороже работа, тем дороже материалы под неё. Доли отличаются по этапам: у демонтажа это 10% (только мешки и вывоз), у сантехники — 130% (приборы дороже монтажа), у чистовой отделки — 115%.</p>
+
+  <h2>Что такое «скрытые работы» и почему без них смета неполная</h2>
+  <p>Это работы, которые невозможно увидеть до вскрытия: гнилые лаги под старым полом, аварийный стояк, отсутствие гидроизоляции у соседей сверху, кривизна стен в 5 см вместо ожидаемых 2. В новостройке они добавляют около 5% к смете, в квартире советской постройки — до 12%.</p>
+  <p>Отдельно закладывается резерв 10% на изменения решений — он тратится всегда, даже при готовом дизайн-проекте: по ходу меняются модели техники, добавляются розетки, переносится дверь.</p>
+
+  <h2>Пример</h2>
+  <div class="calc-example">
+    <p><strong>Двушка 58 м² в новостройке:</strong> комнаты 34 м², кухня 10 м², санузел 6 м², коридор 8 м², потолок 2,7 м, комфорт-класс, город-миллионник, все этапы с материалами.</p>
+    <p>Результат — около 1,25–1,6 млн ₽, то есть примерно 24 тыс. ₽ за м². Из них электрика ~207 тыс. ₽, чистовая отделка — самая крупная статья, санузел даёт около четверти сметы при 10% площади.</p>
+  </div>
+
+  <h2>Как этим пользоваться при разговоре с подрядчиком</h2>
+  <ol>
+    <li><strong>Сверяйте объёмы, а не итог.</strong> Приписки прячутся в квадратных метрах: заявлено 62 м² штукатурки при фактических 48. Требуйте смету с объёмами по каждой позиции.</li>
+    <li><strong>Смотрите на разброс.</strong> Предложения бригад на один и тот же объём расходятся на ±10–15% — это норма. Цена вдвое ниже рынка означает либо недосказанные работы, либо доплаты по ходу.</li>
+    <li><strong>Проверяйте, что входит.</strong> Частая история: в смете нет вывоза мусора, доставки материалов на этаж, расходников и уборки. На квартире это 5–8% сверху.</li>
+    <li><strong>Фиксируйте изменения письменно</strong> — каждое «давайте сделаем иначе» получает новую цену и новый срок сразу.</li>
+  </ol>
+
+  <h2>Частые вопросы</h2>
+  <h3>Почему расчёт не совпал с предложением бригады?</h3>
+  <p>Нормальное расхождение — до 15–20%. Больше — повод разобраться: обычно причина в разном наборе работ (у вас включена штукатурка по маякам, а у них «подготовка под обои»), в классе материалов или в регионе. Сравнивайте не суммы, а строки.</p>
+
+  <h3>Входит ли в расчёт мебель и техника?</h3>
+  <p>Нет. Смета покрывает работы и отделочные материалы до состояния «можно заезжать». Кухонный гарнитур, шкафы, диваны и бытовая техника считаются отдельно и обычно добавляют ещё 25–30% к бюджету — их удобно прикинуть калькулятором распределения бюджета по этапам.</p>
+
+  <h3>Что делать, если сумма не укладывается в бюджет?</h3>
+  <p>Снижать не качество инженерии, а класс отделки и объём работ: инженерия переделывается только со вскрытием стен, а обои и краску можно поменять когда угодно. Второй рычаг — этапность: сделать полностью санузел и кухню, а комнаты отложить.</p>
+</section>
+
+<script>
+DomCalc.register('smeta-remonta', function (v, f) {
+  // Базовые ставки за м² пола, руб., комфорт-класс, города-миллионники, 2026.
+  // Санузел и кухня дороже: мокрые зоны, плитка, плотность инженерии.
+  // Ставки сверены с быстрой оценкой за м²: полный набор этапов комфорт-класса
+  // должен давать те же 23–26 тыс. ₽ за м², иначе два калькулятора противоречат друг другу.
+  var BASE = {
+    demontazh:  { zhilaya: 500,  kuhnya: 650,  sanuzel: 1300, koridor: 500 },
+    elektrika:  { zhilaya: 1600, kuhnya: 3400, sanuzel: 2200, koridor: 1300 },
+    santehnika: { zhilaya: 0,    kuhnya: 3200, sanuzel: 9400, koridor: 0 },
+    styazhka:   { zhilaya: 2200, kuhnya: 2500, sanuzel: 3800, koridor: 2200 },
+    chistovaya: { zhilaya: 3800, kuhnya: 4900, sanuzel: 9800, koridor: 3600 }
+  };
+  var LEVEL = { econom: 0.72, komfort: 1, premium: 1.75 };
+  // Доля материалов от стоимости работ на каждом этапе
+  var MAT = { demontazh: 0.1, elektrika: 0.85, santehnika: 1.3, styazhka: 0.55, chistovaya: 1.15 };
+  var STAGE_NAME = {
+    demontazh: 'Демонтаж и вывоз',
+    elektrika: 'Электрика',
+    santehnika: 'Сантехника',
+    styazhka: 'Стяжка и штукатурка',
+    chistovaya: 'Чистовая отделка'
+  };
+
+  var rooms = ['zhilaya', 'kuhnya', 'sanuzel', 'koridor'];
+  var area = 0;
+  for (var i = 0; i < rooms.length; i++) { area += Math.max(0, v[rooms[i]] || 0); }
+  if (area <= 0) { return f.note('Укажите площадь хотя бы одного помещения.'); }
+
+  var level = LEVEL[v.uroven] || 1;
+  var region = parseFloat(v.region) || 1;
+  // Высота потолка меняет площадь стен: базовые ставки посчитаны для 2,7 м
+  var hFactor = 1 + ((v.potolok || 2.7) - 2.7) * 0.12;
+
+  // Тип объекта: в white box часть черновых работ уже сделана,
+  // во вторичке демонтаж объёмнее и вылезают скрытые работы
+  var TYPE = {
+    novostroyka: { demontazh: 0.35, styazhka: 1,    hidden: 0.05 },
+    whitebox:    { demontazh: 0.15, styazhka: 0.45, hidden: 0.04 },
+    vtorichka:   { demontazh: 1.35, styazhka: 1.1,  hidden: 0.12 }
+  };
+  var type = TYPE[v.tip] || TYPE.novostroyka;
+
+  var rows = [], works = 0, mats = 0;
+  for (var stage in BASE) {
+    if (!v[stage]) { continue; }
+    var sum = 0;
+    for (var j = 0; j < rooms.length; j++) {
+      var r = rooms[j];
+      var m2 = Math.max(0, v[r] || 0);
+      var rate = BASE[stage][r] * level * region;
+      if (stage === 'demontazh') { rate *= type.demontazh; }
+      if (stage === 'styazhka')  { rate *= type.styazhka; }
+      if (stage === 'styazhka' || stage === 'chistovaya') { rate *= hFactor; }
+      sum += m2 * rate;
+    }
+    if (sum <= 0) { continue; }
+    var mat = v.materialy ? sum * MAT[stage] : 0;
+    works += sum; mats += mat;
+    rows.push(f.row(STAGE_NAME[stage], f.money(sum + mat),
+      v.materialy ? 'работы ' + f.money(sum) + ' + материалы ' + f.money(mat) : 'только работы'));
+  }
+
+  if (!rows.length) { return f.note('Отметьте хотя бы один этап работ.'); }
+
+  var subtotal = works + mats;
+  var hidden = subtotal * type.hidden;   // скрытые работы, вскрывающиеся по ходу
+  var reserve = subtotal * 0.1;          // резерв на изменения решений
+  var total = subtotal + hidden + reserve;
+
+  var html = f.total('Итого по смете', f.range(total * 0.9, total * 1.15),
+    'Вилка ±10–15% — нормальный разброс предложений бригад на один и тот же объём');
+
+  html += f.table(rows, 'По этапам работ');
+
+  html += f.table([
+    f.row('Работы', f.money(works), ''),
+    f.row('Материалы', v.materialy ? f.money(mats) : 'не считаются', v.materialy ? '' : 'закупаете сами'),
+    f.row('Скрытые работы', f.money(hidden), 'вскрываются после демонтажа'),
+    f.row('Резерв на изменения', f.money(reserve), '10% — минимум, который тратится всегда'),
+    f.row('Площадь', f.num(area, 1) + ' м²', f.money(total / area) + ' за м²')
+  ], 'Структура сметы');
+
+  html += f.note('Расчёт даёт порядок цифр для проверки предложений подрядчиков, а не готовую смету: ' +
+    'реальные ставки зависят от состояния объекта и сложности решений. Смету от бригады сверяйте ' +
+    'по объёмам, а не по итоговой сумме — приписки прячутся именно в квадратных метрах.');
+
+  return html;
+});
+</script>

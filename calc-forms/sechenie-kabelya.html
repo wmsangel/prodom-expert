@@ -1,0 +1,226 @@
+<form class="calc" data-calc="sechenie-kabelya">
+  <fieldset>
+    <legend>Нагрузка</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="se-sposob">Как задать нагрузку</label>
+        <select id="se-sposob" name="sposob">
+          <option value="moshchnost" selected>Мощностью, кВт</option>
+          <option value="tok">Током, А</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="se-moshchnost">Мощность, кВт</label>
+        <input type="number" id="se-moshchnost" name="moshchnost" value="7" min="0" max="200" step="0.1" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="se-tok">Ток, А</label>
+        <input type="number" id="se-tok" name="tok" value="32" min="0" max="400" step="1" inputmode="numeric">
+      </div>
+      <div class="calc-field">
+        <label for="se-faz">Сеть</label>
+        <select id="se-faz" name="faz">
+          <option value="1" selected>Однофазная, 230 В</option>
+          <option value="3">Трёхфазная, 400 В</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="se-dlina">Длина линии, м</label>
+        <input type="number" id="se-dlina" name="dlina" value="18" min="1" max="500" step="1" inputmode="numeric">
+        <span class="calc-field-hint">От щита до потребителя по трассе, а не по прямой</span>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Условия прокладки</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="se-prokladka">Способ прокладки</label>
+        <select id="se-prokladka" name="prokladka">
+          <option value="stena" selected>В стене под штукатуркой</option>
+          <option value="truba">В трубе или гофре</option>
+          <option value="otkryto">Открыто, в кабель-канале</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="se-material">Материал жил</label>
+        <select id="se-material" name="material">
+          <option value="med" selected>Медь</option>
+          <option value="alyuminiy">Алюминий</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="se-potery">Допустимая потеря напряжения</label>
+        <select id="se-potery" name="potery">
+          <option value="3" selected>3% — жёстко, для техники</option>
+          <option value="5">5% — обычная норма</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<div class="calc-result" data-calc-result="sechenie-kabelya" role="status" aria-live="polite"></div>
+
+<section class="calc-article">
+  <h2>Два критерия, а не один</h2>
+  <p>Сечение кабеля подбирается по большему из двух значений, и это принципиально. Большинство таблиц в интернете учитывают только первый критерий, из-за чего на длинных линиях получается заниженное сечение.</p>
+  <ol>
+    <li><strong>Нагрев жилы.</strong> Ток нагрузки не должен превышать длительно допустимый ток для этого сечения при выбранном способе прокладки. Кабель в стене под штукатуркой охлаждается хуже, чем открытый в кабель-канале, поэтому и предел у него ниже.</li>
+    <li><strong>Потеря напряжения.</strong> На длинной линии напряжение проседает: у прибора вместо 230 В оказывается 215. Нормой считается потеря до 5%, а для техники, чувствительной к питанию, — до 3%.</li>
+  </ol>
+  <p>На коротких линиях решает первый критерий, на длинных — второй. Калькулятор считает оба и берёт большее сечение, а затем подбирает автомат так, чтобы он защищал кабель: номинал не может превышать допустимый ток жилы.</p>
+
+  <h2>Формулы</h2>
+  <ul>
+    <li><strong>Ток однофазной нагрузки:</strong> I = P ÷ (U × cos φ), где U = 230 В, cos φ = 0,95 для бытовой нагрузки.</li>
+    <li><strong>Ток трёхфазной:</strong> I = P ÷ (1,73 × 400 × cos φ).</li>
+    <li><strong>Потеря напряжения:</strong> ΔU = k × ρ × L × I ÷ S, где ρ — удельное сопротивление (0,0175 для меди, 0,028 для алюминия), L — длина линии, S — сечение, k = 2 для однофазной линии (ток идёт «туда и обратно») и 1,73 для трёхфазной.</li>
+  </ul>
+
+  <h2>Допустимый ток по способу прокладки, медь</h2>
+  <table>
+    <thead><tr><th>Сечение</th><th>В стене</th><th>В трубе</th><th>Открыто</th></tr></thead>
+    <tbody>
+      <tr><td>1,5 мм²</td><td>16 А</td><td>17 А</td><td>21 А</td></tr>
+      <tr><td>2,5 мм²</td><td>21 А</td><td>23 А</td><td>27 А</td></tr>
+      <tr><td>4 мм²</td><td>27 А</td><td>30 А</td><td>36 А</td></tr>
+      <tr><td>6 мм²</td><td>34 А</td><td>40 А</td><td>46 А</td></tr>
+      <tr><td>10 мм²</td><td>50 А</td><td>55 А</td><td>70 А</td></tr>
+      <tr><td>16 мм²</td><td>70 А</td><td>75 А</td><td>85 А</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Пример</h2>
+  <div class="calc-example">
+    <p><strong>Варочная панель 7 кВт, однофазная сеть, длина линии 18 м, прокладка в стене, допустимая потеря 3%.</strong></p>
+    <p>Расчётный ток — 32 А. По нагреву требуется 6 мм² (предел жилы 34 А), по потере напряжения хватило бы 4 мм². Берётся большее — <strong>6 мм², кабель 3×6, автомат 32 А</strong>. Фактическая потеря 3,4 В, то есть 1,5%.</p>
+  </div>
+
+  <h2>Типовые линии квартиры</h2>
+  <ul>
+    <li><strong>Освещение</strong> — 1,5 мм², автомат 10 А</li>
+    <li><strong>Розеточные группы комнат</strong> — 2,5 мм², автомат 16 А с УЗО 30 мА</li>
+    <li><strong>Кухонные розетки рабочей зоны</strong> — 2,5 мм², две группы по 16 А</li>
+    <li><strong>Духовой шкаф, посудомойка, стиральная машина</strong> — по 2,5 мм², 16 А, отдельными линиями</li>
+    <li><strong>Варочная панель</strong> — 6 мм², 32 А, через клеммную колодку, а не розетку</li>
+    <li><strong>Кондиционер, водонагреватель</strong> — 2,5 мм², 16 А с УЗО</li>
+  </ul>
+
+  <h2>Частые вопросы</h2>
+  <h3>Почему автомат подбирается по кабелю, а не по прибору?</h3>
+  <p>Задача автомата — защитить проводку от перегрузки и короткого замыкания, а не прибор. Если поставить автомат 32 А на линию 2,5 мм², кабель успеет нагреться до опасной температуры раньше, чем сработает защита. Прибор защищает собственная встроенная автоматика.</p>
+
+  <h3>Можно ли использовать алюминий?</h3>
+  <p>В квартирной скрытой проводке — нет, там применяется только медь. Алюминий допустим на вводных линиях и в частном доме на воздушных участках, причём с сечением на ступень больше медного из-за более высокого удельного сопротивления.</p>
+
+  <h3>Что такое cos φ и почему 0,95?</h3>
+  <p>Это коэффициент мощности — отношение активной мощности к полной. Для бытовой нагрузки с преобладанием нагревательных приборов он близок к единице; 0,95 — усреднённое практическое значение, дающее небольшой запас по току.</p>
+
+  <h3>Длина линии — по прямой или по трассе?</h3>
+  <p>По фактической трассе кабеля: от щита вверх к горизонтальной линии, вдоль стен и вниз к точке. Реальная длина часто в полтора-два раза больше расстояния по прямой, и именно она определяет потерю напряжения.</p>
+</section>
+
+<script>
+DomCalc.register('sechenie-kabelya', function (v, f) {
+  // Длительно допустимый ток для медных и алюминиевых жил по способу прокладки, А.
+  var LIMITS = {
+    med: {
+      stena:   { 1.5: 16, 2.5: 21, 4: 27, 6: 34, 10: 50, 16: 70, 25: 85 },
+      truba:   { 1.5: 17, 2.5: 23, 4: 30, 6: 40, 10: 55, 16: 75, 25: 95 },
+      otkryto: { 1.5: 21, 2.5: 27, 4: 36, 6: 46, 10: 70, 16: 85, 25: 115 }
+    },
+    alyuminiy: {
+      stena:   { 2.5: 16, 4: 21, 6: 26, 10: 38, 16: 55, 25: 65, 35: 75 },
+      truba:   { 2.5: 18, 4: 23, 6: 28, 10: 42, 16: 60, 25: 75, 35: 85 },
+      otkryto: { 2.5: 21, 4: 29, 6: 38, 10: 55, 16: 70, 25: 90, 35: 105 }
+    }
+  };
+  var AUTOMATS = [6, 10, 16, 20, 25, 32, 40, 50, 63, 80, 100];
+  var RHO = { med: 0.0175, alyuminiy: 0.028 };   // Ом·мм²/м
+
+  var phases = parseInt(v.faz, 10) === 3 ? 3 : 1;
+  var U = phases === 3 ? 400 : 230;
+  var cosPhi = 0.95;
+
+  var current;
+  if (v.sposob === 'tok') {
+    current = Math.max(0, v.tok || 0);
+  } else {
+    var P = Math.max(0, v.moshchnost || 0) * 1000;
+    current = phases === 3 ? P / (1.732 * U * cosPhi) : P / (U * cosPhi);
+  }
+  if (current <= 0) { return f.note('Укажите мощность или ток нагрузки.'); }
+
+  var table = LIMITS[v.material] ? LIMITS[v.material][v.prokladka] : null;
+  if (!table) { return f.note('Не удалось подобрать таблицу для этих условий.'); }
+
+  // Шаг 1 — сечение по длительному току
+  var sizes = Object.keys(table).map(parseFloat).sort(function (a, b) { return a - b; });
+  var byCurrent = null;
+  for (var i = 0; i < sizes.length; i++) {
+    if (table[sizes[i]] >= current) { byCurrent = sizes[i]; break; }
+  }
+  if (byCurrent === null) {
+    return f.note('Ток ' + f.num(current, 1) + ' А выходит за пределы квартирных сечений — ' +
+      'такую нагрузку разбивают на несколько линий или считают по проекту.');
+  }
+
+  // Шаг 2 — проверка по потере напряжения на длине линии
+  var rho = RHO[v.material] || RHO.med;
+  var L = Math.max(1, v.dlina || 1);
+  var allowed = (parseFloat(v.potery) || 3) / 100 * U;
+  var k = phases === 3 ? 1.732 : 2;   // однофазная линия — ток идёт «туда и обратно»
+  var byDrop = null;
+  for (var j = 0; j < sizes.length; j++) {
+    var drop = k * rho * L * current / sizes[j];
+    if (drop <= allowed) { byDrop = sizes[j]; break; }
+  }
+
+  var chosen = Math.max(byCurrent, byDrop === null ? sizes[sizes.length - 1] : byDrop);
+  var actualDrop = k * rho * L * current / chosen;
+
+  // Автомат: не больше допустимого тока выбранного сечения
+  var automat = null;
+  for (var n = 0; n < AUTOMATS.length; n++) {
+    if (AUTOMATS[n] >= current && AUTOMATS[n] <= table[chosen]) { automat = AUTOMATS[n]; break; }
+  }
+  if (automat === null) {
+    for (var m = AUTOMATS.length - 1; m >= 0; m--) {
+      if (AUTOMATS[m] <= table[chosen]) { automat = AUTOMATS[m]; break; }
+    }
+  }
+
+  var html = f.total('Сечение кабеля', f.num(chosen, 1) + ' мм²',
+    'автомат ' + (automat ? automat + ' А' : 'подбирается по проекту') +
+    ', ' + (phases === 3 ? 'кабель 5×' : 'кабель 3×') + f.num(chosen, 1));
+
+  html += f.table([
+    f.row('Расчётный ток', f.num(current, 1) + ' А',
+      v.sposob === 'tok' ? 'задан вручную' : 'при cos φ = 0,95'),
+    f.row('По длительному току', f.num(byCurrent, 1) + ' мм²',
+      'предел жилы ' + table[byCurrent] + ' А'),
+    f.row('По потере напряжения', byDrop ? f.num(byDrop, 1) + ' мм²' : 'не проходит',
+      'на длине ' + f.num(L, 0) + ' м'),
+    f.row('Фактическая потеря', f.num(actualDrop, 1) + ' В · ' +
+      f.num(actualDrop / U * 100, 1) + '%', 'норма до ' + v.potery + '%'),
+    f.row('Автомат защиты', automat ? automat + ' А, характеристика C' : '—',
+      'защищает кабель, а не прибор')
+  ], 'Два шага подбора');
+
+  var notes = 'Сечение выбирают по большему из двух значений: по нагреву жилы и по потере ' +
+    'напряжения на длине. На коротких линиях решает первое, на длинных — второе.';
+  if (byDrop && byDrop > byCurrent) {
+    notes += ' Здесь решающей оказалась именно длина линии: по нагреву хватило бы ' +
+      f.num(byCurrent, 1) + ' мм².';
+  }
+  if (v.material === 'alyuminiy') {
+    notes += ' Алюминий в квартирной проводке скрытой прокладки не применяют — ' +
+      'расчёт приведён для вводных линий и частного дома.';
+  }
+  html += f.note(notes);
+
+  return html;
+});
+</script>
