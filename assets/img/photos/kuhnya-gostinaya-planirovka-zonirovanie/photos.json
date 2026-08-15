@@ -1,0 +1,37 @@
+{
+  "slug": "kuhnya-gostinaya-planirovka-zonirovanie",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/kuhnya-gostinaya-planirovka-zonirovanie/01.jpg",
+      "webp": "/assets/img/photos/kuhnya-gostinaya-planirovka-zonirovanie/01.webp",
+      "width": 1600,
+      "height": 1067,
+      "caption": "Объединённая кухня-гостиная",
+      "title": "Hamptons Kitchen Design 1",
+      "credit": {
+        "author": "JessofWoodnCo",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Hamptons_Kitchen_Design_1.jpg",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/kuhnya-gostinaya-planirovka-zonirovanie/02.jpg",
+      "webp": "/assets/img/photos/kuhnya-gostinaya-planirovka-zonirovanie/02.webp",
+      "width": 1024,
+      "height": 607,
+      "caption": "Остров разделяет зоны",
+      "title": "Open Plan Living",
+      "credit": {
+        "author": "EcoIslandLife",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/89484852@N06/8142576412",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

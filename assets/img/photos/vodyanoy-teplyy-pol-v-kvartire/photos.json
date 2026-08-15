@@ -1,0 +1,37 @@
+{
+  "slug": "vodyanoy-teplyy-pol-v-kvartire",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/vodyanoy-teplyy-pol-v-kvartire/01.jpg",
+      "webp": "/assets/img/photos/vodyanoy-teplyy-pol-v-kvartire/01.webp",
+      "width": 1000,
+      "height": 750,
+      "caption": "Контуры водяного тёплого пола",
+      "title": "'Ondol' Underfloor Heating",
+      "credit": {
+        "author": "InSapphoWeTrust",
+        "license": "CC BY-SA 2.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+        "page_url": "https://www.flickr.com/photos/56619626@N05/5591010871",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/vodyanoy-teplyy-pol-v-kvartire/02.jpg",
+      "webp": "/assets/img/photos/vodyanoy-teplyy-pol-v-kvartire/02.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Коллектор тёплого пола",
+      "title": "Manifold and pipework",
+      "credit": {
+        "author": "Bryn Pinzgauer",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/12394349@N06/3496635568",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

@@ -43,7 +43,7 @@ include __DIR__ . '/includes/header.php';
 <div class="page-wrapper">
   <div class="container">
     <div class="main-layout">
-      <main role="main">
+      <main id="main-content" role="main">
         <div class="article-body" style="margin-top: 0;">
           <h2>Что такое ДомЭксперт</h2>
           <p>ДомЭксперт — это информационный ресурс для всех, кто хочет сделать свой дом лучше своими руками или с минимальным привлечением специалистов. Мы пишем о ремонте, строительстве, сантехнике, электрике и дизайне интерьера простым и понятным языком.</p>

@@ -1,0 +1,37 @@
+{
+  "slug": "klass-vzlomostoykosti-vkhodnoy-dveri",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/klass-vzlomostoykosti-vkhodnoy-dveri/01.jpg",
+      "webp": "/assets/img/photos/klass-vzlomostoykosti-vkhodnoy-dveri/01.webp",
+      "width": 1023,
+      "height": 682,
+      "caption": "Замок входной двери",
+      "title": "Couple of metallic padlocks on old door frame",
+      "credit": {
+        "author": "Horia Varlan",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/10361931@N06/4268291295",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/klass-vzlomostoykosti-vkhodnoy-dveri/02.jpg",
+      "webp": "/assets/img/photos/klass-vzlomostoykosti-vkhodnoy-dveri/02.webp",
+      "width": 1024,
+      "height": 681,
+      "caption": "Стальная дверь повышенной стойкости",
+      "title": "Security",
+      "credit": {
+        "author": "CarbonNYC [in SF!]",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/15923063@N00/2294144289",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

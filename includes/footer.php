@@ -50,6 +50,36 @@ $currentYear = date('Y');
 
       </div><!-- /.footer-grid -->
 
+      <!-- Блок доверия: только проверяемые факты о том, как делается контент.
+           Компании и соцсетей у проекта нет, поэтому опираемся на прозрачность. -->
+      <div class="footer-trust">
+        <h3 class="footer-trust-heading">Как мы работаем</h3>
+        <ul class="footer-trust-list">
+          <li>
+            <strong>Материалы обновляются.</strong> У каждой статьи указана дата — вы всегда видите,
+            насколько свежие цифры перед вами.
+          </li>
+          <li>
+            <strong>Цены — ориентиры, а не прайс.</strong> Мы показываем структуру и пропорции затрат
+            и честно предупреждаем о разбросе по регионам. Как считаем — в
+            <a href="/editorial.php">редакционной политике</a>.
+          </li>
+          <li>
+            <strong>Без платных обзоров.</strong> Мы не продаём места в статьях и не рекомендуем
+            подрядчиков за вознаграждение. Рекламные блоки помечены отдельно.
+          </li>
+          <li>
+            <strong>Границы рекомендаций обозначены.</strong> Там, где нужен проект, допуск или
+            согласование, мы говорим об этом прямо, а не подменяем инструкцией из интернета.
+          </li>
+          <li>
+            <strong>Нашли ошибку — исправим.</strong> Пишите на
+            <a href="mailto:info@prodom-expert.ru">info@prodom-expert.ru</a>, порядок правок описан
+            в <a href="/editorial.php">редполитике</a>.
+          </li>
+        </ul>
+      </div>
+
       <div class="footer-bottom">
         <span>© <?= $currentYear ?> ДомЭксперт. Все права защищены.</span>
         <div class="footer-bottom-links">
@@ -62,7 +92,7 @@ $currentYear = date('Y');
     </div>
   </footer>
 
-  <script src="/assets/js/main.js" defer></script>
+  <script src="<?= htmlspecialchars(du_asset('/assets/js/main.js'), ENT_QUOTES, 'UTF-8') ?>" defer></script>
 
   <!-- Google tag (gtag.js) — в конце body, не блокирует FCP -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-35WXXKG90T"></script>

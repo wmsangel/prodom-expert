@@ -1,0 +1,37 @@
+{
+  "slug": "panoramnye-okna-v-pol",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/panoramnye-okna-v-pol/01.jpg",
+      "webp": "/assets/img/photos/panoramnye-okna-v-pol/01.webp",
+      "width": 1024,
+      "height": 683,
+      "caption": "Панорамное окно в пол",
+      "title": "Sustainable Kitchen - Recycled Wood Flooring and Ceiling",
+      "credit": {
+        "author": "Jeremy Levine Design",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/25186605@N04/17336540631",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/panoramnye-okna-v-pol/02.jpg",
+      "webp": "/assets/img/photos/panoramnye-okna-v-pol/02.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Сплошное остекление комнаты",
+      "title": "Tudor Cafe, 32 Bore Street, Lichfield",
+      "credit": {
+        "author": "ell brown",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/39415781@N06/3676642430",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

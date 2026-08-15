@@ -100,17 +100,27 @@ if (!function_exists('esc')) {
   <?= json_encode([
     '@context' => 'https://schema.org',
     '@graph'   => [
-      [
-        '@type' => 'Organization',
-        '@id'   => domexpert_org_id(),
-        'name'  => $siteName,
-        'url'   => SITE_CANONICAL . '/',
-        'logo'  => [
+      array_filter([
+        '@type'       => 'Organization',
+        '@id'         => domexpert_org_id(),
+        'name'        => $siteName,
+        'url'         => SITE_CANONICAL . '/',
+        'description' => 'Независимое издание о ремонте, инженерных системах и обустройстве жилья: практические руководства с нормами, расчётами и калькуляторами.',
+        'logo'        => [
           '@type' => 'ImageObject',
           'url'   => $logoSchemaUrl,
         ],
-        'sameAs' => [],
-      ],
+        'contactPoint' => [
+          '@type'             => 'ContactPoint',
+          'contactType'       => 'editorial',
+          'email'             => DOMEXPERT_CONTACT_EMAIL,
+          'availableLanguage' => ['ru'],
+          'url'               => SITE_CANONICAL . '/contacts.php',
+        ],
+        // sameAs печатается только если профили заданы в seo-config.php:
+        // пустой массив в разметке — бесполезный шум.
+        'sameAs' => domexpert_social_profiles(),
+      ]),
       [
         '@type'       => 'WebSite',
         '@id'         => domexpert_website_id(),
@@ -170,7 +180,14 @@ if (!function_exists('esc')) {
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap">
 
   <!-- ═══ СТИЛИ ═══ -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="<?= htmlspecialchars(du_asset('/assets/css/style.css'), ENT_QUOTES, 'UTF-8') ?>">
+  <?php
+  /* Страница может попросить свой стиль, объявив $extraCss до include header.php.
+     Нужно тяжёлым инструментам вроде планировщика: тянуть их CSS на все 200+
+     страниц ради одной — лишние килобайты в критическом пути. */
+  foreach (($extraCss ?? []) as $cssHref): ?>
+  <link rel="stylesheet" href="<?= htmlspecialchars(du_asset($cssHref), ENT_QUOTES, 'UTF-8') ?>">
+  <?php endforeach; ?>
 
   <!-- ═══ FAVICON (ICO в корне + SVG + PNG — рекомендации Яндекса/Google) ═══ -->
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -213,6 +230,10 @@ if (!function_exists('esc')) {
        crossorigin="anonymous"></script>
 </head>
 <body>
+
+<!-- Первая цель Tab: позволяет пропустить шапку и меню, не проходя их ссылки
+     на каждой странице. Виден только при фокусе с клавиатуры. -->
+<a class="skip-link" href="#main-content">Перейти к содержимому</a>
 
 <div class="top-bar">
   🛠️ Профессиональные советы по ремонту и обустройству вашего дома

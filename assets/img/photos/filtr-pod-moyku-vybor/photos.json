@@ -1,0 +1,21 @@
+{
+  "slug": "filtr-pod-moyku-vybor",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/filtr-pod-moyku-vybor/01.jpg",
+      "webp": "/assets/img/photos/filtr-pod-moyku-vybor/01.webp",
+      "width": 1600,
+      "height": 1200,
+      "caption": "Фильтр под мойкой",
+      "title": "Under-sink Water Filter System",
+      "credit": {
+        "author": "Fanti Salms",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "page_url": "https://commons.wikimedia.org/w/index.php?curid=134525781",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    }
+  ]
+}

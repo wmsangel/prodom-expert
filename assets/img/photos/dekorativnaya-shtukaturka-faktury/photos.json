@@ -1,0 +1,37 @@
+{
+  "slug": "dekorativnaya-shtukaturka-faktury",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/dekorativnaya-shtukaturka-faktury/01.jpg",
+      "webp": "/assets/img/photos/dekorativnaya-shtukaturka-faktury/01.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Фактурная декоративная штукатурка",
+      "title": "Texture LV Relief",
+      "credit": {
+        "author": "Art Aspirations",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/23471014@N03/2273014355",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/dekorativnaya-shtukaturka-faktury/02.jpg",
+      "webp": "/assets/img/photos/dekorativnaya-shtukaturka-faktury/02.webp",
+      "width": 1024,
+      "height": 683,
+      "caption": "Венецианская штукатурка",
+      "title": "venetian plaster detail",
+      "credit": {
+        "author": "andres musta",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/32399948@N06/4358018085",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

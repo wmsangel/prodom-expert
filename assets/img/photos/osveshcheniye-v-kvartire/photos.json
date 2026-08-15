@@ -1,0 +1,37 @@
+{
+  "slug": "osveshcheniye-v-kvartire",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/osveshcheniye-v-kvartire/01.jpg",
+      "webp": "/assets/img/photos/osveshcheniye-v-kvartire/01.webp",
+      "width": 1024,
+      "height": 681,
+      "caption": "Общий свет в жилой комнате",
+      "title": "2008/09 bachelorette pad in California, living room, a 1960's Italian ceiling lamp, gold mirror, power prayer wheel, campaign table, Fender strat, Tibetan carpe",
+      "credit": {
+        "author": "Wonderlane",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/71401718@N00/3223400295",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/osveshcheniye-v-kvartire/02.jpg",
+      "webp": "/assets/img/photos/osveshcheniye-v-kvartire/02.webp",
+      "width": 1024,
+      "height": 683,
+      "caption": "Светильники формируют сценарии освещения",
+      "title": "Passive Daylighting",
+      "credit": {
+        "author": "Jeremy Levine Design",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/25186605@N04/17150705929",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

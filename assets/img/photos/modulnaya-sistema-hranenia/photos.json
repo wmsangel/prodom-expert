@@ -1,0 +1,37 @@
+{
+  "slug": "modulnaya-sistema-hranenia",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/modulnaya-sistema-hranenia/01.jpg",
+      "webp": "/assets/img/photos/modulnaya-sistema-hranenia/01.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Модульная система хранения",
+      "title": "My PLAY Shelf by movisi",
+      "credit": {
+        "author": "derÄsthet",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/73976736@N00/286821746",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/modulnaya-sistema-hranenia/02.jpg",
+      "webp": "/assets/img/photos/modulnaya-sistema-hranenia/02.webp",
+      "width": 1536,
+      "height": 1498,
+      "caption": "Стеллаж собирается под задачу",
+      "title": "Comprehensive Storage Unit (Storage and Shelving System)",
+      "credit": {
+        "author": "George Nelson",
+        "license": "CC BY 3.0",
+        "license_url": "https://creativecommons.org/licenses/by/3.0/",
+        "page_url": "https://www.brooklynmuseum.org/opencollection/objects/155945",
+        "source": "brooklynmuseum",
+        "modified": true
+      }
+    }
+  ]
+}

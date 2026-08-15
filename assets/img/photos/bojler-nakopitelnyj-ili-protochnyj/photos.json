@@ -1,0 +1,37 @@
+{
+  "slug": "bojler-nakopitelnyj-ili-protochnyj",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/bojler-nakopitelnyj-ili-protochnyj/01.jpg",
+      "webp": "/assets/img/photos/bojler-nakopitelnyj-ili-protochnyj/01.webp",
+      "width": 1024,
+      "height": 683,
+      "caption": "Накопительный водонагреватель",
+      "title": "Solar Water Heater boiler",
+      "credit": {
+        "author": "gmourits",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/11066072@N06/4453385855",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/bojler-nakopitelnyj-ili-protochnyj/02.jpg",
+      "webp": "/assets/img/photos/bojler-nakopitelnyj-ili-protochnyj/02.webp",
+      "width": 1024,
+      "height": 765,
+      "caption": "Проточный нагреватель",
+      "title": "Tankless Water Heater",
+      "credit": {
+        "author": "Kevin Shorter",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/28648582@N02/8747024384",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

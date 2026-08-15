@@ -1,0 +1,37 @@
+{
+  "slug": "remont-vannoy-komnaty-s-nulya-gid",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/remont-vannoy-komnaty-s-nulya-gid/01.jpg",
+      "webp": "/assets/img/photos/remont-vannoy-komnaty-s-nulya-gid/01.webp",
+      "width": 1000,
+      "height": 750,
+      "caption": "Ремонт ванной комнаты",
+      "title": "Concrete Sink and Tub in Bathroom #2",
+      "credit": {
+        "author": "Jeremy Levine Design",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/25186605@N04/2814824081",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/remont-vannoy-komnaty-s-nulya-gid/02.jpg",
+      "webp": "/assets/img/photos/remont-vannoy-komnaty-s-nulya-gid/02.webp",
+      "width": 1023,
+      "height": 681,
+      "caption": "Санузел на этапе облицовки",
+      "title": "Bathroom Remodel",
+      "credit": {
+        "author": "Jeremy Levine Design",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/25186605@N04/3122656639",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

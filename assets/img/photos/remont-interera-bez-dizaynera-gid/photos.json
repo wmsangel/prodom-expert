@@ -1,0 +1,37 @@
+{
+  "slug": "remont-interera-bez-dizaynera-gid",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/remont-interera-bez-dizaynera-gid/01.jpg",
+      "webp": "/assets/img/photos/remont-interera-bez-dizaynera-gid/01.webp",
+      "width": 1024,
+      "height": 683,
+      "caption": "Ремонт интерьера своими силами",
+      "title": "Bathroom",
+      "credit": {
+        "author": "Jeremy Levine Design",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/25186605@N04/3640106323",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/remont-interera-bez-dizaynera-gid/02.jpg",
+      "webp": "/assets/img/photos/remont-interera-bez-dizaynera-gid/02.webp",
+      "width": 1024,
+      "height": 585,
+      "caption": "Эскиз и планировка до начала работ",
+      "title": "2012 ArtiCAD/BathCAD HD CGI",
+      "credit": {
+        "author": "articad images",
+        "license": "CC BY-SA 2.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+        "page_url": "https://www.flickr.com/photos/74471059@N07/6801927157",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

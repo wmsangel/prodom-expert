@@ -42,7 +42,7 @@ include __DIR__ . '/includes/header.php';
 <div class="page-wrapper">
   <div class="container">
     <div class="main-layout">
-      <main role="main">
+      <main id="main-content" role="main">
 
         <!-- Форма поиска -->
         <div style="background:var(--white); border-radius:var(--radius-lg); padding:24px; margin-bottom:28px; box-shadow:0 2px 12px var(--shadow);">
@@ -80,7 +80,7 @@ include __DIR__ . '/includes/header.php';
                        loading="lazy"
                        decoding="async">
                 <?php else: ?>
-                  <?= ['remont'=>'🔨','okna'=>'🪟','santehnika'=>'🚿','elektrika'=>'💡','interer'=>'🛋️','sovety'=>'📋'][$a['cat']] ?? '📄' ?>
+                  <?= domexpert_category_icon($a['cat']) ?>
                 <?php endif; ?>
               </div>
               <div class="list-item-body">
@@ -122,7 +122,7 @@ include __DIR__ . '/includes/header.php';
                        loading="lazy"
                        decoding="async">
                 <?php else: ?>
-                  <?= ['remont'=>'🔨','okna'=>'🪟','santehnika'=>'🚿','elektrika'=>'💡','interer'=>'🛋️','sovety'=>'📋'][$a['cat']] ?? '📄' ?>
+                  <?= domexpert_category_icon($a['cat']) ?>
                 <?php endif; ?>
               </div>
               <div class="list-item-body">

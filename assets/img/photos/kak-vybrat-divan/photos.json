@@ -1,0 +1,37 @@
+{
+  "slug": "kak-vybrat-divan",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/kak-vybrat-divan/01.jpg",
+      "webp": "/assets/img/photos/kak-vybrat-divan/01.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Диван в гостиной",
+      "title": "New Furniture for the Living Room",
+      "credit": {
+        "author": "tachyondecay",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/60206297@N00/4336780468",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/kak-vybrat-divan/02.jpg",
+      "webp": "/assets/img/photos/kak-vybrat-divan/02.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Обивка определяет износостойкость",
+      "title": "Reupholstered French Antique Sofa Louis XVI style",
+      "credit": {
+        "author": "frenchfinds.co.uk",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/23717595@N05/6690098543",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

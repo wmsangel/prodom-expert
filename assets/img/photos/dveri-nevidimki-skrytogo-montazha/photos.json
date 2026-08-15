@@ -1,0 +1,37 @@
+{
+  "slug": "dveri-nevidimki-skrytogo-montazha",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/dveri-nevidimki-skrytogo-montazha/01.jpg",
+      "webp": "/assets/img/photos/dveri-nevidimki-skrytogo-montazha/01.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Дверь скрытого монтажа заподлицо со стеной",
+      "title": "White buildings in the Gun Quarter (on Bath Street)",
+      "credit": {
+        "author": "ell brown",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/39415781@N06/3913415838",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/dveri-nevidimki-skrytogo-montazha/02.jpg",
+      "webp": "/assets/img/photos/dveri-nevidimki-skrytogo-montazha/02.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Полотно без наличников",
+      "title": "The Hidden Light of the Sun",
+      "credit": {
+        "author": "Random Retail",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/67408512@N03/12241471336",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

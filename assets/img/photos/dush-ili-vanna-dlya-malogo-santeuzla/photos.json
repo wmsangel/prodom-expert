@@ -1,0 +1,37 @@
+{
+  "slug": "dush-ili-vanna-dlya-malogo-santeuzla",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/dush-ili-vanna-dlya-malogo-santeuzla/01.jpg",
+      "webp": "/assets/img/photos/dush-ili-vanna-dlya-malogo-santeuzla/01.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Маленький санузел: душ или ванна",
+      "title": "Every small apt needs one of these",
+      "credit": {
+        "author": "T.Young",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/55598043@N00/446265475",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/dush-ili-vanna-dlya-malogo-santeuzla/02.jpg",
+      "webp": "/assets/img/photos/dush-ili-vanna-dlya-malogo-santeuzla/02.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Душевая зона вместо ванны",
+      "title": "P&O Aurora Cabin B228 William Fawcett Suite",
+      "credit": {
+        "author": "Tips For Travellers",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/8327374@N02/1347472875",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

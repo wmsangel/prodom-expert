@@ -1,0 +1,222 @@
+<form class="calc" data-calc="gipsokarton">
+  <fieldset>
+    <legend>Конструкция</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="gk-tip">Что собираем</label>
+        <select id="gk-tip" name="tip">
+          <option value="peregorodka" selected>Перегородка — обшивка с двух сторон</option>
+          <option value="oblicovka">Облицовка стены — обшивка с одной стороны</option>
+          <option value="potolok">Подвесной потолок</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="gk-ploshchad">Площадь конструкции, м²</label>
+        <input type="number" id="gk-ploshchad" name="ploshchad" value="12" min="1" max="500" step="0.5" inputmode="decimal">
+        <span class="calc-field-hint">Для перегородки — площадь одной стороны, не сумма двух</span>
+      </div>
+      <div class="calc-field">
+        <label for="gk-vysota">Высота, м</label>
+        <input type="number" id="gk-vysota" name="vysota" value="2.7" min="1" max="6" step="0.05" inputmode="decimal">
+        <span class="calc-field-hint">Для потолка — длина короткой стороны</span>
+      </div>
+      <div class="calc-field">
+        <label for="gk-sloi">Слоёв ГКЛ с каждой стороны</label>
+        <select id="gk-sloi" name="sloi">
+          <option value="1" selected>Один слой</option>
+          <option value="2">Два слоя — жёсткость и звук</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="gk-shag">Шаг стоек, мм</label>
+        <select id="gk-shag" name="shag">
+          <option value="600" selected>600 — стандарт</option>
+          <option value="400">400 — под тяжёлую навеску и плитку</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="gk-list">Тип листа</label>
+        <select id="gk-list" name="list">
+          <option value="gkl" selected>ГКЛ 12,5 мм — обычный</option>
+          <option value="gklv">ГКЛВ 12,5 мм — влагостойкий</option>
+          <option value="gkl95">ГКЛ 9,5 мм — потолочный</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Дополнительно</legend>
+    <div class="calc-fields">
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="gk-zvuk" name="zvuk" checked>
+        <label for="gk-zvuk">Заполнить минватой</label>
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="gk-sploshnaya" name="sploshnaya" checked>
+        <label for="gk-sploshnaya">Сплошное шпаклевание под покраску</label>
+      </div>
+      <div class="calc-field">
+        <label for="gk-cena-list">Цена листа, ₽</label>
+        <input type="number" id="gk-cena-list" name="cenaList" value="480" min="0" max="10000" step="10" inputmode="numeric">
+      </div>
+      <div class="calc-field">
+        <label for="gk-cena-profil">Цена профиля, ₽ за 3 м</label>
+        <input type="number" id="gk-cena-profil" name="cenaProfil" value="230" min="0" max="10000" step="10" inputmode="numeric">
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<div class="calc-result" data-calc-result="gipsokarton" role="status" aria-live="polite"></div>
+
+<section class="calc-article">
+  <h2>Из чего складывается каркас</h2>
+  <p>Стоимость гипсокартонной конструкции определяет не гипсокартон: листы дают около трети сметы, остальное — профиль, крепёж и шпаклёвка. Поэтому считать надо всё сразу, иначе на второй день работ окажется, что профиля не хватает, а магазин закрыт.</p>
+
+  <table>
+    <thead><tr><th>Конструкция</th><th>Профиль</th><th>Что ещё</th></tr></thead>
+    <tbody>
+      <tr><td>Перегородка</td><td>ПН 50/75/100 по полу и потолку, ПС того же размера — стойки</td><td>Минвата, лента по контуру примыкания</td></tr>
+      <tr><td>Облицовка стены</td><td>ПН и ПС либо прямые подвесы к стене</td><td>Подвесы через 600 мм по высоте</td></tr>
+      <tr><td>Подвесной потолок</td><td>ПНП 28×27 по периметру, ПП 60×27 — несущие</td><td>Подвесы и одноуровневые соединители «краб»</td></tr>
+    </tbody>
+  </table>
+
+  <p>Шаг стоек 600 мм — стандарт, при нём лист шириной 1200 мм ложится ровно на три профиля. Шаг 400 мм берут там, где на стену пойдёт плитка или тяжёлая навеска: телевизор, полки, кухонные шкафы.</p>
+
+  <h2>Почему листов всегда больше, чем площадь ÷ 3</h2>
+  <p>Лист 1200 × 2500 мм — это 3 м², но целиком он ложится редко. При высоте потолка 2,7 м каждый лист даёт полезные 2,5 м, а оставшиеся 20 см закрываются доборным куском — и одна такая полоса уходит на каждый лист. Плюс подрезка у проёмов и углов. В расчёт заложено 12% отходов, для потолка сложной формы стоит брать 15–18%.</p>
+
+  <h2>Крепёж: цифры, которые легко забыть</h2>
+  <ul>
+    <li><strong>Саморезы по ГКЛ 25 мм</strong> — шаг 250 мм по периметру листа и по промежуточным стойкам, около 30 штук на лист при одном слое.</li>
+    <li><strong>Второй слой</strong> крепится саморезами 35 мм со смещением швов на полшага — иначе шов пойдёт трещиной насквозь.</li>
+    <li><strong>«Клопы» LN 9 мм</strong> — соединение профиля с профилем, примерно 4 штуки на каждый стык.</li>
+    <li><strong>Дюбель-гвозди 6 × 40</strong> — крепление направляющих к полу и потолку с шагом 500 мм.</li>
+    <li><strong>Подвесы</strong> для потолка — 2,5–3 штуки на квадратный метр при шаге несущих 600 мм и подвесов 700 мм.</li>
+  </ul>
+
+  <h2>Шпаклёвка: швы или сплошняк</h2>
+  <p>Под обои достаточно заделать швы и шляпки саморезов — это около 0,4 кг смеси на м². Под покраску нужен сплошной слой не тоньше 1 мм по всей плоскости, иначе бумажная поверхность листа и зашпаклёванные швы дадут разное отражение, и при боковом свете каждая полоса будет видна. Сплошное шпаклевание — это уже 1,2–1,5 кг на м² плюс грунтовка.</p>
+  <p>Швы армируются: серпянка на бумажной основе для внутренних, металлизированный уголок для внешних. Длина швов примерно равна 1,7 м на каждый квадратный метр конструкции.</p>
+
+  <h2>Пример</h2>
+  <div class="calc-example">
+    <p><strong>Перегородка 12 м² (4,4 × 2,7 м), один слой ГКЛ с каждой стороны, шаг 600 мм, минвата, под покраску.</strong></p>
+    <p>Листов — 10 шт. (24 м² обшивки с двух сторон плюс запас). ПС 75 — 9 стоек по 2,7 м, ПН 75 — 9 м. Минваты 12 м². Саморезов 25 мм — около 300 шт. Шпаклёвки — 35 кг, серпянки 41 м.</p>
+  </div>
+
+  <h2>Что влияет на результат сильнее всего</h2>
+  <ul>
+    <li><strong>Ширина профиля.</strong> ПС 50 — для лёгкой перегородки без коммуникаций; ПС 75 — стандарт; ПС 100 нужен, если внутри пойдёт канализация 50 мм.</li>
+    <li><strong>Звукоизоляция — это не только вата.</strong> Заполнение даёт около 6–8 дБ. Больший эффект приносят разнесённые каркасы, второй слой ГКЛ и проклейка примыканий уплотнительной лентой.</li>
+    <li><strong>Влажные зоны.</strong> В санузле — ГКЛВ, а в зоне душа гипсокартон вообще заменяют на аквапанель или ГВЛВ.</li>
+    <li><strong>Тяжёлая навеска.</strong> Под телевизор и подвесной унитаз в каркас закладывают деревянный брус или стальную траверсу до обшивки — потом уже не добраться.</li>
+  </ul>
+
+  <h2>Частые вопросы</h2>
+  <h3>Можно ли ставить перегородку на стяжку с тёплым полом?</h3>
+  <p>Нельзя крепить направляющую дюбелями в стяжку с трубами или кабелем — риск попасть в контур. Перегородку в этом случае ставят до заливки либо крепят на монтажный клей и распорные стойки, а трассу под ней предварительно находят детектором.</p>
+
+  <h3>Обязательно ли смещать швы второго слоя?</h3>
+  <p>Да, на половину листа. Совпадающие швы двух слоёв образуют сквозную линию, по которой конструкция трескается при первой же усадке дома или изменении влажности.</p>
+
+  <h3>Сколько ГКЛ нужно на потолок сложной формы?</h3>
+  <p>К расчётной площади добавляйте 15–18% вместо стандартных 12%: криволинейные элементы, короба и переходы уровней дают много обрезков. На гнутые участки берут лист 6,5 мм или надрезают 9,5 мм с одной стороны.</p>
+
+  <h3>Чем крепить гипсокартон к стене без каркаса?</h3>
+  <p>Монтажным клеем на гипсовой основе, если перепад стены не больше 20 мм. Способ экономит 4–5 см глубины комнаты, но исключает прокладку коммуникаций внутри и минеральное заполнение — для звукоизоляции он не подходит.</p>
+</section>
+
+<script>
+DomCalc.register('gipsokarton', function (v, f) {
+  var area = Math.max(0, v.ploshchad || 0);
+  var height = Math.max(0.5, v.vysota || 2.7);
+  if (area <= 0) { return f.note('Укажите площадь конструкции.'); }
+
+  var isCeiling = v.tip === 'potolok';
+  var sides = v.tip === 'peregorodka' ? 2 : 1;
+  var layers = parseInt(v.sloi, 10) || 1;
+  var step = (parseInt(v.shag, 10) || 600) / 1000;   // шаг стоек в метрах
+
+  // Обшивка: площадь × число сторон × слоёв, лист 1,2 × 2,5 = 3 м², 12% на подрезку
+  var sheetArea = 3;
+  var skin = area * sides * layers;
+  var sheets = Math.ceil((skin * 1.12) / sheetArea);
+
+  // Длина конструкции: для стен — площадь ÷ высота, для потолка считаем по несущим профилям
+  var length = area / height;
+
+  var rows = [];
+  var profileRunning = 0;   // метров профиля всего
+
+  if (isCeiling) {
+    // Несущие ПП 60×27 с шагом 600 мм + периметральный ПНП + подвесы
+    var carriers = Math.ceil(length / step) * height;      // суммарная длина несущих
+    var perimeter = 2 * (length + height);
+    var hangers = Math.ceil(area * 2.6);
+    var crabs = Math.ceil(area * 1.7);
+    profileRunning = carriers + perimeter;
+    rows.push(f.row('Профиль ПП 60×27', f.num(carriers, 1) + ' м · ' + Math.ceil(carriers / 3) + ' шт.',
+      'несущие с шагом ' + (step * 1000) + ' мм'));
+    rows.push(f.row('Профиль ПНП 28×27', f.num(perimeter, 1) + ' м · ' + Math.ceil(perimeter / 3) + ' шт.',
+      'по периметру'));
+    rows.push(f.row('Подвесы', hangers + ' шт.', '≈2,6 на м²'));
+    rows.push(f.row('Соединители «краб»', crabs + ' шт.', 'на пересечениях профилей'));
+  } else {
+    // Стойки ПС с шагом + направляющие ПН по полу и потолку
+    var studs = Math.ceil(length / step) + 1;
+    var studsM = studs * height;
+    var guides = length * 2;
+    profileRunning = studsM + guides;
+    rows.push(f.row('Стойки ПС', studs + ' шт. · ' + f.num(studsM, 1) + ' м',
+      'шаг ' + (step * 1000) + ' мм, высота ' + f.num(height, 2) + ' м'));
+    rows.push(f.row('Направляющие ПН', f.num(guides, 1) + ' м · ' + Math.ceil(guides / 3) + ' шт.',
+      'по полу и потолку'));
+    rows.push(f.row('Дюбель-гвозди 6×40', Math.ceil(guides / 0.5) + ' шт.', 'шаг 500 мм'));
+  }
+
+  var LISTY = { gkl: 'ГКЛ 12,5 мм', gklv: 'ГКЛВ 12,5 мм', gkl95: 'ГКЛ 9,5 мм' };
+  rows.unshift(f.row('Листов ' + (LISTY[v.list] || LISTY.gkl), sheets + ' шт. · ' + f.num(sheets * sheetArea, 1) + ' м²',
+    'обшивка ' + f.num(skin, 1) + ' м² + 12% подрезки'));
+
+  // Крепёж и отделка
+  var screws = Math.ceil(sheets * (layers > 1 ? 34 : 30));
+  var tapeM = Math.ceil(skin * 1.7);
+  var puttyPerM2 = v.sploshnaya ? 1.3 : 0.4;
+  var puttyKg = skin * puttyPerM2;
+
+  rows.push(f.row('Саморезы по ГКЛ', screws + ' шт.', layers > 1 ? '25 и 35 мм, шаг 250 мм' : '25 мм, шаг 250 мм'));
+  rows.push(f.row('«Клопы» LN 9', Math.ceil(profileRunning / 3 * 4) + ' шт.', 'соединение профилей'));
+  rows.push(f.row('Лента для швов', tapeM + ' м', 'серпянка или бумажная'));
+  rows.push(f.row('Шпаклёвка', f.num(puttyKg, 0) + ' кг · ' + Math.ceil(puttyKg / 25) + ' мешков',
+    v.sploshnaya ? 'сплошной слой под покраску' : 'только швы и шляпки'));
+  if (v.sploshnaya) {
+    rows.push(f.row('Грунтовка', f.num(skin * 0.15, 1) + ' л', 'перед шпаклеванием и после'));
+  }
+  if (v.zvuk && !isCeiling) {
+    rows.push(f.row('Минеральная вата', f.num(area * 1.05, 1) + ' м²', 'в толщину профиля'));
+  }
+
+  var costSheets = sheets * (v.cenaList || 0);
+  var costProfile = Math.ceil(profileRunning / 3) * (v.cenaProfil || 0);
+  var total = costSheets + costProfile;
+
+  var html = f.total('Листов ГКЛ', sheets + ' шт.',
+    'обшивка ' + f.num(skin, 1) + ' м²' + (sides === 2 ? ' — с двух сторон' : ''));
+  html += f.table(rows, 'Материалы');
+  html += f.total('Листы и профиль', f.money(total), 'без крепежа, шпаклёвки и работ');
+
+  if (v.list === 'gkl' && v.tip !== 'potolok') {
+    html += f.note('Для санузла и кухонного фартука берите влагостойкий ГКЛВ, а в зоне душа — аквапанель: обычный лист там разрушается.');
+  }
+  if (layers === 1 && v.zvuk) {
+    html += f.note('Минвата без второго слоя ГКЛ даёт всего 6–8 дБ. Если цель — тишина, добавьте второй слой со смещением швов.');
+  }
+  if (step === 0.4) {
+    html += f.note('Шаг 400 мм оправдан под плитку и тяжёлую навеску. Точки навески всё равно требуют закладной бруса до обшивки.');
+  }
+  return html;
+});
+</script>

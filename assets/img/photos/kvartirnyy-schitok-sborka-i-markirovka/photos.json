@@ -1,0 +1,37 @@
+{
+  "slug": "kvartirnyy-schitok-sborka-i-markirovka",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/kvartirnyy-schitok-sborka-i-markirovka/01.jpg",
+      "webp": "/assets/img/photos/kvartirnyy-schitok-sborka-i-markirovka/01.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Квартирный щиток в сборе",
+      "title": "Distribution boards",
+      "credit": {
+        "author": "Bryn Pinzgauer",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/12394349@N06/3495822923",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/kvartirnyy-schitok-sborka-i-markirovka/02.jpg",
+      "webp": "/assets/img/photos/kvartirnyy-schitok-sborka-i-markirovka/02.webp",
+      "width": 1600,
+      "height": 1200,
+      "caption": "Гребёнка и маркировка отходящих линий",
+      "title": "ZveraFestivalPower",
+      "credit": {
+        "author": "Staffan Vilcans",
+        "license": "CC BY-SA 2.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+        "page_url": "https://commons.wikimedia.org/wiki/File:ZveraFestivalPower.jpg",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    }
+  ]
+}

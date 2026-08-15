@@ -28,7 +28,7 @@ include __DIR__ . '/includes/header.php';
 <div class="page-wrapper">
   <div class="container">
     <div class="main-layout">
-      <main role="main">
+      <main id="main-content" role="main">
         <div class="article-body" style="margin-top: 0;">
           <h2>1. Общие положения</h2>
           <p>Настоящая политика конфиденциальности описывает, как сайт ДомЭксперт (далее — «Сайт») собирает, использует и защищает информацию, которую вы предоставляете при использовании Сайта.</p>

@@ -43,7 +43,7 @@ include __DIR__ . '/includes/header.php';
 <div class="page-wrapper">
   <div class="container">
     <div class="main-layout">
-      <main role="main">
+      <main id="main-content" role="main">
         <div class="article-body" style="margin-top: 0;">
 
           <p>Эта страница объясняет, по каким правилам мы готовим материалы и что за цифрами в статьях и калькуляторах. Она нужна, чтобы вы понимали границы применимости наших рекомендаций и знали, как поступить, если нашли ошибку.</p>

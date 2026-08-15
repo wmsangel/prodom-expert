@@ -1,0 +1,229 @@
+<form class="calc" data-calc="uteplitel-tolshchina">
+  <fieldset>
+    <legend>Что утепляем</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="ut-konstrukciya">Конструкция</label>
+        <select id="ut-konstrukciya" name="konstrukciya">
+          <option value="stena-narujnaya" selected>Наружная стена изнутри</option>
+          <option value="parapet">Парапет лоджии</option>
+          <option value="pol-lodjiya">Пол лоджии над улицей</option>
+          <option value="potolok-lodjiya">Потолок лоджии</option>
+          <option value="pol-podval">Пол над подвалом или аркой</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="ut-region">Климат</label>
+        <select id="ut-region" name="region">
+          <option value="yug">Юг (Краснодар, Ростов)</option>
+          <option value="sredniy" selected>Средняя полоса (Москва, Казань)</option>
+          <option value="sever">Холодный (Урал, Сибирь)</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="ut-material">Утеплитель</label>
+        <select id="ut-material" name="material">
+          <option value="eps" selected>ЭППС (экструзия)</option>
+          <option value="pir">ПИР-плита</option>
+          <option value="mvata">Минеральная вата</option>
+          <option value="psb">Пенопласт ПСБ-С 25</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="ut-osnovanie">Существующее основание</label>
+        <select id="ut-osnovanie" name="osnovanie">
+          <option value="beton200">Бетон 200 мм</option>
+          <option value="panel300" selected>Панель 300 мм</option>
+          <option value="kirpich250">Кирпич 250 мм</option>
+          <option value="kirpich510">Кирпич 510 мм</option>
+          <option value="gazobeton300">Газобетон 300 мм</option>
+          <option value="net">Нет (парапет, тонкая перегородка)</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="ut-ploshchad">Площадь, м²</label>
+        <input type="number" id="ut-ploshchad" name="ploshchad" value="12" min="0.5" max="500" step="0.5" inputmode="decimal">
+        <span class="calc-field-hint">Поверхность, которую закрываем утеплителем</span>
+      </div>
+      <div class="calc-field">
+        <label for="ut-cena">Цена утеплителя, ₽ за м³</label>
+        <input type="number" id="ut-cena" name="cena" value="6500" min="0" max="100000" step="100" inputmode="numeric">
+        <span class="calc-field-hint">На упаковке обычно указан объём в м³</span>
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="ut-vysota" name="vysota" checked>
+        <label for="ut-vysota">Показать потерю площади и высоты</label>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<div class="calc-result" data-calc-result="uteplitel-tolshchina" role="status" aria-live="polite"></div>
+
+<section class="calc-article">
+  <h2>Как считается толщина</h2>
+  <p>Утеплитель подбирают не «на глазок в сантиметрах», а по <strong>сопротивлению теплопередаче</strong> — величине R, измеряемой в м²·°C/Вт. Чем она больше, тем лучше конструкция держит тепло. Для каждой климатической зоны и типа конструкции есть нормируемое значение, к которому нужно прийти.</p>
+
+  <p>Расчёт состоит из трёх шагов. Сначала считается, какое сопротивление уже даёт существующее основание: толщина слоя делится на теплопроводность материала. Затем из нормы вычитается то, что уже есть, — получается недостающее сопротивление. И наконец недостача умножается на теплопроводность утеплителя, что и даёт нужную толщину.</p>
+
+  <div class="calc-example">
+    <p><strong>Формула:</strong> толщина = (R<sub>норма</sub> − R<sub>основания</sub>) × λ<sub>утеплителя</sub></p>
+    <p>где λ — коэффициент теплопроводности утеплителя в Вт/(м·°C), а результат получается в метрах.</p>
+  </div>
+
+  <h2>Теплопроводность материалов</h2>
+
+  <table>
+    <thead><tr><th>Материал</th><th>λ, Вт/(м·°C)</th><th>Особенность</th></tr></thead>
+    <tbody>
+      <tr><td>ПИР-плита</td><td>0,022</td><td>Самый тонкий слой, дороже всех</td></tr>
+      <tr><td>ЭППС (экструзия)</td><td>0,032</td><td>Не боится влаги, сам работает пароизоляцией</td></tr>
+      <tr><td>Пенопласт ПСБ-С 25</td><td>0,038</td><td>Дёшево, хрупкий, горючий</td></tr>
+      <tr><td>Минеральная вата</td><td>0,042</td><td>Негорючая, обязательна пароизоляция</td></tr>
+      <tr><td>Кирпич керамический</td><td>0,70</td><td>Основание, не утеплитель</td></tr>
+      <tr><td>Железобетон</td><td>1,90</td><td>Практически не греет</td></tr>
+      <tr><td>Газобетон D500</td><td>0,18</td><td>Сам частично работает утеплителем</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Почему бетонная стена почти не считается</h2>
+  <p>Панель толщиной 300 мм из железобетона даёт сопротивление около 0,16 м²·°C/Вт — при нормируемых для средней полосы 3,1 это примерно пять процентов от нужного. Практически весь тепловой барьер создаёт утеплитель, а несущая стена работает конструкцией, а не шубой. Именно поэтому в панельном доме толщина утеплителя почти не зависит от толщины самой панели.</p>
+
+  <p>Обратная ситуация с кирпичом в два с половиной кирпича и с газобетоном: они дают заметный вклад, и недостающий слой получается тоньше.</p>
+
+  <h2>Точка росы и пароизоляция</h2>
+  <p>Утепление изнутри всегда сдвигает точку росы — границу, где тёплый влажный воздух охлаждается до выпадения конденсата — внутрь конструкции. Если водяной пар из квартиры доберётся до этой границы, влага начнёт скапливаться в утеплителе и на холодной стене за ним. Результат известен: мокрое пятно, запах, плесень.</p>
+
+  <p>Отсюда два правила. Первое: слой должен быть <strong>достаточным</strong> — недостаточное утепление хуже, чем никакое, потому что точка росы оказывается ровно в стыке утеплителя со стеной. Второе: со стороны помещения нужен <strong>сплошной пароизоляционный контур</strong> — плёнка с проклеенными стыками при вате либо сам ЭППС с запененными швами, если он приклеен без зазоров.</p>
+
+  <h2>Что расчёт не учитывает</h2>
+  <ul>
+    <li><strong>Мостики холода.</strong> Плита перекрытия, торцы стен, откосы окон и балконная плита промерзают отдельно; их утепляют заходом на 50–60 см.</li>
+    <li><strong>Металлический каркас.</strong> Профиль под гипсокартоном проводит тепло насквозь и снижает эффективность слоя на 10–20%.</li>
+    <li><strong>Окна.</strong> Если в комнате старые окна с сопротивлением 0,35, утепление стен даст меньший эффект, чем их замена.</li>
+    <li><strong>Вентиляцию.</strong> После утепления воздухообмен падает, влажность растёт — нужен приток.</li>
+  </ul>
+
+  <h2>Ограничения по толщине</h2>
+  <p>ЭППС и ПИР выпускают листами до 100 мм, минвату — плитами до 100–150 мм. Больше нужного укладывают в два слоя со смещением швов: сплошной стык в один слой становится мостиком холода. Слой тоньше 30 мм на наружной стене изнутри обычно не имеет смысла — он не убирает точку росы из конструкции, а место занимает.</p>
+</section>
+
+<script>
+DomCalc.register('uteplitel-tolshchina', function (v, f) {
+  // λ — теплопроводность, Вт/(м·°C). step — шаг листа/плиты, мм.
+  var MAT = {
+    eps:   { lambda: 0.032, step: 10, name: 'ЭППС',            maxSheet: 100 },
+    pir:   { lambda: 0.022, step: 10, name: 'ПИР-плита',       maxSheet: 100 },
+    mvata: { lambda: 0.042, step: 50, name: 'Минеральная вата', maxSheet: 150 },
+    psb:   { lambda: 0.038, step: 10, name: 'Пенопласт ПСБ-С 25', maxSheet: 100 }
+  };
+
+  // Нормируемое сопротивление теплопередаче, м²·°C/Вт.
+  var NORM = {
+    yug:     { stena: 2.2, pol: 2.8, potolok: 2.8 },
+    sredniy: { stena: 3.1, pol: 4.0, potolok: 4.0 },
+    sever:   { stena: 3.8, pol: 4.8, potolok: 4.8 }
+  };
+
+  // Сопротивление существующего основания, м²·°C/Вт (толщина / λ).
+  var BASE = {
+    beton200:    { r: 0.11, name: 'бетон 200 мм' },
+    panel300:    { r: 0.16, name: 'панель 300 мм' },
+    kirpich250:  { r: 0.36, name: 'кирпич 250 мм' },
+    kirpich510:  { r: 0.73, name: 'кирпич 510 мм' },
+    gazobeton300:{ r: 1.67, name: 'газобетон 300 мм' },
+    net:         { r: 0.00, name: 'без основания' }
+  };
+
+  // Какая норма применяется к конструкции и подсказки по месту.
+  var KONS = {
+    'stena-narujnaya': { norm: 'stena',   name: 'Наружная стена изнутри', hint: 'Пароизоляция со стороны помещения обязательна' },
+    'parapet':         { norm: 'stena',   name: 'Парапет лоджии',         hint: 'Самая холодная поверхность контура' },
+    'pol-lodjiya':     { norm: 'pol',     name: 'Пол лоджии',             hint: 'Плита снизу контактирует с улицей' },
+    'potolok-lodjiya': { norm: 'potolok', name: 'Потолок лоджии',         hint: 'Съедает высоту — часто берут ПИР' },
+    'pol-podval':      { norm: 'pol',     name: 'Пол над подвалом',       hint: 'Считается как перекрытие над холодным объёмом' }
+  };
+
+  var m = MAT[v.material] || MAT.eps;
+  var k = KONS[v.konstrukciya] || KONS['stena-narujnaya'];
+  var base = BASE[v.osnovanie] || BASE.panel300;
+  var normSet = NORM[v.region] || NORM.sredniy;
+  var rNorm = normSet[k.norm];
+  var area = Math.max(0, v.ploshchad || 0);
+
+  if (area <= 0) { return f.note('Укажите площадь утепляемой поверхности.'); }
+
+  // Недостающее сопротивление и толщина слоя.
+  var rNeed = rNorm - base.r;
+  if (rNeed <= 0) {
+    return f.total(k.name, 'утепление не требуется',
+      'основание (' + base.name + ') уже даёт ' + f.num(base.r, 2) + ' м²·°C/Вт при норме ' + f.num(rNorm, 1));
+  }
+
+  var exactMm = rNeed * m.lambda * 1000;
+  var thickMm = Math.ceil(exactMm / m.step) * m.step;   // округление вверх до шага плиты
+  var layers = Math.ceil(thickMm / m.maxSheet);
+  var volume = area * thickMm / 1000;                   // м³
+  var rFact = base.r + (thickMm / 1000) / m.lambda;
+
+  var rows = [
+    f.row('Нормируемое R', f.num(rNorm, 1) + ' м²·°C/Вт', 'для этой конструкции и климата'),
+    f.row('Даёт основание', f.num(base.r, 2) + ' м²·°C/Вт', base.name),
+    f.row('Недостаёт', f.num(rNeed, 2) + ' м²·°C/Вт', 'это и закрывает утеплитель'),
+    f.row('Расчётная толщина', f.num(exactMm, 0) + ' мм', 'λ = ' + f.num(m.lambda, 3) + ' Вт/(м·°C)'),
+    f.row('Берём', f.num(thickMm, 0) + ' мм', layers > 1 ? layers + ' слоя со смещением швов' : 'один слой'),
+    f.row('Итоговое R', f.num(rFact, 2) + ' м²·°C/Вт', rFact >= rNorm ? 'норма выполнена' : 'ниже нормы'),
+    f.row('Объём материала', f.num(volume, 2) + ' м³', f.num(area, 1) + ' м² × ' + f.num(thickMm, 0) + ' мм'),
+    f.row('Стоимость утеплителя', f.money(volume * (v.cena || 0)), 'без крепежа и отделки')
+  ];
+
+  var html = f.total(m.name, f.num(thickMm, 0) + ' мм',
+    k.name + ', ' + (v.region === 'sever' ? 'холодный климат' : v.region === 'yug' ? 'юг' : 'средняя полоса'));
+
+  html += f.table(rows, 'Расчёт по сопротивлению теплопередаче');
+
+  if (v.vysota) {
+    // Суммарный пирог: утеплитель + отделка. Для стены считаем ГКЛ 12,5 мм,
+    // для пола — стяжку или фанеру 20 мм, для потолка — обшивку 12,5 мм.
+    var finish = k.norm === 'pol' ? 20 : 12.5;
+    var total = thickMm + finish;
+    var lostArea = null;
+    if (v.konstrukciya === 'stena-narujnaya' || v.konstrukciya === 'parapet') {
+      // Грубая оценка: длина стены = площадь / высоту 2,7 м.
+      lostArea = (area / 2.7) * (total / 1000);
+    }
+    var lossRows = [
+      f.row('Пирог целиком', f.num(total, 0) + ' мм', 'утеплитель + отделка ' + f.num(finish, 1) + ' мм')
+    ];
+    if (lostArea !== null) {
+      lossRows.push(f.row('Потеря площади', '≈ ' + f.num(lostArea, 2) + ' м²', 'при высоте помещения 2,7 м'));
+    }
+    if (k.norm !== 'stena') {
+      lossRows.push(f.row('Потеря высоты', f.num(total, 0) + ' мм', k.hint));
+    }
+    html += f.table(lossRows, 'Что это стоит в габаритах');
+  }
+
+  var warn = '';
+  if (thickMm < 30 && v.konstrukciya === 'stena-narujnaya') {
+    warn = 'Слой меньше 30 мм на наружной стене изнутри почти не сдвигает точку росы за пределы конструкции — риск конденсата на границе со стеной сохраняется.';
+  }
+  if (layers > 1) {
+    warn += (warn ? ' ' : '') + 'Толщина больше одного листа: укладывайте в ' + layers +
+      ' слоя со смещением швов, иначе сплошной стык станет мостиком холода.';
+  }
+  if (v.material === 'mvata') {
+    warn += (warn ? ' ' : '') + 'Минеральной вате обязателен сплошной пароизоляционный контур со стороны помещения с проклейкой стыков: намокшая вата теряет свойства и не сохнет внутри закрытой конструкции.';
+  }
+  if (v.konstrukciya === 'parapet') {
+    warn += (warn ? ' ' : '') + 'Металлический парапет из профлиста сначала зашивается плитой или блоком и только потом утепляется.';
+  }
+  if (warn) { html += f.note(warn); }
+
+  html += f.note('Расчёт ориентировочный: не учитывает мостики холода по плитам перекрытия и откосам, ' +
+    'теплопроводность каркаса и состояние окон. После утепления обязательно проверьте приток воздуха — ' +
+    'закрытый контур без вентиляции даёт рост влажности.');
+
+  return html;
+});
+</script>

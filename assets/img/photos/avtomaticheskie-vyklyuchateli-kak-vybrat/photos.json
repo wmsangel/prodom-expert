@@ -1,0 +1,37 @@
+{
+  "slug": "avtomaticheskie-vyklyuchateli-kak-vybrat",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/avtomaticheskie-vyklyuchateli-kak-vybrat/01.jpg",
+      "webp": "/assets/img/photos/avtomaticheskie-vyklyuchateli-kak-vybrat/01.webp",
+      "width": 1600,
+      "height": 1200,
+      "caption": "Модульные автоматические выключатели на DIN-рейке",
+      "title": "RCCB and Miniature Circuit Breaker.",
+      "credit": {
+        "author": "Balurbala",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "page_url": "https://commons.wikimedia.org/wiki/File:RCCB_and_Miniature_Circuit_Breaker..jpg",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/avtomaticheskie-vyklyuchateli-kak-vybrat/02.jpg",
+      "webp": "/assets/img/photos/avtomaticheskie-vyklyuchateli-kak-vybrat/02.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Автоматы в сборе внутри распределительного щита",
+      "title": "Electrical hazard sign on an outdor circuit breaker panel",
+      "credit": {
+        "author": "Ivan Radic",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/26344495@N05/46225444664",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

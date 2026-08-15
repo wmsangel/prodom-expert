@@ -1,0 +1,37 @@
+{
+  "slug": "prohodnye-vyklyuchateli-shemy",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/prohodnye-vyklyuchateli-shemy/01.jpg",
+      "webp": "/assets/img/photos/prohodnye-vyklyuchateli-shemy/01.webp",
+      "width": 1278,
+      "height": 1600,
+      "caption": "Проходной выключатель управляет светом из двух мест",
+      "title": "Light switches and mains socket with switch in Denmark",
+      "credit": {
+        "author": "Nakonana",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Light_switches_and_mains_socket_with_switch_in_Denmark.jpg",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/prohodnye-vyklyuchateli-shemy/02.jpg",
+      "webp": "/assets/img/photos/prohodnye-vyklyuchateli-shemy/02.webp",
+      "width": 1285,
+      "height": 1447,
+      "caption": "Клеммы выключателя и подключение жил",
+      "title": "DIY small light switch",
+      "credit": {
+        "author": "Dmitry G",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "page_url": "https://commons.wikimedia.org/wiki/File:DIY_small_light_switch.jpg",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    }
+  ]
+}

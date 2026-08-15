@@ -1,0 +1,37 @@
+{
+  "slug": "dushevaya-lejka-shlang-vybor",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/dushevaya-lejka-shlang-vybor/01.jpg",
+      "webp": "/assets/img/photos/dushevaya-lejka-shlang-vybor/01.webp",
+      "width": 1024,
+      "height": 683,
+      "caption": "Душевая лейка со шлангом",
+      "title": "Shower Contraption",
+      "credit": {
+        "author": "Afroswede",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/51035768826@N01/2751466",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/dushevaya-lejka-shlang-vybor/02.jpg",
+      "webp": "/assets/img/photos/dushevaya-lejka-shlang-vybor/02.webp",
+      "width": 1024,
+      "height": 1024,
+      "caption": "Струи лейки",
+      "title": "Arromic shower head sprays water into a ceramic washbasin",
+      "credit": {
+        "author": "PickComfort",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/161816492@N07/32423012647",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

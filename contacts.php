@@ -57,7 +57,7 @@ include __DIR__ . '/includes/header.php';
 <div class="page-wrapper">
   <div class="container">
     <div class="main-layout">
-      <main role="main">
+      <main id="main-content" role="main">
         <div class="article-body" style="margin-top: 0;">
           <h2>Напишите нам</h2>
           <p>По вопросам сотрудничества, размещения материалов и рекламы:</p>

@@ -1,0 +1,37 @@
+{
+  "slug": "umnye-smesiteli-ekonomiya-vody",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/umnye-smesiteli-ekonomiya-vody/01.jpg",
+      "webp": "/assets/img/photos/umnye-smesiteli-ekonomiya-vody/01.webp",
+      "width": 1200,
+      "height": 1600,
+      "caption": "Сенсорный смеситель",
+      "title": "Rubinetto automatico con sensore 2",
+      "credit": {
+        "author": "Antonio Mette",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Rubinetto_automatico_con_sensore_2.jpg",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/umnye-smesiteli-ekonomiya-vody/02.jpg",
+      "webp": "/assets/img/photos/umnye-smesiteli-ekonomiya-vody/02.webp",
+      "width": 1135,
+      "height": 1600,
+      "caption": "Бесконтактное включение воды",
+      "title": "Sensor Tap",
+      "credit": {
+        "author": "BPE innovationas",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Sensor_Tap.jpg",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    }
+  ]
+}

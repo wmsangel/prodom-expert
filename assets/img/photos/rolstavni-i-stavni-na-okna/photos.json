@@ -1,0 +1,37 @@
+{
+  "slug": "rolstavni-i-stavni-na-okna",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/rolstavni-i-stavni-na-okna/01.jpg",
+      "webp": "/assets/img/photos/rolstavni-i-stavni-na-okna/01.webp",
+      "width": 1600,
+      "height": 1223,
+      "caption": "Рольставни на окне",
+      "title": "YMCA window roller shutter, Dublin (48139474717)",
+      "credit": {
+        "author": "Metro Centric",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://commons.wikimedia.org/w/index.php?curid=85071639",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/rolstavni-i-stavni-na-okna/02.jpg",
+      "webp": "/assets/img/photos/rolstavni-i-stavni-na-okna/02.webp",
+      "width": 1024,
+      "height": 681,
+      "caption": "Ставни на фасаде",
+      "title": "Shuttered Windows",
+      "credit": {
+        "author": "delgaudm",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/51176304@N00/39801537",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

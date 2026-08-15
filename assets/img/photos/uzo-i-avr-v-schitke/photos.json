@@ -1,0 +1,21 @@
+{
+  "slug": "uzo-i-avr-v-schitke",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/uzo-i-avr-v-schitke/01.jpg",
+      "webp": "/assets/img/photos/uzo-i-avr-v-schitke/01.webp",
+      "width": 933,
+      "height": 1600,
+      "caption": "УЗО в квартирном щитке",
+      "title": "Differential residual current circuit interrupter",
+      "credit": {
+        "author": "Dmitry G",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "page_url": "https://commons.wikimedia.org/w/index.php?curid=12234467",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "slug": "led-prozhektory-podsvetka-bezopasnost",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/led-prozhektory-podsvetka-bezopasnost/01.jpg",
+      "webp": "/assets/img/photos/led-prozhektory-podsvetka-bezopasnost/01.webp",
+      "width": 1600,
+      "height": 1201,
+      "caption": "Светодиодный прожектор для наружного освещения",
+      "title": "LED floodlights",
+      "credit": {
+        "author": "Santeri Viinamäki",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "page_url": "https://commons.wikimedia.org/w/index.php?curid=55229780",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/led-prozhektory-podsvetka-bezopasnost/02.jpg",
+      "webp": "/assets/img/photos/led-prozhektory-podsvetka-bezopasnost/02.webp",
+      "width": 1600,
+      "height": 1200,
+      "caption": "Подсветка фасада и участка",
+      "title": "M+ 幕牆 Facade LED 顯示系統 Display System, 2021",
+      "credit": {
+        "author": "Lord Jaraxxus",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "page_url": "https://commons.wikimedia.org/wiki/File:M%2B_%E5%B9%95%E7%89%86_Facade_LED_%E9%A1%AF%E7%A4%BA%E7%B3%BB%E7%B5%B1_Display_System,_2021.jpg",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    }
+  ]
+}

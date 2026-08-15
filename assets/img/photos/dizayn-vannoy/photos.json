@@ -1,0 +1,37 @@
+{
+  "slug": "dizayn-vannoy",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/dizayn-vannoy/01.jpg",
+      "webp": "/assets/img/photos/dizayn-vannoy/01.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Интерьер ванной комнаты",
+      "title": "bathroom",
+      "credit": {
+        "author": "axeldeviaje",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/38803602@N00/300817084",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/dizayn-vannoy/02.jpg",
+      "webp": "/assets/img/photos/dizayn-vannoy/02.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Плитка и сантехника в едином решении",
+      "title": "Bathroom Remodel",
+      "credit": {
+        "author": "AnnieSeeTiles",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/93368153@N03/8498608084",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

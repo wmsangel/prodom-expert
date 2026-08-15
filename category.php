@@ -130,7 +130,7 @@ include __DIR__ . '/includes/header.php';
 <div class="page-wrapper">
   <div class="container">
     <div class="main-layout">
-      <main role="main">
+      <main id="main-content" role="main">
 
         <?php if ($notFound): ?>
           <div class="empty-state">

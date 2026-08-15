@@ -1,0 +1,1982 @@
+{
+ "avtomaticheskie-vyklyuchateli-kak-vybrat": [
+  {
+   "q": "miniature circuit breaker DIN rail",
+   "caption": "Модульные автоматические выключатели на DIN-рейке"
+  },
+  {
+   "q": "circuit breaker electrical panel",
+   "caption": "Автоматы в сборе внутри распределительного щита"
+  }
+ ],
+ "bezopasnaya-elektrika-v-kvartire-pravila": [
+  {
+   "q": "residual current device consumer unit",
+   "caption": "УЗО и автоматы — основа электробезопасности квартиры"
+  },
+  {
+   "q": "electrical socket outlet wall",
+   "caption": "Розетка с защитным контактом заземления"
+  }
+ ],
+ "dimmery-sveta-led-sovmestimost": [
+  {
+   "q": "light dimmer switch",
+   "caption": "Клавишный диммер для регулировки яркости"
+  },
+  {
+   "q": "LED lamp bulb",
+   "caption": "Светодиодные лампы: не каждая работает с диммером"
+  }
+ ],
+ "elektrika-na-kuhne-raschet-liniy": [
+  {
+   "q": "kitchen electrical socket outlet",
+   "caption": "Розеточная группа над кухонной столешницей"
+  },
+  {
+   "q": "kitchen appliance installation electric",
+   "caption": "Встроенная техника требует отдельных линий"
+  }
+ ],
+ "elektrika-v-vannoy-zony-ip": [
+  {
+   "q": "bathroom electrical installation",
+   "caption": "Электрика в ванной: всё оборудование по зонам защиты"
+  },
+  {
+   "q": "waterproof socket IP44",
+   "caption": "Влагозащищённая розетка с крышкой"
+  }
+ ],
+ "ibp-i-generator-dlya-doma": [
+  {
+   "q": "portable generator electric power",
+   "caption": "Бензиновый генератор для резервного питания дома"
+  },
+  {
+   "q": "uninterruptible power supply UPS",
+   "caption": "Источник бесперебойного питания"
+  }
+ ],
+ "kabel-kanaly-i-koroby": [
+  {
+   "q": "cable trunking wall",
+   "caption": "Кабель-канал для открытой прокладки проводки"
+  },
+  {
+   "q": "cable tray conduit installation",
+   "caption": "Короба и лотки для организации кабельных трасс"
+  }
+ ],
+ "kvartirnyy-schitok-sborka-i-markirovka": [
+  {
+   "q": "consumer unit distribution board",
+   "caption": "Квартирный щиток в сборе"
+  },
+  {
+   "q": "electrical panel wiring busbar",
+   "caption": "Гребёнка и маркировка отходящих линий"
+  }
+ ],
+ "led-lenta-montazh-pitanie-profil": [
+  {
+   "q": "LED strip light installation",
+   "caption": "Монтаж светодиодной ленты"
+  },
+  {
+   "q": "LED aluminium profile light",
+   "caption": "Алюминиевый профиль отводит тепло от ленты"
+  }
+ ],
+ "led-prozhektory-podsvetka-bezopasnost": [
+  {
+   "q": "LED floodlight",
+   "caption": "Светодиодный прожектор для наружного освещения"
+  },
+  {
+   "q": "outdoor lighting facade",
+   "caption": "Подсветка фасада и участка"
+  }
+ ],
+ "montazh-elektroshchita-svoimi-rukami": [
+  {
+   "q": "electrical distribution board wiring",
+   "caption": "Разводка проводников внутри щита"
+  },
+  {
+   "q": "electrician installing switchboard",
+   "caption": "Сборка щита на месте"
+  }
+ ],
+ "montazh-kondicionera-elektrika-trassa": [
+  {
+   "q": "air conditioner outdoor unit installation",
+   "caption": "Наружный блок сплит-системы"
+  },
+  {
+   "q": "air conditioner indoor unit wall",
+   "caption": "Внутренний блок и трасса до наружного"
+  }
+ ],
+ "osveshcheniye-v-kvartire": [
+  {
+   "q": "living room ceiling lighting lamp",
+   "caption": "Общий свет в жилой комнате"
+  },
+  {
+   "q": "interior lighting fixture apartment",
+   "caption": "Светильники формируют сценарии освещения"
+  }
+ ],
+ "podklyuchenie-varochnoy-paneli-i-duhovki": [
+  {
+   "q": "electric hob cooktop kitchen",
+   "caption": "Варочная панель — самый мощный потребитель на кухне"
+  },
+  {
+   "q": "built-in oven kitchen",
+   "caption": "Встроенный духовой шкаф"
+  }
+ ],
+ "poisk-skrytoy-provodki-v-stene": [
+  {
+   "q": "cable detector stud finder wall",
+   "caption": "Детектор скрытой проводки"
+  },
+  {
+   "q": "electrical wiring inside wall",
+   "caption": "Провода в стене до заделки"
+  }
+ ],
+ "proekt-elektriki-kvartiry-polnyy": [
+  {
+   "q": "electrical wiring plan drawing",
+   "caption": "План электрики с расстановкой точек"
+  },
+  {
+   "q": "electrical installation apartment cable",
+   "caption": "Кабельные трассы по проекту"
+  }
+ ],
+ "prohodnye-vyklyuchateli-shemy": [
+  {
+   "q": "two way light switch",
+   "caption": "Проходной выключатель управляет светом из двух мест"
+  },
+  {
+   "q": "light switch wiring terminals",
+   "caption": "Клеммы выключателя и подключение жил"
+  }
+ ],
+ "prokladka-interneta-vitaya-para-remont": [
+  {
+   "q": "twisted pair ethernet cable installation",
+   "caption": "Витая пара для домашней сети"
+  },
+  {
+   "q": "RJ45 network socket wall",
+   "caption": "Компьютерная розетка RJ45"
+  }
+ ],
+ "provodka-v-gipsokartone-normy": [
+  {
+   "q": "electrical wiring drywall stud",
+   "caption": "Проводка внутри каркасной стены"
+  },
+  {
+   "q": "metal stud framing drywall",
+   "caption": "Проход кабеля через профиль каркаса"
+  }
+ ],
+ "raschet-secheniya-kabelya-tablicy": [
+  {
+   "q": "copper electrical cable cross section",
+   "caption": "Медный кабель разных сечений"
+  },
+  {
+   "q": "electrical cable NYM wire",
+   "caption": "Трёхжильный силовой кабель"
+  }
+ ],
+ "rozetki-i-vyklyuchateli": [
+  {
+   "q": "electrical wall socket outlet",
+   "caption": "Розеточный блок в жилой комнате"
+  },
+  {
+   "q": "light switch wall interior",
+   "caption": "Выключатель на стене"
+  }
+ ],
+ "shtroblenie-sten-pod-provodku": [
+  {
+   "q": "wall chasing electrical conduit",
+   "caption": "Штробы под кабельные трассы"
+  },
+  {
+   "q": "wall chaser tool concrete",
+   "caption": "Штроборез с пылеудалением"
+  }
+ ],
+ "stabilizator-napryazheniya-kvartira": [
+  {
+   "q": "voltage stabilizer regulator electric",
+   "caption": "Стабилизатор напряжения"
+  },
+  {
+   "q": "voltage relay protection module",
+   "caption": "Реле напряжения в щитке"
+  }
+ ],
+ "teplyy-pol": [
+  {
+   "q": "electric underfloor heating mat",
+   "caption": "Нагревательный мат электрического тёплого пола"
+  },
+  {
+   "q": "underfloor heating installation floor",
+   "caption": "Укладка тёплого пола до стяжки"
+  }
+ ],
+ "ulichnaya-rozetka-ip-zima-balkon": [
+  {
+   "q": "outdoor weatherproof socket outlet",
+   "caption": "Уличная розетка с защитной крышкой"
+  },
+  {
+   "q": "outdoor electrical box IP65",
+   "caption": "Герметичный корпус для наружного монтажа"
+  }
+ ],
+ "umnyy-dom-osnovy": [
+  {
+   "q": "smart home automation device",
+   "caption": "Устройства умного дома"
+  },
+  {
+   "q": "smart home hub controller",
+   "caption": "Контроллер, связывающий сценарии"
+  }
+ ],
+ "uzo-i-avr-v-schitke": [
+  {
+   "q": "residual current circuit breaker RCD",
+   "caption": "УЗО в квартирном щитке"
+  },
+  {
+   "q": "RCBO circuit breaker DIN",
+   "caption": "Дифавтомат объединяет автомат и УЗО"
+  }
+ ],
+ "videodomofon-provodka-i-pitanie": [
+  {
+   "q": "video door phone intercom",
+   "caption": "Монитор видеодомофона"
+  },
+  {
+   "q": "intercom door station entrance",
+   "caption": "Вызывная панель у входа"
+  }
+ ],
+ "zamena-elektroschetchika-kvartira": [
+  {
+   "q": "electricity meter electric",
+   "caption": "Электросчётчик"
+  },
+  {
+   "q": "electric meter installation panel",
+   "caption": "Счётчик на вводе в квартиру"
+  }
+ ],
+ "zamena-provodki-v-chastnom-dome": [
+  {
+   "q": "house electrical wiring installation",
+   "caption": "Разводка электрики в частном доме"
+  },
+  {
+   "q": "grounding rod earthing electrode",
+   "caption": "Собственный контур заземления дома"
+  }
+ ],
+ "zamena-provodki-v-kvartire": [
+  {
+   "q": "electrical rewiring cable installation",
+   "caption": "Замена проводки — работа под черновую отделку"
+  },
+  {
+   "q": "electrical junction box wiring",
+   "caption": "Распаечная коробка с соединениями"
+  }
+ ],
+ "zaryadka-elektromobilya-kvartira": [
+  {
+   "q": "electric vehicle charging station wallbox",
+   "caption": "Зарядная станция для электромобиля"
+  },
+  {
+   "q": "electric car charging cable connector",
+   "caption": "Разъём для зарядки электромобиля"
+  }
+ ],
+ "zashchita-ot-protechek-datchiki-krany": [
+  {
+   "q": "water leak detector sensor",
+   "caption": "Датчик протечки на полу"
+  },
+  {
+   "q": "motorized ball valve water",
+   "caption": "Электропривод перекрывает воду по сигналу датчика"
+  }
+ ],
+ "zazemlenie-v-kvartire-tn-c-s": [
+  {
+   "q": "earthing busbar grounding electrical",
+   "caption": "Шина заземления в щите"
+  },
+  {
+   "q": "grounding conductor green yellow wire",
+   "caption": "Жёлто-зелёный защитный проводник"
+  }
+ ],
+ "cvetovye-akcenty-v-interere": [
+  {
+   "q": "colorful living room interior",
+   "caption": "Цветовой акцент в интерьере комнаты"
+  },
+  {
+   "q": "accent wall paint interior",
+   "caption": "Акцентная стена задаёт настроение"
+  }
+ ],
+ "dekor-sten-razveska-kartin": [
+  {
+   "q": "gallery wall picture frames interior",
+   "caption": "Развеска картин на стене"
+  },
+  {
+   "q": "framed pictures wall interior",
+   "caption": "Композиция из рам разного размера"
+  }
+ ],
+ "dizayn-balkona-kak-komnaty": [
+  {
+   "q": "glazed balcony interior",
+   "caption": "Застеклённый балкон как продолжение комнаты"
+  },
+  {
+   "q": "loggia interior furniture",
+   "caption": "Обустроенная лоджия"
+  }
+ ],
+ "dizayn-detskoy-komnaty": [
+  {
+   "q": "children bedroom interior",
+   "caption": "Интерьер детской комнаты"
+  },
+  {
+   "q": "kids room furniture interior",
+   "caption": "Мебель и зоны в детской"
+  }
+ ],
+ "dizayn-gostinoy": [
+  {
+   "q": "living room interior modern",
+   "caption": "Гостиная в современном оформлении"
+  },
+  {
+   "q": "sofa living room interior",
+   "caption": "Диванная группа — центр гостиной"
+  }
+ ],
+ "dizayn-kvartiry-studii-mega-gid": [
+  {
+   "q": "studio apartment interior",
+   "caption": "Интерьер квартиры-студии"
+  },
+  {
+   "q": "small apartment open plan interior",
+   "caption": "Единое пространство без перегородок"
+  }
+ ],
+ "dizayn-prihozhey-planirovka-hranenie": [
+  {
+   "q": "hallway entrance interior",
+   "caption": "Прихожая с системой хранения"
+  },
+  {
+   "q": "entryway coat rack interior",
+   "caption": "Зона хранения верхней одежды"
+  }
+ ],
+ "dizayn-vannoy": [
+  {
+   "q": "bathroom interior modern",
+   "caption": "Интерьер ванной комнаты"
+  },
+  {
+   "q": "bathroom tiles interior design",
+   "caption": "Плитка и сантехника в едином решении"
+  }
+ ],
+ "domashniy-ofis-v-kvartire": [
+  {
+   "q": "home office desk interior",
+   "caption": "Рабочее место дома"
+  },
+  {
+   "q": "workspace desk chair interior",
+   "caption": "Стол, свет и кресло — минимум для работы"
+  }
+ ],
+ "fitodizayn-rasteniya-v-interere": [
+  {
+   "q": "houseplants indoor interior",
+   "caption": "Растения в интерьере"
+  },
+  {
+   "q": "indoor plants living room",
+   "caption": "Зелень оживляет комнату"
+  }
+ ],
+ "garderobnaya-planirovanie-i-svet": [
+  {
+   "q": "walk-in closet wardrobe interior",
+   "caption": "Гардеробная комната"
+  },
+  {
+   "q": "wardrobe shelves clothes storage",
+   "caption": "Полки и штанги в системе хранения"
+  }
+ ],
+ "interer-kuhni": [
+  {
+   "q": "kitchen interior modern",
+   "caption": "Интерьер кухни"
+  },
+  {
+   "q": "kitchen cabinets countertop interior",
+   "caption": "Фасады и столешница"
+  }
+ ],
+ "interer-semnoy-kvartiry": [
+  {
+   "q": "rented apartment interior room",
+   "caption": "Интерьер съёмной квартиры"
+  },
+  {
+   "q": "furnished apartment interior",
+   "caption": "Меблированное жильё под аренду"
+  }
+ ],
+ "kak-vybrat-divan": [
+  {
+   "q": "sofa couch living room",
+   "caption": "Диван в гостиной"
+  },
+  {
+   "q": "sofa upholstery fabric furniture",
+   "caption": "Обивка определяет износостойкость"
+  }
+ ],
+ "kak-vybrat-krovat-i-matras": [
+  {
+   "q": "bed mattress bedroom",
+   "caption": "Кровать с матрасом"
+  },
+  {
+   "q": "mattress spring bedroom",
+   "caption": "Матрас и основание работают в паре"
+  }
+ ],
+ "kovry-v-interere-razmer-material": [
+  {
+   "q": "rug carpet living room interior",
+   "caption": "Ковёр в гостиной"
+  },
+  {
+   "q": "carpet texture wool rug",
+   "caption": "Фактура и материал ворса"
+  }
+ ],
+ "kuhnya-gostinaya-planirovka-zonirovanie": [
+  {
+   "q": "open plan kitchen living room",
+   "caption": "Объединённая кухня-гостиная"
+  },
+  {
+   "q": "kitchen island open plan",
+   "caption": "Остров разделяет зоны"
+  }
+ ],
+ "led-podsvetka-nishi-i-karnizov": [
+  {
+   "q": "LED cove lighting ceiling",
+   "caption": "Скрытая подсветка карниза"
+  },
+  {
+   "q": "LED strip ceiling niche light",
+   "caption": "Ниша со светодиодной лентой"
+  }
+ ],
+ "loft-stil-v-kvartire-gid": [
+  {
+   "q": "loft apartment brick interior",
+   "caption": "Лофт: кирпич и открытые коммуникации"
+  },
+  {
+   "q": "industrial interior loft style",
+   "caption": "Индустриальные детали в жилом пространстве"
+  }
+ ],
+ "malenkaya-spalnya-dizayn": [
+  {
+   "q": "small bedroom interior",
+   "caption": "Маленькая спальня"
+  },
+  {
+   "q": "bedroom interior bed storage",
+   "caption": "Хранение вокруг спального места"
+  }
+ ],
+ "mebel-na-zakaz-ili-gotovaya-sravnenie": [
+  {
+   "q": "built-in furniture cabinet interior",
+   "caption": "Встроенная мебель по размеру ниши"
+  },
+  {
+   "q": "furniture workshop carpenter",
+   "caption": "Изготовление мебели на заказ"
+  }
+ ],
+ "modulnaya-sistema-hranenia": [
+  {
+   "q": "modular shelving storage system",
+   "caption": "Модульная система хранения"
+  },
+  {
+   "q": "shelving unit storage interior",
+   "caption": "Стеллаж собирается под задачу"
+  }
+ ],
+ "neoklassika-v-interere-kvartiry": [
+  {
+   "q": "neoclassical interior room",
+   "caption": "Неоклассика в интерьере"
+  },
+  {
+   "q": "moulding panel wall interior classic",
+   "caption": "Молдинги и филёнки — язык стиля"
+  }
+ ],
+ "obedennaya-zona-stol-i-stulya": [
+  {
+   "q": "dining table chairs interior",
+   "caption": "Обеденная группа"
+  },
+  {
+   "q": "dining room pendant light table",
+   "caption": "Подвес над столом"
+  }
+ ],
+ "palitra-dlya-malenkoy-kvartiry": [
+  {
+   "q": "white small apartment interior",
+   "caption": "Светлая палитра визуально расширяет квартиру"
+  },
+  {
+   "q": "neutral interior colors room",
+   "caption": "Нейтральная гамма как основа"
+  }
+ ],
+ "remont-interera-bez-dizaynera-gid": [
+  {
+   "q": "apartment interior renovation",
+   "caption": "Ремонт интерьера своими силами"
+  },
+  {
+   "q": "interior design plan sketch",
+   "caption": "Эскиз и планировка до начала работ"
+  }
+ ],
+ "skandinavskiy-stil-v-interere": [
+  {
+   "q": "scandinavian interior design room",
+   "caption": "Скандинавский стиль"
+  },
+  {
+   "q": "nordic interior wood white",
+   "caption": "Дерево и белый — база стиля"
+  }
+ ],
+ "svetovye-stsenarii-v-kvartire": [
+  {
+   "q": "interior lighting scene lamp",
+   "caption": "Сценарии освещения в комнате"
+  },
+  {
+   "q": "floor lamp interior evening light",
+   "caption": "Локальный свет для вечернего сценария"
+  }
+ ],
+ "tekstil-shtory-v-gostinoy": [
+  {
+   "q": "curtains window living room",
+   "caption": "Шторы в гостиной"
+  },
+  {
+   "q": "curtain fabric textile interior",
+   "caption": "Ткань определяет светопропускание"
+  }
+ ],
+ "tepliy-minimalizm-interer": [
+  {
+   "q": "minimalist interior room",
+   "caption": "Минимализм в интерьере"
+  },
+  {
+   "q": "minimalist living room wood",
+   "caption": "Тёплые материалы смягчают минимализм"
+  }
+ ],
+ "zerkalo-v-prihozhey-razmer-i-svet": [
+  {
+   "q": "mirror hallway interior",
+   "caption": "Зеркало в прихожей"
+  },
+  {
+   "q": "mirror wall interior light",
+   "caption": "Зеркало добавляет света узкому коридору"
+  }
+ ],
+ "zonirovanie-studii-odnokomnatnoy": [
+  {
+   "q": "room divider studio interior",
+   "caption": "Зонирование без глухих перегородок"
+  },
+  {
+   "q": "partition shelf room divider",
+   "caption": "Стеллаж-разделитель пространства"
+  }
+ ],
+ "antivandalnaya-plenka-na-steklo": [
+  {
+   "q": "security window film glass",
+   "caption": "Защитная плёнка на стекле"
+  },
+  {
+   "q": "laminated safety glass",
+   "caption": "Стекло с плёнкой не рассыпается на осколки"
+  }
+ ],
+ "bezopasnost-okon-dlya-detey": [
+  {
+   "q": "window child safety lock",
+   "caption": "Детский замок на окне"
+  },
+  {
+   "q": "window restrictor handle",
+   "caption": "Ручка с блокировкой открывания"
+  }
+ ],
+ "dveri-nevidimki-skrytogo-montazha": [
+  {
+   "q": "flush door frame interior",
+   "caption": "Дверь скрытого монтажа заподлицо со стеной"
+  },
+  {
+   "q": "hidden door interior wall",
+   "caption": "Полотно без наличников"
+  }
+ ],
+ "energoeffektivnye-okna-teplo": [
+  {
+   "q": "energy efficient window insulated glazing",
+   "caption": "Энергоэффективный стеклопакет"
+  },
+  {
+   "q": "thermal imaging window heat loss",
+   "caption": "Тепловизор показывает потери через окно"
+  }
+ ],
+ "germetik-montazhnyy-shov-okon": [
+  {
+   "q": "window sealant joint installation",
+   "caption": "Герметизация монтажного шва"
+  },
+  {
+   "q": "sealant gun caulking window",
+   "caption": "Нанесение герметика по периметру"
+  }
+ ],
+ "holodnoe-i-teploe-osteklenie-balkona": [
+  {
+   "q": "balcony glazing enclosure",
+   "caption": "Остекление балкона"
+  },
+  {
+   "q": "aluminium sliding balcony glazing",
+   "caption": "Холодное раздвижное остекление"
+  }
+ ],
+ "kak-vybrat-plastikovye-okna": [
+  {
+   "q": "PVC window frame profile",
+   "caption": "Профиль пластикового окна"
+  },
+  {
+   "q": "plastic window installation",
+   "caption": "Окно ПВХ в проёме"
+  }
+ ],
+ "klass-vzlomostoykosti-vkhodnoy-dveri": [
+  {
+   "q": "security entrance door lock",
+   "caption": "Замок входной двери"
+  },
+  {
+   "q": "steel security door",
+   "caption": "Стальная дверь повышенной стойкости"
+  }
+ ],
+ "mezhkomnatnye-dveri": [
+  {
+   "q": "interior door room",
+   "caption": "Межкомнатная дверь"
+  },
+  {
+   "q": "wooden door interior frame",
+   "caption": "Полотно, коробка и наличники"
+  }
+ ],
+ "montazh-mezhkomnatnoy-dveri": [
+  {
+   "q": "door frame installation carpenter",
+   "caption": "Установка дверной коробки"
+  },
+  {
+   "q": "door hinge installation",
+   "caption": "Врезка петель"
+  }
+ ],
+ "montazh-vkhodnoy-dveri-svoimi-rukami": [
+  {
+   "q": "entrance door installation",
+   "caption": "Монтаж входной двери"
+  },
+  {
+   "q": "front door frame anchor",
+   "caption": "Крепление коробки к проёму"
+  }
+ ],
+ "moskitnye-setki-na-okna": [
+  {
+   "q": "window insect screen mesh",
+   "caption": "Москитная сетка на окне"
+  },
+  {
+   "q": "mosquito net window frame",
+   "caption": "Рамочная сетка с креплениями"
+  }
+ ],
+ "otkosy-okon-shtukaturka-gkl-sendvich": [
+  {
+   "q": "window reveal plaster interior",
+   "caption": "Оштукатуренный откос окна"
+  },
+  {
+   "q": "window jamb finishing drywall",
+   "caption": "Откос из гипсокартона"
+  }
+ ],
+ "otlivy-i-kapelnaya-liniya-okna": [
+  {
+   "q": "window sill flashing exterior",
+   "caption": "Наружный отлив окна"
+  },
+  {
+   "q": "window drip edge facade",
+   "caption": "Капельник отводит воду от стены"
+  }
+ ],
+ "panoramnye-okna-v-pol": [
+  {
+   "q": "floor to ceiling window apartment",
+   "caption": "Панорамное окно в пол"
+  },
+  {
+   "q": "large glazing window interior",
+   "caption": "Сплошное остекление комнаты"
+  }
+ ],
+ "plisse-i-roletnye-shtory": [
+  {
+   "q": "pleated blind window",
+   "caption": "Шторы плиссе на створке"
+  },
+  {
+   "q": "roller blind window interior",
+   "caption": "Рулонная штора"
+  }
+ ],
+ "podokonnnik-montazh-i-kondensat": [
+  {
+   "q": "window sill interior",
+   "caption": "Подоконник в комнате"
+  },
+  {
+   "q": "window condensation glass",
+   "caption": "Конденсат на стекле — сигнал проблемы"
+  }
+ ],
+ "pritochnye-klapany-na-okna": [
+  {
+   "q": "trickle vent window",
+   "caption": "Приточный клапан на окне"
+  },
+  {
+   "q": "window ventilation valve",
+   "caption": "Клапан даёт приток без открывания створки"
+  }
+ ],
+ "pvh-ili-alyuminievye-okna-sravnenie": [
+  {
+   "q": "aluminium window frame",
+   "caption": "Алюминиевое окно"
+  },
+  {
+   "q": "PVC window profile chamber",
+   "caption": "Камерный профиль ПВХ"
+  }
+ ],
+ "razdvizhnye-dveri-kupe-penal": [
+  {
+   "q": "sliding door interior",
+   "caption": "Раздвижная дверь-купе"
+  },
+  {
+   "q": "pocket door interior wall",
+   "caption": "Дверь-пенал уходит в стену"
+  }
+ ],
+ "regulirovka-plastikovykh-okon": [
+  {
+   "q": "window hinge hardware adjustment",
+   "caption": "Регулировка оконной фурнитуры"
+  },
+  {
+   "q": "window fitting hardware mechanism",
+   "caption": "Механизм запирания створки"
+  }
+ ],
+ "rolstavni-i-stavni-na-okna": [
+  {
+   "q": "roller shutter window",
+   "caption": "Рольставни на окне"
+  },
+  {
+   "q": "window shutters exterior",
+   "caption": "Ставни на фасаде"
+  }
+ ],
+ "steklopaket-tripleks-shumozashchita": [
+  {
+   "q": "insulated glazing unit glass",
+   "caption": "Стеклопакет в разрезе"
+  },
+  {
+   "q": "laminated glass triplex",
+   "caption": "Триплекс: два стекла с плёнкой"
+  }
+ ],
+ "ukhod-za-furniturou-okon": [
+  {
+   "q": "window handle fitting hardware",
+   "caption": "Оконная ручка и фурнитура"
+  },
+  {
+   "q": "window lubrication maintenance",
+   "caption": "Смазка механизма продлевает срок службы"
+  }
+ ],
+ "uteplenie-lodzhii": [
+  {
+   "q": "balcony insulation loggia",
+   "caption": "Утепление лоджии"
+  },
+  {
+   "q": "insulation panel wall installation",
+   "caption": "Плиты утеплителя по стене"
+  }
+ ],
+ "vybor-vkhodnoy-dveri": [
+  {
+   "q": "front entrance door apartment",
+   "caption": "Входная дверь квартиры"
+  },
+  {
+   "q": "door lock cylinder security",
+   "caption": "Личинка замка"
+  }
+ ],
+ "zamena-balkonnogo-bloka-uteplenie": [
+  {
+   "q": "balcony door window block",
+   "caption": "Балконный блок: дверь и окно"
+  },
+  {
+   "q": "balcony door installation",
+   "caption": "Монтаж балконной двери"
+  }
+ ],
+ "zamena-okon-polnoe-rukovodstvo": [
+  {
+   "q": "window replacement installation",
+   "caption": "Замена окна"
+  },
+  {
+   "q": "window removal demolition frame",
+   "caption": "Демонтаж старой рамы"
+  }
+ ],
+ "zamena-steklopaketa-bez-zameny-okna": [
+  {
+   "q": "insulated glazing unit replacement",
+   "caption": "Замена стеклопакета"
+  },
+  {
+   "q": "glazing bead window glass",
+   "caption": "Штапик снимается для выемки пакета"
+  }
+ ],
+ "zamena-uplotnitelya-okon": [
+  {
+   "q": "window seal gasket rubber",
+   "caption": "Уплотнитель по контуру створки"
+  },
+  {
+   "q": "window rubber seal profile",
+   "caption": "Резиновый профиль уплотнения"
+  }
+ ],
+ "zamery-okon-dlya-zakaza": [
+  {
+   "q": "measuring window tape measure",
+   "caption": "Замер оконного проёма"
+  },
+  {
+   "q": "measuring tape construction",
+   "caption": "Рулетка — основной инструмент замерщика"
+  }
+ ],
+ "zvukozashchita-okon-v-kvartire": [
+  {
+   "q": "soundproof window glazing",
+   "caption": "Шумозащитное окно"
+  },
+  {
+   "q": "double glazing window sound",
+   "caption": "Разнотолщинные стёкла гасят шум"
+  }
+ ],
+ "akusticheskaya-izolyaciya-kvartiry": [
+  {
+   "q": "acoustic insulation wall panel",
+   "caption": "Акустические панели на стене"
+  },
+  {
+   "q": "mineral wool insulation acoustic",
+   "caption": "Минеральная вата в звукоизоляционном каркасе"
+  }
+ ],
+ "chernovaya-otdelka-kvartiry-etapy": [
+  {
+   "q": "apartment renovation shell construction",
+   "caption": "Квартира в черновой отделке"
+  },
+  {
+   "q": "unfinished apartment interior construction",
+   "caption": "Голые стены до чистовых работ"
+  }
+ ],
+ "ciklevka-parketa-svoimi-rukami": [
+  {
+   "q": "parquet floor sanding machine",
+   "caption": "Циклёвочная машина на паркете"
+  },
+  {
+   "q": "wood floor sanding",
+   "caption": "Шлифовка деревянного пола"
+  }
+ ],
+ "dekorativnaya-shtukaturka-faktury": [
+  {
+   "q": "decorative plaster wall texture",
+   "caption": "Фактурная декоративная штукатурка"
+  },
+  {
+   "q": "venetian plaster wall",
+   "caption": "Венецианская штукатурка"
+  }
+ ],
+ "demontazh-sten-i-peregorodok": [
+  {
+   "q": "wall demolition renovation",
+   "caption": "Демонтаж перегородки"
+  },
+  {
+   "q": "demolition debris construction interior",
+   "caption": "Строительный мусор после демонтажа"
+  }
+ ],
+ "gipsokarton-peregorodki-i-potolki": [
+  {
+   "q": "drywall partition metal stud",
+   "caption": "Каркас гипсокартонной перегородки"
+  },
+  {
+   "q": "drywall ceiling installation",
+   "caption": "Подшивка потолка гипсокартоном"
+  }
+ ],
+ "gruntovka-sten-osnovy": [
+  {
+   "q": "wall primer paint roller",
+   "caption": "Грунтование стены валиком"
+  },
+  {
+   "q": "primer painting wall preparation",
+   "caption": "Грунт связывает пыль основания"
+  }
+ ],
+ "kapitalnyy-remont-kvartiry-polnyy-gid": [
+  {
+   "q": "apartment renovation construction work",
+   "caption": "Капитальный ремонт в процессе"
+  },
+  {
+   "q": "home renovation construction interior",
+   "caption": "Квартира на этапе основных работ"
+  }
+ ],
+ "keramogranit-na-pol-ukladka": [
+  {
+   "q": "porcelain tile floor laying",
+   "caption": "Укладка керамогранита на пол"
+  },
+  {
+   "q": "tile adhesive notched trowel",
+   "caption": "Гребёнка распределяет клей"
+  }
+ ],
+ "kvarcvinil-spc-lvt-ukladka": [
+  {
+   "q": "vinyl plank flooring installation",
+   "caption": "Укладка кварцвиниловой плитки"
+  },
+  {
+   "q": "LVT flooring click lock",
+   "caption": "Замковое соединение планок"
+  }
+ ],
+ "mikrocement-pol-i-steny": [
+  {
+   "q": "microcement polished concrete wall",
+   "caption": "Микроцемент на стене"
+  },
+  {
+   "q": "polished concrete floor interior",
+   "caption": "Бесшовный минеральный пол"
+  }
+ ],
+ "moldingi-i-plintusy-stykovka": [
+  {
+   "q": "skirting board moulding interior",
+   "caption": "Плинтус по периметру комнаты"
+  },
+  {
+   "q": "crown moulding ceiling",
+   "caption": "Потолочный молдинг"
+  }
+ ],
+ "napolnye-pokrytiya-sravnenie-2026": [
+  {
+   "q": "flooring samples wood laminate",
+   "caption": "Образцы напольных покрытий"
+  },
+  {
+   "q": "wooden floor planks interior",
+   "caption": "Деревянный пол в интерьере"
+  }
+ ],
+ "natyazhnye-potolki": [
+  {
+   "q": "stretch ceiling interior",
+   "caption": "Натяжной потолок"
+  },
+  {
+   "q": "stretch ceiling installation",
+   "caption": "Монтаж натяжного полотна"
+  }
+ ],
+ "parketnaya-doska-montazh-i-uhod": [
+  {
+   "q": "engineered wood flooring installation",
+   "caption": "Укладка паркетной доски"
+  },
+  {
+   "q": "parquet floor wood interior",
+   "caption": "Паркетный пол в комнате"
+  }
+ ],
+ "plesen-v-kvartire-prichiny-i-borba": [
+  {
+   "q": "mould mold wall damp",
+   "caption": "Плесень на стене"
+  },
+  {
+   "q": "damp wall condensation mould",
+   "caption": "Сырость — причина грибка"
+  }
+ ],
+ "podgotovka-sten-pod-pokrasku": [
+  {
+   "q": "wall sanding preparation painting",
+   "caption": "Шлифовка стены перед покраской"
+  },
+  {
+   "q": "wall smoothing plaster sanding",
+   "caption": "Основание выводят до гладкого"
+  }
+ ],
+ "poklejka-oboev-tehnologiya": [
+  {
+   "q": "wallpaper hanging wall",
+   "caption": "Поклейка обоев"
+  },
+  {
+   "q": "wallpaper paste roll wall",
+   "caption": "Раскрой и промазка полотна"
+  }
+ ],
+ "pokraska-sten-kvartiry-sovety": [
+  {
+   "q": "painting wall roller interior",
+   "caption": "Покраска стен валиком"
+  },
+  {
+   "q": "paint roller wall interior",
+   "caption": "Валик даёт ровный слой"
+  }
+ ],
+ "poly-po-lagam-v-kvartire": [
+  {
+   "q": "floor joists wooden subfloor",
+   "caption": "Пол по лагам"
+  },
+  {
+   "q": "wooden floor joist construction",
+   "caption": "Лаги под настил"
+  }
+ ],
+ "potolok-pod-pokrasku-vyravnivanie": [
+  {
+   "q": "ceiling plastering interior",
+   "caption": "Выравнивание потолка под покраску"
+  },
+  {
+   "q": "ceiling painting roller",
+   "caption": "Покраска потолка"
+  }
+ ],
+ "proem-v-nesushchey-stene-usilenie": [
+  {
+   "q": "steel lintel load bearing wall",
+   "caption": "Усиление проёма металлом"
+  },
+  {
+   "q": "wall opening construction lintel",
+   "caption": "Проём с перемычкой"
+  }
+ ],
+ "reechnye-potolki-montazh": [
+  {
+   "q": "slatted ceiling aluminium",
+   "caption": "Реечный потолок"
+  },
+  {
+   "q": "wood slat ceiling interior",
+   "caption": "Деревянная рейка на потолке"
+  }
+ ],
+ "rekuperator-pritochnaya-ventilyaciya-kvartiry": [
+  {
+   "q": "heat recovery ventilation unit",
+   "caption": "Приточная установка с рекуперацией"
+  },
+  {
+   "q": "ventilation duct system interior",
+   "caption": "Воздуховоды приточной системы"
+  }
+ ],
+ "remont-kuhni-poryadok-rabot": [
+  {
+   "q": "kitchen renovation installation",
+   "caption": "Ремонт кухни"
+  },
+  {
+   "q": "kitchen cabinet installation",
+   "caption": "Монтаж кухонного гарнитура"
+  }
+ ],
+ "samovyiravnivayushayasya-styazhka-i-mayaki": [
+  {
+   "q": "self levelling floor screed",
+   "caption": "Наливной самовыравнивающийся пол"
+  },
+  {
+   "q": "floor screed levelling construction",
+   "caption": "Растягивание смеси по основанию"
+  }
+ ],
+ "shpaklevka-sten-pod-oboi-i-pokrasku": [
+  {
+   "q": "wall filler putty spatula",
+   "caption": "Шпаклевание стены шпателем"
+  },
+  {
+   "q": "plaster skim coat wall",
+   "caption": "Финишный слой под отделку"
+  }
+ ],
+ "shpaklevka-sten-start-finish-sravnenie": [
+  {
+   "q": "wall putty trowel plaster",
+   "caption": "Стартовый и финишный слои шпаклёвки"
+  },
+  {
+   "q": "drywall joint compound taping",
+   "caption": "Заделка стыков листов"
+  }
+ ],
+ "shtukaturka-sten": [
+  {
+   "q": "plastering wall trowel",
+   "caption": "Оштукатуривание стены"
+  },
+  {
+   "q": "plaster wall construction worker",
+   "caption": "Штукатурка по маякам"
+  }
+ ],
+ "styazhka-pola-suhaya-ili-mokraya": [
+  {
+   "q": "floor screed concrete construction",
+   "caption": "Мокрая стяжка пола"
+  },
+  {
+   "q": "dry screed floor boards",
+   "caption": "Сухая сборная стяжка"
+  }
+ ],
+ "suhaya-otdelka-sten-paneli-reyki": [
+  {
+   "q": "wall panelling wood slat interior",
+   "caption": "Реечные панели на стене"
+  },
+  {
+   "q": "MDF wall panel interior",
+   "caption": "Панели МДФ по каркасу"
+  }
+ ],
+ "ukladka-laminata": [
+  {
+   "q": "laminate flooring installation",
+   "caption": "Укладка ламината"
+  },
+  {
+   "q": "laminate floor click plank",
+   "caption": "Замковое соединение ламелей"
+  }
+ ],
+ "uteplenie-sten-kvartiry-iznutri": [
+  {
+   "q": "internal wall insulation",
+   "caption": "Утепление стены изнутри"
+  },
+  {
+   "q": "insulation board wall interior",
+   "caption": "Плиты утеплителя по внутренней стене"
+  }
+ ],
+ "zvukoizolyaciya-pola-plovuchiy-pol": [
+  {
+   "q": "floating floor acoustic underlay",
+   "caption": "Подложка плавающего пола"
+  },
+  {
+   "q": "soundproofing floor insulation",
+   "caption": "Звукоизоляционный слой в конструкции пола"
+  }
+ ],
+ "bojler-nakopitelnyj-ili-protochnyj": [
+  {
+   "q": "electric water heater boiler",
+   "caption": "Накопительный водонагреватель"
+  },
+  {
+   "q": "tankless water heater",
+   "caption": "Проточный нагреватель"
+  }
+ ],
+ "dush-ili-vanna-dlya-malogo-santeuzla": [
+  {
+   "q": "small bathroom shower bathtub",
+   "caption": "Маленький санузел: душ или ванна"
+  },
+  {
+   "q": "shower cabin bathroom interior",
+   "caption": "Душевая зона вместо ванны"
+  }
+ ],
+ "dushevaya-lejka-shlang-vybor": [
+  {
+   "q": "shower head hose",
+   "caption": "Душевая лейка со шлангом"
+  },
+  {
+   "q": "shower head water spray",
+   "caption": "Струи лейки"
+  }
+ ],
+ "dushevoy-trap-i-uklon-pola": [
+  {
+   "q": "shower floor drain linear",
+   "caption": "Линейный душевой трап"
+  },
+  {
+   "q": "bathroom floor drain tile",
+   "caption": "Трап в плиточном полу"
+  }
+ ],
+ "filtr-pod-moyku-vybor": [
+  {
+   "q": "under sink water filter",
+   "caption": "Фильтр под мойкой"
+  },
+  {
+   "q": "water filter cartridge housing",
+   "caption": "Картриджные колбы фильтра"
+  }
+ ],
+ "gidroizolyatsiya-vannoy": [
+  {
+   "q": "bathroom waterproofing membrane",
+   "caption": "Гидроизоляция пола санузла"
+  },
+  {
+   "q": "waterproofing tape corner bathroom",
+   "caption": "Лента в углах — самое уязвимое место"
+  }
+ ],
+ "gigienicheskiy-dush-podklyucheniye": [
+  {
+   "q": "bidet shower spray toilet",
+   "caption": "Гигиенический душ у унитаза"
+  },
+  {
+   "q": "bidet sprayer bathroom",
+   "caption": "Лейка гигиенического душа"
+  }
+ ],
+ "installyatsiya-unitaza": [
+  {
+   "q": "concealed cistern toilet frame",
+   "caption": "Инсталляция с подвесным унитазом"
+  },
+  {
+   "q": "wall hung toilet bathroom",
+   "caption": "Подвесной унитаз"
+  }
+ ],
+ "kak-vybrat-smesitel": [
+  {
+   "q": "kitchen faucet mixer tap",
+   "caption": "Смеситель для кухни"
+  },
+  {
+   "q": "bathroom faucet basin mixer",
+   "caption": "Смеситель для раковины"
+  }
+ ],
+ "kollektornaya-razvodka-vody": [
+  {
+   "q": "water manifold plumbing distribution",
+   "caption": "Коллекторная разводка воды"
+  },
+  {
+   "q": "plumbing manifold pipes",
+   "caption": "Гребёнка с отводами на приборы"
+  }
+ ],
+ "podklyuchenie-posudomoechnoy-mashiny": [
+  {
+   "q": "dishwasher installation kitchen",
+   "caption": "Подключение посудомоечной машины"
+  },
+  {
+   "q": "dishwasher built in kitchen",
+   "caption": "Встроенная посудомойка"
+  }
+ ],
+ "podklyuchenie-stiralnoy-mashiny": [
+  {
+   "q": "washing machine hose connection",
+   "caption": "Подключение стиральной машины"
+  },
+  {
+   "q": "washing machine bathroom installation",
+   "caption": "Машина в санузле"
+  }
+ ],
+ "polotencesushitel-vodyanoy-ili-elektricheskiy": [
+  {
+   "q": "heated towel rail radiator",
+   "caption": "Полотенцесушитель"
+  },
+  {
+   "q": "towel radiator bathroom",
+   "caption": "Полотенцесушитель в ванной"
+  }
+ ],
+ "povysitelnyy-nasos-v-kvartire": [
+  {
+   "q": "water booster pump",
+   "caption": "Повысительный насос"
+  },
+  {
+   "q": "circulation pump plumbing",
+   "caption": "Насос на трубопроводе"
+  }
+ ],
+ "razvodka-santehniki-kvartira-gid": [
+  {
+   "q": "plumbing pipes installation wall",
+   "caption": "Разводка труб водоснабжения"
+  },
+  {
+   "q": "water pipes plumbing construction",
+   "caption": "Трубы до зашивки стены"
+  }
+ ],
+ "reduktor-davleniya-vody-v-kvartire": [
+  {
+   "q": "water pressure reducing valve",
+   "caption": "Редуктор давления воды"
+  },
+  {
+   "q": "pressure gauge manometer water",
+   "caption": "Манометр показывает давление в сети"
+  }
+ ],
+ "remont-vannoy-komnaty-s-nulya-gid": [
+  {
+   "q": "bathroom renovation construction",
+   "caption": "Ремонт ванной комнаты"
+  },
+  {
+   "q": "bathroom tiling renovation",
+   "caption": "Санузел на этапе облицовки"
+  }
+ ],
+ "santehnicheskiy-lyuk-pod-plitku": [
+  {
+   "q": "access panel bathroom tile",
+   "caption": "Сантехнический люк под плитку"
+  },
+  {
+   "q": "inspection hatch wall bathroom",
+   "caption": "Ревизионный лючок в стене"
+  }
+ ],
+ "shumoizolyaciya-kanalizacionnogo-stoyaka": [
+  {
+   "q": "soil pipe stack plumbing",
+   "caption": "Канализационный стояк"
+  },
+  {
+   "q": "sewer pipe PVC plumbing",
+   "caption": "Пластиковая канализационная труба"
+  }
+ ],
+ "termostat-dlya-dusha-i-vanny": [
+  {
+   "q": "thermostatic shower mixer valve",
+   "caption": "Термостатический смеситель"
+  },
+  {
+   "q": "shower thermostat bathroom",
+   "caption": "Термостат держит температуру"
+  }
+ ],
+ "ukladka-plitki-v-vannoy": [
+  {
+   "q": "bathroom wall tiling tile adhesive",
+   "caption": "Облицовка стен плиткой"
+  },
+  {
+   "q": "tile spacer bathroom laying",
+   "caption": "Крестики держат ширину шва"
+  }
+ ],
+ "umnye-smesiteli-ekonomiya-vody": [
+  {
+   "q": "touchless sensor faucet",
+   "caption": "Сенсорный смеситель"
+  },
+  {
+   "q": "automatic faucet water sensor",
+   "caption": "Бесконтактное включение воды"
+  }
+ ],
+ "ustanovka-rakoviny-i-sifona": [
+  {
+   "q": "washbasin sink siphon trap",
+   "caption": "Раковина с сифоном"
+  },
+  {
+   "q": "sink drain plumbing trap",
+   "caption": "Сборка сифона под мойкой"
+  }
+ ],
+ "vodonagrevatel-boyler-vybor-montazh": [
+  {
+   "q": "storage water heater installation",
+   "caption": "Монтаж накопительного бойлера"
+  },
+  {
+   "q": "water heater tank wall mounted",
+   "caption": "Бойлер на стене"
+  }
+ ],
+ "vodyanoy-teplyy-pol-v-kvartire": [
+  {
+   "q": "underfloor heating pipes water",
+   "caption": "Контуры водяного тёплого пола"
+  },
+  {
+   "q": "underfloor heating manifold",
+   "caption": "Коллектор тёплого пола"
+  }
+ ],
+ "vybor-i-ustanovka-vanny": [
+  {
+   "q": "bathtub installation bathroom",
+   "caption": "Установка ванны"
+  },
+  {
+   "q": "bathtub bathroom interior",
+   "caption": "Ванна в санузле"
+  }
+ ],
+ "vynosnaya-kolonna-smestitelya-vanna": [
+  {
+   "q": "bath mixer tap column",
+   "caption": "Смеситель с высоким изливом у ванны"
+  },
+  {
+   "q": "freestanding bath tap",
+   "caption": "Напольная колонна смесителя"
+  }
+ ],
+ "zaliv-sosedey-chto-delat-akt": [
+  {
+   "q": "water damage ceiling leak",
+   "caption": "След протечки на потолке"
+  },
+  {
+   "q": "water leak damage wall",
+   "caption": "Последствия залива"
+  }
+ ],
+ "zamen-schetchika-vody": [
+  {
+   "q": "water meter plumbing",
+   "caption": "Счётчик воды"
+  },
+  {
+   "q": "water meter installation pipe",
+   "caption": "Счётчик на вводе"
+  }
+ ],
+ "zamena-radiatorov-otopleniya": [
+  {
+   "q": "radiator heating installation",
+   "caption": "Замена радиатора отопления"
+  },
+  {
+   "q": "central heating radiator wall",
+   "caption": "Радиатор под окном"
+  }
+ ],
+ "zamena-stoyakov-vodosnabzheniya": [
+  {
+   "q": "water riser pipe plumbing",
+   "caption": "Стояк водоснабжения"
+  },
+  {
+   "q": "plumbing riser pipe installation",
+   "caption": "Замена стояка в санузле"
+  }
+ ],
+ "zapah-kanalizacii-sifon-trap": [
+  {
+   "q": "plumbing p-trap siphon",
+   "caption": "Сифон с гидрозатвором"
+  },
+  {
+   "q": "sink trap plumbing pipe",
+   "caption": "Гидрозатвор отсекает запах"
+  }
+ ],
+ "zasor-kanalizacii-prichiny-profilaktika": [
+  {
+   "q": "clogged drain pipe blockage",
+   "caption": "Засор в канализационной трубе"
+  },
+  {
+   "q": "drain cleaning plumbing tool",
+   "caption": "Прочистка троса"
+  }
+ ],
+ "brigada-brosila-obekt-chto-delat": [
+  {
+   "q": "abandoned unfinished construction interior",
+   "caption": "Брошенный объект в середине работ"
+  },
+  {
+   "q": "unfinished renovation room",
+   "caption": "Недоделанный ремонт"
+  }
+ ],
+ "byudzhet-kapitalnogo-remonta-raschet": [
+  {
+   "q": "calculator budget documents desk",
+   "caption": "Расчёт бюджета ремонта"
+  },
+  {
+   "q": "financial planning calculator money",
+   "caption": "Планирование затрат"
+  }
+ ],
+ "chek-list-zakupok-do-nachala-remonta": [
+  {
+   "q": "hardware store building materials",
+   "caption": "Закупка стройматериалов"
+  },
+  {
+   "q": "building materials shop shelves",
+   "caption": "Ассортимент строительного магазина"
+  }
+ ],
+ "chto-sdelat-samomu-a-chto-otdat-masteram": [
+  {
+   "q": "DIY home improvement tools",
+   "caption": "Что реально сделать самому"
+  },
+  {
+   "q": "handyman working home repair",
+   "caption": "Часть работ проще отдать мастерам"
+  }
+ ],
+ "dizayn-proekt-kvartiry-sostav-cena": [
+  {
+   "q": "floor plan architectural drawing apartment",
+   "caption": "Планировка в составе дизайн-проекта"
+  },
+  {
+   "q": "interior design drawing plan",
+   "caption": "Чертежи и развёртки"
+  }
+ ],
+ "dogovor-podryada-remont": [
+  {
+   "q": "contract signing document pen",
+   "caption": "Подписание договора подряда"
+  },
+  {
+   "q": "business contract paper signature",
+   "caption": "Документы по сделке"
+  }
+ ],
+ "instrumenty-dlya-remonta": [
+  {
+   "q": "hand tools toolbox",
+   "caption": "Базовый набор инструмента"
+  },
+  {
+   "q": "power tools drill construction",
+   "caption": "Электроинструмент для ремонта"
+  }
+ ],
+ "kak-prinyat-remont-cheklist": [
+  {
+   "q": "construction inspection checklist",
+   "caption": "Приёмка работ по чек-листу"
+  },
+  {
+   "q": "building inspection quality control",
+   "caption": "Проверка качества отделки"
+  }
+ ],
+ "kak-profinansirovat-remont-kredit-rassrochka": [
+  {
+   "q": "bank loan money finance",
+   "caption": "Финансирование ремонта"
+  },
+  {
+   "q": "credit card money payment",
+   "caption": "Кредит и рассрочка"
+  }
+ ],
+ "kak-sekonomit-na-remonte": [
+  {
+   "q": "money saving coins budget",
+   "caption": "Экономия бюджета ремонта"
+  },
+  {
+   "q": "cost saving money calculator",
+   "caption": "Где резать смету без потери качества"
+  }
+ ],
+ "kak-vibrat-oboi": [
+  {
+   "q": "wallpaper samples rolls",
+   "caption": "Образцы обоев"
+  },
+  {
+   "q": "wallpaper roll pattern",
+   "caption": "Рулоны с разным рисунком"
+  }
+ ],
+ "kak-vybrat-brigadu-dlya-remonta": [
+  {
+   "q": "construction workers team site",
+   "caption": "Бригада на объекте"
+  },
+  {
+   "q": "builders working construction",
+   "caption": "Работа мастеров"
+  }
+ ],
+ "kontrol-smety-remonta-po-etapam": [
+  {
+   "q": "cost estimate spreadsheet documents",
+   "caption": "Контроль сметы по этапам"
+  },
+  {
+   "q": "accounting documents calculator",
+   "caption": "Сверка расходов"
+  }
+ ],
+ "posledovatelnost-remonta-chek-list": [
+  {
+   "q": "renovation construction work interior",
+   "caption": "Порядок работ на объекте"
+  },
+  {
+   "q": "construction site interior work",
+   "caption": "Последовательность этапов"
+  }
+ ],
+ "priemka-kvartiry-ot-zastroishchika": [
+  {
+   "q": "new apartment building handover",
+   "caption": "Приёмка квартиры у застройщика"
+  },
+  {
+   "q": "new residential building construction",
+   "caption": "Новостройка перед заселением"
+  }
+ ],
+ "raschet-materialov-dlya-remonta": [
+  {
+   "q": "measuring tape construction calculation",
+   "caption": "Замеры для расчёта материалов"
+  },
+  {
+   "q": "construction measuring tools",
+   "caption": "Инструменты замера"
+  }
+ ],
+ "remont-pod-sdachu-v-arendu": [
+  {
+   "q": "rental apartment interior room",
+   "caption": "Отделка под сдачу в аренду"
+  },
+  {
+   "q": "apartment interior simple furniture",
+   "caption": "Простое износостойкое решение"
+  }
+ ],
+ "remont-pri-deficit-materialov-grafik": [
+  {
+   "q": "building materials warehouse storage",
+   "caption": "Склад стройматериалов"
+  },
+  {
+   "q": "construction material pallets",
+   "caption": "Запас материалов на объекте"
+  }
+ ],
+ "remont-s-detmi-bezopasnost": [
+  {
+   "q": "child safety home",
+   "caption": "Безопасность детей в доме"
+  },
+  {
+   "q": "children home interior safety",
+   "caption": "Ребёнок и стройка не совмещаются"
+  }
+ ],
+ "remont-v-novostroyke-s-chego-nachat": [
+  {
+   "q": "new apartment construction interior",
+   "caption": "Новостройка в черновой отделке"
+  },
+  {
+   "q": "new building apartment interior",
+   "caption": "Квартира до начала работ"
+  }
+ ],
+ "remont-vtorichki-chto-menyat": [
+  {
+   "q": "old apartment renovation interior",
+   "caption": "Ремонт вторичного жилья"
+  },
+  {
+   "q": "old building interior renovation",
+   "caption": "Старый фонд перед обновлением"
+  }
+ ],
+ "remont-zimoy-klimat-materialy": [
+  {
+   "q": "winter construction site",
+   "caption": "Ремонт в холодный сезон"
+  },
+  {
+   "q": "construction winter cold building",
+   "caption": "Зимние условия на объекте"
+  }
+ ],
+ "smeta-remonta-kvartiry": [
+  {
+   "q": "construction cost estimate document",
+   "caption": "Смета на ремонт"
+  },
+  {
+   "q": "invoice documents calculator",
+   "caption": "Расчётные документы"
+  }
+ ],
+ "soglasovanie-pereplanirovki-kvartiry": [
+  {
+   "q": "building permit floor plan document",
+   "caption": "Согласование перепланировки"
+  },
+  {
+   "q": "architectural floor plan drawing",
+   "caption": "План с изменениями"
+  }
+ ],
+ "sroki-remonta-kvartiry-po-etapam": [
+  {
+   "q": "construction schedule calendar planning",
+   "caption": "График работ по этапам"
+  },
+  {
+   "q": "project planning schedule chart",
+   "caption": "Календарь ремонта"
+  }
+ ],
+ "strahovanie-kvartiry-na-vremya-remonta": [
+  {
+   "q": "insurance policy document",
+   "caption": "Страховой полис на время ремонта"
+  },
+  {
+   "q": "insurance contract paper",
+   "caption": "Договор страхования"
+  }
+ ],
+ "stroitelnye-othody-vyvoz": [
+  {
+   "q": "construction waste debris container",
+   "caption": "Контейнер под строительный мусор"
+  },
+  {
+   "q": "construction debris rubble",
+   "caption": "Отходы после демонтажа"
+  }
+ ],
+ "tehnadzor-v-remonte": [
+  {
+   "q": "construction supervision inspector site",
+   "caption": "Технадзор на объекте"
+  },
+  {
+   "q": "building inspector construction",
+   "caption": "Независимая проверка работ"
+  }
+ ],
+ "top-oshibok-remonta-kvartiry": [
+  {
+   "q": "construction defect wall crack",
+   "caption": "Трещина как след ошибки"
+  },
+  {
+   "q": "building defect damage wall",
+   "caption": "Типичный дефект отделки"
+  }
+ ],
+ "vybor-remontnoj-brigady": [
+  {
+   "q": "construction workers builders site",
+   "caption": "Выбор бригады"
+  },
+  {
+   "q": "construction team working",
+   "caption": "Мастера за работой"
+  }
+ ],
+ "zakon-o-tishine-remontnye-raboty": [
+  {
+   "q": "drilling wall noise power tool",
+   "caption": "Шумные работы ограничены по времени"
+  },
+  {
+   "q": "hammer drill wall construction",
+   "caption": "Перфоратор — главный источник шума"
+  }
+ ],
+ "zakupki-stroymaterialov-onlayn": [
+  {
+   "q": "building materials store shelves",
+   "caption": "Закупка материалов"
+  },
+  {
+   "q": "warehouse shelves storage goods",
+   "caption": "Склад поставщика"
+  }
+ ],
+ "zhit-vo-vremya-remonta-ili-syehat": [
+  {
+   "q": "moving boxes apartment",
+   "caption": "Переезд на время ремонта"
+  },
+  {
+   "q": "cardboard boxes moving home",
+   "caption": "Вещи в коробках"
+  }
+ ]
+}

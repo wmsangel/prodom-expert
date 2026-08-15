@@ -8,6 +8,7 @@ require_once __DIR__ . '/includes/load-seo.php';
 require_once __DIR__ . '/includes/article-cover.php';
 require_once __DIR__ . '/includes/all-articles-meta.php';
 require_once __DIR__ . '/includes/article-toc.php';
+require_once __DIR__ . '/includes/partner-ads.php';
 
 // === Безопасная обработка slug (защита от path traversal) ===
 $rawSlug = isset($_GET['slug']) ? $_GET['slug'] : '';
@@ -110,6 +111,9 @@ $articlePubDate = $isoDate;
 // Похожие материалы — подбор по теме, см. domexpert_related_articles()
 $relatedArticles = domexpert_related_articles($slug, 3);
 
+// Соседи по категории — для последовательного чтения
+$articleNeighbours = domexpert_adjacent_articles($slug);
+
 // === JSON-LD: Article ===
 $articleJsonLd = json_encode([
   '@context'         => 'https://schema.org',
@@ -119,11 +123,22 @@ $articleJsonLd = json_encode([
   'url'              => $pageUrl,
   'datePublished'    => $isoDate,
   'dateModified'     => $isoDate,
-  'author'           => [
-    '@type' => 'Organization',
-    'name'  => $meta['author'],
-    'url'   => $siteUrl . '/about.php',
-  ],
+  // Автор: именной байлайн размечается как Person, редакционный — как Organization.
+  // Раньше здесь всегда стоял Organization, из-за чего 96 статей с именами авторов
+  // отдавали заведомо неверную разметку.
+  'author'           => $meta['author'] === DOMEXPERT_DEFAULT_AUTHOR
+    ? [
+        '@type' => 'Organization',
+        '@id'   => domexpert_org_id(),
+        'name'  => $meta['author'],
+        'url'   => $siteUrl . '/editorial.php',
+      ]
+    : [
+        '@type'          => 'Person',
+        'name'           => $meta['author'],
+        'url'            => $siteUrl . '/editorial.php',
+        'worksFor'       => ['@id' => domexpert_org_id()],
+      ],
   'publisher' => [
     '@id' => domexpert_org_id(),
   ],
@@ -236,7 +251,7 @@ include __DIR__ . '/includes/header.php';
   <div class="container">
     <div class="main-layout">
 
-      <main role="main">
+      <main id="main-content" role="main">
 
         <!-- Рекламный блок ПЕРЕД статьёй -->
 
@@ -278,9 +293,31 @@ include __DIR__ . '/includes/header.php';
             <div class="empty-state">
               <div class="icon">📄</div>
               <h3>Статья не найдена</h3>
-              <p>К сожалению, запрашиваемая статья не найдена. Возможно, она была перемещена или удалена.</p>
-              <br>
+              <p>Возможно, она была перемещена или переименована. Вот материалы на близкую тему:</p>
+            </div>
+
+            <?php $missingSuggestions = domexpert_guess_articles($slug, 4); ?>
+            <?php if ($missingSuggestions): ?>
+            <ul class="popular-list" style="margin: 0 0 24px;">
+              <?php foreach ($missingSuggestions as $item): ?>
+              <li>
+                <a href="<?= htmlspecialchars(du_article_path($item['slug']), ENT_QUOTES, 'UTF-8') ?>" class="popular-link">
+                  <span class="popular-num" aria-hidden="true"><?= htmlspecialchars($item['icon'], ENT_QUOTES, 'UTF-8') ?></span>
+                  <span>
+                    <?= htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8') ?>
+                    <span style="display:block; color:var(--text-muted); font-size:0.82rem; margin-top:2px;">
+                      <?= htmlspecialchars($item['catLabel'], ENT_QUOTES, 'UTF-8') ?> · <?= htmlspecialchars($item['readTime'], ENT_QUOTES, 'UTF-8') ?>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
               <a href="/" class="btn btn-primary" style="display:inline-flex;">← На главную</a>
+              <a href="/articles.php" class="btn btn-outline" style="display:inline-flex; color:var(--heading); border-color:var(--beige-mid);">Все статьи</a>
             </div>
           <?php endif; ?>
         </article>
@@ -293,7 +330,28 @@ include __DIR__ . '/includes/header.php';
         <?php $calcArticleSlug = $slug; ?>
         <?php include __DIR__ . '/includes/article-calculators.php'; ?>
 
-        <!-- Рекламный блок ПОСЛЕ статьи -->
+        <!-- Рекламный блок ПОСЛЕ статьи: кросс-промо наших проектов (пока нет AdSense) -->
+        <?php if (!$articleMissing): ?>
+        <?= domexpert_partner_ad('banner', $slug, 0) ?>
+        <?php endif; ?>
+
+        <!-- СОСЕДНИЕ СТАТЬИ КАТЕГОРИИ (по дате публикации) -->
+        <?php if ($articleNeighbours['prev'] || $articleNeighbours['next']): ?>
+        <nav class="article-nav" aria-label="Другие статьи категории «<?= htmlspecialchars($meta['catLabel'], ENT_QUOTES, 'UTF-8') ?>»">
+          <?php if ($articleNeighbours['prev']): ?>
+          <a class="article-nav-link article-nav-prev" href="<?= htmlspecialchars(du_article_path($articleNeighbours['prev']['slug']), ENT_QUOTES, 'UTF-8') ?>" rel="prev">
+            <span class="article-nav-label">← Предыдущая</span>
+            <span class="article-nav-title"><?= htmlspecialchars($articleNeighbours['prev']['title'], ENT_QUOTES, 'UTF-8') ?></span>
+          </a>
+          <?php endif; ?>
+          <?php if ($articleNeighbours['next']): ?>
+          <a class="article-nav-link article-nav-next" href="<?= htmlspecialchars(du_article_path($articleNeighbours['next']['slug']), ENT_QUOTES, 'UTF-8') ?>" rel="next">
+            <span class="article-nav-label">Следующая →</span>
+            <span class="article-nav-title"><?= htmlspecialchars($articleNeighbours['next']['title'], ENT_QUOTES, 'UTF-8') ?></span>
+          </a>
+          <?php endif; ?>
+        </nav>
+        <?php endif; ?>
 
         <!-- ЧИТАЙТЕ ТАКЖЕ -->
         <section class="related-section" aria-label="Похожие статьи">
@@ -338,6 +396,7 @@ include __DIR__ . '/includes/header.php';
 
       </main>
 
+      <?php $sidebarArticleSlug = $slug; ?>
       <?php include __DIR__ . '/includes/sidebar.php'; ?>
 
     </div>

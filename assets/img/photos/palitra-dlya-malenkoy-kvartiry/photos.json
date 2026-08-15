@@ -1,0 +1,37 @@
+{
+  "slug": "palitra-dlya-malenkoy-kvartiry",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/palitra-dlya-malenkoy-kvartiry/01.jpg",
+      "webp": "/assets/img/photos/palitra-dlya-malenkoy-kvartiry/01.webp",
+      "width": 1024,
+      "height": 679,
+      "caption": "Светлая палитра визуально расширяет квартиру",
+      "title": "interior new loft, ethnic furniture, living room",
+      "credit": {
+        "author": "Foto Miki Digital",
+        "license": "Общественное достояние",
+        "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "page_url": "https://www.flickr.com/photos/96511847@N04/10560655534",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/palitra-dlya-malenkoy-kvartiry/02.jpg",
+      "webp": "/assets/img/photos/palitra-dlya-malenkoy-kvartiry/02.webp",
+      "width": 960,
+      "height": 720,
+      "caption": "Нейтральная гамма как основа",
+      "title": "mountain neutral zone",
+      "credit": {
+        "author": "Wonderlane",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/71401718@N00/3329757107",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

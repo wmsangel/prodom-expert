@@ -1,0 +1,157 @@
+<div class="pl" id="planner">
+
+  <div class="pl-toolbar">
+    <div class="pl-group">
+      <span class="pl-group-label">С чего начать</span>
+      <div class="pl-group-row">
+        <button type="button" class="pl-btn pl-btn-accent" data-blank>✎ Своя планировка — с нуля</button>
+        <button type="button" class="pl-btn" data-preset="studiya">Студия 33 м²</button>
+        <button type="button" class="pl-btn" data-preset="odnushka">Однушка 43 м²</button>
+        <button type="button" class="pl-btn" data-preset="dvushka">Двушка 58 м²</button>
+        <button type="button" class="pl-btn" data-preset="treshka">Трёшка 76 м²</button>
+      </div>
+    </div>
+
+    <div class="pl-group">
+      <span class="pl-group-label">Инструмент</span>
+      <div class="pl-group-row">
+        <button type="button" class="pl-btn is-active" data-tool="select" aria-pressed="true"><span class="pl-btn-icon">✥</span> Выбор</button>
+        <button type="button" class="pl-btn" data-tool="room" aria-pressed="false"><span class="pl-btn-icon">▭</span> Комната</button>
+        <button type="button" class="pl-btn" data-tool="door" aria-pressed="false"><span class="pl-btn-icon">⌐</span> Дверь</button>
+        <button type="button" class="pl-btn" data-tool="window" aria-pressed="false"><span class="pl-btn-icon">▤</span> Окно</button>
+        <button type="button" class="pl-btn" data-tool="erase" aria-pressed="false"><span class="pl-btn-icon">✕</span> Удалить</button>
+      </div>
+    </div>
+
+    <div class="pl-group">
+      <span class="pl-group-label">План</span>
+      <div class="pl-group-row">
+        <button type="button" class="pl-btn" id="pl-undo" disabled>↶ Отменить</button>
+        <button type="button" class="pl-btn" id="pl-redo" disabled>↷ Вернуть</button>
+        <button type="button" class="pl-btn" id="pl-clear">Очистить</button>
+        <button type="button" class="pl-btn" id="pl-png">Сохранить PNG</button>
+        <button type="button" class="pl-btn" id="pl-print">Печать сметы</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="pl-stage">
+    <div class="pl-canvas-wrap">
+      <canvas id="pl-canvas" aria-label="План квартиры. Интерактивный холст: комнаты, двери и окна."></canvas>
+      <div class="pl-zoom">
+        <button type="button" class="pl-btn" id="pl-zoom-in" aria-label="Приблизить">+</button>
+        <button type="button" class="pl-btn" id="pl-zoom-out" aria-label="Отдалить">−</button>
+        <button type="button" class="pl-btn" id="pl-fit" aria-label="Вписать план в экран">⤢</button>
+      </div>
+      <div class="pl-flash" id="pl-flash" role="status" aria-live="polite"></div>
+    </div>
+
+    <aside class="pl-panel" id="pl-panel"></aside>
+  </div>
+
+  <div class="pl-globals">
+    <label class="pl-inline">
+      <span>Сценарий ремонта</span>
+      <select id="pl-scenario">
+        <option value="novostroyka">Новостройка без отделки</option>
+        <option value="vtorichka" selected>Вторичка с демонтажом</option>
+        <option value="kosmetika">Косметический ремонт</option>
+      </select>
+    </label>
+    <label class="pl-inline">
+      <span>Уровень отделки</span>
+      <select id="pl-level">
+        <option value="ekonom">Эконом</option>
+        <option value="standart" selected>Стандарт</option>
+        <option value="premium">Премиум</option>
+      </select>
+    </label>
+    <label class="pl-inline">
+      <span>Высота потолка, м</span>
+      <input type="number" id="pl-height" value="2.7" min="2" max="5" step="0.05" inputmode="decimal">
+    </label>
+    <label class="pl-check" style="align-self:center;">
+      <input type="checkbox" id="pl-windows"> Менять окна
+    </label>
+  </div>
+
+  <div id="pl-summary"></div>
+  <div id="pl-estimate"></div>
+  <div id="pl-schedule"></div>
+  <div id="pl-materials"></div>
+
+</div>
+
+<section class="calc-article">
+  <h2>Как пользоваться планировщиком</h2>
+
+  <p>Планировщик рассчитан на <strong>вашу квартиру, а не на типовую</strong>. Готовые планировки сверху — это только быстрый старт: их можно взять как основу и подогнать под свои замеры, а можно вообще не трогать.</p>
+
+  <p>Два способа собрать индивидуальный план:</p>
+  <ul>
+    <li><strong>Нарисовать мышью.</strong> Нажмите «Своя планировка — с нуля», затем растягивайте прямоугольники прямо на сетке. Шаг привязки 10 см.</li>
+    <li><strong>Ввести размеры числами.</strong> Когда ни одна комната не выделена, в панели справа появляется форма: название, тип, ширина и глубина. Так удобнее, если замеры уже сняты — как их снимать, описано в статье про <a href="/article/obmer-kvartiry-svoimi-rukami/">обмер квартиры</a>.</li>
+  </ul>
+
+  <p>Комнаты свободно перетаскиваются за середину и меняют размер за угловые маркеры, так что стыковать их между собой можно как угодно.</p>
+
+  <h3>Г-образные комнаты, вентшахты и короба</h3>
+
+  <p>Комната не обязана быть прямоугольной. В панели выделенной комнаты есть блок <strong>«Форма комнаты»</strong> с двумя видами вырезов:</p>
+
+  <ul>
+    <li><strong>Угловой вырез</strong> — срезает угол и делает комнату Г-образной. Так задаются кухни с заходящим углом санузла и комнаты сложной формы.</li>
+    <li><strong>Короб у стены</strong> — прямоугольный выступ в середине стены: вентиляционная шахта, зашитый стояк, ниша под коммуникации. Задаётся длиной вдоль стены, выступом внутрь и отступом от угла.</li>
+  </ul>
+
+  <p>Вырезов может быть несколько, в том числе в разных углах одной комнаты. На плане они показаны штриховкой, а стены обходят их по контуру.</p>
+
+  <p>Важно, что это не косметика: площади и периметр считаются <strong>по фактическому контуру</strong>, а не по габаритному прямоугольнику. И ведут себя эти два вида вырезов по-разному. Угловой срез периметр не меняет — сколько стены убрали по двум сторонам, столько же добавилось по граням выреза. А короб у стены периметр <strong>увеличивает</strong> на две своих глубины: у него появляются две новые боковые грани, которые тоже надо штукатурить и красить. Поэтому зашитый в углу стояк почти не влияет на расход материалов на стены, а такой же короб посреди стены — влияет.</p>
+
+  <ol>
+    <li><strong>Комнаты.</strong> Инструмент «Комната» — растяните прямоугольник на сетке. Шаг привязки 10 см.</li>
+    <li><strong>Двери и окна.</strong> Выберите инструмент и щёлкните по нужной стене комнаты. Проём встанет на ближайшую стену и вычтется из площади стен.</li>
+    <li><strong>Отделка.</strong> Для каждой комнаты задаётся свой пол, стены и потолок — от этого зависят и материалы, и цена работ.</li>
+    <li><strong>Сценарий и уровень.</strong> Сценарий определяет, нужны ли демонтаж и черновая отделка; уровень двигает цены материалов и работ.</li>
+  </ol>
+
+  <p>План сохраняется в браузере автоматически: закроете вкладку — при следующем заходе он вернётся. На сервер ничего не отправляется. Отменить последнее действие — <strong>Ctrl+Z</strong>, удалить выделенное — <strong>Delete</strong>.</p>
+
+  <h2>Как считаются объёмы</h2>
+
+  <p>Вся арифметика идёт от геометрии плана, а не от «квадратуры квартиры». Это принципиально: площадь стен под отделку в типовой квартире в два с половиной — три раза больше площади пола, и умножение цены краски на 40 квадратов даёт ошибку втрое.</p>
+
+  <div class="calc-example">
+    <p><strong>Пол и потолок:</strong> ширина × глубина</p>
+    <p><strong>Стены:</strong> периметр × высота потолка − площадь всех проёмов</p>
+    <p><strong>Плинтус:</strong> периметр − ширина дверных проёмов</p>
+  </div>
+
+  <p>Проёмы вычитаются по фактическим габаритам: дверь по умолчанию 0,9 × 2,05 м, окно 1,4 × 1,5 м, но и то и другое меняется в панели. На небольшой квартире с пятью дверями и тремя окнами это 15–20 м² стен — заметная разница в краске и обоях.</p>
+
+  <h2>Что входит в смету</h2>
+
+  <table>
+    <thead><tr><th>Этап</th><th>Что считается</th></tr></thead>
+    <tbody>
+      <tr><td>Демонтаж и вывоз</td><td>Работа по площади пола плюс вывоз мусора из расчёта 0,25 м³ на м²</td></tr>
+      <tr><td>Инженерия</td><td>Электроточки поштучно, щиток, разводка санузла и кухни, гидроизоляция мокрых зон, тёплый пол</td></tr>
+      <tr><td>Черновая отделка</td><td>Штукатурка стен и стяжка пола там, где покрытие этого требует</td></tr>
+      <tr><td>Чистовая отделка</td><td>Пол, стены, потолок по выбранному типу и плинтус</td></tr>
+      <tr><td>Двери и изделия</td><td>Межкомнатные двери с монтажом, при необходимости — замена окон</td></tr>
+    </tbody>
+  </table>
+
+  <p>Цены — ориентиры на 2026 год для крупных городов, уровень «стандарт». Уровень отделки двигает материалы сильнее, чем работы: между экономом и премиумом материалы отличаются почти в четыре раза, а работы — вдвое. В регионах стоимость работ обычно ниже на 15–35%.</p>
+
+  <h2>Чего расчёт не делает</h2>
+  <ul>
+    <li><strong>Не заменяет замер.</strong> Реальные стены непрямые, а углы непрямоугольные; план на сетке — это модель, а не обмерный чертёж.</li>
+    <li><strong>Не строит скруглённые и косые стены.</strong> Контур комнаты складывается из прямых углов: прямоугольник плюс прямоугольные вырезы. Эркер со скошенными гранями придётся приблизить ступенькой.</li>
+    <li><strong>Не считает мебель и технику.</strong> Кухня, шкафы и бытовая техника в типовой квартире дают ещё примерно столько же, сколько сам ремонт.</li>
+    <li><strong>Не учитывает перепланировку.</strong> Снос и возведение перегородок, усиление проёмов и согласование считаются отдельно.</li>
+    <li><strong>Не знает состояние объекта.</strong> Гнилая стяжка, алюминиевая проводка и кривизна стен в 7 см — это то, ради чего и закладывается резерв.</li>
+  </ul>
+
+  <p>Резерв 12% в итоге — не перестраховка, а обязательная строка бюджета. Он тратится практически всегда: на вскрытые сюрпризы, на изменения по ходу и на рост цен между расчётом сметы и закупкой чистовых материалов.</p>
+</section>

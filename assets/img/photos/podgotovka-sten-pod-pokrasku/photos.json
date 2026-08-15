@@ -1,0 +1,37 @@
+{
+  "slug": "podgotovka-sten-pod-pokrasku",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/podgotovka-sten-pod-pokrasku/01.jpg",
+      "webp": "/assets/img/photos/podgotovka-sten-pod-pokrasku/01.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Шлифовка стены перед покраской",
+      "title": "So many walls and ceilings to prepare (filling, sanding, filling, sanding ...) #app3",
+      "credit": {
+        "author": "Christine und Hagen Graf",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/17963290@N00/9471607716",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/podgotovka-sten-pod-pokrasku/02.jpg",
+      "webp": "/assets/img/photos/podgotovka-sten-pod-pokrasku/02.webp",
+      "width": 1200,
+      "height": 1600,
+      "caption": "Основание выводят до гладкого",
+      "title": "Plaster Sand in Awka, Anambra State",
+      "credit": {
+        "author": "Johnnybam",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Plaster_Sand_in_Awka,_Anambra_State.jpg",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    }
+  ]
+}

@@ -1,86 +1,193 @@
-<p>Проект электрики в квартире — это не «нарисовать розетки на плане», а расчёт нагрузок, групп, сечений кабеля и мест установки щитка. Без проекта получают «розетка там, где удобно штrobить», перегруженные линии и мерцание света. Полный гид по проектированию для капремонта и новостройки.</p>
+<p>Проект электрики — это не «нарисовать розетки на плане». Это расчёт: сколько мощности реально придёт в квартиру, как разделить её на группы, каким сечением тянуть каждую линию, какой автомат её защитит и сколько модулей займёт щит. Без этого расчёта получается знакомая картина — розетки там, где было удобно штробить, свет мигает при включении чайника, а через год в щит уже нечего добавить.</p>
 
-<h2>Зачем нужен проект</h2>
+<p>Разберём проект по шагам: исходные данные, расчёт нагрузки, разбивка на группы с сечениями и автоматами, размещение точек по комнатам, наполнение щита и комплект документов, который должен получиться на выходе.</p>
+
+<h2>Когда проект обязателен</h2>
+
+<p>Формально в квартире проект не требует согласования — в отличие от <a href="/article/soglasovanie-pereplanirovki-kvartiry/">перепланировки</a>. Но есть порог, после которого без него работать нельзя:</p>
+
 <ul>
-  <li>безопасность — автоматы и УЗО под реальные нагрузки;</li>
-  <li>удобство — розетки там, где стоит мебель;</li>
-  <li>согласованность с <a href="/article/kapitalnyy-remont-kvartiry-polnyy-gid/">этапами ремонта</a>;</li>
-  <li>основа для <a href="/article/umnyy-dom-osnovy/">умного дома</a> и <a href="/article/prokladka-interneta-vitaya-para-remont/">слаботочки</a>.</li>
+<li><strong>Полная <a href="/article/zamena-provodki-v-kvartire/">замена проводки</a></strong> — вы задаёте конфигурацию на 25–30 лет вперёд. Переделать после плитки и натяжных потолков стоит в разы дороже, чем один раз посчитать.</li>
+<li><strong>Новостройка без отделки</strong> — застройщик оставляет минимальный ввод и заглушки, вся схема ваша.</li>
+<li><strong>Электроплита или варочная панель</strong> — линия на 32 А проектируется отдельно, «докинуть от розетки» нельзя.</li>
+<li><strong>Кондиционеры, <a href="/article/teplyy-pol/">тёплый пол</a>, водонагреватель</strong> — каждый уносит по 1,5–3 кВт и требует своей линии.</li>
 </ul>
 
-<h2>Исходные данные</h2>
-<p>Соберите:</p>
+<p>Для косметического ремонта без вскрытия стен проект избыточен: там задача — не ухудшить существующее.</p>
+
+<h2>Шаг 1. Исходные данные</h2>
+
+<p>Проект начинается не с плана розеток, а с четырёх цифр и одной схемы.</p>
+
+<h3>Выделенная мощность</h3>
+
+<p>Это потолок, выше которого не прыгнуть: сколько киловатт вам разрешено потреблять по договору с энергосбытом. Смотрите в договоре или запрашивайте в УК.</p>
+
+<div style="overflow-x:auto;margin:1.25rem 0;"><table style="width:100%;border-collapse:collapse;min-width:600px;"><thead><tr><th style="padding:10px;border:1px solid #ddd;text-align:left;background:#f5f5f5;">Тип дома</th><th style="padding:10px;border:1px solid #ddd;text-align:left;background:#f5f5f5;">Типовая мощность</th><th style="padding:10px;border:1px solid #ddd;text-align:left;background:#f5f5f5;">Вводной автомат</th></tr></thead><tbody><tr><td style="padding:10px;border:1px solid #ddd;">Старый фонд, газовая плита</td><td style="padding:10px;border:1px solid #ddd;">3–5 кВт</td><td style="padding:10px;border:1px solid #ddd;">16–25 А</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Новостройка, газовая плита</td><td style="padding:10px;border:1px solid #ddd;">7–9 кВт</td><td style="padding:10px;border:1px solid #ddd;">32–40 А</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Новостройка, электроплита</td><td style="padding:10px;border:1px solid #ddd;">10–15 кВт</td><td style="padding:10px;border:1px solid #ddd;">50–63 А</td></tr></tbody></table></div>
+
+<p>Если по расчёту вы не укладываетесь, вариантов два: сокращать одновременные нагрузки или подавать заявку на увеличение мощности. Второе решается не всегда — зависит от резерва на подстанции и состоянии домовых сетей. Выяснять это нужно до закупки техники, а не после.</p>
+
+<h3>План с мебелью и техникой</h3>
+
+<p>Розетка проектируется под предмет, а не под стену. Пока не решено, где стоит диван, с какой стороны кровати тумба и куда встанет холодильник, проектировать нечего. Поэтому электрика идёт после планировочного решения — это же требование фиксирует <a href="/article/posledovatelnost-remonta-chek-list/">последовательность ремонта</a>.</p>
+
+<h3>Список техники с паспортной мощностью</h3>
+
+<p>Выписывайте по факту, а не «примерно». Разброс внутри одной категории двукратный: варочная панель бывает и 3,5 кВт, и 7,4 кВт.</p>
+
+<h3>Сценарии освещения</h3>
+
+<p>Проходные выключатели, диммирование, подсветка ниш — всё это провода, которые закладываются до штукатурки. Что именно закладывать, разбирает материал про <a href="/article/svetovye-stsenarii-v-kvartire/">световые сценарии</a>.</p>
+
+<h2>Шаг 2. Расчёт нагрузки</h2>
+
+<p>Сложите паспортную мощность всех потребителей и умножьте на коэффициент одновременности — все приборы никогда не работают разом.</p>
+
+<div style="overflow-x:auto;margin:1.25rem 0;"><table style="width:100%;border-collapse:collapse;min-width:620px;"><thead><tr><th style="padding:10px;border:1px solid #ddd;text-align:left;background:#f5f5f5;">Потребитель</th><th style="padding:10px;border:1px solid #ddd;text-align:left;background:#f5f5f5;">Мощность</th><th style="padding:10px;border:1px solid #ddd;text-align:left;background:#f5f5f5;">Линия</th></tr></thead><tbody><tr><td style="padding:10px;border:1px solid #ddd;">Варочная панель индукционная</td><td style="padding:10px;border:1px solid #ddd;">3,5–7,4 кВт</td><td style="padding:10px;border:1px solid #ddd;">Отдельная</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Духовой шкаф</td><td style="padding:10px;border:1px solid #ddd;">2,5–3,5 кВт</td><td style="padding:10px;border:1px solid #ddd;">Отдельная</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Водонагреватель</td><td style="padding:10px;border:1px solid #ddd;">1,5–2,5 кВт</td><td style="padding:10px;border:1px solid #ddd;">Отдельная</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Стиральная машина</td><td style="padding:10px;border:1px solid #ddd;">2–2,5 кВт</td><td style="padding:10px;border:1px solid #ddd;">Отдельная</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Посудомоечная машина</td><td style="padding:10px;border:1px solid #ddd;">2–2,2 кВт</td><td style="padding:10px;border:1px solid #ddd;">Отдельная</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Кондиционер (на комнату)</td><td style="padding:10px;border:1px solid #ddd;">0,8–1,5 кВт</td><td style="padding:10px;border:1px solid #ddd;">Отдельная на каждый</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Тёплый пол, санузел</td><td style="padding:10px;border:1px solid #ddd;">0,5–1 кВт</td><td style="padding:10px;border:1px solid #ddd;">Отдельная</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Чайник, микроволновка, тостер</td><td style="padding:10px;border:1px solid #ddd;">1,5–2,2 кВт каждый</td><td style="padding:10px;border:1px solid #ddd;">Группа кухонных розеток</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Освещение всей квартиры</td><td style="padding:10px;border:1px solid #ddd;">0,3–0,6 кВт</td><td style="padding:10px;border:1px solid #ddd;">2–3 группы</td></tr></tbody></table></div>
+
+<p>Коэффициент одновременности для квартиры берут <strong>0,6–0,8</strong>: меньшее значение для большой семьи с разнесённым бытом, большее — если техника включается кучно (утро, вечер).</p>
+
+<blockquote>
+Пример. Двушка с индукцией: 7,4 + 3,5 (духовка) + 2 (водонагреватель) + 2,2 (стиралка) + 2 (посудомойка) + 2,4 (два кондиционера) + 3 (розетки и мелкая техника) + 0,4 (свет) = 22,9 кВт установленной мощности. При коэффициенте 0,6 расчётная нагрузка — 13,7 кВт. В договор на 15 кВт укладываемся, в 10 кВт — нет: придётся либо отказываться от мощной индукции, либо ставить реле приоритета нагрузок.
+</blockquote>
+
+<p>Быстро прикинуть свою цифру и число групп помогает <a href="/calc/moshchnost-i-gruppy/">калькулятор мощности и групп</a>.</p>
+
+<h2>Шаг 3. Группы, сечения, автоматы</h2>
+
+<p>Группа — это одна линия от щита до потребителей, защищённая своим автоматом. Логика разбивки простая: мощное — отдельно, влажное — отдельно, свет — отдельно от розеток (при коротком замыкании в розетке вы не остаётесь в темноте).</p>
+
+<div style="overflow-x:auto;margin:1.25rem 0;"><table style="width:100%;border-collapse:collapse;min-width:700px;"><thead><tr><th style="padding:10px;border:1px solid #ddd;text-align:left;background:#f5f5f5;">Группа</th><th style="padding:10px;border:1px solid #ddd;text-align:left;background:#f5f5f5;">Сечение, мм²</th><th style="padding:10px;border:1px solid #ddd;text-align:left;background:#f5f5f5;">Автомат</th><th style="padding:10px;border:1px solid #ddd;text-align:left;background:#f5f5f5;">УЗО</th></tr></thead><tbody><tr><td style="padding:10px;border:1px solid #ddd;">Варочная панель</td><td style="padding:10px;border:1px solid #ddd;">6</td><td style="padding:10px;border:1px solid #ddd;">32 А</td><td style="padding:10px;border:1px solid #ddd;">30 мА</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Духовой шкаф</td><td style="padding:10px;border:1px solid #ddd;">2,5</td><td style="padding:10px;border:1px solid #ddd;">16 А</td><td style="padding:10px;border:1px solid #ddd;">30 мА</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Розетки кухни</td><td style="padding:10px;border:1px solid #ddd;">2,5</td><td style="padding:10px;border:1px solid #ddd;">16 А</td><td style="padding:10px;border:1px solid #ddd;">30 мА</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Стиральная машина</td><td style="padding:10px;border:1px solid #ddd;">2,5</td><td style="padding:10px;border:1px solid #ddd;">16 А</td><td style="padding:10px;border:1px solid #ddd;">10 мА</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Посудомоечная машина</td><td style="padding:10px;border:1px solid #ddd;">2,5</td><td style="padding:10px;border:1px solid #ddd;">16 А</td><td style="padding:10px;border:1px solid #ddd;">10 мА</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Водонагреватель</td><td style="padding:10px;border:1px solid #ddd;">2,5</td><td style="padding:10px;border:1px solid #ddd;">16 А</td><td style="padding:10px;border:1px solid #ddd;">10 мА</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Розетки санузла</td><td style="padding:10px;border:1px solid #ddd;">2,5</td><td style="padding:10px;border:1px solid #ddd;">16 А</td><td style="padding:10px;border:1px solid #ddd;">10 мА</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Тёплый пол</td><td style="padding:10px;border:1px solid #ddd;">2,5</td><td style="padding:10px;border:1px solid #ddd;">16 А</td><td style="padding:10px;border:1px solid #ddd;">30 мА</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Кондиционер (каждый)</td><td style="padding:10px;border:1px solid #ddd;">2,5</td><td style="padding:10px;border:1px solid #ddd;">16 А</td><td style="padding:10px;border:1px solid #ddd;">30 мА</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Розетки комнат (по зонам)</td><td style="padding:10px;border:1px solid #ddd;">2,5</td><td style="padding:10px;border:1px solid #ddd;">16 А</td><td style="padding:10px;border:1px solid #ddd;">30 мА</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Освещение</td><td style="padding:10px;border:1px solid #ddd;">1,5</td><td style="padding:10px;border:1px solid #ddd;">10 А</td><td style="padding:10px;border:1px solid #ddd;">30 мА</td></tr></tbody></table></div>
+
+<p>Правило связки простое: <strong>автомат защищает кабель, а не прибор</strong>. Он должен сработать раньше, чем провод нагреется до опасной температуры. Поэтому номинал подбирается под сечение, а не под желание «чтобы не выбивало»: автомат 25 А на кабеле 1,5 мм² — это провод, который спокойно тлеет в стене, пока защита считает ток нормальным. Развёрнутые таблицы с длинами и падением напряжения — в материале про <a href="/article/raschet-secheniya-kabelya-tablicy/">расчёт сечения кабеля</a>, быстрый подбор — в <a href="/calc/sechenie-kabelya/">калькуляторе сечения и автомата</a>.</p>
+
+<p>Типовая двушка выходит на <strong>12–16 групп</strong>, трёшка — на 16–22. Если у проектировщика получилось шесть, он экономит на вашей безопасности; если тридцать в однушке — на вашем кошельке.</p>
+
+<h3>УЗО и дифавтоматы</h3>
+
+<p>УЗО отслеживает утечку тока на землю — то есть ситуацию, когда ток пошёл через человека или через намокшую изоляцию. Автомат этого не видит: для него 30 мА через тело — не перегрузка.</p>
+
 <ul>
-  <li>план с мебелью и техникой;</li>
-  <li>мощность плиты, духовки, кондиционеров, <a href="/article/zaryadka-elektromobilya-kvartira/">зарядки EV</a>;</li>
-  <li>тип ввода (мощность по договору);</li>
-  <li>желаемые сценарии света (<a href="/article/svetovye-stsenarii-v-kvartire/">световые сценарии</a>).</li>
+<li><strong>30 мА</strong> — противопожарный и общий уровень для розеточных групп.</li>
+<li><strong>10 мА</strong> — для влажных зон и мест, где прибор контактирует с водой: <a href="/article/elektrika-v-vannoy-zony-ip/">санузел</a>, стиральная и посудомоечная машина, водонагреватель.</li>
+<li><strong>Одно УЗО на 2–3 группы максимум.</strong> Общее УЗО на всю квартиру означает, что при утечке в утюге вы обесточиваете холодильник и роутер и полдня ищете виновника методом отключения.</li>
 </ul>
 
-<h2>Группы и линии</h2>
-<p>Минимальная разбивка:</p>
-<ul>
-  <li>розетки кухни — отдельная линия 2,5 мм²;</li>
-  <li>плита — 6 мм² (или по паспорту);</li>
-  <li>духовка — отдельная;</li>
-  <li>кондиционеры — каждый отдельно;</li>
-  <li>розетки комнат — по зонам;</li>
-  <li>освещение — отдельные линии 1,5 мм²;</li>
-  <li>ванная — через УЗО 10 mA.</li>
-</ul>
-<p>Подробнее про кухню — <a href="/article/elektrika-na-kuhne-raschet-liniy/">электрика на кухне</a>, про щиток — <a href="/article/kvartirnyy-schitok-sborka-i-markirovka/">сборка щитка</a>.</p>
+<p>Разницу между УЗО, дифавтоматом и реле напряжения подробно разбирают статьи про <a href="/article/uzo-i-avr-v-schitke/">УЗО и дифавтоматы</a> и <a href="/article/uzm-i-uzo-v-chem-raznica/">УЗМ и УЗО</a>.</p>
 
-<h2>Розетки: высоты и количество</h2>
-<ul>
-  <li>кухня — над столешницей +90–110 см, под технику;</li>
-  <li>спальня — обе стороны кровати;</li>
-  <li>гостиная — ТВ-зона, зарядки, пылесос;</li>
-  <li>коридор — пылесос, зарядка;</li>
-  <li>балкон — <a href="/article/ulichnaya-rozetka-ip-zima-balkon/">IP и УЗО</a>.</li>
-</ul>
-<p>Стандарт «1 розетка на 6 м²» — устарел. Считайте устройства.</p>
+<h2>Шаг 4. Точки по комнатам</h2>
 
-<h2>Освещение в проекте</h2>
-<p>Заложите:</p>
+<p>Норматив «одна розетка на 6 м²» родом из времён, когда в комнате стоял телевизор и торшер. Считайте устройства: сколько вилок реально воткнётся в этой зоне плюс запас 30%.</p>
+
+<div style="overflow-x:auto;margin:1.25rem 0;"><table style="width:100%;border-collapse:collapse;min-width:660px;"><thead><tr><th style="padding:10px;border:1px solid #ddd;text-align:left;background:#f5f5f5;">Помещение</th><th style="padding:10px;border:1px solid #ddd;text-align:left;background:#f5f5f5;">Розеток</th><th style="padding:10px;border:1px solid #ddd;text-align:left;background:#f5f5f5;">Что учесть</th></tr></thead><tbody><tr><td style="padding:10px;border:1px solid #ddd;">Кухня</td><td style="padding:10px;border:1px solid #ddd;">10–14</td><td style="padding:10px;border:1px solid #ddd;">Встройка внизу, рабочая зона над столешницей, вытяжка</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Гостиная</td><td style="padding:10px;border:1px solid #ddd;">8–10</td><td style="padding:10px;border:1px solid #ddd;">ТВ-зона (4 шт. за панелью), диван, рабочий стол, пылесос</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Спальня</td><td style="padding:10px;border:1px solid #ddd;">6–8</td><td style="padding:10px;border:1px solid #ddd;">По две с каждой стороны кровати, туалетный столик</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Детская</td><td style="padding:10px;border:1px solid #ddd;">6–8</td><td style="padding:10px;border:1px solid #ddd;">Стол, кровать, свободная стена под перестановку</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Санузел</td><td style="padding:10px;border:1px solid #ddd;">2–3</td><td style="padding:10px;border:1px solid #ddd;">Влагозащищённые, не ближе 60 см от воды</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Коридор</td><td style="padding:10px;border:1px solid #ddd;">2–3</td><td style="padding:10px;border:1px solid #ddd;">Пылесос, зарядки, щит</td></tr><tr><td style="padding:10px;border:1px solid #ddd;">Балкон, лоджия</td><td style="padding:10px;border:1px solid #ddd;">1–2</td><td style="padding:10px;border:1px solid #ddd;">Степень защиты IP44 и выше</td></tr></tbody></table></div>
+
+<h3>Высоты установки</h3>
+
+<p>Жёсткого норматива нет, есть сложившаяся практика:</p>
+
 <ul>
-  <li>выводы под люстру/треки;</li>
-  <li>проходные выключатели в коридоре;</li>
-  <li>диммируемые линии (<a href="/article/dimmery-sveta-led-sovmestimost/">диммеры и LED</a>);</li>
-  <li>подсветка кухни, шкафов (<a href="/article/led-podsvetka-nishi-i-karnizov/">LED-ниши</a>).</li>
+<li><strong>Розетки общего назначения</strong> — 30 см от чистового пола. Помните про «чистовой»: если пол ещё не залит, отметка едет на 5–10 см.</li>
+<li><strong>Над столешницей кухни</strong> — 105–115 см, то есть на 10–15 см выше столешницы. Ниже фартук режется, выше упирается в шкафы.</li>
+<li><strong>За телевизором</strong> — 130–140 см, чтобы блок розеток спрятался за панелью.</li>
+<li><strong>Выключатели</strong> — 90 см, на уровне опущенной руки. Старая высота 150 см неудобна детям и не даёт ничего взамен.</li>
+<li><strong>Под встроенную технику</strong> — 10–15 см от пола в соседнем модуле, но не за самим прибором: до розетки нужен доступ, не выдвигая холодильник.</li>
 </ul>
 
-<h2>Щиток: место и наполнение</h2>
+<p>Детали компоновки кухонных линий — в статье про <a href="/article/elektrika-na-kuhne-raschet-liniy/">электрику на кухне</a>, типы механизмов и рамок — в материале про <a href="/article/rozetki-i-vyklyuchateli/">розетки и выключатели</a>.</p>
+
+<h3>Освещение в проекте</h3>
+
+<p>На плане должны быть отмечены: выводы под люстры и трек-системы, места точечных светильников, проходные и перекрёстные схемы, диммируемые линии и точки питания подсветки.</p>
+
 <ul>
-  <li>доступ без мебели;</li>
-  <li>вводной автомат, УЗО/дифавтоматы (<a href="/article/uzo-i-avr-v-schitke/">УЗО и дифавтоматы</a>);</li>
-  <li>реле напряжения / <a href="/article/stabilizator-napryazheniya-kvartira/">стабилизатор</a> по необходимости;</li>
-  <li>резерв 20–30% модулей.</li>
+<li><strong>Проходные выключатели</strong> — коридор (с двух концов), спальня (у двери и у кровати), лестница. Схемы — в материале про <a href="/article/prohodnye-vyklyuchateli-shemy/">проходные выключатели</a>.</li>
+<li><strong>Диммирование</strong> — только на совместимые драйверы, иначе гул и мерцание; см. <a href="/article/dimmery-sveta-led-sovmestimost/">диммеры и LED</a>.</li>
+<li><strong>Подсветка</strong> ниш, карнизов и шкафов требует места под блок питания — заранее выделите нишу с доступом (<a href="/article/led-podsvetka-nishi-i-karnizov/">LED-подсветка ниш</a>).</li>
+</ul>
+
+<p>Сколько света нужно комнате в люменах — считает <a href="/calc/osveshchenie/">калькулятор освещения</a>; общая логика — в статье про <a href="/article/osveshcheniye-v-kvartire/">освещение в квартире</a>.</p>
+
+<h2>Шаг 5. Щит</h2>
+
+<p>Щит проектируется последним, потому что его размер — следствие числа групп, и первым монтируется, потому что от него всё расходится.</p>
+
+<ul>
+<li><strong>Место.</strong> Свободный доступ без отодвигания мебели, не в санузле, не за дверью в распахнутом положении. Обычно коридор у входа.</li>
+<li><strong>Размер.</strong> Считайте модули: вводной автомат — 2, счётчик — 5–7, реле напряжения — 2–3, каждое УЗО — 2, каждый автомат группы — 1, дифавтомат — 2. Плюс шины нуля и земли.</li>
+<li><strong>Резерв 20–30%.</strong> Не «если останется место», а обязательная строка. Через три года появится зарядка для велосипеда, ещё один кондиционер или <a href="/article/zaryadka-elektromobilya-kvartira/">зарядка электромобиля</a>.</li>
+<li><strong>Маркировка.</strong> Каждая группа подписана так, чтобы понял не только электрик. «Розетки, кухня, рабочая зона», а не «АВ7».</li>
+</ul>
+
+<p>Наполнение и сборку разбирают статьи про <a href="/article/kvartirnyy-schitok-sborka-i-markirovka/">квартирный щиток</a> и <a href="/article/montazh-elektroshchita-svoimi-rukami/">монтаж электрощита</a>. Защита от перекоса фаз и скачков — <a href="/article/stabilizator-napryazheniya-kvartira/">стабилизатор напряжения</a>.</p>
+
+<h2>Шаг 6. Слаботочка</h2>
+
+<p>Слаботочные линии закладываются в тот же заход, что и силовые, — потом штробить нечего. В отдельном коробе или на расстоянии не меньше 15–20 см от силовых кабелей, иначе наводки.</p>
+
+<ul>
+<li><strong>Интернет</strong> — витая пара в комнаты и к точкам доступа. Wi-Fi не отменяет кабель: см. <a href="/article/prokladka-interneta-vitaya-para-remont/">прокладку витой пары</a>.</li>
+<li><strong>Видеодомофон</strong> — линия от подъездной трубки к месту монитора плюс питание (<a href="/article/videodomofon-provodka-i-pitanie/">домофон</a>).</li>
+<li><strong>Датчики протечки</strong> — к вводным кранам и в узел управления (<a href="/article/zashchita-ot-protechek-datchiki-krany/">защита от протечек</a>).</li>
+<li><strong>Умный дом</strong> — глубокие подрозетники под модули и нулевой провод в подрозетниках выключателей; логика в статье про <a href="/article/umnyy-dom-osnovy/">основы умного дома</a>.</li>
 </ul>
 
 <h2>Кабель и прокладка</h2>
-<p>В штробах — кабель VVGng-LS, в гофре — где требуется замена. Не переполняйте штробы. Открытая проводка — <a href="/article/kabel-kanaly-i-koroby/">кабель-каналы</a>.</p>
 
-<h2>Слаботочка</h2>
-<p>Заложите параллельно:</p>
+<p>Стандарт для квартиры — медный <strong>ВВГнг-LS</strong>: не поддерживает горение и даёт мало дыма. Алюминий в новой квартирной проводке не применяется.</p>
+
 <ul>
-  <li>интернет (<a href="/article/prokladka-interneta-vitaya-para-remont/">витая пара</a>);</li>
-  <li>видеодомофон (<a href="/article/videodomofon-provodka-i-pitanie/">домофон</a>);</li>
-  <li>датчики умного дома.</li>
+<li>Штробы — строго вертикально и горизонтально, без диагоналей: иначе через год никто не найдёт трассу дрелью. Правила — в материале про <a href="/article/shtroblenie-sten-pod-provodku/">штробление стен</a>.</li>
+<li>В несущих панелях штробить нельзя — прокладка идёт в слое штукатурки, за подвесным потолком или в полу.</li>
+<li>В <a href="/article/provodka-v-gipsokartone-normy/">гипсокартоне</a> — в гофре с креплением, без провисов.</li>
+<li>Соединения — только в распаячных коробках с доступом или в подрозетниках. Скрутка, замурованная в стену, — самая частая причина пожара в старом фонде.</li>
+<li>Обязательно сфотографируйте все трассы до штукатурки с привязкой к углам и рулеткой в кадре. Это сэкономит вам нервы каждый раз, когда захочется повесить полку, и избавит от <a href="/article/poisk-skrytoy-provodki-v-stene/">поиска скрытой проводки</a>.</li>
 </ul>
 
-<h2>Документы на выходе</h2>
+<h2>Что должно получиться на выходе</h2>
+
+<p>Проект — это комплект документов, а не картинка в мессенджере.</p>
+
+<ol>
+<li><strong>План размещения</strong> — розетки, выключатели, светильники, слаботочка с привязками в сантиметрах к углам и полу.</li>
+<li><strong>Схема групп</strong> — какая линия куда идёт и что питает.</li>
+<li><strong>Однолинейная схема щита</strong> — вводной автомат, счётчик, УЗО, группы, номиналы.</li>
+<li><strong>Таблица нагрузок</strong> — потребители, мощности, коэффициент, итог.</li>
+<li><strong>Спецификация</strong> — метраж кабеля по сечениям, автоматы, УЗО, подрозетники, коробки, щит. Она же становится строкой в <a href="/article/smeta-remonta-kvartiry/">смете ремонта</a>.</li>
+<li><strong>Фотофиксация трасс</strong> — после монтажа, до штукатурки.</li>
+</ol>
+
+<h2>Пять ошибок, которые дорого стоят</h2>
+
 <ul>
-  <li>план с привязками;</li>
-  <li>спецификация кабеля и автоматов;</li>
-  <li>таблица нагрузок;</li>
-  <li>схема щитка.</li>
+<li><strong>Проект после черновой отделки.</strong> Штробить по свежей штукатурке — значит оплатить её дважды.</li>
+<li><strong>Экономия на группах.</strong> Пять линий на всю квартиру: выбило одну — обесточена половина жилья, а поиск причины превращается в квест.</li>
+<li><strong>Автомат «побольше, чтобы не выбивало».</strong> Выбивает не автомат — выбивает перегруз. Замена номинала без замены кабеля переводит проблему из разряда «неудобно» в разряд «опасно».</li>
+<li><strong>Розетки от планировки, а не от мебели.</strong> Потом за шкафом оказываются три розетки, а у кровати — ни одной.</li>
+<li><strong>Ноль резерва в щите.</strong> Любое добавление через год означает менять щит целиком.</li>
 </ul>
 
-<h2>FAQ</h2>
-<h3>Можно ли без проекта?</h3>
-<p>Для косметики — иногда. Для <a href="/article/zamena-provodki-v-kvartire/">замены проводки</a> — рискованно.</p>
-<h3>Кто делает проект?</h3>
-<p>Электрик, проектировщик или вы с чек-листом — главное, чтобы было до штrob.</p>
+<p>Общие принципы безопасности собраны в статье про <a href="/article/bezopasnaya-elektrika-v-kvartire-pravila/">безопасную электрику в квартире</a>, а система заземления — в материале про <a href="/article/zazemlenie-v-kvartire-tn-c-s/">заземление TN-C-S</a>.</p>
+
+<h2>Частые вопросы</h2>
+
+<h3>Можно ли обойтись без проекта?</h3>
+<p>Для косметического ремонта — да. Для замены проводки — практически нет: без расчёта нагрузок вы не знаете, укладываетесь ли в выделенную мощность, а без плана групп нельзя посчитать щит и метраж кабеля. Минимально допустимый вариант — план точек с привязками плюс таблица групп с сечениями, сделанные до штробления.</p>
+
+<h3>Кто делает проект и сколько это стоит?</h3>
+<p>Проектировщик, опытный электрик или сам собственник по чек-листу. Отдельная услуга по электрике для квартиры обычно стоит порядка 150–400 ₽ за м² и часто входит в <a href="/article/dizayn-proekt-kvartiry-sostav-cena/">дизайн-проект</a>. На фоне стоимости переделки после плитки это несопоставимо малая сумма.</p>
+
+<h3>Сколько групп нужно в однокомнатной квартире?</h3>
+<p>Обычно 8–12: варочная панель (если электрическая), духовка, кухонные розетки, стиральная машина, санузел, розетки комнаты, розетки коридора, две группы света, кондиционер. С тёплым полом и посудомойкой — плюс две.</p>
+
+<h3>Обязательно ли УЗО, если в доме нет заземления?</h3>
+<p>Обязательно и особенно важно. В системе TN-C (старый фонд без отдельного защитного проводника) УЗО остаётся единственной защитой человека от удара током: при касании корпуса под напряжением ток уходит через тело, УЗО фиксирует утечку и отключает линию за десятки миллисекунд. Заземление при этом нужно привести в порядок отдельно.</p>
+
+<h3>Можно ли подключить варочную панель в обычную розетку?</h3>
+<p>Панель на 3,5 кВт — да, при условии отдельной линии 2,5 мм² и розетки на 16 А. От 7 кВт — нет: нужна линия 6 мм² с автоматом 32 А и силовая розетка или прямое подключение через клеммник. Подробности — в статье про <a href="/article/podklyuchenie-varochnoy-paneli-i-duhovki/">подключение варочной панели и духовки</a>.</p>
+
+<h3>Что делать, если выделенной мощности не хватает?</h3>
+<p>Три пути. Первый — сократить нагрузку: газовая варочная вместо индукции, проточный водонагреватель заменить накопительным. Второй — поставить реле приоритета нагрузок, которое временно отключает второстепенное при пиковом потреблении. Третий — подать заявку на увеличение мощности в сетевую организацию; решение зависит от резерва, а не от вашего желания, и занимает месяцы.</p>
 
 <h2>Итог</h2>
-<p>Проект электрики = план + группы + щиток + слаботочка. Сделайте до черновых работ — переделывать после плитки в десятки раз дороже.</p>
+
+<p>Проект электрики — четыре связанных вещи: расчёт нагрузки от выделенной мощности, разбивка на группы с подобранными сечениями и автоматами, план точек от расстановки мебели и схема щита с резервом. Всё это делается до штробления и до закупки материалов. Один вечер с калькулятором и планом квартиры экономит десятки тысяч рублей на переделках и снимает риск, который в электрике измеряется не деньгами.</p>

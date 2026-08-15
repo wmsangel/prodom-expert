@@ -1,0 +1,37 @@
+{
+  "slug": "polotencesushitel-vodyanoy-ili-elektricheskiy",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/polotencesushitel-vodyanoy-ili-elektricheskiy/01.jpg",
+      "webp": "/assets/img/photos/polotencesushitel-vodyanoy-ili-elektricheskiy/01.webp",
+      "width": 1326,
+      "height": 1600,
+      "caption": "Полотенцесушитель",
+      "title": "Towel rails radiator with hanger",
+      "credit": {
+        "author": "MB SRL",
+        "license": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Towel_rails_radiator_with_hanger.jpg",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/polotencesushitel-vodyanoy-ili-elektricheskiy/02.jpg",
+      "webp": "/assets/img/photos/polotencesushitel-vodyanoy-ili-elektricheskiy/02.webp",
+      "width": 1024,
+      "height": 615,
+      "caption": "Полотенцесушитель в ванной",
+      "title": "green modern bathroom",
+      "credit": {
+        "author": "Foto Miki Digital",
+        "license": "Общественное достояние",
+        "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "page_url": "https://www.flickr.com/photos/96511847@N04/9201149915",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

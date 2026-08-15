@@ -1,0 +1,37 @@
+{
+  "slug": "vybor-i-ustanovka-vanny",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/vybor-i-ustanovka-vanny/01.jpg",
+      "webp": "/assets/img/photos/vybor-i-ustanovka-vanny/01.webp",
+      "width": 1023,
+      "height": 685,
+      "caption": "Установка ванны",
+      "title": "Finished 01",
+      "credit": {
+        "author": "Ken Doerr",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/45673145@N00/4822253617",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/vybor-i-ustanovka-vanny/02.jpg",
+      "webp": "/assets/img/photos/vybor-i-ustanovka-vanny/02.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Ванна в санузле",
+      "title": "giant bathtub",
+      "credit": {
+        "author": "Erica Nicol",
+        "license": "CC BY-SA 2.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+        "page_url": "https://www.flickr.com/photos/49659726@N00/373775365",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

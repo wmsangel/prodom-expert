@@ -1,0 +1,37 @@
+{
+  "slug": "zamena-elektroschetchika-kvartira",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/zamena-elektroschetchika-kvartira/01.jpg",
+      "webp": "/assets/img/photos/zamena-elektroschetchika-kvartira/01.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Электросчётчик",
+      "title": "Charged electricity meter",
+      "credit": {
+        "author": "Kai Hendry",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/16105436@N00/2995782665",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/zamena-elektroschetchika-kvartira/02.jpg",
+      "webp": "/assets/img/photos/zamena-elektroschetchika-kvartira/02.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Счётчик на вводе в квартиру",
+      "title": "Solar Panel install",
+      "credit": {
+        "author": "Richard Masoner / Cyclelicious",
+        "license": "CC BY-SA 2.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+        "page_url": "https://www.flickr.com/photos/99247795@N00/540944183",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

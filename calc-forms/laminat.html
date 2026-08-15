@@ -1,0 +1,228 @@
+<form class="calc" data-calc="laminat">
+  <fieldset>
+    <legend>Помещение</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="lm-ploshchad">Площадь пола, м²</label>
+        <input type="number" id="lm-ploshchad" name="ploshchad" value="18" min="1" max="500" step="0.5" inputmode="decimal">
+        <span class="calc-field-hint">Площадь чистого пола без учёта шкафов-купе до потолка</span>
+      </div>
+      <div class="calc-field">
+        <label for="lm-perimetr">Периметр помещения, м</label>
+        <input type="number" id="lm-perimetr" name="perimetr" value="17" min="0" max="200" step="0.5" inputmode="decimal">
+        <span class="calc-field-hint">Для плинтуса. Для комнаты 4 × 4,5 м это 17 м</span>
+      </div>
+      <div class="calc-field">
+        <label for="lm-proemy">Дверных проёмов</label>
+        <input type="number" id="lm-proemy" name="proemy" value="1" min="0" max="10" step="1" inputmode="numeric">
+        <span class="calc-field-hint">Вычитаются из плинтуса, добавляют порожки</span>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Покрытие</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="lm-tip">Что укладываем</label>
+        <select id="lm-tip" name="tip">
+          <option value="laminat" selected>Ламинат 32–33 класса</option>
+          <option value="spc">Кварцвинил SPC — замковый</option>
+          <option value="lvt-kley">Кварцвинил LVT — клеевой</option>
+          <option value="parket">Паркетная доска</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="lm-raskladka">Раскладка</label>
+        <select id="lm-raskladka" name="raskladka">
+          <option value="1.05" selected>Прямая вдоль света — запас 5%</option>
+          <option value="1.07">Со смещением в треть — запас 7%</option>
+          <option value="1.10">Палубная вразбежку — запас 10%</option>
+          <option value="1.15">По диагонали — запас 15%</option>
+          <option value="1.18">Ёлочка — запас 18%</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="lm-upakovka">В упаковке, м²</label>
+        <input type="number" id="lm-upakovka" name="upakovka" value="2.13" min="0.5" max="10" step="0.01" inputmode="decimal">
+        <span class="calc-field-hint">Указано на пачке: обычно 1,8–2,5 м²</span>
+      </div>
+      <div class="calc-field">
+        <label for="lm-cena">Цена покрытия, ₽ за м²</label>
+        <input type="number" id="lm-cena" name="cena" value="1400" min="0" max="100000" step="50" inputmode="numeric">
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Сопутствующее</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="lm-podlozhka">Подложка</label>
+        <select id="lm-podlozhka" name="podlozhka">
+          <option value="xps" selected>XPS-гармошка, 3 мм — 90 ₽/м²</option>
+          <option value="probka">Пробка, 2 мм — 320 ₽/м²</option>
+          <option value="hvoya">Хвойная, 4 мм — 220 ₽/м²</option>
+          <option value="folga">Фольгированная под тёплый пол — 140 ₽/м²</option>
+          <option value="net">Не нужна — уже есть или клеевая укладка</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="lm-plintus">Плинтус, ₽ за планку 2,5 м</label>
+        <input type="number" id="lm-plintus" name="plintus" value="450" min="0" max="20000" step="10" inputmode="numeric">
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="lm-teplyy" name="teplyy">
+        <label for="lm-teplyy">Укладка на тёплый пол</label>
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="lm-plenka" name="plenka" checked>
+        <label for="lm-plenka">Считать пароизоляционную плёнку</label>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<div class="calc-result" data-calc-result="laminat" role="status" aria-live="polite"></div>
+
+<section class="calc-article">
+  <h2>Почему запас зависит от раскладки, а не от аккуратности</h2>
+  <p>Отходы при укладке замкового покрытия — величина геометрическая. При прямой укладке вдоль света режется только последний ряд и торцы у стен, и обрезки уходят в начало следующего ряда. При диагональной каждая пристенная доска режется под углом, и вторая половина реза чаще всего не подходит никуда.</p>
+
+  <table>
+    <thead><tr><th>Раскладка</th><th>Запас</th><th>Когда выбирают</th></tr></thead>
+    <tbody>
+      <tr><td>Прямая вдоль света</td><td>5%</td><td>Стандарт: стыки менее заметны при боковом свете</td></tr>
+      <tr><td>Со смещением в треть</td><td>7%</td><td>Длинная доска, чтобы разбить рисунок швов</td></tr>
+      <tr><td>Палубная вразбежку</td><td>10%</td><td>Случайное смещение, самый живой рисунок</td></tr>
+      <tr><td>По диагонали</td><td>15%</td><td>Визуально расширяет узкую комнату</td></tr>
+      <tr><td>Ёлочка</td><td>18%</td><td>Специальная коллекция с левой и правой планкой</td></tr>
+    </tbody>
+  </table>
+
+  <p>К запасу на подрезку добавляется брак в партии — одна-две доски на десять квадратов. Отдельно оставьте 3–4 доски на будущее: заменить повреждённую планку из той же партии через год не выйдет, а соседняя партия отличается оттенком.</p>
+
+  <h2>Подложка: за что платят</h2>
+  <p>Подложка решает три задачи: компенсирует остаточные неровности стяжки, гасит ударный шум и работает как амортизатор для замка. Толщина не должна превышать рекомендованную производителем покрытия: на слишком мягком основании замки расшатываются и начинают скрипеть.</p>
+  <ul>
+    <li><strong>XPS-гармошка 3 мм</strong> — рабочий стандарт под ламинат. Дёшево, режется ножом, укладывается быстро.</li>
+    <li><strong>Пробка 2 мм</strong> — лучший шумопоглотитель, не проседает со временем, но боится влаги и стоит втрое дороже.</li>
+    <li><strong>Хвойная плита 4 мм</strong> — держит перепад до 3 мм на 2 м, но под тёплый пол не годится: она изолятор.</li>
+    <li><strong>Фольгированная 1,5–2 мм</strong> — минимальное тепловое сопротивление, единственный вариант поверх тёплого пола.</li>
+    <li><strong>SPC замковый</strong> — жёсткая плита, ей подложка нужна тонкая (1,5 мм) либо не нужна вовсе, если она уже приклеена к планке.</li>
+  </ul>
+  <p>Под клеевой кварцвинил подложка не кладётся вообще: он приклеивается к основанию сплошным слоем, и любая прослойка делает укладку невозможной.</p>
+
+  <h2>Плинтус и порожки</h2>
+  <p>Плинтус считается по периметру за вычетом дверных проёмов, плюс 10% на подрезку углов: каждый внутренний и внешний угол — это рез под 45°, и первая попытка не всегда удачная. Планки продаются по 2,5 м, поэтому итог округляется вверх.</p>
+  <p>Порожек нужен в каждом дверном проёме, где покрытие меняется или требуется разрыв плавающего пола. Помните главное правило замкового пола: он не должен нигде упираться — ни в стену, ни в трубу, ни в соседнее покрытие. Зазор 8–10 мм по периметру закрывается плинтусом, а в проёме — порожком.</p>
+
+  <h2>Пример</h2>
+  <div class="calc-example">
+    <p><strong>Комната 18 м², периметр 17 м, один проём, ламинат 33 класса прямой раскладкой, упаковка 2,13 м².</strong></p>
+    <p>Купить 18,9 м² — это 9 упаковок (19,2 м²). Подложки XPS — 18,9 м², плёнки — 21 м². Плинтуса: 17 − 0,9 = 16,1 м плюс 10% = 18 м, то есть 8 планок. Порожек — 1 шт.</p>
+  </div>
+
+  <h2>Что учесть до укладки</h2>
+  <ul>
+    <li><strong>Акклиматизация.</strong> Пачки лежат в комнате 48 часов закрытыми — покрытие принимает влажность и температуру помещения. Уложенный сразу с мороза ламинат встаёт домиком через неделю.</li>
+    <li><strong>Ровность основания.</strong> Допуск — 2 мм на двухметровом правиле. Проверять до закупки: выравнивание наливным полом добавляет к бюджету 300–700 ₽ за м².</li>
+    <li><strong>Влажность стяжки.</strong> Свежая цементная стяжка сохнет 28 суток на каждые 40 мм. Укладка раньше — гарантированное вздутие.</li>
+    <li><strong>Тёплый пол.</strong> Нужна маркировка совместимости и ограничение +27 °C на поверхности. Разгон температуры — постепенный, по 5 °C в сутки.</li>
+    <li><strong>Направление досок.</strong> Вдоль основного источника света — так торцевые швы меньше бросаются в глаза.</li>
+  </ul>
+
+  <h2>Частые вопросы</h2>
+  <h3>Сколько упаковок брать сверх расчёта?</h3>
+  <p>Расчёт уже включает запас на подрезку, но округление до целой упаковки обычно даёт ещё немного сверху. Отдельно докупать пачку стоит в двух случаях: сложная раскладка в комнате с эркером или нишами и покупка из остатков коллекции, которую снимают с производства.</p>
+
+  <h3>Можно ли класть новый ламинат на старый?</h3>
+  <p>Технически можно, если старый лежит плотно, не скрипит и не имеет перепадов, — но так теряется 10–12 мм высоты и появляется двойная плавающая система, которая гуляет. Практичнее демонтировать: замковое покрытие снимается за час и не оставляет мусора.</p>
+
+  <h3>Нужна ли пароизоляционная плёнка?</h3>
+  <p>По бетонному основанию — да, 200 мкм с нахлёстом 20 см и заходом на стену. Бетон отдаёт влагу годами, а ламинат на основе HDF её боится. По деревянному основанию плёнка не нужна: дереву необходимо просыхать.</p>
+
+  <h3>Чем отличается расчёт для кварцвинила?</h3>
+  <p>Площадью запаса он не отличается, но клеевой LVT укладывается без подложки и требует идеально ровного основания — допуск вдвое строже, 1 мм на 2 м. Зато у SPC нет ограничения по длине помещения без компенсационного шва, а у ламината такой шов нужен каждые 8–10 м.</p>
+</section>
+
+<script>
+DomCalc.register('laminat', function (v, f) {
+  var area = Math.max(0, v.ploshchad || 0);
+  if (area <= 0) { return f.note('Укажите площадь пола.'); }
+
+  var reserveK = parseFloat(v.raskladka) || 1.05;
+  var withReserve = area * reserveK;
+
+  var packArea = Math.max(0.1, v.upakovka || 2.13);
+  var packs = Math.ceil(withReserve / packArea);
+  var packsArea = packs * packArea;
+
+  // Плинтус: периметр минус проёмы (0,9 м на проём) плюс 10% на подрезку углов
+  var doors = Math.max(0, v.proemy || 0);
+  var perimeter = Math.max(0, v.perimetr || 0);
+  var plintusM = Math.max(0, perimeter - doors * 0.9) * 1.1;
+  var plintusPlanks = Math.ceil(plintusM / 2.5);
+
+  var PODLOZHKA = {
+    xps:    { name: 'XPS-гармошка 3 мм', price: 90 },
+    probka: { name: 'пробка 2 мм',       price: 320 },
+    hvoya:  { name: 'хвойная плита 4 мм', price: 220 },
+    folga:  { name: 'фольгированная',    price: 140 },
+    net:    { name: null,                price: 0 }
+  };
+  var pod = PODLOZHKA[v.podlozhka] || PODLOZHKA.xps;
+  var podArea = pod.name ? area * 1.05 : 0;
+
+  var rows = [
+    f.row('Покрытия с запасом', f.num(withReserve, 1) + ' м²',
+      'запас ' + f.num((reserveK - 1) * 100, 0) + '% на подрезку'),
+    f.row('Упаковок', packs + ' шт. · ' + f.num(packsArea, 1) + ' м²',
+      'по ' + f.num(packArea, 2) + ' м² в пачке')
+  ];
+
+  if (pod.name) {
+    rows.push(f.row('Подложка', f.num(podArea, 1) + ' м²', pod.name));
+  }
+  if (v.plenka) {
+    rows.push(f.row('Плёнка пароизоляции', f.num(area * 1.15, 1) + ' м²', 'нахлёст 20 см, 200 мкм'));
+  }
+  rows.push(f.row('Плинтус', f.num(plintusM, 1) + ' м · ' + plintusPlanks + ' планок',
+    'периметр минус проёмы, +10% на углы'));
+  if (doors > 0) {
+    rows.push(f.row('Порожки', doors + ' шт.', 'по одному на дверной проём'));
+  }
+
+  var costFloor = packsArea * (v.cena || 0);
+  var costPod = podArea * pod.price;
+  var costPlintus = plintusPlanks * (v.plintus || 0);
+  var total = costFloor + costPod + costPlintus;
+
+  rows.push(f.row('Покрытие', f.money(costFloor), ''));
+  if (pod.name) { rows.push(f.row('Подложка, стоимость', f.money(costPod), '')); }
+  rows.push(f.row('Плинтус, стоимость', f.money(costPlintus), ''));
+
+  var html = f.total('Купить покрытия', packs + ' упаковок',
+    f.num(packsArea, 1) + ' м² при расчётных ' + f.num(area, 1) + ' м²');
+  html += f.table(rows, 'Материалы и стоимость');
+  html += f.total('Материалы всего', f.money(total), 'без работ и выравнивания основания');
+
+  var notes = [];
+  if (v.teplyy) {
+    if (v.podlozhka === 'hvoya' || v.podlozhka === 'probka') {
+      notes.push('Хвоя и пробка на тёплый пол не годятся — они теплоизоляторы. Возьмите фольгированную подложку 1,5–2 мм.');
+    }
+    notes.push('На тёплом полу нужна маркировка совместимости покрытия и ограничение +27 °C на поверхности.');
+  }
+  if (v.tip === 'lvt-kley' && v.podlozhka !== 'net') {
+    notes.push('Клеевой кварцвинил укладывается прямо на основание: подложка под него не нужна.');
+  }
+  if (area > 60 && (v.tip === 'laminat' || v.tip === 'parket')) {
+    notes.push('При длине помещения больше 8–10 м ламинату нужен компенсационный шов с порожком.');
+  }
+  notes.push('Оставьте 3–4 доски про запас: заменить повреждённую планку из другой партии по оттенку не выйдет.');
+
+  for (var i = 0; i < notes.length; i++) { html += f.note(notes[i]); }
+  return html;
+});
+</script>

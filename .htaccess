@@ -19,6 +19,15 @@ ErrorDocument 500 /404.php
     Header set X-Frame-Options "SAMEORIGIN"
     Header set X-XSS-Protection "1; mode=block"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # HSTS: браузер сам ходит по https, не дожидаясь редиректа, — минус один
+    # хоп для пользователя и защита от подмены на первом переходе.
+    # Срок намеренно 6 месяцев без includeSubDomains и preload: так правило
+    # обратимо. Когда убедитесь, что все поддомены живут по https, можно
+    # поднять до max-age=31536000 и добавить includeSubDomains.
+    # Заголовок по спецификации игнорируется браузером, если пришёл по http,
+    # поэтому отдавать его безусловно безопасно.
+    Header always set Strict-Transport-Security "max-age=15768000"
 </IfModule>
 
 # --- Сжатие (gzip) ---
@@ -76,11 +85,33 @@ ErrorDocument 500 /404.php
 </IfModule>
 
 # --- Защита системных файлов ---
-<FilesMatch "^(\.htaccess|\.htpasswd|robots\.txt)$">
-    <RequireAll>
-        Require all granted
-    </RequireAll>
+# robots.txt, ads.txt и llms.txt должны отдаваться всем — они для обходчиков.
+# Всё остальное, что начинается с точки (.htaccess, .htpasswd, .gitignore, .env),
+# наружу не отдаётся. Раньше здесь стоял Require all granted на .htaccess и
+# .htpasswd — конфигурация сервера была доступна по прямой ссылке.
+<FilesMatch "^(robots\.txt|ads\.txt|llms\.txt|favicon\.ico)$">
+    Require all granted
 </FilesMatch>
+
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# --- Рабочие файлы разработки не публикуются ---
+# На боевой сервер они попадают при заливке каталога целиком. Ни один из них
+# сайту для работы не нужен: .md — заметки, .sh/.py — скрипты обслуживания,
+# .env — ключи внешних сервисов, .json в scripts/ — рабочие выгрузки.
+<FilesMatch "\.(md|sh|py|env|log|bak|sql|yml|yaml|ini|lock|cfg|toml)$">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^scripts/    - [F,L]
+    RewriteRule ^\.venv      - [F,L]
+    RewriteRule ^\.idea/     - [F,L]
+    RewriteRule ^screens/    - [F,L]
+</IfModule>
 
 # --- Один канонический адрес: https://prodom-expert.ru (без www) ---
 # Важно: если SSL обрывается на Nginx/Cloudflare, Apache видит HTTPS=off — без
@@ -102,35 +133,40 @@ ErrorDocument 500 /404.php
     #  запроса) исключает петлю: внутренние переписывания её не меняют.
     #  Знак ? в конце цели отбрасывает старый query string, иначе редирект
     #  ведёт на /article/foo/?slug=foo — лишний адрес для обхода.
+    #
+    #  Цель указывается АБСОЛЮТНЫМ адресом с https://. При относительной цели
+    #  (/article/foo/) Apache достраивает схему сам, а за nginx он видит
+    #  HTTPS=off и отдаёт http:// — получалась цепочка 301 → 301 → 200
+    #  на каждом старом адресе.
     # ============================================================
 
     # 301: устаревшие слаги-дубли → актуальная статья
     # regulirovka-plastikovyh-okon (13.07, короткий текст) заменён более полным
     # материалом regulirovka-plastikovykh-okon (19.07) — тема одна, слаги почти
     # совпадают, поэтому старый адрес склеиваем с новым, а не держим двумя URL.
-    RewriteRule ^article/regulirovka-plastikovyh-okon/?$ /article/regulirovka-plastikovykh-okon/ [R=301,L]
+    RewriteRule ^article/regulirovka-plastikovyh-okon/?$ https://prodom-expert.ru/article/regulirovka-plastikovykh-okon/ [R=301,L]
     RewriteCond %{THE_REQUEST} \s/+article\.php\?slug=regulirovka-plastikovyh-okon[\s&] [NC]
-    RewriteRule ^ /article/regulirovka-plastikovykh-okon/? [R=301,L]
+    RewriteRule ^ https://prodom-expert.ru/article/regulirovka-plastikovykh-okon/? [R=301,L]
 
     # 301: /article.php?slug=foo  →  /article/foo/
     RewriteCond %{THE_REQUEST} \s/+article\.php\?slug=([A-Za-z0-9-]+)[\s&] [NC]
-    RewriteRule ^ /article/%1/? [R=301,L]
+    RewriteRule ^ https://prodom-expert.ru/article/%1/? [R=301,L]
 
     # 301: /category.php?cat=foo&page=2  →  /category/foo/page/2/
     RewriteCond %{THE_REQUEST} \s/+category\.php\?cat=([A-Za-z0-9-]+)&page=([0-9]+)[\s&] [NC]
-    RewriteRule ^ /category/%1/page/%2/? [R=301,L]
+    RewriteRule ^ https://prodom-expert.ru/category/%1/page/%2/? [R=301,L]
 
     # 301: /category.php?cat=foo  →  /category/foo/
     RewriteCond %{THE_REQUEST} \s/+category\.php\?cat=([A-Za-z0-9-]+)[\s&] [NC]
-    RewriteRule ^ /category/%1/? [R=301,L]
+    RewriteRule ^ https://prodom-expert.ru/category/%1/? [R=301,L]
 
     # 301: /calc.php?slug=foo  →  /calc/foo/
     RewriteCond %{THE_REQUEST} \s/+calc\.php\?slug=([A-Za-z0-9-]+)[\s&] [NC]
-    RewriteRule ^ /calc/%1/? [R=301,L]
+    RewriteRule ^ https://prodom-expert.ru/calc/%1/? [R=301,L]
 
     # 301: /calculators.php  →  /calculators/
     RewriteCond %{THE_REQUEST} \s/+calculators\.php[\s?] [NC]
-    RewriteRule ^ /calculators/? [R=301,L]
+    RewriteRule ^ https://prodom-expert.ru/calculators/? [R=301,L]
 
     # Внутренние переписывания ЧПУ → реальные скрипты (без редиректа)
     RewriteRule ^calculators/?$ calculators.php [L,QSA]

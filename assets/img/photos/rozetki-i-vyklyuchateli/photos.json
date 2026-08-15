@@ -1,0 +1,37 @@
+{
+  "slug": "rozetki-i-vyklyuchateli",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/rozetki-i-vyklyuchateli/01.jpg",
+      "webp": "/assets/img/photos/rozetki-i-vyklyuchateli/01.webp",
+      "width": 1064,
+      "height": 1600,
+      "caption": "Розеточный блок в жилой комнате",
+      "title": "Electrical-Outlet-8830c",
+      "credit": {
+        "author": "Loadmaster (David R. Tribble) This image was made by Loadmaster (David R. Tribble) . Email the author: David R. Tribble ",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Electrical-Outlet-8830c.jpg",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/rozetki-i-vyklyuchateli/02.jpg",
+      "webp": "/assets/img/photos/rozetki-i-vyklyuchateli/02.webp",
+      "width": 1200,
+      "height": 1600,
+      "caption": "Выключатель на стене",
+      "title": "Bedroom Light Switches, Frederick C. Robie House, Woodlawn Avenue and 58th Street, Hyde Park, Chicago, IL",
+      "credit": {
+        "author": "w_lemay",
+        "license": "CC BY-SA 2.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Bedroom_Light_Switches,_Frederick_C._Robie_House,_Woodlawn_Avenue_and_58th_Street,_Hyde_Park,_Chicago,_IL.jpg",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    }
+  ]
+}

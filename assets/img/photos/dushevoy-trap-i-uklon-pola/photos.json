@@ -1,0 +1,37 @@
+{
+  "slug": "dushevoy-trap-i-uklon-pola",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/dushevoy-trap-i-uklon-pola/01.jpg",
+      "webp": "/assets/img/photos/dushevoy-trap-i-uklon-pola/01.webp",
+      "width": 1024,
+      "height": 577,
+      "caption": "Линейный душевой трап",
+      "title": "MB Ensuite Shower Floor Mosaics",
+      "credit": {
+        "author": "Ken Doerr",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/45673145@N00/5187971545",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/dushevoy-trap-i-uklon-pola/02.jpg",
+      "webp": "/assets/img/photos/dushevoy-trap-i-uklon-pola/02.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Трап в плиточном полу",
+      "title": "floor drain",
+      "credit": {
+        "author": "Joelk75",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/75001512@N00/6921615670",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

@@ -62,7 +62,7 @@ include __DIR__ . '/includes/header.php';
   </div>
 </nav>
 
-<main>
+<main id="main-content">
   <div class="container">
     <header class="category-header">
       <h1>🧮 Калькуляторы ремонта</h1>

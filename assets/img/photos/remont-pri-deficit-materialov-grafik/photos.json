@@ -1,0 +1,37 @@
+{
+  "slug": "remont-pri-deficit-materialov-grafik",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/remont-pri-deficit-materialov-grafik/01.jpg",
+      "webp": "/assets/img/photos/remont-pri-deficit-materialov-grafik/01.webp",
+      "width": 1024,
+      "height": 684,
+      "caption": "Склад стройматериалов",
+      "title": "Construction materials stacked in warehouse during sunset in a quiet industrial area",
+      "credit": {
+        "author": "nenadstojkovicart",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/202846129@N03/54553403765",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/remont-pri-deficit-materialov-grafik/02.jpg",
+      "webp": "/assets/img/photos/remont-pri-deficit-materialov-grafik/02.webp",
+      "width": 1024,
+      "height": 576,
+      "caption": "Запас материалов на объекте",
+      "title": "Wooden Pallets",
+      "credit": {
+        "author": "Reuse Warehouse Houston",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/44177494@N04/5717269860",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "slug": "dizayn-detskoy-komnaty",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/dizayn-detskoy-komnaty/01.jpg",
+      "webp": "/assets/img/photos/dizayn-detskoy-komnaty/01.webp",
+      "width": 1024,
+      "height": 683,
+      "caption": "Интерьер детской комнаты",
+      "title": "Child's Bedroom",
+      "credit": {
+        "author": "PersonalCreations.com",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/127294011@N07/15075384432",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/dizayn-detskoy-komnaty/02.jpg",
+      "webp": "/assets/img/photos/dizayn-detskoy-komnaty/02.webp",
+      "width": 1024,
+      "height": 831,
+      "caption": "Мебель и зоны в детской",
+      "title": "Kids Robot Build Party",
+      "credit": {
+        "author": "Arne Hendriks",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/31774856@N00/5078733242",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

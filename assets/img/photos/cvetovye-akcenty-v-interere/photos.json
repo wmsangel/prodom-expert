@@ -1,0 +1,37 @@
+{
+  "slug": "cvetovye-akcenty-v-interere",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/cvetovye-akcenty-v-interere/01.jpg",
+      "webp": "/assets/img/photos/cvetovye-akcenty-v-interere/01.webp",
+      "width": 1024,
+      "height": 680,
+      "caption": "Цветовой акцент в интерьере комнаты",
+      "title": "Living Room HDR",
+      "credit": {
+        "author": "stockerre",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/51820557@N04/4814007974",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/cvetovye-akcenty-v-interere/02.jpg",
+      "webp": "/assets/img/photos/cvetovye-akcenty-v-interere/02.webp",
+      "width": 1024,
+      "height": 683,
+      "caption": "Акцентная стена задаёт настроение",
+      "title": "Living Room Accent Wall",
+      "credit": {
+        "author": "Paintzen",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/147489968@N06/29813589812",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

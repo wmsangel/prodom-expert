@@ -1,0 +1,37 @@
+{
+  "slug": "plisse-i-roletnye-shtory",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/plisse-i-roletnye-shtory/01.jpg",
+      "webp": "/assets/img/photos/plisse-i-roletnye-shtory/01.webp",
+      "width": 1024,
+      "height": 683,
+      "caption": "Шторы плиссе на створке",
+      "title": "window napkin",
+      "credit": {
+        "author": "romana klee",
+        "license": "CC BY-SA 2.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+        "page_url": "https://www.flickr.com/photos/28581290@N08/6333303065",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/plisse-i-roletnye-shtory/02.jpg",
+      "webp": "/assets/img/photos/plisse-i-roletnye-shtory/02.webp",
+      "width": 1024,
+      "height": 576,
+      "caption": "Рулонная штора",
+      "title": "Roller blinds",
+      "credit": {
+        "author": "Martin Dougiamas",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/81168682@N00/4547027107",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

@@ -11,6 +11,9 @@
 /photos-inbox/*
 !/photos-inbox/.gitkeep
 
+# Ключ Openverse для загрузки иллюстраций — секрет, наружу не отдаём.
+/scripts/openverse.env
+
 # Служебное
 __pycache__/
 *.pyc

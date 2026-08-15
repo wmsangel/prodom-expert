@@ -1,0 +1,37 @@
+{
+  "slug": "domashniy-ofis-v-kvartire",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/domashniy-ofis-v-kvartire/01.jpg",
+      "webp": "/assets/img/photos/domashniy-ofis-v-kvartire/01.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Рабочее место дома",
+      "title": "my tidy office desk",
+      "credit": {
+        "author": "hansbrastad",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/31300715@N06/3370238964",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/domashniy-ofis-v-kvartire/02.jpg",
+      "webp": "/assets/img/photos/domashniy-ofis-v-kvartire/02.webp",
+      "width": 1000,
+      "height": 664,
+      "caption": "Стол, свет и кресло — минимум для работы",
+      "title": "My workspace",
+      "credit": {
+        "author": "yprime",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/24613260@N06/5569050807",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

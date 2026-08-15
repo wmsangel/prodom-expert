@@ -1,0 +1,37 @@
+{
+  "slug": "rekuperator-pritochnaya-ventilyaciya-kvartiry",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/rekuperator-pritochnaya-ventilyaciya-kvartiry/01.jpg",
+      "webp": "/assets/img/photos/rekuperator-pritochnaya-ventilyaciya-kvartiry/01.webp",
+      "width": 1200,
+      "height": 1600,
+      "caption": "Приточная установка с рекуперацией",
+      "title": "Teknisk rom (School build. Lilleh. Norway 2024-09. Mechan. room Air ventil. Hot water Heat recov. unit) OSO Hotwater varmtvannsbereder isolerte rør etc IMG 0316",
+      "credit": {
+        "author": "Wolfmann",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "page_url": "https://commons.wikimedia.org/w/index.php?curid=153106816",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/rekuperator-pritochnaya-ventilyaciya-kvartiry/02.jpg",
+      "webp": "/assets/img/photos/rekuperator-pritochnaya-ventilyaciya-kvartiry/02.webp",
+      "width": 1600,
+      "height": 1060,
+      "caption": "Воздуховоды приточной системы",
+      "title": "Columbus Vestibule Outfitting 1",
+      "credit": {
+        "author": "NASA",
+        "license": "Public domain",
+        "license_url": "",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Columbus_Vestibule_Outfitting_1.jpg",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "slug": "natyazhnye-potolki",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/natyazhnye-potolki/01.jpg",
+      "webp": "/assets/img/photos/natyazhnye-potolki/01.webp",
+      "width": 1024,
+      "height": 681,
+      "caption": "Натяжной потолок",
+      "title": "Vesiculated tachylite (basaltic lava flow cross-section, 1969 to 1974 lava tube ceiling, Mauna Ulu Lava Field, East Rift Zone, Kilauea Volcano, Hawaii, USA) 1",
+      "credit": {
+        "author": "James St. John",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/47445767@N05/15025522485",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/natyazhnye-potolki/02.jpg",
+      "webp": "/assets/img/photos/natyazhnye-potolki/02.webp",
+      "width": 1600,
+      "height": 1246,
+      "caption": "Монтаж натяжного полотна",
+      "title": "Stretch Ceiling Installation",
+      "credit": {
+        "author": "Laqfoil Ltd.",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "page_url": "https://commons.wikimedia.org/w/index.php?curid=38729915",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    }
+  ]
+}

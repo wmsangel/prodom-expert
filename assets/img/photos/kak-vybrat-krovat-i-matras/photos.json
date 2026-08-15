@@ -1,0 +1,37 @@
+{
+  "slug": "kak-vybrat-krovat-i-matras",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/kak-vybrat-krovat-i-matras/01.jpg",
+      "webp": "/assets/img/photos/kak-vybrat-krovat-i-matras/01.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Кровать с матрасом",
+      "title": "Bedroom at Art'Otel Budapest",
+      "credit": {
+        "author": "heatheronhertravels",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/22446827@N02/4942419586",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/kak-vybrat-krovat-i-matras/02.jpg",
+      "webp": "/assets/img/photos/kak-vybrat-krovat-i-matras/02.webp",
+      "width": 1024,
+      "height": 576,
+      "caption": "Матрас и основание работают в паре",
+      "title": "Natural Form mattress",
+      "credit": {
+        "author": "sleeplinesays",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/182253903@N07/51823898462",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

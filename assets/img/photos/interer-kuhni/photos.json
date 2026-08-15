@@ -1,0 +1,37 @@
+{
+  "slug": "interer-kuhni",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/interer-kuhni/01.jpg",
+      "webp": "/assets/img/photos/interer-kuhni/01.webp",
+      "width": 1023,
+      "height": 682,
+      "caption": "Интерьер кухни",
+      "title": "Balfron Tower / kitchen",
+      "credit": {
+        "author": "Images George Rex",
+        "license": "CC BY-SA 2.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+        "page_url": "https://www.flickr.com/photos/36692623@N06/15281588850",
+        "source": "Flickr",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/interer-kuhni/02.jpg",
+      "webp": "/assets/img/photos/interer-kuhni/02.webp",
+      "width": 1024,
+      "height": 768,
+      "caption": "Фасады и столешница",
+      "title": "Kitchen Cabinets and Tan Brown Granite Countertops",
+      "credit": {
+        "author": "granite-charlotte",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/46317749@N02/4253649357",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}

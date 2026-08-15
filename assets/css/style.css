@@ -70,6 +70,23 @@
   --shadow-md: rgba(0,0,0,0.75);
 }
 
+/* Тексты статей вёрстаны с инлайн-стилями: светло-серая заливка шапки таблицы,
+   рамки #ddd и подписи #666. В тёмной теме это давало почти белый текст на почти
+   белом фоне (контраст 1,2). Инлайн-стиль перебивается только !important. */
+:root[data-theme="dark"] .article-body table th,
+:root[data-theme="dark"] .article-body table td {
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+:root[data-theme="dark"] .article-body table th {
+  background: var(--beige-dark) !important;
+  color: var(--heading) !important;
+}
+:root[data-theme="dark"] .article-body figcaption,
+:root[data-theme="dark"] .article-body figcaption * {
+  color: var(--text-light) !important;
+}
+
 /* Иллюстрации в тёмной теме бьют по глазам — приглушаем, при наведении возвращаем */
 :root[data-theme="dark"] .article-body img,
 :root[data-theme="dark"] .card-image img,
@@ -79,6 +96,63 @@
 }
 :root[data-theme="dark"] .article-body img:hover,
 :root[data-theme="dark"] .article-lead-figure img:hover { filter: none; }
+
+/* === ДОСТУПНОСТЬ С КЛАВИАТУРЫ === */
+
+/* Ссылка «Перейти к содержимому»: убрана за пределы экрана, всплывает при фокусе */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -100px;
+  z-index: 1000;
+  background: var(--brick);
+  color: var(--on-dark);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 0 0 var(--radius) var(--radius);
+  transition: top var(--transition);
+}
+.skip-link:focus { top: 0; color: var(--on-dark); }
+
+/* Видимая рамка фокуса для всего, что доступно с клавиатуры.
+   :focus-visible, а не :focus — по клику мышью рамка не появляется. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--brick);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Рамка появляется сразу: у кнопок и ссылок меню стоит transition: all,
+   и без этого она плавно «выползает» уже после нажатия Tab. */
+:focus-visible { transition-property: none; }
+
+/* На тёмных плашках кирпичный контур сливается — там рамка светлая */
+.site-header a:focus-visible,
+.site-header button:focus-visible,
+.site-footer a:focus-visible,
+.top-bar a:focus-visible,
+.category-header a:focus-visible,
+.hero a:focus-visible {
+  outline-color: var(--on-dark);
+}
+
+/* Пользователям, попросившим уменьшить анимацию, — без плавных прокруток и переходов */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
 /* === Reset & Base === */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1053,7 +1127,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.3; color: 
   font-family: var(--font-body);
   font-size: 1rem;
   color: var(--text);
-  background: #fff;
+  background: var(--white);
   transition: border-color var(--transition, 0.2s);
 }
 
@@ -1172,7 +1246,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.3; color: 
 }
 
 .calc-card {
-  background: #fff;
+  background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   transition: all var(--transition, 0.2s);
@@ -1220,7 +1294,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.3; color: 
 .calc-link-list a {
   display: block;
   padding: 0.75rem 1rem;
-  background: #fff;
+  background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   text-decoration: none;
@@ -1278,7 +1352,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.3; color: 
 .calc-disclaimer p { font-size: 0.94rem; line-height: 1.65; color: var(--text-muted); margin: 0 0 0.75rem; }
 .calc-disclaimer p:last-child { margin-bottom: 0; }
 
-/* Собственные фотографии в статье */
+/* Фотографии в статье (свои и из открытых источников) */
 .article-photos { margin: 2.5rem 0; }
 .article-photos-note {
   color: var(--text-muted);
@@ -1304,6 +1378,36 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.3; color: 
   line-height: 1.5;
   color: var(--text-muted);
 }
+/* Строка прав под снимком: мельче подписи, чтобы не спорить с ней за внимание */
+.article-photo-credit {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  opacity: 0.85;
+}
+.article-photo-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.article-photo-credit a:hover { color: var(--heading); }
+
+/* Свёрнутый список источников — полная атрибуция в одном месте */
+.article-photos-sources {
+  margin-top: 1.25rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.article-photos-sources summary {
+  cursor: pointer;
+  padding: 0.35rem 0;
+  color: var(--text-muted);
+}
+.article-photos-sources ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.15rem;
+}
+.article-photos-sources li { margin-bottom: 0.35rem; line-height: 1.5; }
+.article-photos-sources a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
 /* Одиночное фото не растягиваем на всю ширину сетки */
 .article-photos-grid:has(> .article-photo:only-child) { grid-template-columns: 1fr; }
 
@@ -1379,4 +1483,419 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.3; color: 
 @media (max-width: 600px) {
   .article-toc { padding: 16px 18px; }
   .article-toc .article-toc-list { columns: 1; }
+}
+
+/* ========================================
+   ПЕРЕХОДЫ МЕЖДУ СОСЕДНИМИ СТАТЬЯМИ КАТЕГОРИИ
+   ======================================== */
+.article-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 32px 0 0;
+}
+
+/* Когда сосед только с одной стороны, ссылка занимает свою половину:
+   растянутая на всю ширину «Следующая» читается как единственный путь дальше. */
+.article-nav-next:only-child { grid-column: 2; }
+
+.article-nav-link {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  box-shadow: 0 2px 12px var(--shadow);
+  transition: border-color var(--transition), transform var(--transition);
+}
+.article-nav-link:hover { border-color: var(--brick); transform: translateY(-2px); }
+.article-nav-next { text-align: right; }
+
+.article-nav-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--brick);
+}
+
+.article-nav-title {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  line-height: 1.35;
+  color: var(--heading);
+}
+
+@media (max-width: 600px) {
+  .article-nav { grid-template-columns: 1fr; }
+  .article-nav-next:only-child { grid-column: 1; }
+  .article-nav-next { text-align: left; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   УТП на главной — чем сайт отличается.
+   Сетка 4→2→1 колонки; карточки без теней, чтобы не спорить
+   с блоком статей ниже.
+   ═══════════════════════════════════════════════════════════ */
+.usp {
+  background: var(--beige);
+  border-bottom: 1px solid var(--border);
+  padding: 56px 0;
+}
+
+.usp-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: var(--heading);
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.usp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.usp-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 26px 22px;
+}
+
+.usp-icon {
+  display: block;
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.usp-item h3 {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  color: var(--heading);
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.usp-item p {
+  font-size: 0.93rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.usp-item a {
+  color: var(--brick);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .usp-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .usp { padding: 40px 0; }
+  .usp-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Блок доверия в подвале: как делается контент.
+   Две колонки на десктопе, одна на мобильном.
+   ═══════════════════════════════════════════════════════════ */
+.footer-trust {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  margin-top: 36px;
+  padding-top: 28px;
+}
+
+.footer-trust-heading {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--on-dark);
+  margin: 0 0 16px;
+}
+
+.footer-trust-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-trust-list li {
+  font-size: 0.87rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.66);
+}
+
+.footer-trust-list strong {
+  color: rgba(255,255,255,0.9);
+  font-weight: 600;
+}
+
+.footer-trust-list a {
+  color: var(--brick-light);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 760px) {
+  .footer-trust-list { grid-template-columns: 1fr; }
+}
+
+/* ========================================
+   Промо-блок планировщика на главной
+   Фон всегда тёмный, поэтому SVG внутри рисуется светлыми цветами
+   и не требует отдельных правил под тёмную тему.
+   ======================================== */
+
+.promo-planner {
+  padding: 3rem 0;
+  background: var(--beige);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.promo-planner-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  gap: 2.5rem;
+  align-items: center;
+  padding: 2rem 2.25rem;
+  color: #F4F6F8;
+  background: linear-gradient(135deg, var(--hero-from), var(--hero-mid) 55%, var(--hero-to));
+  border-radius: var(--radius-lg);
+  box-shadow: 0 6px 24px var(--shadow);
+}
+
+.promo-planner-badge {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  padding: 5px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--brick);
+  border-radius: 999px;
+}
+
+.promo-planner-text h2 {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+  line-height: 1.15;
+  color: #fff;
+}
+
+.promo-planner-lead {
+  margin: 0 0 1.1rem;
+  font-size: 1.03rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.82);
+}
+
+.promo-planner-list {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.promo-planner-list li {
+  position: relative;
+  padding-left: 1.6rem;
+  font-size: 0.94rem;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.78);
+}
+.promo-planner-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--brick-light);
+  font-weight: 700;
+}
+
+.promo-planner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  align-items: center;
+}
+.promo-planner-more {
+  color: rgba(255,255,255,0.85);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+}
+.promo-planner-more:hover { color: #fff; border-bottom-color: #fff; }
+
+.promo-planner-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  background: rgba(0,0,0,0.22);
+}
+
+.promo-planner-figures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+}
+.promo-planner-figures b {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@media (max-width: 860px) {
+  .promo-planner { padding: 2rem 0; }
+  .promo-planner-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.75rem;
+    padding: 1.5rem;
+  }
+  /* Картинка уходит под текст: на узком экране сначала суть, потом иллюстрация. */
+  .promo-planner-art { order: 2; }
+}
+
+@media (max-width: 480px) {
+  .promo-planner-inner { padding: 1.25rem; }
+  .promo-planner-figures { font-size: 0.8rem; gap: 0.3rem 1rem; }
+}
+
+/* ==========================================================================
+   Кросс-промо собственных проектов (partner-ads.php)
+   Занимают рекламные места, пока нет AdSense. Помечены как реклама.
+   ========================================================================== */
+
+/* --- Общая пометка «реклама/наш проект» --- */
+.partner-label,
+.partner-banner-label {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* --- Карточка в сайдбаре (format: card) --- */
+.partner-widget .partner-label { margin-bottom: 10px; }
+
+.partner-card {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px;
+  background: var(--beige);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+.partner-card:hover {
+  border-color: var(--brick);
+  box-shadow: 0 4px 14px var(--shadow);
+  transform: translateY(-2px);
+}
+.partner-card-icon {
+  flex: 0 0 auto;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+.partner-card-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.partner-card-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--heading);
+  line-height: 1.2;
+}
+.partner-card-desc {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.45;
+}
+.partner-card-cta {
+  margin-top: 2px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--brick);
+}
+
+/* --- Горизонтальный баннер (format: banner) --- */
+.partner-banner {
+  margin: 2rem 0;
+  padding: 4px 0 0;
+}
+.partner-banner-label { margin: 0 0 8px 2px; }
+.partner-banner-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  background: var(--beige);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--brick);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+}
+.partner-banner-link:hover {
+  background: var(--beige-dark);
+  box-shadow: 0 4px 16px var(--shadow);
+}
+.partner-banner-icon {
+  flex: 0 0 auto;
+  font-size: 2rem;
+  line-height: 1;
+}
+.partner-banner-text { flex: 1 1 auto; min-width: 0; }
+.partner-banner-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--heading);
+  line-height: 1.2;
+}
+.partner-banner-desc {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.45;
+}
+.partner-banner-cta {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding: 9px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--on-dark);
+  background: var(--brick);
+  border-radius: var(--radius);
+  transition: background var(--transition);
+}
+.partner-banner-link:hover .partner-banner-cta { background: var(--brick-dark); }
+
+@media (max-width: 600px) {
+  .partner-banner-link { flex-wrap: wrap; gap: 12px; padding: 16px; }
+  .partner-banner-cta { width: 100%; text-align: center; }
 }

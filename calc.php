@@ -86,6 +86,13 @@ $articleJsonLd = json_encode([
   'offers'              => ['@type' => 'Offer', 'price' => '0', 'priceCurrency' => 'RUB'],
 ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 
+// Калькулятор может попросить свои стиль и скрипт полями assetsCss/assetsJs —
+// так делает планировщик, у которого разметки и логики слишком много для общих
+// файлов. Оба подключаются с меткой версии (du_asset), иначе обновление не
+// доедет до тех, у кого старая копия лежит в кэше на год вперёд.
+$extraCss = $calc['assetsCss'] ?? [];
+$extraJs  = $calc['assetsJs'] ?? [];
+
 $breadcrumbJsonLd = json_encode([
   '@context'        => 'https://schema.org',
   '@type'           => 'BreadcrumbList',
@@ -118,7 +125,7 @@ include __DIR__ . '/includes/header.php';
   </div>
 </nav>
 
-<main>
+<main id="main-content">
   <div class="container">
     <div class="content-wrapper">
       <div class="main-content">
@@ -135,7 +142,15 @@ include __DIR__ . '/includes/header.php';
         </header>
 
         <?php if ($calcFile): ?>
+          <!-- Каркас подключается ДО разметки калькулятора и без defer: внутри
+               фрагмента стоит инлайн-вызов DomCalc.register(), который выполняется
+               прямо при разборе страницы. С defer каркас грузился уже после него,
+               и регистрация падала с «DomCalc is not defined» — расчёт не запускался. -->
+          <script src="<?= htmlspecialchars(du_asset('/assets/js/calc.js'), ENT_QUOTES, 'UTF-8') ?>"></script>
           <?= file_get_contents($calcFile) ?>
+          <?php foreach ($extraJs as $jsSrc): ?>
+            <script src="<?= htmlspecialchars(du_asset($jsSrc), ENT_QUOTES, 'UTF-8') ?>" defer></script>
+          <?php endforeach; ?>
         <?php else: ?>
           <div class="empty-state">
             <div class="icon">🧮</div>
@@ -205,9 +220,5 @@ include __DIR__ . '/includes/header.php';
     </div>
   </div>
 </main>
-
-<!-- Каркас калькуляторов: сбор полей формы, пересчёт «на лету», форматирование чисел.
-     Логика конкретного расчёта лежит в самом файле calculators/<slug>.html. -->
-<script src="/assets/js/calc.js" defer></script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

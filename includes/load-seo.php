@@ -23,6 +23,22 @@ if (!function_exists('du_article_path')) {
     return '/article/' . rawurlencode($slug) . '/';
   }
 }
+
+/**
+ * Адрес статического файла с меткой версии: /assets/js/planner.js?v=1786…
+ *
+ * Сервер отдаёт скрипты и стили с длинным max-age, поэтому без такой метки
+ * обновлённый файл не доезжает до тех, кто уже был на сайте: браузер год
+ * держит старую копию и даже не спрашивает сервер. Метка берётся из времени
+ * изменения файла — меняется сама при каждой заливке.
+ */
+if (!function_exists('du_asset')) {
+  function du_asset(string $path): string {
+    $file = dirname(__DIR__) . $path;
+    $ver  = is_file($file) ? filemtime($file) : null;
+    return $ver ? $path . '?v=' . $ver : $path;
+  }
+}
 if (!function_exists('du_category_path')) {
   function du_category_path(string $cat, int $page = 1): string {
     $cat = rawurlencode($cat);

@@ -1,0 +1,37 @@
+{
+  "slug": "dimmery-sveta-led-sovmestimost",
+  "photos": [
+    {
+      "jpg": "/assets/img/photos/dimmery-sveta-led-sovmestimost/01.jpg",
+      "webp": "/assets/img/photos/dimmery-sveta-led-sovmestimost/01.webp",
+      "width": 1200,
+      "height": 1600,
+      "caption": "Клавишный диммер для регулировки яркости",
+      "title": "Electric residential lighting dimmer switch",
+      "credit": {
+        "author": "BrokenSphere",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "page_url": "https://commons.wikimedia.org/w/index.php?curid=39748975",
+        "source": "Wikimedia Commons",
+        "modified": true
+      }
+    },
+    {
+      "jpg": "/assets/img/photos/dimmery-sveta-led-sovmestimost/02.jpg",
+      "webp": "/assets/img/photos/dimmery-sveta-led-sovmestimost/02.webp",
+      "width": 1024,
+      "height": 683,
+      "caption": "Светодиодные лампы: не каждая работает с диммером",
+      "title": "Light Bulb Lamp",
+      "credit": {
+        "author": "dam",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "page_url": "https://www.flickr.com/photos/36749491@N00/14330320755",
+        "source": "Flickr",
+        "modified": true
+      }
+    }
+  ]
+}
