@@ -66,6 +66,7 @@ TITLES = {
 
     # Сантехника
     "kak-vybrat-unitaz":                           "Выбор унитаза",
+    "dushevoe-ograzhdenie-i-poddon-vybor":         "Душевое ограждение",
     "bojler-nakopitelnyj-ili-protochnyj":          "Водонагреватель",
     "termostat-dlya-dusha-i-vanny":                "Термостат для душа",
     "vodyanoy-teplyy-pol-v-kvartire":              "Водяной тёплый пол",
@@ -86,6 +87,7 @@ TITLES = {
 
     # Электрика
     "uzip-grozozashchita-kvartiry":                "УЗИП",
+    "slabotochnyy-shchit-v-kvartire":              "Слаботочный щит",
     "kvartirnyy-schitok-sborka-i-markirovka":      "Квартирный щиток",
     "kabel-kanaly-i-koroby":                       "Кабель-каналы",
     "zamena-elektroschetchika-kvartira":           "Замена электросчётчика",
@@ -105,6 +107,7 @@ TITLES = {
     "ulichnaya-rozetka-ip-zima-balkon":            "Уличная розетка",
 
     # Интерьер
+    "akusticheskie-paneli-v-interere":             "Акустические панели",
     "zonirovanie-studii-odnokomnatnoy":            "Зонирование студии",
     "fitodizayn-rasteniya-v-interere":             "Растения в интерьере",
     "garderobnaya-planirovanie-i-svet":            "Гардеробная",

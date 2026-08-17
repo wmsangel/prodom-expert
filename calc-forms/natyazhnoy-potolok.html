@@ -1,0 +1,124 @@
+<form class="calc" data-calc="natyazhnoy-potolok">
+  <fieldset>
+    <legend>Комната</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="np-dlina">Длина, м</label>
+        <input type="number" id="np-dlina" name="dlina" value="4" min="0" max="30" step="0.1" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="np-shirina">Ширина, м</label>
+        <input type="number" id="np-shirina" name="shirina" value="3" min="0" max="30" step="0.1" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="np-material">Тип полотна</label>
+        <select id="np-material" name="material">
+          <option value="pvh" selected>ПВХ (плёнка)</option>
+          <option value="tkan">Тканевое</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Врезки и цена</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="np-svetilniki">Светильников, шт</label>
+        <input type="number" id="np-svetilniki" name="svetilniki" value="6" min="0" max="60" step="1" inputmode="numeric">
+        <span class="calc-field-hint">Точечные и люстра — под каждый нужна платформа и термокольцо</span>
+      </div>
+      <div class="calc-field">
+        <label for="np-truby">Обход труб, шт</label>
+        <input type="number" id="np-truby" name="truby" value="0" min="0" max="20" step="1" inputmode="numeric">
+        <span class="calc-field-hint">Стояки отопления, проходящие сквозь потолок</span>
+      </div>
+      <div class="calc-field">
+        <label for="np-cena">Цена полотна, ₽ за м²</label>
+        <input type="number" id="np-cena" name="cena" value="0" min="0" max="10000" step="10" inputmode="numeric">
+        <span class="calc-field-hint">0 — если стоимость не нужна</span>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<div class="calc-result" data-calc-result="natyazhnoy-potolok" role="status" aria-live="polite"></div>
+
+<section class="calc-article">
+  <h2>Что считает калькулятор</h2>
+  <p>Площадь полотна равна площади потолка, багет (профиль крепления) — периметру комнаты с запасом на подрезку углов. Под каждый светильник в полотно вклеивается термокольцо и заранее ставится закладная платформа, а сквозь каждый стояк отопления делается обвод с термокольцом. Всё это калькулятор считает по размерам комнаты.</p>
+
+  <table>
+    <thead><tr><th>Элемент</th><th>Как считается</th></tr></thead>
+    <tbody>
+      <tr><td>Полотно</td><td>длина × ширина</td></tr>
+      <tr><td>Багет по периметру</td><td>2 × (длина + ширина) + 5% на углы</td></tr>
+      <tr><td>Термокольца</td><td>по числу светильников и обходов труб</td></tr>
+      <tr><td>Платформы (закладные)</td><td>по числу светильников</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Важные детали монтажа</h2>
+  <ul>
+    <li><strong>Потеря высоты.</strong> Полотно опускается минимум на 3–4 см от базового потолка, а под встроенный светильник нужно 5–7 см — это закладывают заранее.</li>
+    <li><strong>Шов у широких комнат.</strong> ПВХ-плёнку сваривают из полотнищ, если ширина комнаты больше ширины рулона (около 5 м). Тканевые полотна шире, но их не сваривают — есть предел по рулону.</li>
+    <li><strong>Закладные под светильники и люстру</strong> ставят до натяжки: потом добавить точку нельзя, не сняв полотно.</li>
+    <li><strong>Обход труб</strong> — слабое место: делается через разрезное термокольцо и герметизируется, иначе по стояку тянет воздух и полотно «дышит».</li>
+  </ul>
+  <p>Как натяжной потолок соотносится с другими вариантами и когда он оправдан — в статье про <a href="/article/natyazhnye-potolki/">натяжные потолки</a>. Реечный и крашеный варианты для сравнения — <a href="/article/reechnye-potolki-montazh/">реечные потолки</a> и <a href="/article/potolok-pod-pokrasku-vyravnivanie/">потолок под покраску</a>.</p>
+
+  <h2>Частые вопросы</h2>
+  <h3>Нужен ли запас полотна?</h3>
+  <p>При гарпунной технологии полотно раскраивается по замеру помещения с технологическим припуском, который закладывает изготовитель, — отдельно закладывать запас не нужно. Калькулятор показывает чистую площадь потолка; на неё ориентируются при расчёте стоимости.</p>
+
+  <h3>Сколько светильников заложить?</h3>
+  <p>Ориентир — один точечный светильник на 1,5–2 м² при основном освещении. Но важнее заранее определить их точное расположение: платформы ставят до натяжки полотна, и передвинуть светильник потом нельзя.</p>
+
+  <h3>Учитывать ли ниши под карниз?</h3>
+  <p>Скрытый карниз для штор уменьшает ширину полотна и требует отдельного профиля, поэтому его считают отдельно. В базовом расчёте калькулятор берёт прямоугольную комнату без ниши.</p>
+</section>
+
+<script>
+DomCalc.register('natyazhnoy-potolok', function (v, f) {
+  var dlina = v.dlina || 0;
+  var shirina = v.shirina || 0;
+  var area = dlina * shirina;
+
+  if (area <= 0) { return f.note('Укажите длину и ширину комнаты.'); }
+
+  var perim = 2 * (dlina + shirina);
+  var baget = perim * 1.05;
+  var svet = Math.max(0, Math.round(v.svetilniki || 0));
+  var truby = Math.max(0, Math.round(v.truby || 0));
+  var ringsTotal = svet + truby;
+  var mat = v.material || 'pvh';
+  var maxWidth = (mat === 'tkan') ? 5.1 : 5.0;
+  var minSide = Math.min(dlina, shirina);
+
+  var out = f.total('Площадь полотна', f.num(area, 1) + ' м²',
+    (mat === 'tkan' ? 'Тканевое' : 'ПВХ') + ', багет ' + f.num(baget, 1) + ' пог. м');
+
+  var rows = [
+    f.row('Периметр комнаты', f.num(perim, 1) + ' м', 'по нему считается багет'),
+    f.row('Багет (профиль)', f.num(baget, 1) + ' пог. м', 'с запасом 5% на углы'),
+    f.row('Термокольца', f.num(ringsTotal, 0) + ' шт',
+      svet + ' под светильники' + (truby > 0 ? ' + ' + truby + ' на обход труб' : '')),
+    f.row('Платформы под светильники', f.num(svet, 0) + ' шт', 'закладные до натяжки')
+  ];
+  if (v.cena > 0) { rows.push(f.row('Стоимость полотна', f.money(area * v.cena), f.num(v.cena, 0) + ' ₽/м²')); }
+
+  out += f.table(rows, 'Что понадобится');
+
+  if (minSide > maxWidth) {
+    out += f.note('Ширина комнаты ' + f.num(minSide, 1) + ' м больше ширины рулона (≈ ' + f.num(maxWidth, 1) +
+      ' м). ' + (mat === 'tkan'
+        ? 'Тканевое полотно такой ширины не выпускается — потребуется другой тип или разбивка на зоны.'
+        : 'ПВХ-полотно сварят из полотнищ — на потолке будет шов.'));
+  } else {
+    out += f.note('Полотно опускает потолок минимум на 3–4 см, под встроенный светильник нужно 5–7 см. ' +
+      'Платформы под светильники и люстру ставят до натяжки — добавить точку потом нельзя.');
+  }
+
+  return out;
+});
+</script>

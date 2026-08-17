@@ -145,6 +145,18 @@ function domexpert_all_calculators_meta(): array
                      'krepezh-v-stenu-dyubeli-i-ankery'],
     ],
 
+    'natyazhnoy-potolok' => [
+      'group'    => 'materialy',
+      'title'    => 'Калькулятор натяжного потолка: полотно, багет, светильники',
+      'h1'       => 'Расчёт натяжного потолка',
+      'desc'     => 'Площадь полотна, длина багета по периметру, термокольца и платформы под светильники и обход труб. ПВХ и тканевое полотно, шов у широких комнат.',
+      'lead'     => 'Задаёте размеры комнаты, число светильников и обходов труб — получаете площадь полотна, багет и врезки.',
+      'level'    => 'простой',
+      'related'  => ['natyazhnye-potolki', 'reechnye-potolki-montazh',
+                     'potolok-pod-pokrasku-vyravnivanie', 'gipsokarton-peregorodki-i-potolki',
+                     'osveshcheniye-v-kvartire'],
+    ],
+
     'sechenie-kabelya' => [
       'group'    => 'elektrika',
       'title'    => 'Калькулятор сечения кабеля и номинала автомата',
