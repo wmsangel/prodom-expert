@@ -76,7 +76,96 @@
 
 <p>Это примерно <strong>32 000 ₽/м²</strong> без кухни, мебели, техники и светильников. Соотношение, которое стоит запомнить: работы — около 40% сметы, материалы — около 50%, резерв — 10–12%. Если подрядчик показывает смету, где материалы составляют 25%, значит, половина материалов в неё просто не попала. Свои цифры по такой же структуре можно прикинуть <a href="/calc/smeta-remonta/">калькулятором сметы ремонта</a>.</p>
 
+<h2>Готовый шаблон сметы: скачать и распечатать</h2>
+
+<p>Чтобы не собирать смету с нуля, возьмите готовую структуру — это образец сметы со всеми семью разделами и типовыми строками. Заполните графы «Кол-во», «Цена» и «Сумма» под свою квартиру, а итог получите как сумму разделов плюс резерв 10–20%. Шаблон можно <strong>скачать таблицей</strong> и открыть в Excel или Google&nbsp;Таблицах, либо <strong>распечатать</strong> и заполнить от руки.</p>
+
+<div style="display:flex; gap:12px; flex-wrap:wrap; margin:1.25rem 0;">
+  <button type="button" id="smetaCsvBtn" class="btn btn-primary" style="display:inline-flex; cursor:pointer; border:none;">⬇ Скачать шаблон (CSV для Excel)</button>
+  <button type="button" id="smetaPrintBtn" class="btn btn-outline" style="display:inline-flex; cursor:pointer; background:none; color:var(--heading); border-color:var(--beige-mid);">🖨 Распечатать</button>
+</div>
+
+<div style="overflow-x:auto;margin:1.25rem 0;"><table style="width:100%;border-collapse:collapse;min-width:640px;"><thead><tr><th style="padding:9px;border:1px solid #ddd;text-align:left;background:#f5f5f5;">Раздел и работа</th><th style="padding:9px;border:1px solid #ddd;text-align:center;background:#f5f5f5;">Ед.</th><th style="padding:9px;border:1px solid #ddd;text-align:right;background:#f5f5f5;">Кол-во</th><th style="padding:9px;border:1px solid #ddd;text-align:right;background:#f5f5f5;">Цена, ₽</th><th style="padding:9px;border:1px solid #ddd;text-align:right;background:#f5f5f5;">Сумма, ₽</th></tr></thead><tbody>
+<tr><td colspan="5" style="padding:9px;border:1px solid #ddd;background:#f5f5f5;"><strong>1. Демонтаж и подготовка</strong></td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd;">Демонтаж перегородок, плитки, стяжки</td><td style="padding:9px;border:1px solid #ddd;text-align:center;">м²</td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd;">Вывоз строительного мусора</td><td style="padding:9px;border:1px solid #ddd;text-align:center;">м³</td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td></tr>
+<tr><td colspan="5" style="padding:9px;border:1px solid #ddd;background:#f5f5f5;"><strong>2. Черновые работы</strong></td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd;">Возведение перегородок</td><td style="padding:9px;border:1px solid #ddd;text-align:center;">м²</td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd;">Штукатурка стен по маякам</td><td style="padding:9px;border:1px solid #ddd;text-align:center;">м²</td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd;">Стяжка пола</td><td style="padding:9px;border:1px solid #ddd;text-align:center;">м²</td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td></tr>
+<tr><td colspan="5" style="padding:9px;border:1px solid #ddd;background:#f5f5f5;"><strong>3. Электрика</strong></td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd;">Электроточки: розетки, выключатели, свет</td><td style="padding:9px;border:1px solid #ddd;text-align:center;">шт</td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd;">Штробление, кабель, сборка щита</td><td style="padding:9px;border:1px solid #ddd;text-align:center;">компл</td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td></tr>
+<tr><td colspan="5" style="padding:9px;border:1px solid #ddd;background:#f5f5f5;"><strong>4. Сантехника</strong></td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd;">Разводка точек воды и канализации</td><td style="padding:9px;border:1px solid #ddd;text-align:center;">шт</td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd;">Радиаторы, полотенцесушитель, приборы</td><td style="padding:9px;border:1px solid #ddd;text-align:center;">шт</td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td></tr>
+<tr><td colspan="5" style="padding:9px;border:1px solid #ddd;background:#f5f5f5;"><strong>5. Потолки</strong></td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd;">Выравнивание или натяжной потолок</td><td style="padding:9px;border:1px solid #ddd;text-align:center;">м²</td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td></tr>
+<tr><td colspan="5" style="padding:9px;border:1px solid #ddd;background:#f5f5f5;"><strong>6. Чистовая отделка</strong></td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd;">Плитка: укладка и материал</td><td style="padding:9px;border:1px solid #ddd;text-align:center;">м²</td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd;">Стены: обои или покраска</td><td style="padding:9px;border:1px solid #ddd;text-align:center;">м²</td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd;">Напольное покрытие</td><td style="padding:9px;border:1px solid #ddd;text-align:center;">м²</td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td></tr>
+<tr><td colspan="5" style="padding:9px;border:1px solid #ddd;background:#f5f5f5;"><strong>7. Двери и фурнитура</strong></td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd;">Межкомнатные двери с установкой</td><td style="padding:9px;border:1px solid #ddd;text-align:center;">шт</td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd;">Входная дверь</td><td style="padding:9px;border:1px solid #ddd;text-align:center;">шт</td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td><td style="padding:9px;border:1px solid #ddd;"></td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd;background:#fafafa;">Резерв 10–20%</td><td style="padding:9px;border:1px solid #ddd;background:#fafafa;"></td><td style="padding:9px;border:1px solid #ddd;background:#fafafa;"></td><td style="padding:9px;border:1px solid #ddd;background:#fafafa;"></td><td style="padding:9px;border:1px solid #ddd;background:#fafafa;"></td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd;background:#fafafa;"><strong>ИТОГО</strong></td><td style="padding:9px;border:1px solid #ddd;background:#fafafa;"></td><td style="padding:9px;border:1px solid #ddd;background:#fafafa;"></td><td style="padding:9px;border:1px solid #ddd;background:#fafafa;"></td><td style="padding:9px;border:1px solid #ddd;background:#fafafa;"></td></tr>
+</tbody></table></div>
+
+<p>Заполнять смету удобнее сверху вниз, отдельно считая работы и материалы: их объёмы и пропорции разобраны в статье про <a href="/article/raschet-materialov-dlya-remonta/">расчёт материалов</a>, а порядок оплаты по этапам — в материале про <a href="/article/kontrol-smety-remonta-po-etapam/">контроль сметы по этапам</a>. Готовые цифры по своей площади можно получить <a href="/calc/smeta-remonta/">калькулятором сметы ремонта</a>.</p>
+
+<script>
+(function () {
+  var rows = [
+    ['Раздел и работа', 'Ед.', 'Кол-во', 'Цена, руб', 'Сумма, руб'],
+    ['1. ДЕМОНТАЖ И ПОДГОТОВКА', '', '', '', ''],
+    ['Демонтаж перегородок, плитки, стяжки', 'м2', '', '', ''],
+    ['Вывоз строительного мусора', 'м3', '', '', ''],
+    ['2. ЧЕРНОВЫЕ РАБОТЫ', '', '', '', ''],
+    ['Возведение перегородок', 'м2', '', '', ''],
+    ['Штукатурка стен по маякам', 'м2', '', '', ''],
+    ['Стяжка пола', 'м2', '', '', ''],
+    ['3. ЭЛЕКТРИКА', '', '', '', ''],
+    ['Электроточки: розетки, выключатели, свет', 'шт', '', '', ''],
+    ['Штробление, кабель, сборка щита', 'компл', '', '', ''],
+    ['4. САНТЕХНИКА', '', '', '', ''],
+    ['Разводка точек воды и канализации', 'шт', '', '', ''],
+    ['Радиаторы, полотенцесушитель, приборы', 'шт', '', '', ''],
+    ['5. ПОТОЛКИ', '', '', '', ''],
+    ['Выравнивание или натяжной потолок', 'м2', '', '', ''],
+    ['6. ЧИСТОВАЯ ОТДЕЛКА', '', '', '', ''],
+    ['Плитка: укладка и материал', 'м2', '', '', ''],
+    ['Стены: обои или покраска', 'м2', '', '', ''],
+    ['Напольное покрытие', 'м2', '', '', ''],
+    ['7. ДВЕРИ И ФУРНИТУРА', '', '', '', ''],
+    ['Межкомнатные двери с установкой', 'шт', '', '', ''],
+    ['Входная дверь', 'шт', '', '', ''],
+    ['РЕЗЕРВ 10-20%', '', '', '', ''],
+    ['ИТОГО', '', '', '', '']
+  ];
+  var csvBtn = document.getElementById('smetaCsvBtn');
+  if (csvBtn) {
+    csvBtn.addEventListener('click', function () {
+      var csv = rows.map(function (r) {
+        return r.map(function (c) { return '"' + String(c).replace(/"/g, '""') + '"'; }).join(';');
+      }).join('\r\n');
+      var blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url; a.download = 'shablon-smety-remonta-kvartiry.csv';
+      document.body.appendChild(a); a.click();
+      document.body.removeChild(a); URL.revokeObjectURL(url);
+    });
+  }
+  var printBtn = document.getElementById('smetaPrintBtn');
+  if (printBtn) { printBtn.addEventListener('click', function () { window.print(); }); }
+})();
+</script>
+
 <h2>Как меняется смета: новостройка, вторичка, капремонт</h2>
+
+<h3>Косметический ремонт</h3>
+<p>Смета на косметический ремонт — самая лёгкая: черновой блок почти пустой, конструктив и инженерию не трогают. Остаются подготовка оснований и чистовая отделка — переклейка обоев или покраска, замена напольного покрытия, иногда потолок и двери. Порядок сумм здесь в 3–4 раза ниже капитального: ориентир 6 000–10 000 ₽/м² вместе с материалами против 28 000–35 000 ₽/м² при капремонте. Главная ошибка в такой смете — заложить только чистовую и забыть про мелкую подготовку (выравнивание, грунт, расходники), из-за которой итог уходит вверх на 15–20%.</p>
 
 <h3>Новостройка без отделки</h3>
 <p>Раздел демонтажа почти пустой, зато полностью ваши: перегородки, штукатурка по голому бетону или блоку, вся инженерия с нуля, стяжка по всей площади. Добавьте то, о чём в новостройках забывают: заведение слаботочки, входную дверь взамен застройщицкой, откосы окон и подоконники, если застройщик их не ставил. С чего начинать — в статье про <a href="/article/remont-v-novostroyke-s-chego-nachat/">ремонт в новостройке</a>. До сметы стоит пройти <a href="/article/priemka-kvartiry-ot-zastroishchika/">приёмку у застройщика</a>: часть недочётов обязан устранить он, и в вашу смету они попадать не должны.</p>
