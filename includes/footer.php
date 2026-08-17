@@ -40,6 +40,7 @@ $currentYear = date('Y');
             <li><a href="/editorial.php">Редакционная политика</a></li>
             <li><a href="/contacts.php">Контакты</a></li>
             <li><a href="/privacy.php">Политика конфиденциальности</a></li>
+            <li><a href="/usloviya.php">Условия использования</a></li>
             <li><a href="/articles.php">Все статьи — архив</a></li>
             <li><a href="/search.php">Поиск по сайту</a></li>
             <li><a href="/rss.php">RSS-лента</a></li>
@@ -114,5 +115,7 @@ $currentYear = date('Y');
     ym(108673434, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:'dataLayer', referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/108673434" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+  <?php include __DIR__ . '/cookie-consent.php'; ?>
 </body>
 </html>
