@@ -27,6 +27,7 @@ COVERS = ROOT / "assets" / "img" / "articles"
 # Слаг → подпись на обложке.
 TITLES = {
     # Ремонт
+    "peregorodki-gazobeton-pazogreben-kirpich":    "Перегородки из блоков",
     "zvukoizolyaciya-pola-plovuchiy-pol":          "Звукоизоляция пола",
     "suhaya-otdelka-sten-paneli-reyki":            "Сухая отделка стен",
     "gipsokarton-peregorodki-i-potolki":           "Гипсокартон",
@@ -64,6 +65,7 @@ TITLES = {
     "otlivy-i-kapelnaya-liniya-okna":              "Отливы окна",
 
     # Сантехника
+    "kak-vybrat-unitaz":                           "Выбор унитаза",
     "bojler-nakopitelnyj-ili-protochnyj":          "Водонагреватель",
     "termostat-dlya-dusha-i-vanny":                "Термостат для душа",
     "vodyanoy-teplyy-pol-v-kvartire":              "Водяной тёплый пол",
@@ -83,6 +85,7 @@ TITLES = {
     "vynosnaya-kolonna-smestitelya-vanna":         "Колонна смесителя",
 
     # Электрика
+    "uzip-grozozashchita-kvartiry":                "УЗИП",
     "kvartirnyy-schitok-sborka-i-markirovka":      "Квартирный щиток",
     "kabel-kanaly-i-koroby":                       "Кабель-каналы",
     "zamena-elektroschetchika-kvartira":           "Замена электросчётчика",

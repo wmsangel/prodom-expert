@@ -133,6 +133,18 @@ function domexpert_all_calculators_meta(): array
                      'poly-po-lagam-v-kvartire'],
     ],
 
+    'peregorodka-bloki' => [
+      'group'    => 'materialy',
+      'title'    => 'Калькулятор перегородки из блоков: газобетон, ПГП, кирпич',
+      'h1'       => 'Расчёт перегородки из блоков',
+      'desc'     => 'Количество блоков, клея или раствора и армирования по размерам перегородки. Отдельно газобетон, пазогребень и кирпич, плюс вес и нагрузка на перекрытие.',
+      'lead'     => 'Задаёте размеры, материал и толщину — получаете количество блоков, вяжущее, армирование и вес готовой стенки.',
+      'level'    => 'средний',
+      'related'  => ['peregorodki-gazobeton-pazogreben-kirpich', 'gipsokarton-peregorodki-i-potolki',
+                     'demontazh-sten-i-peregorodok', 'shtukaturka-sten',
+                     'krepezh-v-stenu-dyubeli-i-ankery'],
+    ],
+
     'sechenie-kabelya' => [
       'group'    => 'elektrika',
       'title'    => 'Калькулятор сечения кабеля и номинала автомата',

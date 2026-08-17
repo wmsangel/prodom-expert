@@ -1,0 +1,162 @@
+<form class="calc" data-calc="peregorodka-bloki">
+  <fieldset>
+    <legend>Размеры перегородки</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="pb-dlina">Длина, м</label>
+        <input type="number" id="pb-dlina" name="dlina" value="3" min="0" max="30" step="0.1" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="pb-vysota">Высота, м</label>
+        <input type="number" id="pb-vysota" name="vysota" value="2.7" min="0" max="5" step="0.05" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="pb-proemy">Проёмы (двери), м²</label>
+        <input type="number" id="pb-proemy" name="proemy" value="1.8" min="0" max="100" step="0.1" inputmode="decimal">
+        <span class="calc-field-hint">Типовая дверь — около 1,8 м²</span>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Материал</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="pb-material">Тип блока</label>
+        <select id="pb-material" name="material">
+          <option value="gazobeton" selected>Газобетон</option>
+          <option value="pgp">Пазогребневые плиты (ПГП)</option>
+          <option value="kirpich">Кирпич</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="pb-tolshchina">Толщина, мм</label>
+        <select id="pb-tolshchina" name="tolshchina">
+          <option value="65">65 — кирпич в четверть</option>
+          <option value="75">75 — газобетон</option>
+          <option value="80">80 — ПГП</option>
+          <option value="100" selected>100 — газобетон / ПГП</option>
+          <option value="120">120 — кирпич в полкирпича</option>
+          <option value="150">150 — газобетон</option>
+        </select>
+        <span class="calc-field-hint">Выберите толщину под свой материал</span>
+      </div>
+      <div class="calc-field">
+        <label for="pb-cena">Цена за штуку, ₽</label>
+        <input type="number" id="pb-cena" name="cena" value="0" min="0" max="1000" step="1" inputmode="numeric">
+        <span class="calc-field-hint">0 — если стоимость не нужна</span>
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="pb-grunt" name="grunt" checked>
+        <label for="pb-grunt">Считать грунтовку под отделку</label>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<div class="calc-result" data-calc-result="peregorodka-bloki" role="status" aria-live="polite"></div>
+
+<section class="calc-article">
+  <h2>Что считает калькулятор</h2>
+  <p>Расчёт идёт от чистой площади перегородки — длина на высоту за вычетом проёмов. Количество блоков определяется форматом материала, клей или раствор — объёмом кладки, а вес готовой стенки сразу показывает нагрузку на перекрытие. К количеству добавляется 5% на подрезку и бой.</p>
+
+  <table>
+    <thead><tr><th>Материал</th><th>Штук в 1 м²</th><th>Вес 1 м² (100 мм)</th><th>Вяжущее</th></tr></thead>
+    <tbody>
+      <tr><td>Газобетон</td><td>≈ 6,6 блока</td><td>≈ 50 кг</td><td>клей, 2–3 мм шов</td></tr>
+      <tr><td>Пазогребень (ПГП)</td><td>≈ 3 плиты</td><td>≈ 90–100 кг</td><td>гипсовый клей</td></tr>
+      <tr><td>Кирпич в полкирпича</td><td>≈ 51 кирпич</td><td>≈ 210 кг</td><td>раствор, 10 мм шов</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Почему вес важнее, чем кажется</h2>
+  <p>Плита перекрытия рассчитана на ограниченную нагрузку, и тяжёлая перегородка её частично расходует. Стенка 3 × 2,7 м из газобетона весит около 400 кг, из кирпича в полкирпича — под 1,7 тонны. В монолитном доме это допустимо, а в старом фонде с облегчёнными перекрытиями кирпич без расчёта ставить нельзя. Калькулятор показывает вес как раз для этой проверки.</p>
+
+  <h2>Правила, без которых пойдут трещины</h2>
+  <ul>
+    <li><strong>Первый ряд</strong> — по гидроизоляции и строго по уровню на растворе.</li>
+    <li><strong>Связь с несущими стенами</strong> — гибкими связями каждые 2–3 ряда, но не жёсткой перевязкой.</li>
+    <li><strong>Армирование</strong> — газобетон каждый 3-й ряд, кирпич сеткой каждые 3–4 ряда.</li>
+    <li><strong>Зазор 10–20 мм сверху</strong> под перекрытием, заполненный пеной: плита прогибается, жёсткая заделка даёт трещину.</li>
+    <li><strong>Проём</strong> — только с перемычкой, а не домашиванием блоков в воздухе.</li>
+  </ul>
+  <p>Подробный разбор материалов и монтажа — в статье про <a href="/article/peregorodki-gazobeton-pazogreben-kirpich/">перегородки из газобетона, ПГП и кирпича</a>. Каркасный вариант для сравнения — <a href="/article/gipsokarton-peregorodki-i-potolki/">гипсокартонные перегородки</a>.</p>
+
+  <h2>Частые вопросы</h2>
+  <h3>Почему в расчёте появляется вес, а не только количество?</h3>
+  <p>Потому что нагрузка на перекрытие — реальное ограничение, особенно в старом фонде. Два одинаковых по размеру варианта могут отличаться по весу в четыре раза, и кирпичная перегородка там, где перекрытие облегчённое, требует расчёта конструктора.</p>
+
+  <h3>Учитывать ли проёмы?</h3>
+  <p>Да, впишите суммарную площадь дверей и окон в перегородке — калькулятор вычтет её из площади кладки. Но помните, что над проёмом нужна перемычка, которую считают отдельно.</p>
+
+  <h3>Сколько запаса закладывать?</h3>
+  <p>Калькулятор уже добавляет 5% на подрезку и бой. Для сложной геометрии с множеством резов имеет смысл взять на пару процентов больше, а неполные блоки у проёмов часто получается доложить из обрезков.</p>
+</section>
+
+<script>
+DomCalc.register('peregorodka-bloki', function (v, f) {
+  var dlina = v.dlina || 0;
+  var vysota = v.vysota || 0;
+  var proemy = v.proemy || 0;
+  var area = dlina * vysota - proemy;
+
+  if (area <= 0) { return f.note('Укажите длину и высоту перегородки — площадь получилась нулевой.'); }
+
+  var t = parseFloat(v.tolshchina) || 100;   // мм
+  var tm = t / 1000;                          // м
+  var mat = v.material || 'gazobeton';
+
+  var perM2, dens, unit, matName, rowH, binderKg, binderName, bagKg;
+  var primerL = 0, reinfM = 0, reinfHint = '';
+
+  if (mat === 'pgp') {
+    perM2 = 3.0; dens = 1200; unit = 'плит'; matName = 'Пазогребневые плиты';
+    rowH = 0.502; binderName = 'Гипсовый монтажный клей'; bagKg = 30;
+    binderKg = area * 2.2;
+    if (v.grunt) { primerL = area * 0.3; }
+  } else if (mat === 'kirpich') {
+    var pol = t >= 120;
+    perM2 = pol ? 51 : 30; dens = 1800; unit = 'кирпичей'; matName = 'Кирпич';
+    rowH = 0.075; binderName = 'Кладочный раствор (сухая смесь)'; bagKg = 25;
+    binderKg = area * (pol ? 40 : 16);
+    reinfM = Math.ceil((vysota / rowH) / 4) * dlina;
+    reinfHint = 'кладочная сетка каждые 4 ряда';
+  } else {
+    mat = 'gazobeton';
+    perM2 = 6.6; dens = 500; unit = 'блоков'; matName = 'Газобетон';
+    rowH = 0.252; binderName = 'Клей для газобетона'; bagKg = 25;
+    binderKg = (area * tm) * 28;   // ≈ мешок 25 кг на 1 м³ кладки
+    reinfM = Math.ceil((vysota / rowH) / 3) * dlina * 2;
+    reinfHint = '2 прутка в штробу каждый 3-й ряд';
+    if (v.grunt) { primerL = area * 0.3; }
+  }
+
+  var qtyReserve = Math.ceil(area * perM2 * 1.05);
+  var rows = Math.ceil(vysota / rowH);
+  var volume = area * tm;          // м³
+  var weight = volume * dens;      // кг
+  var bags = Math.max(1, Math.ceil(binderKg / bagKg));
+
+  var out = f.total('Нужно ' + unit, f.num(qtyReserve, 0) + ' шт',
+    matName + ', толщина ' + t + ' мм, с запасом 5%');
+
+  var trows = [
+    f.row('Площадь перегородки', f.num(area, 1) + ' м²',
+      proemy > 0 ? ('за вычетом проёмов ' + f.num(proemy, 1) + ' м²') : ''),
+    f.row('Рядов кладки', f.num(rows, 0), 'по высоте ' + f.num(vysota, 2) + ' м'),
+    f.row(binderName, f.num(binderKg, 0) + ' кг', '≈ ' + bags + ' × ' + bagKg + ' кг')
+  ];
+  if (reinfM > 0) { trows.push(f.row('Армирование', f.num(reinfM, 0) + ' пог. м', reinfHint)); }
+  if (primerL > 0) { trows.push(f.row('Грунтовка', f.num(primerL, 1) + ' л', 'обе стороны перед отделкой')); }
+  trows.push(f.row('Вес перегородки', f.num(weight, 0) + ' кг', 'нагрузка на перекрытие'));
+  if (v.cena > 0) { trows.push(f.row('Стоимость ' + unit, f.money(qtyReserve * v.cena), f.num(v.cena, 0) + ' ₽/шт')); }
+
+  out += f.table(trows, 'Как получилось');
+
+  out += f.note('Первый ряд — по гидроизоляции и уровню. Сверху оставьте зазор 10–20 мм до перекрытия ' +
+    'и заполните пеной: жёсткая заделка даёт трещину. Вес ' + f.num(weight, 0) + ' кг — сверьте с допустимой ' +
+    'нагрузкой на перекрытие, особенно в старом фонде.');
+
+  return out;
+});
+</script>
