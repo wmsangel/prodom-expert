@@ -32,7 +32,7 @@ if (!function_exists('domexpert_partners')) {
         'title' => '24Здоровье',
         'desc'  => 'Доказательная медицина без мифов: питание, сон, движение и понятные протоколы.',
         'cta'   => 'Проверить здоровье',
-        'url'   => 'https://24zdorovie.com/ru/',
+        'url'   => 'https://24zdorovie.com',
         'icon'  => '🩺',
       ],
       [
@@ -40,7 +40,7 @@ if (!function_exists('domexpert_partners')) {
         'title' => 'CalcLumen',
         'desc'  => '48 бесплатных онлайн-калькуляторов: финансы, здоровье, авто и быт.',
         'cta'   => 'Открыть калькуляторы',
-        'url'   => 'https://calclumen.com/en',
+        'url'   => 'https://calclumen.com',
         'icon'  => '🧮',
       ],
       [
@@ -48,8 +48,32 @@ if (!function_exists('domexpert_partners')) {
         'title' => 'TheCryptoTools',
         'desc'  => '69+ бесплатных крипто-калькуляторов: прибыль, риск, портфель. Без регистрации.',
         'cta'   => 'Посчитать крипту',
-        'url'   => 'https://thecryptotools.com/',
+        'url'   => 'https://thecryptotools.com',
         'icon'  => '📊',
+      ],
+      [
+        'id'    => 'costtrek',
+        'title' => 'CostTrek',
+        'desc'  => 'Сравнение стоимости жизни в городах мира: аренда, налоги и зарплата под переезд.',
+        'cta'   => 'Сравнить города',
+        'url'   => 'https://costtrek.com',
+        'icon'  => '🌍',
+      ],
+      [
+        'id'    => 'iznkit',
+        'title' => 'iznkit',
+        'desc'  => 'Генераторы PDF и калькуляторы: счета, сметы, налоги, QR — без регистрации.',
+        'cta'   => 'Собрать документ',
+        'url'   => 'https://iznkit.com',
+        'icon'  => '📄',
+      ],
+      [
+        'id'    => 'izngames',
+        'title' => 'izn.games',
+        'desc'  => 'Бесплатные браузерные игры — без загрузок и регистрации, играй сразу.',
+        'cta'   => 'Играть',
+        'url'   => 'https://izngames.com',
+        'icon'  => '🎮',
       ],
     ];
   }
