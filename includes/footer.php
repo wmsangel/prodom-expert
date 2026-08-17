@@ -87,6 +87,7 @@ $currentYear = date('Y');
           <a href="/about.php">О сайте</a>
           <a href="/contacts.php">Контакты</a>
           <a href="/privacy.php">Конфиденциальность</a>
+          <a href="#" onclick="showCookieSettings();return false;">Настройки cookie</a>
         </div>
       </div>
 
@@ -104,15 +105,21 @@ $currentYear = date('Y');
     gtag('config', 'G-35WXXKG90T');
   </script>
 
-  <!-- Yandex.Metrika — один счётчик, после отрисовки страницы -->
+  <!-- Yandex.Metrika — один счётчик, после отрисовки страницы.
+       Не запускается, если пользователь выбрал «Только необходимые». -->
   <script>
-    (function(m,e,t,r,i,k,a){
-      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-      m[i].l=1*new Date();
-      for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
-      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=108673434', 'ym');
-    ym(108673434, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:'dataLayer', referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    (function(){
+      var __noAnalytics = false;
+      try { __noAnalytics = localStorage.getItem('cookie_consent') === 'necessary'; } catch (e) {}
+      if (__noAnalytics) { return; }
+      (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=108673434', 'ym');
+      ym(108673434, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:'dataLayer', referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    })();
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/108673434" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 

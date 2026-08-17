@@ -221,6 +221,30 @@ if (!function_exists('esc')) {
   <!-- ═══ Подтверждение вебмастера (при необходимости раскомментируйте) ═══ -->
   <!-- <meta name="google-site-verification" content="ВАШТОКЕН"> -->
 
+  <!-- Consent Mode v2: значения согласия по умолчанию ДО загрузки рекламы и аналитики.
+       Для ЕС/Британии/Швейцарии — запрещено до явного согласия (баннер),
+       для остального мира — разрешено. Ранее сохранённый выбор применяется сразу. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied',
+      region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],
+      wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted'
+    });
+    try {
+      var __cc = localStorage.getItem('cookie_consent');
+      if (__cc === 'all') {
+        gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});
+      } else if (__cc === 'necessary') {
+        gtag('consent','update',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});
+      }
+    } catch (e) {}
+  </script>
+
   <!-- Yandex РСЯ Autoplacement 19600856 -->
   <script src="https://yandex.ru/ads/system/context.js" async></script>
   <script data-page-id="19600856" src="https://yandex.ru/ads/system/ap-loader.js" async></script>
