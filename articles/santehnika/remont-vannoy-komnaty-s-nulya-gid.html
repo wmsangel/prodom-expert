@@ -23,6 +23,56 @@
 
 <p>Перенос мокрых точек за пределы санузла — это <a href="/article/soglasovanie-pereplanirovki-kvartiry/">перепланировка с согласованием</a>, и над жилыми комнатами соседей она запрещена. Решать это нужно до, а не после демонтажа.</p>
 
+<h2>Пошаговый план работ: чек-лист на 2026 год</h2>
+
+<p>Ниже — весь порядок ремонта ванной комнаты с нуля одним списком: пошаговое руководство по этапам, каждый из которых подробно разобран дальше. План можно <strong>распечатать</strong> и отмечать выполненное или <strong>скачать таблицей</strong>. Порядок актуален на 2026 год.</p>
+
+<div style="display:flex; gap:12px; flex-wrap:wrap; margin:1.25rem 0;">
+  <button type="button" id="vanCsvBtn" class="btn btn-primary" style="display:inline-flex; cursor:pointer; border:none;">⬇ Скачать чек-лист (CSV)</button>
+  <button type="button" id="vanPrintBtn" class="btn btn-outline" style="display:inline-flex; cursor:pointer; background:none; color:var(--heading); border-color:var(--beige-mid);">🖨 Распечатать</button>
+</div>
+
+<ol>
+  <li><strong>Планировка до демонтажа</strong> — расстановка приборов, модели с габаритами, раскладка плитки, решение по тёплому полу и полотенцесушителю.</li>
+  <li><strong>Демонтаж</strong> — перекрыть воду, снять сантехнику и плитку, вскрыть стяжку в зоне работ, проверить стояки и вентканал, вывезти мусор.</li>
+  <li><strong>Черновая инженерия</strong> — канализация с уклоном, водорозетки по осям приборов, электрика по зонам влажности с УЗО, опрессовка и пролив.</li>
+  <li><strong>Гидроизоляция</strong> — обмазка пола с заходом на стены 15–20 см, углы проклеены лентой, выдержка и пролив на герметичность.</li>
+  <li><strong>Стяжка и подготовка</strong> — стяжка с уклоном к трапу при душе, выравнивание стен; объём смеси удобно прикинуть <a href="/calc/styazhka/">калькулятором стяжки</a>.</li>
+  <li><strong>Плитка</strong> — укладка от видовой стены, влагостойкий клей, затирка эпоксидная или качественная цементная; количество считает <a href="/calc/plitka/">калькулятор плитки</a>.</li>
+  <li><strong>Сантехника, свет и вентиляция</strong> — установка приборов, светильники по классу IP, проверка тяги и вытяжного вентилятора.</li>
+</ol>
+
+<script>
+(function () {
+  var rows = [
+    ['Этап', 'Что сделать', 'Отметка'],
+    ['1. Планировка', 'Расстановка приборов, модели, раскладка плитки, тёплый пол', ''],
+    ['2. Демонтаж', 'Перекрыть воду, снять сантехнику и плитку, вскрыть стяжку, вывоз мусора', ''],
+    ['3. Черновая инженерия', 'Канализация с уклоном, водорозетки, электрика с УЗО, опрессовка', ''],
+    ['4. Гидроизоляция', 'Обмазка пола и стен 15-20 см, углы лентой, пролив', ''],
+    ['5. Стяжка и подготовка', 'Стяжка с уклоном к трапу, выравнивание стен', ''],
+    ['6. Плитка', 'Укладка, влагостойкий клей, затирка', ''],
+    ['7. Сантехника, свет, вентиляция', 'Приборы, светильники IP, тяга и вентилятор', '']
+  ];
+  var csvBtn = document.getElementById('vanCsvBtn');
+  if (csvBtn) {
+    csvBtn.addEventListener('click', function () {
+      var csv = rows.map(function (r) {
+        return r.map(function (c) { return '"' + String(c).replace(/"/g, '""') + '"'; }).join(';');
+      }).join('\r\n');
+      var blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url; a.download = 'chek-list-remonta-vannoy.csv';
+      document.body.appendChild(a); a.click();
+      document.body.removeChild(a); URL.revokeObjectURL(url);
+    });
+  }
+  var printBtn = document.getElementById('vanPrintBtn');
+  if (printBtn) { printBtn.addEventListener('click', function () { window.print(); }); }
+})();
+</script>
+
 <h2>Этап 1. Демонтаж</h2>
 
 <ol>
