@@ -66,6 +66,105 @@
 
 <p>Контрольная проверка обязательна. Если рама по расчёту оказывается шире внутреннего проёма или впритык к нему, её не получится завести внутрь — придётся либо уменьшать заход за четверть, либо подрубать проём.</p>
 
+<h3>Калькулятор: размер рамы по проёму</h3>
+<p>Введите замеры — калькулятор посчитает габарит рамы пластикового окна по формулам выше. Значения зазоров и профиля подставлены типовые, при необходимости поправьте.</p>
+
+<form class="calc" onsubmit="return false;" aria-label="Калькулятор размера рамы окна">
+  <fieldset>
+    <legend>Проём</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="okno-tip">Тип проёма</label>
+        <select id="okno-tip" name="tip">
+          <option value="bez" selected>Без четверти</option>
+          <option value="chetvert">С четвертью</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="okno-shirina">Ширина проёма, мм</label>
+        <input type="number" id="okno-shirina" name="shirina" value="1500" min="0" max="6000" step="1" inputmode="numeric">
+        <span class="calc-field-hint">При четверти — ширина в свету между четвертями</span>
+      </div>
+      <div class="calc-field">
+        <label for="okno-vysota">Высота проёма, мм</label>
+        <input type="number" id="okno-vysota" name="vysota" value="1450" min="0" max="4000" step="1" inputmode="numeric">
+        <span class="calc-field-hint">При четверти — высота в свету</span>
+      </div>
+      <div class="calc-field">
+        <label for="okno-vnutr">Внутр. ширина проёма, мм</label>
+        <input type="number" id="okno-vnutr" name="vnutr" value="0" min="0" max="6000" step="1" inputmode="numeric">
+        <span class="calc-field-hint">Только для четверти — для контрольной проверки (0 = пропустить)</span>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Зазоры и профиль</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="okno-zazor">Боковой зазор / заход, мм</label>
+        <input type="number" id="okno-zazor" name="zazor" value="20" min="0" max="60" step="1" inputmode="numeric">
+        <span class="calc-field-hint">Без четверти — зазор; с четвертью — заход за четверть</span>
+      </div>
+      <div class="calc-field">
+        <label for="okno-verh">Верхний зазор / заход, мм</label>
+        <input type="number" id="okno-verh" name="verh" value="20" min="0" max="60" step="1" inputmode="numeric">
+      </div>
+      <div class="calc-field">
+        <label for="okno-profil">Подставочный профиль, мм</label>
+        <input type="number" id="okno-profil" name="profil" value="30" min="0" max="60" step="1" inputmode="numeric">
+      </div>
+      <div class="calc-field">
+        <label for="okno-niz">Нижний зазор, мм</label>
+        <input type="number" id="okno-niz" name="niz" value="10" min="0" max="60" step="1" inputmode="numeric">
+        <span class="calc-field-hint">Учитывается только без четверти</span>
+      </div>
+    </div>
+  </fieldset>
+</form>
+<div class="calc-result" role="status" aria-live="polite"><div id="okno-result"></div></div>
+
+<script>
+(function () {
+  var ids = ['tip','shirina','vysota','vnutr','zazor','verh','profil','niz'];
+  var el = {};
+  for (var i = 0; i < ids.length; i++) { el[ids[i]] = document.getElementById('okno-' + ids[i]); }
+  var out = document.getElementById('okno-result');
+  if (!out || !el.shirina) { return; }
+  function num(k){ var n = parseFloat(String(el[k].value).replace(',','.')); return isFinite(n) ? n : 0; }
+  function calc(){
+    var w = num('shirina'), h = num('vysota');
+    if (w <= 0 || h <= 0) { out.innerHTML = '<p class="calc-note">Введите ширину и высоту проёма.</p>'; return; }
+    var zazor = num('zazor'), verh = num('verh'), profil = num('profil'), niz = num('niz');
+    var fw, fh, note = '';
+    if (el.tip.value === 'chetvert') {
+      fw = w + 2 * zazor;
+      fh = h + verh - profil;
+      var vn = num('vnutr');
+      if (vn > 0) {
+        var slack = vn - fw;
+        if (slack < 40) {
+          note = '⚠ Рама шире внутреннего проёма или впритык (запас ' + Math.round(slack) + ' мм на два зазора). Уменьшите заход за четверть или подрубите проём.';
+        } else {
+          note = 'Контроль: до внутреннего проёма ' + Math.round(slack) + ' мм (' + Math.round(slack / 2) + ' мм на сторону) — норма.';
+        }
+      }
+    } else {
+      fw = w - 2 * zazor;
+      fh = h - verh - profil - niz;
+    }
+    if (fw <= 0 || fh <= 0) { out.innerHTML = '<p class="calc-note">Проверьте зазоры и профиль: размер рамы получился неположительным.</p>'; return; }
+    out.innerHTML = '<div class="calc-total"><span class="calc-total-label">Габарит рамы</span>' +
+      '<span class="calc-total-value">' + Math.round(fw) + ' × ' + Math.round(fh) + ' мм</span>' +
+      '<span class="calc-total-note">ширина × высота</span></div>' +
+      (note ? '<p class="calc-note">' + note + '</p>' : '');
+  }
+  for (var j = 0; j < ids.length; j++) {
+    if (el[ids[j]]) { el[ids[j]].addEventListener('input', calc); el[ids[j]].addEventListener('change', calc); }
+  }
+  calc();
+})();
+</script>
+
 <h3>Почему снизу зазора почти нет</h3>
 <p>Под рамой стоит подставочный профиль, который сам является частью конструкции и опирается на основание проёма. Поэтому снизу закладывают минимальный зазор 10–15 мм на выравнивание, а не 20, как по бокам. Именно в подставочный профиль потом заводятся <a href="/article/otlivy-i-kapelnaya-liniya-okna/">отлив</a> и <a href="/article/podokonnnik-montazh-i-kondensat/">подоконник</a>, поэтому его высоту нужно знать до расчёта.</p>
 
