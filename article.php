@@ -9,6 +9,7 @@ require_once __DIR__ . '/includes/article-cover.php';
 require_once __DIR__ . '/includes/all-articles-meta.php';
 require_once __DIR__ . '/includes/article-toc.php';
 require_once __DIR__ . '/includes/partner-ads.php';
+require_once __DIR__ . '/includes/affiliate.php';
 
 // === Безопасная обработка slug (защита от path traversal) ===
 $rawSlug = isset($_GET['slug']) ? $_GET['slug'] : '';
@@ -329,6 +330,9 @@ include __DIR__ . '/includes/header.php';
         <!-- КАЛЬКУЛЯТОРЫ ПО ТЕМЕ (строится из реестра, разметку статей не трогает) -->
         <?php $calcArticleSlug = $slug; ?>
         <?php include __DIR__ . '/includes/article-calculators.php'; ?>
+
+        <!-- Партнёрский блок «Где купить» (пусто, пока в реестре нет офферов) -->
+        <?= domexpert_affiliate_block([$slug, $meta['catSlug'] ?? ''], 2) ?>
 
         <!-- Рекламный блок ПОСЛЕ статьи: кросс-промо наших проектов (пока нет AdSense) -->
         <?php if (!$articleMissing): ?>
