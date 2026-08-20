@@ -51,6 +51,7 @@ if (!function_exists('esc')) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="yandex-verification" content="0d826ddff2bfcc24" />
+  <meta name="mitgo-verification" content="d52e8943-c678-4143-83da-9c0bd89e6162" />
 
   <!-- ═══ ОСНОВНЫЕ SEO-ТЕГИ ═══ -->
   <title><?= esc($pageTitle) ?></title>
