@@ -169,6 +169,13 @@ if (!function_exists('domexpert_product_shelves')) {
 if (!function_exists('domexpert_product_shelf_block')) {
   /** Рендерит первую подходящую полку под теги страницы, иначе ''. */
   function domexpert_product_shelf_block(array $tags = []): string {
+    // ⚠️ ВРЕМЕННО ОТКЛЮЧЕНО. Deeplink текущей ссылки AliExpress (программа WW) не
+    // пробрасывают целевую страницу: параметр ulp игнорируется, все ведут на
+    // главную (общий редирект 8ej4e1d). Убрать этот return, когда появятся рабочие
+    // deeplink — из программы RU&CIS (заточена под aliexpress.ru) или на конкретный
+    // товар (product.html), а не на страницу поиска.
+    return '';
+
     $shelf = null;
     foreach (domexpert_product_shelves() as $s) {
       if (array_intersect($s['tags'], $tags)) { $shelf = $s; break; }
