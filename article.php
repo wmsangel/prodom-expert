@@ -331,11 +331,14 @@ include __DIR__ . '/includes/header.php';
         <?php $calcArticleSlug = $slug; ?>
         <?php include __DIR__ . '/includes/article-calculators.php'; ?>
 
-        <!-- Партнёрский блок «Где купить» (пусто, пока в реестре нет офферов) -->
-        <?= domexpert_affiliate_block([$slug, $meta['catSlug'] ?? ''], 2) ?>
+        <!-- Партнёрский блок «Где купить». Считаем один раз: если он показался,
+             кросс-промо-баннер ниже не дублируем (иначе две рекламы подряд). -->
+        <?php $affiliateHtml = !$articleMissing ? domexpert_affiliate_block([$slug, $meta['catSlug'] ?? ''], 2) : ''; ?>
+        <?= $affiliateHtml ?>
 
-        <!-- Рекламный блок ПОСЛЕ статьи: кросс-промо наших проектов (пока нет AdSense) -->
-        <?php if (!$articleMissing): ?>
+        <!-- Кросс-промо наших проектов — только если партнёрского блока «Где купить»
+             на странице нет, чтобы не было двух рекламных блоков подряд. -->
+        <?php if (!$articleMissing && empty($affiliateHtml)): ?>
         <?= domexpert_partner_ad('banner', $slug, 0) ?>
         <?php endif; ?>
 

@@ -1960,12 +1960,12 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.3; color: 
   text-transform: uppercase; color: var(--text-muted); margin: 0 0 8px 2px;
 }
 .aff-item {
-  display: flex; align-items: center; gap: 14px; padding: 14px 16px; margin-bottom: 8px;
-  background: var(--beige); border: 1px solid var(--border); border-radius: var(--radius-lg);
-  text-decoration: none;
-  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  display: flex; align-items: center; gap: 15px; padding: 16px 18px; margin-bottom: 8px;
+  background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--brick);
+  border-radius: var(--radius-lg); text-decoration: none; box-shadow: 0 1px 4px var(--shadow);
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
 }
-.aff-item:hover { border-color: var(--brick); box-shadow: 0 4px 14px var(--shadow); }
+.aff-item:hover { border-color: var(--brick); box-shadow: 0 5px 18px var(--shadow); transform: translateY(-1px); }
 .aff-icon { flex: 0 0 auto; font-size: 1.6rem; line-height: 1; }
 .aff-text { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .aff-title { font-family: var(--font-display); font-size: 1.05rem; color: var(--heading); line-height: 1.2; }
