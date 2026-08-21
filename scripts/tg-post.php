@@ -60,26 +60,45 @@ function tg_cover_path(string $slug): ?string {
     return is_file($fs) ? '/assets/img/articles/' . $slug . '.png' : null;
 }
 
-/** Очередь слагов: перемешивается раз на цикл, курсор в состоянии. */
+/**
+ * Очередь слагов. Порядок: сначала самые трафиковые (scripts/tg-priority.txt,
+ * отсортирован по показам GSC), затем остальные статьи вперемешку. Курсор
+ * хранится в состоянии; на новый цикл очередь пересобирается (приоритет —
+ * снова первым, хвост — заново перемешан).
+ */
 function tg_next_slugs(int $n): array {
-    $all = array_keys(domexpert_all_articles_meta());
+    $meta = domexpert_all_articles_meta();
+    $all  = array_keys($meta);
     $state = ['queue' => [], 'pos' => 0];
     if (is_readable(TG_STATE)) {
         $s = json_decode((string) file_get_contents(TG_STATE), true);
         if (is_array($s) && !empty($s['queue'])) { $state = $s; }
     }
-    // Пересобрать очередь, если пусто, кончилась или реестр заметно изменился.
-    if (empty($state['queue']) || $state['pos'] >= count($state['queue'])
-        || count(array_diff($state['queue'], $all)) > 0) {
-        $state['queue'] = $all;
-        shuffle($state['queue']);
+    $needRebuild = empty($state['queue'])
+        || $state['pos'] >= count($state['queue'])
+        || count($state['queue']) !== count($all)
+        || count(array_diff($state['queue'], $all)) > 0;
+    if ($needRebuild) {
+        $priority = [];
+        $pfile = __DIR__ . '/tg-priority.txt';
+        if (is_readable($pfile)) {
+            foreach (file($pfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+                $slug = trim($line);
+                if ($slug !== '' && $slug[0] !== '#' && isset($meta[$slug]) && !in_array($slug, $priority, true)) {
+                    $priority[] = $slug;
+                }
+            }
+        }
+        $rest = array_values(array_diff($all, $priority));
+        shuffle($rest);
+        $state['queue'] = array_merge($priority, $rest);
         $state['pos'] = 0;
     }
     $picked = [];
     for ($i = 0; $i < $n && $state['pos'] < count($state['queue']); $i++) {
         $slug = $state['queue'][$state['pos']];
         $state['pos']++;
-        if (isset(domexpert_all_articles_meta()[$slug])) { $picked[] = $slug; }
+        if (isset($meta[$slug])) { $picked[] = $slug; }
     }
     return [$picked, $state];
 }
