@@ -82,6 +82,12 @@
   background: var(--beige-dark) !important;
   color: var(--heading) !important;
 }
+/* Ячейки с инлайновой светлой заливкой (#fafafa/#f5f5f5 у строк «Итого» и
+   заголовков разделов таблиц) в тёмной теме давали светлый текст на светлом
+   фоне — почти невидимо. Перекрываем фон таким же, как у шапки таблицы. */
+:root[data-theme="dark"] .article-body table td[style*="background"] {
+  background: var(--beige-dark) !important;
+}
 :root[data-theme="dark"] .article-body figcaption,
 :root[data-theme="dark"] .article-body figcaption * {
   color: var(--text-light) !important;
