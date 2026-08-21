@@ -175,6 +175,30 @@ $articleParsed = domexpert_article_toc($articleSource);
 $articleHtml   = $articleParsed['html'];   // тот же текст, но с якорями у заголовков
 $articleToc    = $articleParsed['toc'];
 
+// === Реклама ВНУТРИ статьи ===
+// Главный рекламный блок вставляем в середину текста (между секциями), чтобы он
+// был заметен, а не терялся в самом низу страницы. Приоритет — партнёрский блок
+// «Где купить»; если офферов под страницу нет — кросс-промо своих проектов.
+// TOC уже посчитан выше, поэтому в оглавление реклама не попадёт.
+if (!$articleMissing) {
+  $inArticleAd = domexpert_affiliate_block([$slug, $meta['catSlug'] ?? ''], 2);
+  if ($inArticleAd === '') {
+    $inArticleAd = domexpert_partner_ad('banner', $slug, 0);
+  }
+  if ($inArticleAd !== '' && preg_match_all('/<h2[ >]/i', $articleHtml, $mH2, PREG_OFFSET_CAPTURE)) {
+    $h2pos = array_column($mH2[0], 1);
+    $n = count($h2pos);
+    // после 2-й секции (перед 3-м h2), если дальше ещё есть контент; иначе перед 2-м; короткая статья — в конец
+    $idx = $n >= 4 ? 2 : ($n >= 3 ? 1 : -1);
+    if ($idx >= 0) {
+      $at = (int) $h2pos[$idx];
+      $articleHtml = substr($articleHtml, 0, $at) . "\n" . $inArticleAd . "\n" . substr($articleHtml, $at);
+    } else {
+      $articleHtml .= "\n" . $inArticleAd;
+    }
+  }
+}
+
 // === JSON-LD: FAQPage (из блока «Частые вопросы» статьи) ===
 $articleFaq = $articleSource !== '' ? domexpert_extract_faq($articleSource) : [];
 if (!empty($articleFaq)) {
@@ -331,16 +355,8 @@ include __DIR__ . '/includes/header.php';
         <?php $calcArticleSlug = $slug; ?>
         <?php include __DIR__ . '/includes/article-calculators.php'; ?>
 
-        <!-- Партнёрский блок «Где купить». Считаем один раз: если он показался,
-             кросс-промо-баннер ниже не дублируем (иначе две рекламы подряд). -->
-        <?php $affiliateHtml = !$articleMissing ? domexpert_affiliate_block([$slug, $meta['catSlug'] ?? ''], 2) : ''; ?>
-        <?= $affiliateHtml ?>
+        <!-- Реклама переехала в середину статьи (см. $inArticleAd выше) — тут пусто. -->
 
-        <!-- Кросс-промо наших проектов — только если партнёрского блока «Где купить»
-             на странице нет, чтобы не было двух рекламных блоков подряд. -->
-        <?php if (!$articleMissing && empty($affiliateHtml)): ?>
-        <?= domexpert_partner_ad('banner', $slug, 0) ?>
-        <?php endif; ?>
 
         <!-- СОСЕДНИЕ СТАТЬИ КАТЕГОРИИ (по дате публикации) -->
         <?php if ($articleNeighbours['prev'] || $articleNeighbours['next']): ?>
