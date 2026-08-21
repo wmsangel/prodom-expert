@@ -64,6 +64,15 @@ if (!function_exists('domexpert_affiliate_offers')) {
                     'potolok-pod-pokrasku-vyravnivanie', 'dekorativnaya-shtukaturka-faktury',
                     'gruntovka-sten-osnovy'],
       ],
+      [
+        'id'    => 'eurodom',
+        'title' => 'Евродом',
+        'desc'  => 'Премиум-товары для дома: посуда, декор, текстиль. Бренды Zwilling, WMF, Peugeot.',
+        'cta'   => 'Смотреть Евродом',
+        'url'   => 'https://yynbx.com/g/wxsxy74ehc5593ebc0482a9bafdd81/?erid=MvGzQC98w3Z1gMq1mSxY8C15',
+        'icon'  => '🏡',
+        'tags'  => ['interer'],
+      ],
     ];
   }
 }
