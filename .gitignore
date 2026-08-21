@@ -20,3 +20,8 @@ __pycache__/
 .DS_Store
 *.tmp
 /.idea/
+
+# Telegram авто-постинг: токен бота и состояние очереди
+/scripts/tg.env
+/scripts/tg-state.json
+/scripts/tg.log
