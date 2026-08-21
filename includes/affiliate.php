@@ -130,3 +130,67 @@ HTML;
 HTML;
   }
 }
+
+/* ── Полки рекомендованных товаров (deeplink на конкретные товары) ────────── */
+
+if (!function_exists('domexpert_product_shelves')) {
+  /**
+   * Полки товаров под тему статьи. Каждая: title (заголовок), tags (на каких
+   * страницах), items (товары: icon, name, url — deeplink Admitad на товар).
+   * Пустой url у товара — пропускается.
+   */
+  function domexpert_product_shelves(): array {
+    return [
+      [
+        'id'    => 'instrument-zamer',
+        'title' => 'Инструмент для замеров',
+        'tags'  => ['zamery-okon-dlya-zakaza', 'instrumenty-dlya-remonta', 'obmer-kvartiry-svoimi-rukami'],
+        'items' => [
+          ['icon' => '🔦', 'name' => 'Лазерный уровень',   'url' => 'https://rzekl.com/g/1e8d1144945593ebc04816525dc3e8/?ulp=https%3A%2F%2Faliexpress.ru%2Fwholesale%3FSearchText%3D%D0%BB%D0%B0%D0%B7%D0%B5%D1%80%D0%BD%D1%8B%D0%B9%2B%D1%83%D1%80%D0%BE%D0%B2%D0%B5%D0%BD%D1%8C'],
+          ['icon' => '📏', 'name' => 'Рулетка 5 м',        'url' => 'https://rzekl.com/g/1e8d1144945593ebc04816525dc3e8/?ulp=https%3A%2F%2Faliexpress.ru%2Fwholesale%3FSearchText%3D%D1%80%D1%83%D0%BB%D0%B5%D1%82%D0%BA%D0%B0%2B%D0%B8%D0%B7%D0%BC%D0%B5%D1%80%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%2B5%D0%BC'],
+          ['icon' => '🎯', 'name' => 'Лазерный дальномер', 'url' => 'https://rzekl.com/g/1e8d1144945593ebc04816525dc3e8/?ulp=https%3A%2F%2Faliexpress.ru%2Fwholesale%3FSearchText%3D%D0%BB%D0%B0%D0%B7%D0%B5%D1%80%D0%BD%D1%8B%D0%B9%2B%D0%B4%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%BC%D0%B5%D1%80'],
+        ],
+      ],
+      [
+        'id'    => 'led',
+        'title' => 'Всё для LED-подсветки',
+        'tags'  => ['led-podsvetka-nishi-i-karnizov', 'dimmery-sveta-led-sovmestimost',
+                    'svetovye-stsenarii-v-kvartire', 'led-lenta-montazh-pitanie-profil'],
+        'items' => [
+          ['icon' => '💡', 'name' => 'Светодиодная лента 12 В', 'url' => 'https://rzekl.com/g/1e8d1144945593ebc04816525dc3e8/?ulp=https%3A%2F%2Faliexpress.ru%2Fwholesale%3FSearchText%3D%D1%81%D0%B2%D0%B5%D1%82%D0%BE%D0%B4%D0%B8%D0%BE%D0%B4%D0%BD%D0%B0%D1%8F%2B%D0%BB%D0%B5%D0%BD%D1%82%D0%B0%2B12%D0%B2'],
+          ['icon' => '📐', 'name' => 'Профиль для ленты',       'url' => 'https://rzekl.com/g/1e8d1144945593ebc04816525dc3e8/?ulp=https%3A%2F%2Faliexpress.ru%2Fwholesale%3FSearchText%3D%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8C%2B%D0%B4%D0%BB%D1%8F%2B%D1%81%D0%B2%D0%B5%D1%82%D0%BE%D0%B4%D0%B8%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9%2B%D0%BB%D0%B5%D0%BD%D1%82%D1%8B'],
+          ['icon' => '🔌', 'name' => 'Блок питания 12 В',        'url' => 'https://rzekl.com/g/1e8d1144945593ebc04816525dc3e8/?ulp=https%3A%2F%2Faliexpress.ru%2Fwholesale%3FSearchText%3D%D0%B1%D0%BB%D0%BE%D0%BA%2B%D0%BF%D0%B8%D1%82%D0%B0%D0%BD%D0%B8%D1%8F%2B12%D0%B2'],
+        ],
+      ],
+    ];
+  }
+}
+
+if (!function_exists('domexpert_product_shelf_block')) {
+  /** Рендерит первую подходящую полку под теги страницы, иначе ''. */
+  function domexpert_product_shelf_block(array $tags = []): string {
+    $shelf = null;
+    foreach (domexpert_product_shelves() as $s) {
+      if (array_intersect($s['tags'], $tags)) { $shelf = $s; break; }
+    }
+    if (!$shelf || empty($shelf['items'])) { return ''; }
+    $rel = 'sponsored nofollow noopener';
+    $items = '';
+    foreach ($shelf['items'] as $it) {
+      if (empty($it['url'])) { continue; }
+      $url  = htmlspecialchars($it['url'],  ENT_QUOTES, 'UTF-8');
+      $name = htmlspecialchars($it['name'], ENT_QUOTES, 'UTF-8');
+      $icon = htmlspecialchars($it['icon'] ?? '🛒', ENT_QUOTES, 'UTF-8');
+      $items .= "<a class=\"shelf-item\" href=\"{$url}\" target=\"_blank\" rel=\"{$rel}\">"
+              . "<span class=\"shelf-ic\" aria-hidden=\"true\">{$icon}</span>"
+              . "<span class=\"shelf-name\">{$name}</span>"
+              . "<span class=\"shelf-go\" aria-hidden=\"true\">→</span></a>";
+    }
+    if ($items === '') { return ''; }
+    $title = htmlspecialchars($shelf['title'], ENT_QUOTES, 'UTF-8');
+    return "<aside class=\"shelf\" aria-label=\"Товары по теме\">"
+         . "<span class=\"shelf-label\">Реклама · рекомендуем купить</span>"
+         . "<p class=\"shelf-title\">{$title}</p>"
+         . "<div class=\"shelf-grid\">{$items}</div></aside>";
+  }
+}

@@ -181,7 +181,10 @@ $articleToc    = $articleParsed['toc'];
 // «Где купить»; если офферов под страницу нет — кросс-промо своих проектов.
 // TOC уже посчитан выше, поэтому в оглавление реклама не попадёт.
 if (!$articleMissing) {
-  $inArticleAd = domexpert_affiliate_block([$slug, $meta['catSlug'] ?? ''], 2);
+  $inArticleAd = domexpert_product_shelf_block([$slug, $meta['catSlug'] ?? '']);
+  if ($inArticleAd === '') {
+    $inArticleAd = domexpert_affiliate_block([$slug, $meta['catSlug'] ?? ''], 2);
+  }
   if ($inArticleAd === '') {
     $inArticleAd = domexpert_partner_ad('banner', $slug, 0);
   }
