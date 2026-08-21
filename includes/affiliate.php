@@ -42,7 +42,28 @@ if (!function_exists('domexpert_affiliate_offers')) {
    */
   function domexpert_affiliate_offers(): array {
     return [
-      // Пусто. Добавь офферы сюда — блоки появятся автоматически.
+      [
+        'id'    => 'aliexpress',
+        'title' => 'AliExpress',
+        'desc'  => 'Инструмент, LED-подсветка, умный дом и фурнитура с доставкой.',
+        'cta'   => 'Смотреть на AliExpress',
+        'url'   => 'https://rzekl.com/g/1e8d1144945593ebc04816525dc3e8/',
+        'icon'  => '🛒',
+        'tags'  => ['elektrika', 'led-podsvetka-nishi-i-karnizov', 'svetovye-stsenarii-v-kvartire',
+                    'zamery-okon-dlya-zakaza', 'instrumenty-dlya-remonta',
+                    'dvernaya-furnitura-ruchki-zamki-petli', 'ukhod-za-furniturou-okon'],
+      ],
+      [
+        'id'    => 'malare',
+        'title' => 'Malare',
+        'desc'  => 'Краски для дома от завода-производителя: интерьерные, фасадные, декоративные.',
+        'cta'   => 'Выбрать краску',
+        'url'   => 'https://hvjjg.com/g/km68poc2w35593ebc048e1ad5bc072/?erid=2bL9aMPo2e49hMef4rqUn6AAV2',
+        'icon'  => '🎨',
+        'tags'  => ['kraska', 'pokraska-sten-kvartiry-sovety', 'podgotovka-sten-pod-pokrasku',
+                    'potolok-pod-pokrasku-vyravnivanie', 'dekorativnaya-shtukaturka-faktury',
+                    'gruntovka-sten-osnovy'],
+      ],
     ];
   }
 }
