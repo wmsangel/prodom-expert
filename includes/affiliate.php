@@ -86,6 +86,21 @@ if (!function_exists('domexpert_affiliate_offers')) {
                     'chek-list-zakupok-do-nachala-remonta', 'instrumenty-dlya-remonta',
                     'zakupki-stroymaterialov-onlayn'],
       ],
+      // Максидом — DIY-гипермаркет (мебель, товары для дома, инструмент). Ссылка
+      // тарифа CPC (/c/, ₽8/клик по РФ), а НЕ CPA: магазин гео-ограничен (СПб+Москва),
+      // покупок с всероссийского трафика мало, поэтому платим за клик, а не за заказ.
+      // Ниша разведена с Петровичем: Максидом на интерьер/мебель/инструмент, Петрович
+      // на ремонт/сантехнику/смету. CPA-запас (/g/) и коды баннеров — внизу файла.
+      [
+        'id'    => 'maxidom',
+        'title' => 'Максидом',
+        'desc'  => 'Гипермаркет для дома: мебель, инструмент, декор и товары для дачи.',
+        'cta'   => 'Смотреть в Максидоме',
+        'url'   => 'https://uuwgc.com/c/vw6dqabpgk5593ebc048b6a2cdd7f0/?erid=25H8d7vbP8SRTvH4HtSZJ1',
+        'icon'  => '🔨',
+        'tags'  => ['interer', 'instrumenty-dlya-remonta', 'obmer-kvartiry-svoimi-rukami',
+                    'krepezh-v-stenu-dyubeli-i-ankery'],
+      ],
     ];
   }
 }
@@ -214,3 +229,16 @@ if (!function_exists('domexpert_product_shelf_block')) {
          . "<div class=\"shelf-grid\">{$items}</div></aside>";
   }
 }
+
+/* ── Запас: Максидом ─────────────────────────────────────────────────────────
+ * В проде используется CPC-ссылка (/c/, см. оффер 'maxidom' выше). Здесь лежат
+ * запасные материалы на случай отдельного display-блока (они идут по CPA /g/):
+ *
+ * CPA (Per Sale): https://uuwgc.com/g/vw6dqabpgk5593ebc048b6a2cdd7f0/?erid=25H8d7vbP8SRTvH4HtSZJ1
+ * CPC (Per Click): https://uuwgc.com/c/vw6dqabpgk5593ebc048b6a2cdd7f0/?erid=25H8d7vbP8SRTvH4HtSZJ1  ← в проде
+ *
+ * Баннеры (Admitad, тариф CPA — на нашем гео-ограниченном трафике почти пустые):
+ *   300×250: https://uuwgc.com/g/kboop4ys9y5593ebc048b6a2cdd7f0/?i=4&erid=2bL9aMPo2e49hMef4piUd2z2s9  img: https://aflink.ru/b/kboop4ys9y5593ebc048b6a2cdd7f0/
+ *   728×90:  https://uuwgc.com/g/59tnhpjact5593ebc048b6a2cdd7f0/?i=4&erid=2bL9aMPo2e49hMef4piUd2z2s3  img: https://aflink.ru/b/59tnhpjact5593ebc048b6a2cdd7f0/
+ *   160×600: https://uuwgc.com/g/g55ahs9es95593ebc048b6a2cdd7f0/?i=4&erid=2bL9aMPo2e49hMef4piUd2z2s8  img: https://aflink.ru/b/g55ahs9es95593ebc048b6a2cdd7f0/
+ * ─────────────────────────────────────────────────────────────────────────── */
