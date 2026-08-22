@@ -73,6 +73,19 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'icon'  => '🏡',
         'tags'  => ['interer'],
       ],
+      [
+        'id'    => 'petrovich',
+        'title' => 'Петрович',
+        'desc'  => 'Стройматериалы, сухие смеси, сантехника и инструмент. Доставка за 2–4 часа.',
+        'cta'   => 'Смотреть в Петровиче',
+        'url'   => 'https://dhwnh.com/g/fjtv2ijs435593ebc0483d96fce434/?erid=25H8d7vbP8SRTvG4XfhAnc',
+        'icon'  => '🧱',
+        'tags'  => ['remont', 'santehnika', 'smeta', 'materialy',
+                    'smeta-remonta-kvartiry', 'smeta-remonta-chastnogo-doma',
+                    'byudzhet-kapitalnogo-remonta-raschet', 'raschet-materialov-dlya-remonta',
+                    'chek-list-zakupok-do-nachala-remonta', 'instrumenty-dlya-remonta',
+                    'zakupki-stroymaterialov-onlayn'],
+      ],
     ];
   }
 }
