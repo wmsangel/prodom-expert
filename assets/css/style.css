@@ -1994,3 +1994,21 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.3; color: 
 .shelf-ic { font-size: 1.3rem; flex: 0 0 auto; line-height: 1; }
 .shelf-name { flex: 1 1 auto; min-width: 0; }
 .shelf-go { color: var(--brick); font-weight: 700; flex: 0 0 auto; }
+
+/* ── Партнёрский баннер в сайдбаре (Профи.ру 300×250) ───────────────────── */
+.aff-banner-widget { text-align: center; }
+.aff-banner-label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-muted, #999);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+.aff-banner { display: inline-block; line-height: 0; }
+.aff-banner img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}

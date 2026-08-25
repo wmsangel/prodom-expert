@@ -10,6 +10,7 @@
 
 require_once __DIR__ . '/all-articles-meta.php';
 require_once __DIR__ . '/partner-ads.php';
+require_once __DIR__ . '/affiliate.php';
 
 // Позиции 4–8 в подборе похожих: первые три заняты блоком «Читайте также»,
 // повторять их в сайдбаре незачем.
@@ -66,6 +67,9 @@ foreach ($catConfig as $catSlugSide => $cfg) {
       <?php endforeach; ?>
     </ul>
   </div>
+
+  <!-- Партнёрский баннер (Профи.ру) — монетизация сайдбар-слота -->
+  <?= domexpert_sidebar_banner() ?>
 
   <!-- Кросс-промо: наши проекты (пока нет AdSense) -->
   <?= domexpert_partner_ad('card', $sidebarArticleSlug ?? '', 1) ?>

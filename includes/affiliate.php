@@ -42,6 +42,20 @@ if (!function_exists('domexpert_affiliate_offers')) {
    */
   function domexpert_affiliate_offers(): array {
     return [
+      // Samura — premium-ножи для кухни (CPA /g/, 5.90% с заказа, средний чек 5000₽+,
+      // EPC оффера 7647₽). Узкая ниша (кухонная утварь), поэтому теги — только статьи с
+      // buyer-intent по кухне: профильная «как выбрать нож» + интерьер кухни + обеденная
+      // зона. Стоит ПЕРВЫМ в реестре, чтобы на этих страницах занять слот раньше широких
+      // interer-офферов (Евродом/Максидом), которые иначе заполнили бы лимит 2.
+      [
+        'id'    => 'samura',
+        'title' => 'Samura',
+        'desc'  => 'Профессиональные кухонные ножи из стали VG-10 и AUS-8.',
+        'cta'   => 'Смотреть ножи Samura',
+        'url'   => 'https://xmknb.com/g/4jfy3qmkf25593ebc048c0c6052a6b/?erid=2bL9aMPo2e49hMef4rqU6oVXgA',
+        'icon'  => '🔪',
+        'tags'  => ['kak-vybrat-kuhonnyy-nozh', 'interer-kuhni', 'obedennaya-zona-stol-i-stulya'],
+      ],
       [
         'id'    => 'aliexpress',
         'title' => 'AliExpress',
@@ -185,6 +199,30 @@ HTML;
 <aside class="aff-block" aria-label="Партнёрские магазины">
   <span class="aff-label">Реклама · где купить</span>
 {$items}</aside>
+HTML;
+  }
+}
+
+if (!function_exists('domexpert_sidebar_banner')) {
+  /**
+   * Баннер Профи.ру 300×250 в сайдбаре — монетизирует ранее пустой слот
+   * (там было только кросс-промо на свои сайты). Профи.ру релевантен любой
+   * ремонтной статье («нужен мастер»), поэтому показываем на всех страницах.
+   * Картинка адаптивная (max-width:100%), 300×250 нормально живёт и на мобилке.
+   * erid зашит в ссылку, сверху метка «Реклама» — маркировка соблюдена.
+   */
+  function domexpert_sidebar_banner(): string {
+    $href = 'https://dkfrh.com/g/9oieanlurm5593ebc0487e4bf1243c/?i=4&erid=2bL9aMPo2e49hMef4rqyCujmBL';
+    $img  = 'https://aflink.ru/b/9oieanlurm5593ebc0487e4bf1243c/';
+    $h = htmlspecialchars($href, ENT_QUOTES, 'UTF-8');
+    $i = htmlspecialchars($img,  ENT_QUOTES, 'UTF-8');
+    return <<<HTML
+<div class="sidebar-widget aff-banner-widget">
+  <span class="aff-banner-label">Реклама</span>
+  <a class="aff-banner" href="{$h}" target="_blank" rel="sponsored nofollow noopener">
+    <img src="{$i}" width="300" height="250" alt="Профи.ру — проверенные мастера для ремонта" loading="lazy" decoding="async">
+  </a>
+</div>
 HTML;
   }
 }
