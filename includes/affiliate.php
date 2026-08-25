@@ -81,7 +81,7 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'cta'   => 'Смотреть в Цвет Диванов',
         'url'   => 'https://thevospad.com/g/67570bafb65593ebc04866146bcf1d/?erid=5jtCeReLm1S3Xx3Lfj3wyRM',
         'icon'  => '🛋',
-        'tags'  => ['kak-vybrat-divan', 'dizayn-gostinoy', 'kuhnya-gostinaya-planirovka-zonirovanie',
+        'tags'  => ['kak-vybrat-kreslo', 'kak-vybrat-divan', 'dizayn-gostinoy', 'kuhnya-gostinaya-planirovka-zonirovanie',
                     'zonirovanie-studii-odnokomnatnoy', 'interer-semnoy-kvartiry',
                     'kak-vybrat-krovat-i-matras'],
       ],

@@ -123,6 +123,12 @@ $currentYear = date('Y');
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/108673434" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
-  <?php include __DIR__ . '/cookie-consent.php'; ?>
+  <?php
+    // Свой баннер согласия — только пока не подключён CMP Ezoic (см. DOMEXPERT_CMP
+    // в load-seo.php). Два CMP одновременно конфликтуют, поэтому при 'ezoic' прячем свой.
+    if (!defined('DOMEXPERT_CMP') || DOMEXPERT_CMP === 'own') {
+      include __DIR__ . '/cookie-consent.php';
+    }
+  ?>
 </body>
 </html>

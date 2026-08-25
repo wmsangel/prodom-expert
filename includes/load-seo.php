@@ -14,6 +14,17 @@ if (!defined('SITE_CANONICAL')) {
 }
 
 /**
+ * Режим управления согласием (CMP). Не должно быть ДВУХ CMP одновременно.
+ *   'own'   — собственный баннер cookie-consent.php + Google Consent Mode v2 (текущий).
+ *   'ezoic' — рекламу и согласие (GDPR/CCPA, IAB-TCF) ведёт сертифицированный CMP Ezoic.
+ * Переключить на 'ezoic', КОГДА Ezoic активен: тогда свой баннер прячется
+ * (см. footer.php), чтобы два CMP не конфликтовали. По умолчанию — 'own'.
+ */
+if (!defined('DOMEXPERT_CMP')) {
+  define('DOMEXPERT_CMP', 'own');
+}
+
+/**
  * ЧПУ-адреса. Единая точка формирования ссылок на статьи и категории —
  * правьте схему здесь, а не в шаблонах. Реальные скрипты (article.php / category.php)
  * подключаются через mod_rewrite в .htaccess; сюда же ведут 301 со старых ?slug=/?cat=.
