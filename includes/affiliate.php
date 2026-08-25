@@ -101,6 +101,36 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'tags'  => ['interer', 'instrumenty-dlya-remonta', 'obmer-kvartiry-svoimi-rukami',
                     'krepezh-v-stenu-dyubeli-i-ankery'],
       ],
+      // Профи.ру — сервис поиска мастеров/специалистов. Ссылка CPA (/g/, Per Sale):
+      // подтверждённая заявка 41–300 ₽, EPC оффера 358 ₽, работает по РФ+Казахстану,
+      // интент на статьях «нужен мастер» высокий — тут CPA кратно выгоднее CPC ₽8.
+      // Уникальная категория (услуги), с остальными офферами не пересекается.
+      [
+        'id'    => 'profi',
+        'title' => 'Профи.ру',
+        'desc'  => 'Проверенные мастера и бригады для ремонта под конкретную задачу.',
+        'cta'   => 'Найти мастера на Профи.ру',
+        'url'   => 'https://dkfrh.com/g/zqyi8ot6o25593ebc0487e4bf1243c/?erid=MvGzQC98w3Z1gMq1kwWR4fyN',
+        'icon'  => '🛠',
+        'tags'  => ['vybor-remontnoj-brigady', 'chto-vhodit-v-remont-pod-klyuch',
+                    'brigada-brosila-obekt-chto-delat', 'sroki-remonta-kvartiry-po-etapam',
+                    'otkuda-berutsya-ceny-na-remont'],
+      ],
+      // МЕГАСТРОЙ — федеральная DIY-сеть (стройка/ремонт/декор/сад), доставка по всей РФ
+      // (в отличие от гео-ограниченного Максидома) → CPA (/g/, Per Sale, 1.55–3.61%),
+      // EPC оффера 501 ₽. Ставим В РОТАЦИЮ к Петровичу на строй-материальных страницах:
+      // на пересекающихся тегах блок покажет обоих (Петрович + МЕГАСТРОЙ, лимит 2) —
+      // читатель сравнивает две сети. Имя МЕГАСТРОЙ узнаваемо в Поволжье/Татарстане.
+      [
+        'id'    => 'megastroy',
+        'title' => 'МЕГАСТРОЙ',
+        'desc'  => 'Строительный DIY-гипермаркет: материалы, инструмент, декор и сад.',
+        'cta'   => 'Смотреть в МЕГАСТРОЙ',
+        'url'   => 'https://bednari.com/g/xcawb6ikii5593ebc048161cbbe6df/?erid=5jtCeReNwxHpfQTEQWKMenp',
+        'icon'  => '🏬',
+        'tags'  => ['remont', 'materialy', 'raschet-materialov-dlya-remonta',
+                    'zakupki-stroymaterialov-onlayn', 'chek-list-zakupok-do-nachala-remonta'],
+      ],
     ];
   }
 }
