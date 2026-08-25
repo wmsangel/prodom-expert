@@ -68,8 +68,15 @@ foreach ($catConfig as $catSlugSide => $cfg) {
     </ul>
   </div>
 
-  <!-- Партнёрский баннер (Профи.ру) — монетизация сайдбар-слота -->
-  <?= domexpert_sidebar_banner() ?>
+  <!-- Партнёрский баннер (контекстный) — монетизация сайдбар-слота -->
+  <?php
+    $bannerTags = [];
+    if (!empty($sidebarArticleSlug)) {
+      $bannerMeta = domexpert_article_meta($sidebarArticleSlug);
+      $bannerTags = [$sidebarArticleSlug, $bannerMeta['catSlug'] ?? ''];
+    }
+  ?>
+  <?= domexpert_sidebar_banner($bannerTags) ?>
 
   <!-- Кросс-промо: наши проекты (пока нет AdSense) -->
   <?= domexpert_partner_ad('card', $sidebarArticleSlug ?? '', 1) ?>

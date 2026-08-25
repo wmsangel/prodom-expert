@@ -81,7 +81,7 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'cta'   => 'Смотреть в Цвет Диванов',
         'url'   => 'https://thevospad.com/g/67570bafb65593ebc04866146bcf1d/?erid=5jtCeReLm1S3Xx3Lfj3wyRM',
         'icon'  => '🛋',
-        'tags'  => ['dizayn-gostinoy', 'kuhnya-gostinaya-planirovka-zonirovanie',
+        'tags'  => ['kak-vybrat-divan', 'dizayn-gostinoy', 'kuhnya-gostinaya-planirovka-zonirovanie',
                     'zonirovanie-studii-odnokomnatnoy', 'interer-semnoy-kvartiry',
                     'kak-vybrat-krovat-i-matras'],
       ],
@@ -92,7 +92,7 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'cta'   => 'Смотреть в Divan BOSS',
         'url'   => 'https://zallj.com/g/b5fs3128w25593ebc048fb3b97602e/?erid=2bL9aMPo2e49hMef4peV7UGo33',
         'icon'  => '🛋',
-        'tags'  => ['dizayn-gostinoy', 'kuhnya-gostinaya-planirovka-zonirovanie',
+        'tags'  => ['kak-vybrat-divan', 'shkaf-kupe-planirovka-napolnenie', 'dizayn-gostinoy', 'kuhnya-gostinaya-planirovka-zonirovanie',
                     'zonirovanie-studii-odnokomnatnoy', 'malenkaya-spalnya-dizayn'],
       ],
       [
@@ -151,7 +151,7 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'cta'   => 'Смотреть в Максидоме',
         'url'   => 'https://uuwgc.com/c/vw6dqabpgk5593ebc048b6a2cdd7f0/?erid=25H8d7vbP8SRTvH4HtSZJ1',
         'icon'  => '🔨',
-        'tags'  => ['interer', 'instrumenty-dlya-remonta', 'obmer-kvartiry-svoimi-rukami',
+        'tags'  => ['mebel', 'interer', 'instrumenty-dlya-remonta', 'obmer-kvartiry-svoimi-rukami',
                     'krepezh-v-stenu-dyubeli-i-ankery'],
       ],
       // Профи.ру — сервис поиска мастеров/специалистов. Ссылка CPA (/g/, Per Sale):
@@ -181,7 +181,7 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'cta'   => 'Смотреть в МЕГАСТРОЙ',
         'url'   => 'https://bednari.com/g/xcawb6ikii5593ebc048161cbbe6df/?erid=5jtCeReNwxHpfQTEQWKMenp',
         'icon'  => '🏬',
-        'tags'  => ['remont', 'materialy', 'raschet-materialov-dlya-remonta',
+        'tags'  => ['mebel', 'remont', 'materialy', 'raschet-materialov-dlya-remonta',
                     'zakupki-stroymaterialov-onlayn', 'chek-list-zakupok-do-nachala-remonta'],
       ],
     ];
@@ -244,22 +244,38 @@ HTML;
 
 if (!function_exists('domexpert_sidebar_banner')) {
   /**
-   * Баннер Профи.ру 300×250 в сайдбаре — монетизирует ранее пустой слот
-   * (там было только кросс-промо на свои сайты). Профи.ру релевантен любой
-   * ремонтной статье («нужен мастер»), поэтому показываем на всех страницах.
-   * Картинка адаптивная (max-width:100%), 300×250 нормально живёт и на мобилке.
-   * erid зашит в ссылку, сверху метка «Реклама» — маркировка соблюдена.
+   * Контекстный баннер 300×250 в сайдбаре — монетизирует ранее пустой слот.
+   * На мебельных страницах показывает Divan BOSS (в тему), на остальных —
+   * Профи.ру (релевантен любому ремонту, «нужен мастер»). $tags — теги страницы
+   * ([slug, catSlug]); если среди подходящих офферов есть мебельный — баннер мебельный.
+   * Картинка адаптивная, erid в ссылке, метка «Реклама» — маркировка соблюдена.
    */
-  function domexpert_sidebar_banner(): string {
-    $href = 'https://dkfrh.com/g/9oieanlurm5593ebc0487e4bf1243c/?i=4&erid=2bL9aMPo2e49hMef4rqyCujmBL';
-    $img  = 'https://aflink.ru/b/9oieanlurm5593ebc0487e4bf1243c/';
+  function domexpert_sidebar_banner(array $tags = []): string {
+    // Мебельный баннер — на всей рубрике «Мебель» (catSlug) и на интерьерных
+    // страницах, где подходит мягкая мебель (совпал оффер divanboss/zvet).
+    $isFurniture = in_array('mebel', $tags, true);
+    if (!$isFurniture) {
+      foreach (domexpert_affiliate_pick($tags, 5) as $o) {
+        if (in_array($o['id'], ['divanboss', 'zvet'], true)) { $isFurniture = true; break; }
+      }
+    }
+    if ($isFurniture) {
+      $href = 'https://zallj.com/g/g3odrskrah5593ebc048fb3b97602e/?i=4&erid=2bL9aMPo2e49hMef4rqUKy1pYL';
+      $img  = 'https://aflink.ru/b/g3odrskrah5593ebc048fb3b97602e/';
+      $alt  = 'Divan BOSS — мягкая и корпусная мебель от производителя';
+    } else {
+      $href = 'https://dkfrh.com/g/9oieanlurm5593ebc0487e4bf1243c/?i=4&erid=2bL9aMPo2e49hMef4rqyCujmBL';
+      $img  = 'https://aflink.ru/b/9oieanlurm5593ebc0487e4bf1243c/';
+      $alt  = 'Профи.ру — проверенные мастера для ремонта';
+    }
     $h = htmlspecialchars($href, ENT_QUOTES, 'UTF-8');
     $i = htmlspecialchars($img,  ENT_QUOTES, 'UTF-8');
+    $a = htmlspecialchars($alt,  ENT_QUOTES, 'UTF-8');
     return <<<HTML
 <div class="sidebar-widget aff-banner-widget">
   <span class="aff-banner-label">Реклама</span>
   <a class="aff-banner" href="{$h}" target="_blank" rel="sponsored nofollow noopener">
-    <img src="{$i}" width="300" height="250" alt="Профи.ру — проверенные мастера для ремонта" loading="lazy" decoding="async">
+    <img src="{$i}" width="300" height="250" alt="{$a}" loading="lazy" decoding="async">
   </a>
 </div>
 HTML;
