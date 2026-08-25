@@ -70,6 +70,20 @@ if (!function_exists('domexpert_affiliate_offers')) {
                     'led-podsvetka-nishi-i-karnizov', 'dimmery-sveta-led-sovmestimost',
                     'garderobnaya-planirovanie-i-svet', 'zerkalo-v-prihozhey-razmer-i-svet'],
       ],
+      // Аскона — фабрика №1 по матрасам/товарам для сна (кровати, матрасы, подушки),
+      // нац.сеть 700+ магазинов + доставка по РФ, EPC 271₽ → CPA (/g/, 4.45%). Профильный
+      // магазин сна: на статьях про кровать/матрас, детскую и спальню релевантнее диванных
+      // брендов, поэтому стоит РАНЬШЕ Цвет Диванов/Divan BOSS. Ссылка идёт через трекер
+      // SberMarketing (JS-редирект), erid сохранён — проверено.
+      [
+        'id'    => 'askona',
+        'title' => 'Аскона',
+        'desc'  => 'Матрасы, кровати и товары для сна фабрики №1. Гарантия до 25 лет, доставка по РФ.',
+        'cta'   => 'Смотреть матрасы Аскона',
+        'url'   => 'https://ytebb.com/g/av30r8vbjv5593ebc048a9fe403c97/?erid=25H8d7vbP8SRTvG4ygwa7P',
+        'icon'  => '🛏',
+        'tags'  => ['kak-vybrat-krovat-i-matras', 'mebel-dlya-detskoy-komnaty', 'malenkaya-spalnya-dizayn'],
+      ],
       // Мебель (мягкая): Цвет Диванов (zvet.ru) и divanboss — обе нац.сети, CPA (/g/),
       // высокий чек (divanboss 35000₽+). Стоят раньше широких interer-офферов (Евродом/
       // Максидом), чтобы на мебельных статьях занять слот. Дают обе — «в ротацию»: на
