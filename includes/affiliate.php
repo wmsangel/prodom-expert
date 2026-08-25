@@ -95,6 +95,19 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'tags'  => ['kak-vybrat-kompyuternoe-kreslo', 'komod-i-sistemy-hraneniya', 'mebel-dlya-detskoy-komnaty', 'kak-vybrat-divan', 'shkaf-kupe-planirovka-napolnenie', 'dizayn-gostinoy', 'kuhnya-gostinaya-planirovka-zonirovanie',
                     'zonirovanie-studii-odnokomnatnoy', 'malenkaya-spalnya-dizayn'],
       ],
+      // Сантехника Тут — профильный интернет-гипермаркет сантехники, доставка по РФ,
+      // средний чек 30000₽ → CPA (/g/, 3.36%). Стоит раньше Петровича: на статьях
+      // про сантехнику (унитаз, раковина, смеситель, бойлер, душ) профильный магазин
+      // релевантнее общего строймага. На сантех-страницах блок покажет обоих.
+      [
+        'id'    => 'santehnikatut',
+        'title' => 'Сантехника Тут',
+        'desc'  => 'Профильный гипермаркет сантехники: смесители, унитазы, ванны, душ. Доставка по РФ.',
+        'cta'   => 'Смотреть в Сантехника Тут',
+        'url'   => 'https://dorinebeaumont.com/g/nxgdto54265593ebc048eb6db1b093/?erid=25H8d7vbP8SRTvGZQfQ5kD',
+        'icon'  => '🚿',
+        'tags'  => ['santehnika'],
+      ],
       [
         'id'    => 'aliexpress',
         'title' => 'AliExpress',
