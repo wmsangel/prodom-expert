@@ -56,6 +56,45 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'icon'  => '🔪',
         'tags'  => ['kak-vybrat-kuhonnyy-nozh', 'interer-kuhni', 'obedennaya-zona-stol-i-stulya'],
       ],
+      // Lu.ru — интернет-гипермаркет света (дом/улица), нац.доставка, средний чек 20000₽+,
+      // EPC 466₽ → CPA (/g/, 6.71%). Специализированный магазин света: на статьях про
+      // освещение он релевантнее AliExpress, поэтому стоит раньше в реестре.
+      [
+        'id'    => 'luru',
+        'title' => 'Lu.ru',
+        'desc'  => 'Гипермаркет света: люстры, светильники, LED и электроустановка.',
+        'cta'   => 'Смотреть свет на Lu.ru',
+        'url'   => 'https://thevospad.com/g/muxydgfucg5593ebc048ca00fd3984/?erid=5jtCeReNwxHpfQTDurBMqTr',
+        'icon'  => '💡',
+        'tags'  => ['osveshcheniye-v-kvartire', 'svetovye-stsenarii-v-kvartire',
+                    'led-podsvetka-nishi-i-karnizov', 'dimmery-sveta-led-sovmestimost',
+                    'garderobnaya-planirovanie-i-svet', 'zerkalo-v-prihozhey-razmer-i-svet'],
+      ],
+      // Мебель (мягкая): Цвет Диванов (zvet.ru) и divanboss — обе нац.сети, CPA (/g/),
+      // высокий чек (divanboss 35000₽+). Стоят раньше широких interer-офферов (Евродом/
+      // Максидом), чтобы на мебельных статьях занять слот. Дают обе — «в ротацию»: на
+      // общих мебельных страницах блок покажет пару для сравнения (как Петрович+МЕГАСТРОЙ).
+      [
+        'id'    => 'zvet',
+        'title' => 'Цвет Диванов',
+        'desc'  => 'Диваны, кровати и мягкая мебель федеральной сети. Рассрочка, доставка по РФ.',
+        'cta'   => 'Смотреть в Цвет Диванов',
+        'url'   => 'https://thevospad.com/g/67570bafb65593ebc04866146bcf1d/?erid=5jtCeReLm1S3Xx3Lfj3wyRM',
+        'icon'  => '🛋',
+        'tags'  => ['dizayn-gostinoy', 'kuhnya-gostinaya-planirovka-zonirovanie',
+                    'zonirovanie-studii-odnokomnatnoy', 'interer-semnoy-kvartiry',
+                    'kak-vybrat-krovat-i-matras'],
+      ],
+      [
+        'id'    => 'divanboss',
+        'title' => 'Divan BOSS',
+        'desc'  => 'Мягкая и корпусная мебель от производителя: диваны, кресла, шкафы.',
+        'cta'   => 'Смотреть в Divan BOSS',
+        'url'   => 'https://zallj.com/g/b5fs3128w25593ebc048fb3b97602e/?erid=2bL9aMPo2e49hMef4peV7UGo33',
+        'icon'  => '🛋',
+        'tags'  => ['dizayn-gostinoy', 'kuhnya-gostinaya-planirovka-zonirovanie',
+                    'zonirovanie-studii-odnokomnatnoy', 'malenkaya-spalnya-dizayn'],
+      ],
       [
         'id'    => 'aliexpress',
         'title' => 'AliExpress',
