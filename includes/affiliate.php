@@ -92,7 +92,7 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'cta'   => 'Смотреть в Divan BOSS',
         'url'   => 'https://zallj.com/g/b5fs3128w25593ebc048fb3b97602e/?erid=2bL9aMPo2e49hMef4peV7UGo33',
         'icon'  => '🛋',
-        'tags'  => ['kak-vybrat-divan', 'shkaf-kupe-planirovka-napolnenie', 'dizayn-gostinoy', 'kuhnya-gostinaya-planirovka-zonirovanie',
+        'tags'  => ['kak-vybrat-kompyuternoe-kreslo', 'komod-i-sistemy-hraneniya', 'mebel-dlya-detskoy-komnaty', 'kak-vybrat-divan', 'shkaf-kupe-planirovka-napolnenie', 'dizayn-gostinoy', 'kuhnya-gostinaya-planirovka-zonirovanie',
                     'zonirovanie-studii-odnokomnatnoy', 'malenkaya-spalnya-dizayn'],
       ],
       [

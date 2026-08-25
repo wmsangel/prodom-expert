@@ -25,3 +25,4 @@ __pycache__/
 /scripts/tg.env
 /scripts/tg-state.json
 /scripts/tg.log
+.claude/
