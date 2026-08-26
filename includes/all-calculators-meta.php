@@ -110,6 +110,17 @@ function domexpert_all_calculators_meta(): array
                      'potolok-pod-pokrasku-vyravnivanie', 'gruntovka-sten-osnovy',
                      'ciklevka-parketa-svoimi-rukami'],
     ],
+    'shtukaturka' => [
+      'group'    => 'materialy',
+      'title'    => 'Калькулятор штукатурки: сколько мешков смеси нужно на стены',
+      'h1'       => 'Расчёт штукатурки и шпаклёвки',
+      'desc'     => 'Сколько сухой смеси и мешков уйдёт на стены по площади, толщине слоя и типу смеси. Гипсовая и цементная штукатурка, шпаклёвка — с запасом и стоимостью.',
+      'lead'     => 'Расход зависит не от площади, а от толщины слоя и типа смеси. Калькулятор считает вес, мешки и стоимость.',
+      'level'    => 'простой',
+      'related'  => ['podgotovka-sten-pod-pokrasku', 'gruntovka-sten-osnovy',
+                     'dekorativnaya-shtukaturka-faktury', 'otkosy-okon-shtukaturka-gkl-sendvich',
+                     'vysota-potolka-chistovaya-otmetka'],
+    ],
     'plitka' => [
       'group'    => 'materialy',
       'title'    => 'Калькулятор плитки: количество, подрезка, клей и затирка',
