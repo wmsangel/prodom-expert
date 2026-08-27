@@ -53,15 +53,11 @@ if (!function_exists('esc')) {
   <meta name="yandex-verification" content="0d826ddff2bfcc24" />
   <meta name="mitgo-verification" content="d52e8943-c678-4143-83da-9c0bd89e6162" />
 
-  <!-- ═══ Ezoic (JavaScript integration, как на calclumen) ═══
-       Ставится максимально высоко в <head>. Домен привязан на стороне аккаунта
-       Ezoic (в сниппете нет site-id) — этого достаточно для CHECK CONNECTION. -->
-  <script async src="https://www.ezojs.com/ezoic/sa.min.js"></script>
-  <script>
-    window.ezstandalone = window.ezstandalone || {};
-    ezstandalone.cmd = ezstandalone.cmd || [];
-  </script>
-  <script async src="https://ezoicanalytics.com/analytics.js"></script>
+  <!-- Ezoic-сниппет временно убран: заявку в Incubator отклонили (generic
+       "Not Approved at this time"). Вернуть при повторной подаче — тремя тегами:
+       <script async src="https://www.ezojs.com/ezoic/sa.min.js"></script>
+       <script>window.ezstandalone=window.ezstandalone||{};ezstandalone.cmd=ezstandalone.cmd||[];</script>
+       <script async src="https://ezoicanalytics.com/analytics.js"></script> -->
 
   <!-- ═══ ОСНОВНЫЕ SEO-ТЕГИ ═══ -->
   <title><?= esc($pageTitle) ?></title>
