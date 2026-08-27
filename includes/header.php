@@ -54,10 +54,9 @@ if (!function_exists('esc')) {
   <meta name="mitgo-verification" content="d52e8943-c678-4143-83da-9c0bd89e6162" />
 
   <!-- Ezoic-сниппет временно убран: заявку в Incubator отклонили (generic
-       "Not Approved at this time"). Вернуть при повторной подаче — тремя тегами:
-       <script async src="https://www.ezojs.com/ezoic/sa.min.js"></script>
-       <script>window.ezstandalone=window.ezstandalone||{};ezstandalone.cmd=ezstandalone.cmd||[];</script>
-       <script async src="https://ezoicanalytics.com/analytics.js"></script> -->
+       "Not Approved at this time"). Вернуть при повторной подаче — 3 async-тега
+       в начале head: ezojs.com/ezoic/sa.min.js ; инициализация window.ezstandalone
+       (cmd=[]) ; ezoicanalytics.com/analytics.js. Точный код был здесь до коммита 84889d9. -->
 
   <!-- ═══ ОСНОВНЫЕ SEO-ТЕГИ ═══ -->
   <title><?= esc($pageTitle) ?></title>
