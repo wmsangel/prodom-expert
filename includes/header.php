@@ -87,7 +87,7 @@ if (!function_exists('esc')) {
   <meta property="og:locale"      content="ru_RU">
   <?php if (isset($isArticle) && $isArticle && isset($articlePubDate)): ?>
   <meta property="article:published_time" content="<?= esc($articlePubDate) ?>">
-  <meta property="article:modified_time"  content="<?= esc($articlePubDate) ?>">
+  <meta property="article:modified_time"  content="<?= esc($articleModDate ?? $articlePubDate) ?>">
   <meta property="article:section"        content="<?= esc(isset($ogCatLabel) ? $ogCatLabel : '') ?>">
   <?php endif; ?>
 

@@ -109,6 +109,21 @@ if (count($dateParts) >= 3) {
 }
 $articlePubDate = $isoDate;
 
+// dateModified — реальная дата обновления, если у статьи задано поле 'updated'
+// (тот же формат «12 августа 2026»). Иначе равна дате публикации. Так при
+// доработке статьи можно поднять свежесть, НЕ трогая исходную дату публикации.
+$isoModified = $isoDate;
+if (!empty($meta['updated'])) {
+  $mp = preg_split('/\s+/u', trim($meta['updated']));
+  if (count($mp) >= 3) {
+    $mDay   = (int) $mp[0];
+    $mMonth = $ruMonths[$mp[1]] ?? '01';
+    $mYear  = ctype_digit((string) $mp[2]) ? (int) $mp[2] : (int) date('Y');
+    $isoModified = sprintf('%04d-%s-%02d', $mYear, $mMonth, $mDay);
+  }
+}
+$articleModDate = $isoModified;
+
 // Похожие материалы — подбор по теме, см. domexpert_related_articles()
 $relatedArticles = domexpert_related_articles($slug, 3);
 
@@ -123,7 +138,7 @@ $articleJsonLd = json_encode([
   'description'      => $meta['desc'],
   'url'              => $pageUrl,
   'datePublished'    => $isoDate,
-  'dateModified'     => $isoDate,
+  'dateModified'     => $isoModified,
   // Автор: именной байлайн размечается как Person, редакционный — как Organization.
   // Раньше здесь всегда стоял Organization, из-за чего 96 статей с именами авторов
   // отдавали заведомо неверную разметку.
@@ -268,6 +283,9 @@ include __DIR__ . '/includes/header.php';
     <h1 class="article-title"><?= htmlspecialchars($meta['title'], ENT_QUOTES, 'UTF-8') ?></h1>
     <div class="article-meta">
       <span>📅 <?= htmlspecialchars($meta['date'], ENT_QUOTES, 'UTF-8') ?></span>
+      <?php if (!empty($meta['updated'])): ?>
+      <span>🔄 Обновлено <time datetime="<?= esc($isoModified) ?>"><?= htmlspecialchars($meta['updated'], ENT_QUOTES, 'UTF-8') ?></time></span>
+      <?php endif; ?>
       <span>✍️ <?= htmlspecialchars($meta['author'], ENT_QUOTES, 'UTF-8') ?></span>
       <span>⏱️ <?= htmlspecialchars($meta['readTime'], ENT_QUOTES, 'UTF-8') ?> чтения</span>
     </div>

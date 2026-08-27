@@ -104,6 +104,25 @@ $breadcrumbJsonLd = json_encode([
   ],
 ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 
+// Разметку формы читаем один раз: из неё же берём блок «Частые вопросы» для
+// FAQPage-схемы (у калькуляторов он есть в .calc-article, но раньше не размечался).
+$calcHtml = $calcFile ? (string) file_get_contents($calcFile) : '';
+$calcFaq  = $calcHtml !== '' ? domexpert_extract_faq($calcHtml) : [];
+if (!empty($calcFaq)) {
+  $faqJsonLd = json_encode([
+    '@context'   => 'https://schema.org',
+    '@type'      => 'FAQPage',
+    'inLanguage' => 'ru-RU',
+    'mainEntity' => array_map(static function (array $qa): array {
+      return [
+        '@type'          => 'Question',
+        'name'           => $qa['q'],
+        'acceptedAnswer' => ['@type' => 'Answer', 'text' => $qa['a']],
+      ];
+    }, $calcFaq),
+  ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+}
+
 include __DIR__ . '/includes/header.php';
 ?>
 
@@ -148,7 +167,7 @@ include __DIR__ . '/includes/header.php';
                прямо при разборе страницы. С defer каркас грузился уже после него,
                и регистрация падала с «DomCalc is not defined» — расчёт не запускался. -->
           <script src="<?= htmlspecialchars(du_asset('/assets/js/calc.js'), ENT_QUOTES, 'UTF-8') ?>"></script>
-          <?= file_get_contents($calcFile) ?>
+          <?= $calcHtml ?>
           <?php foreach ($extraJs as $jsSrc): ?>
             <script src="<?= htmlspecialchars(du_asset($jsSrc), ENT_QUOTES, 'UTF-8') ?>" defer></script>
           <?php endforeach; ?>
