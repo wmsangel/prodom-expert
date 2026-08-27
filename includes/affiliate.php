@@ -84,6 +84,20 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'icon'  => '🛏',
         'tags'  => ['kak-vybrat-krovat-i-matras', 'mebel-dlya-detskoy-komnaty', 'malenkaya-spalnya-dizayn'],
       ],
+      // Postel Deluxe — маркетплейс домашнего текстиля (постельное бельё, покрывала,
+      // шторы), нац.доставка, CPA (/g/, 8.25–12.08%). Отдельной текстильной ниши у нас
+      // не было — вешаем на текстиль/ковры/спальню/съёмную квартиру. Комплементарен
+      // Асконе (матрас + бельё). Стоит рано, чтобы вести на текстильных страницах.
+      [
+        'id'    => 'postel',
+        'title' => 'Postel Deluxe',
+        'desc'  => 'Домашний текстиль: постельное бельё, покрывала, пледы и шторы. 150 брендов, доставка по РФ.',
+        'cta'   => 'Смотреть текстиль Postel Deluxe',
+        'url'   => 'https://dkfrh.com/g/4f5bbwmspn5593ebc0485e55659f09/?erid=2bL9aMPo2e49hMef4rqytKpfaC',
+        'icon'  => '🛏',
+        'tags'  => ['tekstil-shtory-v-gostinoy', 'kovry-v-interere-razmer-material',
+                    'malenkaya-spalnya-dizayn', 'interer-semnoy-kvartiry'],
+      ],
       // Мебель (мягкая): Цвет Диванов (zvet.ru) и divanboss — обе нац.сети, CPA (/g/),
       // высокий чек (divanboss 35000₽+). Стоят раньше широких interer-офферов (Евродом/
       // Максидом), чтобы на мебельных статьях занять слот. Дают обе — «в ротацию»: на
