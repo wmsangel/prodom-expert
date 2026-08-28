@@ -32,7 +32,7 @@ if (!function_exists('domexpert_partners')) {
         'title' => '24Здоровье',
         'desc'  => 'Доказательная медицина без мифов: питание, сон, движение и понятные протоколы.',
         'cta'   => 'Проверить здоровье',
-        'url'   => 'https://24zdorovie.com',
+        'url'   => 'https://24zdorovie.com/ru/',
         'icon'  => '🩺',
       ],
       [
@@ -40,7 +40,7 @@ if (!function_exists('domexpert_partners')) {
         'title' => 'CalcLumen',
         'desc'  => '48 бесплатных онлайн-калькуляторов: финансы, здоровье, авто и быт.',
         'cta'   => 'Открыть калькуляторы',
-        'url'   => 'https://calclumen.com',
+        'url'   => 'https://calclumen.com/en',
         'icon'  => '🧮',
       ],
       [
@@ -56,7 +56,7 @@ if (!function_exists('domexpert_partners')) {
         'title' => 'CostTrek',
         'desc'  => 'Сравнение стоимости жизни в городах мира: аренда, налоги и зарплата под переезд.',
         'cta'   => 'Сравнить города',
-        'url'   => 'https://costtrek.com',
+        'url'   => 'https://costtrek.com/en',
         'icon'  => '🌍',
       ],
       [
@@ -64,7 +64,7 @@ if (!function_exists('domexpert_partners')) {
         'title' => 'iznkit',
         'desc'  => 'Генераторы PDF и калькуляторы: счета, сметы, налоги, QR — без регистрации.',
         'cta'   => 'Собрать документ',
-        'url'   => 'https://iznkit.com',
+        'url'   => 'https://iznkit.com/en',
         'icon'  => '📄',
       ],
       [
@@ -82,6 +82,14 @@ if (!function_exists('domexpert_partners')) {
         'cta'   => 'Открыть инструменты',
         'url'   => 'https://izntools.com',
         'icon'  => '🧰',
+      ],
+      [
+        'id'    => 'bilimjol',
+        'title' => 'Bilimjol',
+        'desc'  => 'Тысячи заданий для детей от подготовки к школе до 11 класса: логика, математика, чтение. Бесплатно и по подписке.',
+        'cta'   => 'Заниматься с детьми',
+        'url'   => 'https://bilimjol.com',
+        'icon'  => '🎓',
       ],
     ];
   }
