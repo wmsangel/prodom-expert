@@ -75,6 +75,14 @@ if (!function_exists('domexpert_partners')) {
         'url'   => 'https://izngames.com',
         'icon'  => '🎮',
       ],
+      [
+        'id'    => 'izntools',
+        'title' => 'IZN Tools',
+        'desc'  => '100 бесплатных онлайн-инструментов: сжатие фото, форматирование JSON, SEO-разметка, генераторы. Всё в браузере.',
+        'cta'   => 'Открыть инструменты',
+        'url'   => 'https://izntools.com',
+        'icon'  => '🧰',
+      ],
     ];
   }
 }
