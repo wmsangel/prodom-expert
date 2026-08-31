@@ -136,6 +136,24 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'icon'  => '🚿',
         'tags'  => ['santehnika'],
       ],
+      // Мегамаркет (Сбер) — крупный маркетплейс, CPA (/g/): 224.79₽ за заказ нового
+      // клиента, 46.19₽ за повторный (фикс, не %). Взят УЗКО под пробел «бытовая
+      // техника / умный дом», где у нас нет спец-магазина: варочные/духовки, посудомойки,
+      // бойлеры, кондиционеры, вытяжки, умный дом. На общие материалы/мебель НЕ вешаем —
+      // там хватает Петровича/AliExpress. Стоит перед AliExpress, чтобы на «технических»
+      // страницах вести магазин техники, а не Али.
+      [
+        'id'    => 'megamarket',
+        'title' => 'Мегамаркет',
+        'desc'  => 'Маркетплейс Сбера: бытовая техника, умный дом, приборы. Кэшбэк, доставка по РФ.',
+        'cta'   => 'Смотреть на Мегамаркете',
+        'url'   => 'https://yyczo.com/g/apbut4et2w5593ebc0489371df1336/?erid=2bL9aMPo2e49hMef4rqxsS1r4P',
+        'icon'  => '🛒',
+        'tags'  => ['podklyuchenie-varochnoy-paneli-i-duhovki', 'podklyuchenie-posudomoechnoy-mashiny',
+                    'bojler-nakopitelnyj-ili-protochnyj', 'vodonagrevatel-boyler-vybor-montazh',
+                    'montazh-kondicionera-elektrika-trassa', 'umnyy-dom-osnovy',
+                    'ventilyaciya-sanuzla-tyaga-i-ventilyator'],
+      ],
       [
         'id'    => 'aliexpress',
         'title' => 'AliExpress',
