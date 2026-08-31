@@ -1,0 +1,159 @@
+<form class="calc" data-calc="plintus">
+  <fieldset>
+    <legend>Периметр</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="pl-rezhim">Как считаем</label>
+        <select id="pl-rezhim" name="rezhim">
+          <option value="komnata" selected>По размерам комнаты</option>
+          <option value="ruchnoy">Задать периметр вручную</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="pl-dlina">Длина комнаты, м</label>
+        <input type="number" id="pl-dlina" name="dlina" value="4.2" min="0" max="30" step="0.1" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="pl-shirina">Ширина комнаты, м</label>
+        <input type="number" id="pl-shirina" name="shirina" value="3.4" min="0" max="30" step="0.1" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="pl-perimetr">Периметр вручную, м</label>
+        <input type="number" id="pl-perimetr" name="perimetr" value="0" min="0" max="500" step="0.1" inputmode="decimal">
+        <span class="calc-field-hint">Работает при выборе «вручную»</span>
+      </div>
+      <div class="calc-field">
+        <label for="pl-proemy">Дверных проёмов, шт</label>
+        <input type="number" id="pl-proemy" name="proemy" value="1" min="0" max="20" step="1" inputmode="numeric">
+        <span class="calc-field-hint">В проёмах плинтус не ставится — вычтем</span>
+      </div>
+      <div class="calc-field">
+        <label for="pl-proem-shir">Ширина проёма, м</label>
+        <input type="number" id="pl-proem-shir" name="proemShir" value="0.9" min="0" max="3" step="0.05" inputmode="decimal">
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Планка и фурнитура</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="pl-dlina-planki">Длина планки, м</label>
+        <select id="pl-dlina-planki" name="dlinaPlanki">
+          <option value="2.5" selected>2,5 м — стандарт</option>
+          <option value="2.4">2,4 м</option>
+          <option value="2.0">2,0 м</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="pl-zapas">Запас на подрезку, %</label>
+        <select id="pl-zapas" name="zapas">
+          <option value="5" selected>5% — прямая комната</option>
+          <option value="10">10% — много углов/ниш</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="pl-vnutr">Внутренних углов, шт</label>
+        <input type="number" id="pl-vnutr" name="vnutr" value="4" min="0" max="40" step="1" inputmode="numeric">
+      </div>
+      <div class="calc-field">
+        <label for="pl-vnesh">Внешних углов, шт</label>
+        <input type="number" id="pl-vnesh" name="vnesh" value="0" min="0" max="40" step="1" inputmode="numeric">
+      </div>
+      <div class="calc-field">
+        <label for="pl-cena">Цена планки, ₽</label>
+        <input type="number" id="pl-cena" name="cena" value="250" min="0" max="10000" step="10" inputmode="numeric">
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<div class="calc-result" data-calc-result="plintus" role="status" aria-live="polite"></div>
+
+<section class="calc-article">
+  <h2>Как считается плинтус</h2>
+  <p>Считают не «на глаз по стене», а по периметру комнаты за вычетом дверных проёмов — в них плинтус не ставится. Получившийся метраж делят на длину планки (обычно 2,5 м) и округляют вверх, добавив запас на подрезку углов. К планкам отдельно докупают фурнитуру: соединители, внутренние и внешние уголки, заглушки на торцы у дверей.</p>
+
+  <h2>Фурнитура: без неё не собрать</h2>
+  <ul>
+    <li><strong>Соединители</strong> — стыкуют две планки на прямом участке (примерно на каждый стык).</li>
+    <li><strong>Внутренние углы</strong> — в углах комнаты; в прямоугольной их обычно 4.</li>
+    <li><strong>Внешние углы</strong> — на выступах, коробах, эркерах.</li>
+    <li><strong>Заглушки</strong> — на открытые торцы у дверных проёмов, по две на проём (левая и правая).</li>
+  </ul>
+  <p>Фурнитуру берут в цвет плинтуса и с запасом 1–2 шт: мелкие детали легко ломаются при защёлкивании.</p>
+
+  <h2>Чем крепить</h2>
+  <p>ПВХ-плинтус с кабель-каналом чаще сажают на <strong>клипсы</strong> (монтажные площадки) с шагом 40–50 см — так его можно снять для доступа к кабелю. МДФ и дюрополимер сажают на клей или саморезы в предварительно выставленные точки. На кривых стенах шаг крепежа уменьшают, иначе планку «поведёт». Кабель внутри канала — по правилам из материала про <a href="/article/kabel-kanaly-i-koroby/">кабель-каналы и короба</a>.</p>
+
+  <h2>Пример</h2>
+  <div class="calc-example">
+    <p><strong>Комната 4,2 × 3,4 м, один дверной проём 0,9 м, планка 2,5 м, запас 5%.</strong></p>
+    <p>Периметр 15,2 м минус проём 0,9 = 14,3 м, с запасом 5% — 15,0 м. Это <strong>6 планок по 2,5 м</strong>, около 5 соединителей, 4 внутренних угла и 2 заглушки. Плюс крепёж — примерно 30 клипс с шагом 45 см.</p>
+  </div>
+
+  <h2>Практические правила</h2>
+  <ol>
+    <li><strong>Берите планки одной партии</strong> — оттенок «под дерево» между партиями отличается, и стык виден.</li>
+    <li><strong>Режьте углы стуслом или по шаблону</strong>, а на кривых углах — уголок-фурнитуру, она прощает неточность.</li>
+    <li><strong>Высоту плинтуса</strong> подбирайте под высоту комнаты: чем выше потолок, тем выше уместен плинтус (8–10 см и выше).</li>
+    <li><strong>Оставьте зазор под покрытие</strong> — плинтус ставят после чистового пола, прижимая к нему, но не защемляя плавающий <a href="/article/ukladka-laminata/">ламинат</a>.</li>
+  </ol>
+
+  <h2>Частые вопросы</h2>
+  <h3>Сколько плинтуса нужно на комнату?</h3>
+  <p>Считайте периметр комнаты за вычетом дверных проёмов, добавьте 5–10% на подрезку и разделите на длину планки (2,5 м). Например, на комнату 4,2×3,4 м с одной дверью уходит около 6 планок по 2,5 м. Калькулятор выше сделает это за вас и добавит фурнитуру.</p>
+
+  <h3>Сколько брать соединителей и уголков?</h3>
+  <p>Внутренних углов — по числу углов комнаты (в прямоугольной 4), внешних — по числу выступов и коробов, заглушек — по две на каждый дверной проём. Соединителей — примерно по числу стыков планок. Мелкую фурнитуру берут с запасом 1–2 штуки: она хрупкая.</p>
+
+  <h3>На что крепить плинтус?</h3>
+  <p>ПВХ с кабель-каналом — на клипсы с шагом 40–50 см, чтобы можно было снять для доступа к проводам. МДФ и дюрополимер — на клей или саморезы. На кривых стенах шаг крепления уменьшают, иначе планку выгибает и появляются щели.</p>
+
+  <h3>Какой запас закладывать?</h3>
+  <p>Для прямой комнаты с минимумом углов достаточно 5%. Если много углов, ниш, эркеров и коротких участков — берите 10%: обрезки на коротких кусках почти не идут в дело.</p>
+</section>
+
+<script>
+DomCalc.register('plintus', function (v, f) {
+  var perim = 0;
+  if (v.rezhim === 'ruchnoy') {
+    perim = v.perimetr || 0;
+  } else {
+    perim = 2 * ((v.dlina || 0) + (v.shirina || 0));
+  }
+  if (perim <= 0) { return f.note('Укажите размеры комнаты или периметр вручную.'); }
+
+  var doors = (v.proemy || 0) * (v.proemShir || 0);
+  var usable = Math.max(0, perim - doors);
+  var plankLen = parseFloat(v.dlinaPlanki) || 2.5;
+  var zapas = (parseFloat(v.zapas) || 5) / 100;
+  var withReserve = usable * (1 + zapas);
+
+  var planks = Math.max(1, Math.ceil(withReserve / plankLen));
+  var soediniteli = Math.max(0, planks - 1);
+  var vnutr = parseInt(v.vnutr, 10) || 0;
+  var vnesh = parseInt(v.vnesh, 10) || 0;
+  var zaglushki = Math.round((v.proemy || 0)) * 2;
+  var klipsy = Math.ceil(usable / 0.45);   // шаг клипс ≈ 45 см
+  var cost = planks * (v.cena || 0);
+
+  var rows = [
+    f.row('Периметр под плинтус', f.num(usable, 1) + ' м', 'за вычетом дверных проёмов'),
+    f.row('С запасом', f.num(withReserve, 1) + ' м', (parseFloat(v.zapas) || 5) + '% на подрезку'),
+    f.row('Соединители', soediniteli + ' шт', 'на стыки планок'),
+    f.row('Внутренние / внешние углы', vnutr + ' / ' + vnesh + ' шт', 'уголки-фурнитура'),
+    f.row('Заглушки', zaglushki + ' шт', 'на торцы у проёмов'),
+    f.row('Крепёж (клипсы)', '≈ ' + klipsy + ' шт', 'шаг ≈ 45 см'),
+    f.row('Стоимость планок', f.money(cost), planks + ' × ' + f.num(v.cena || 0, 0) + ' ₽')
+  ];
+
+  var html = f.total('Нужно планок', planks + ' шт',
+    f.num(plankLen, 1) + ' м каждая · ' + f.num(planks * plankLen, 1) + ' м всего');
+  html += f.table(rows, 'Как получилось');
+  html += f.note('Планки берите одной партии — оттенок «под дерево» между партиями отличается, ' +
+    'и стык заметен. Мелкую фурнитуру (углы, заглушки) докупайте с запасом 1–2 шт: она хрупкая ' +
+    'и легко ломается при защёлкивании.');
+  return html;
+});
+</script>

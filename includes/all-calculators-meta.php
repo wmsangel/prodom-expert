@@ -110,6 +110,16 @@ function domexpert_all_calculators_meta(): array
                      'potolok-pod-pokrasku-vyravnivanie', 'gruntovka-sten-osnovy',
                      'ciklevka-parketa-svoimi-rukami'],
     ],
+    'plintus' => [
+      'group'    => 'materialy',
+      'title'    => 'Калькулятор плинтуса: сколько планок и фурнитуры нужно на комнату',
+      'h1'       => 'Расчёт напольного плинтуса',
+      'desc'     => 'Периметр за вычетом проёмов, число планок, соединители, углы, заглушки и крепёж — с запасом на подрезку и стоимостью.',
+      'lead'     => 'Считается по периметру за вычетом дверей. Калькулятор добавит фурнитуру и крепёж, которые легко забыть.',
+      'level'    => 'простой',
+      'related'  => ['moldingi-i-plintusy-stykovka', 'ukladka-laminata',
+                     'keramogranit-na-pol-ukladka', 'kabel-kanaly-i-koroby'],
+    ],
     'shtukaturka' => [
       'group'    => 'materialy',
       'title'    => 'Калькулятор штукатурки: сколько мешков смеси нужно на стены',
