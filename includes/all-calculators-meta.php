@@ -110,6 +110,17 @@ function domexpert_all_calculators_meta(): array
                      'potolok-pod-pokrasku-vyravnivanie', 'gruntovka-sten-osnovy',
                      'ciklevka-parketa-svoimi-rukami'],
     ],
+    'gidroizolyaciya' => [
+      'group'    => 'santehnika',
+      'title'    => 'Калькулятор гидроизоляции: расход на пол, стены, лента и грунт',
+      'h1'       => 'Расчёт гидроизоляции санузла',
+      'desc'     => 'Площадь пола и захода на стены, расход обмазочной или рулонной гидроизоляции, гидроизоляционная лента и грунт — с запасом и стоимостью.',
+      'lead'     => 'Считается пол плюс заход на стены и мокрая зона душа. Отдельно лента на углы — там протекает первым.',
+      'level'    => 'средний',
+      'related'  => ['gidroizolyatsiya-vannoy', 'dushevoy-trap-i-uklon-pola',
+                     'ukladka-plitki-v-vannoy', 'styazhka-pola-suhaya-ili-mokraya',
+                     'remont-vannoy-komnaty-s-nulya-gid'],
+    ],
     'plintus' => [
       'group'    => 'materialy',
       'title'    => 'Калькулятор плинтуса: сколько планок и фурнитуры нужно на комнату',

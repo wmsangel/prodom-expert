@@ -1,0 +1,161 @@
+<form class="calc" data-calc="gidroizolyaciya">
+  <fieldset>
+    <legend>Помещение</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="gi-dlina">Длина пола, м</label>
+        <input type="number" id="gi-dlina" name="dlina" value="2.0" min="0" max="30" step="0.1" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="gi-shirina">Ширина пола, м</label>
+        <input type="number" id="gi-shirina" name="shirina" value="1.7" min="0" max="30" step="0.1" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label for="gi-zahod">Заход на стены, м</label>
+        <input type="number" id="gi-zahod" name="zahod" value="0.2" min="0" max="2.5" step="0.05" inputmode="decimal">
+        <span class="calc-field-hint">По периметру ≥ 20 см, в душевой зоне до 1,8–2 м</span>
+      </div>
+      <div class="calc-field">
+        <label for="gi-dush">Ширина мокрой зоны (душ), м</label>
+        <input type="number" id="gi-dush" name="dush" value="0" min="0" max="10" step="0.1" inputmode="decimal">
+        <span class="calc-field-hint">Стена, поднимаемая до 2 м; 0 — если ванна</span>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Материал</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="gi-tip">Тип гидроизоляции</label>
+        <select id="gi-tip" name="tip">
+          <option value="cem" selected>Обмазочная цементная (≈1,5 кг/м²/слой)</option>
+          <option value="poly">Обмазочная полимерная (≈1,0 кг/м²/слой)</option>
+          <option value="bitum">Битумная мастика (≈1,2 кг/м²/слой)</option>
+          <option value="rulon">Рулонная (наплавляемая/самоклейка)</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="gi-sloi">Слоёв (для обмазочной)</label>
+        <select id="gi-sloi" name="sloi">
+          <option value="2" selected>2 слоя — стандарт</option>
+          <option value="3">3 слоя — душевая, повышенная нагрузка</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="gi-fasovka">Фасовка, кг</label>
+        <select id="gi-fasovka" name="fasovka">
+          <option value="20" selected>20 кг</option>
+          <option value="15">15 кг</option>
+          <option value="5">5 кг (ведро)</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="gi-cena">Цена упаковки, ₽</label>
+        <input type="number" id="gi-cena" name="cena" value="1500" min="0" max="50000" step="50" inputmode="numeric">
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="gi-grunt" name="grunt" checked>
+        <label for="gi-grunt">Считать грунтовку</label>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<div class="calc-result" data-calc-result="gidroizolyaciya" role="status" aria-live="polite"></div>
+
+<section class="calc-article">
+  <h2>Как считается гидроизоляция</h2>
+  <p>Изолируют не только пол, но и заход на стены — минимум 20 см по всему периметру, а в мокрой зоне душа стену поднимают до 1,8–2 м. Площадь = пол + полоса захода по периметру + поднятая стена душа. Обмазочную считают в килограммах (расход на слой × число слоёв), рулонную — в квадратных метрах с нахлёстом. Отдельно идут грунт и гидроизоляционная лента на все углы и стыки.</p>
+
+  <h2>Что нельзя пропустить</h2>
+  <ul>
+    <li><strong>Заход на стены</strong> — вода стекает по стене, и без бортика гидроизоляции она уйдёт под плитку у пола.</li>
+    <li><strong>Гидроизоляционная лента</strong> — во все внутренние углы «пол-стена» и «стена-стена», а также вокруг трапа и вводов труб. Это самое протекающее место, лента считается по периметру.</li>
+    <li><strong>Грунтовка</strong> — основание грунтуют перед обмазкой, иначе состав отслаивается; тип грунта — под материал основания, см. <a href="/article/gruntovka-sten-osnovy/">грунтовку</a>.</li>
+    <li><strong>Манжеты</strong> на вводы труб и вокруг <a href="/article/dushevoy-trap-i-uklon-pola/">трапа</a> — отдельные фасонные элементы.</li>
+  </ul>
+
+  <h2>Обмазочная или рулонная</h2>
+  <p>Обмазочная (цементная или полимерная) проще в квартире: наносится кистью и валиком, бесшовная, огибает любые углы. Рулонная (наплавляемая) прочнее и применяется чаще в стяжке пола и на балконах, но сложнее в укладке и требует нахлёстов. Для санузла в квартире в большинстве случаев берут обмазочную. Технология по шагам — в материале про <a href="/article/gidroizolyatsiya-vannoy/">гидроизоляцию ванной</a>.</p>
+
+  <h2>Пример</h2>
+  <div class="calc-example">
+    <p><strong>Санузел 2,0 × 1,7 м, заход на стены 20 см, душ 0,9 м до 2 м, обмазочная цементная, 2 слоя, мешки 20 кг.</strong></p>
+    <p>Пол 3,4 м² + полоса по периметру 7,4×0,2 = 1,5 м² + душевая стена ≈ 1,6 м² = 6,5 м². Расход 1,5 × 2 слоя = 3 кг/м² → 19,5 кг, с запасом 21 кг — <strong>2 мешка по 20 кг</strong>. Плюс лента ≈ 15 м (периметр и углы) и грунт.</p>
+  </div>
+
+  <h2>Практические правила</h2>
+  <ol>
+    <li><strong>Второй слой — крест-накрест</strong> первому: так не остаётся непрокрашенных полос.</li>
+    <li><strong>Ленту вклеивают в первый слой</strong> ещё сырым, а не поверх высохшего.</li>
+    <li><strong>Сушка между слоями</strong> — по инструкции (обычно 4–6 часов), плитку кладут после полного набора прочности.</li>
+    <li><strong>Заводите изоляцию под порог</strong> и выше уровня будущей стяжки, чтобы вода не подтекала в коридор.</li>
+  </ol>
+
+  <h2>Частые вопросы</h2>
+  <h3>На какую высоту делать гидроизоляцию стен?</h3>
+  <p>По всему периметру — минимум 20 см от пола. В зоне душа или ванны стену поднимают до 1,8–2 м, потому что вода бьёт по ней напрямую. За унитазом и раковиной достаточно бортика 20–30 см.</p>
+
+  <h3>Сколько нужно гидроизоляционной ленты?</h3>
+  <p>Лента идёт во все внутренние углы «пол-стена» и вертикальные стыки стен, плюс вокруг трапа и вводов труб. Считается по периметру помещения с запасом на углы и нахлёсты — примерно периметр пола плюс высота вертикальных углов. Экономить на ленте нельзя: углы протекают первыми.</p>
+
+  <h3>Обмазочная или рулонная гидроизоляция для санузла?</h3>
+  <p>В квартирном санузле обычно обмазочная: она бесшовная, легко наносится кистью и огибает углы и трап. Рулонную наплавляемую чаще применяют в стяжке пола и на балконах. Для душа без поддона надёжнее эластичная полимерная обмазка в 2–3 слоя с лентой по углам.</p>
+
+  <h3>Нужно ли грунтовать перед гидроизоляцией?</h3>
+  <p>Да, обязательно. Грунт связывает пыль и выравнивает впитываемость основания — без него обмазочный состав отслаивается или «сгорает» на сухой стяжке. Тип грунта подбирают под материал основания; расход около 8 м²/л в один слой.</p>
+</section>
+
+<script>
+DomCalc.register('gidroizolyaciya', function (v, f) {
+  var L = v.dlina || 0, W = v.shirina || 0;
+  var floor = L * W;
+  if (floor <= 0) { return f.note('Укажите размеры пола помещения.'); }
+
+  var perim = 2 * (L + W);
+  var zahod = v.zahod || 0;
+  var stripWall = perim * zahod;               // полоса захода по периметру
+  var dushW = v.dush || 0;
+  var dushWall = dushW > 0 ? dushW * Math.max(0, 2 - zahod) : 0;  // душевая стена до 2 м сверх полосы
+  var area = floor + stripWall + dushWall;
+
+  var tip = v.tip;
+  var rows = [
+    f.row('Площадь пола', f.num(floor, 2) + ' м²', ''),
+    f.row('Заход на стены', f.num(stripWall, 2) + ' м²', 'полоса ' + f.num(zahod, 2) + ' м по периметру'),
+  ];
+  if (dushWall > 0) rows.push(f.row('Душевая зона', f.num(dushWall, 2) + ' м²', 'стена до 2 м'));
+  rows.push(f.row('Всего под изоляцию', f.num(area, 2) + ' м²', 'пол + стены'));
+
+  // лента: периметр (углы пол-стена) + вертикальные углы стен на высоту захода/душа
+  var lenta = perim + 4 * (dushW > 0 ? 2 : zahod);
+  var html, total;
+
+  if (tip === 'rulon') {
+    var m2 = area * 1.15;   // нахлёст 15%
+    total = f.total('Рулонной гидроизоляции', f.num(m2, 1) + ' м²', 'с нахлёстом 15%');
+    rows.push(f.row('Рулонный материал', f.num(m2, 1) + ' м²', 'нахлёст 15%'));
+  } else {
+    var perLayer = tip === 'poly' ? 1.0 : (tip === 'bitum' ? 1.2 : 1.5);
+    var sloi = parseInt(v.sloi, 10) || 2;
+    var kg = area * perLayer * sloi;
+    var withReserve = kg * 1.08;
+    var bag = parseFloat(v.fasovka) || 20;
+    var packs = Math.max(1, Math.ceil(withReserve / bag));
+    total = f.total('Гидроизоляции', packs + ' уп.', '≈ ' + f.num(withReserve, 0) + ' кг (' + f.num(bag, 0) + ' кг/уп.)');
+    rows.push(f.row('Расход на 1 м²', f.num(perLayer * sloi, 1) + ' кг', sloi + ' слоя × ' + f.num(perLayer, 1) + ' кг'));
+    rows.push(f.row('С запасом 8%', f.num(withReserve, 0) + ' кг', ''));
+    rows.push(f.row('Стоимость', f.money(packs * (v.cena || 0)), packs + ' × ' + f.num(v.cena || 0, 0) + ' ₽'));
+  }
+
+  rows.push(f.row('Гидроизоляционная лента', '≈ ' + f.num(lenta, 1) + ' м', 'все углы и стыки'));
+  if (v.grunt) rows.push(f.row('Грунтовка', f.num(area / 8, 1) + ' л', 'расход ≈ 8 м²/л'));
+
+  html = total + f.table(rows, 'Как получилось');
+  html += f.note('Не экономьте на гидроизоляционной ленте — внутренние углы «пол-стена» и зоны вокруг ' +
+    'трапа и труб протекают первыми. Ленту вклеивают в первый сырой слой, второй слой наносят ' +
+    'крест-накрест первому, а изоляцию заводят выше будущей стяжки и под порог.');
+  return html;
+});
+</script>
