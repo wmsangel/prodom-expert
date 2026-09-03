@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Ежедневная публикация ДомЭксперт в Telegram через launchd (как у 24zdorovie).
+
+  Установка (один раз):
+    cp scripts/com.prodom.tg-daily.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.prodom.tg-daily.plist
+
+  Проверка и управление:
+    launchctl list | grep prodom              # загружен ли агент
+    launchctl start com.prodom.tg-daily       # запустить немедленно (тест)
+    launchctl unload ~/Library/LaunchAgents/com.prodom.tg-daily.plist
+    tail -f scripts/tg.log                     # смотреть, что публикуется
+
+  ВАЖНО: пути абсолютные — launchd не читает профиль оболочки.
+  Если Mac спал в 10:00 или 19:00 — launchd догонит запуск при пробуждении
+  (но пропущенные не копит: проспав оба времени, наверстает одним постом).
+  Догнать вручную: bash scripts/tg-daily.sh
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.prodom.tg-daily</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/igorzagorodnyi/Sites/ad.domexpert/scripts/tg-daily.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/igorzagorodnyi/Sites/ad.domexpert</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/usr/bin:/bin:/usr/sbin:/sbin</string>
+  </dict>
+
+  <!-- Дважды в день: 10:00 (статья) и 19:00 (оригинальный пост/опрос). -->
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict>
+      <key>Hour</key><integer>10</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+    <dict>
+      <key>Hour</key><integer>19</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+  </array>
+
+  <key>StandardOutPath</key>
+  <string>/Users/igorzagorodnyi/Sites/ad.domexpert/scripts/tg.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/igorzagorodnyi/Sites/ad.domexpert/scripts/tg.log</string>
+
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
+</plist>
