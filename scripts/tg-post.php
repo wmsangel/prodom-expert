@@ -137,6 +137,53 @@ function tg_call(string $token, string $method, array $params): array {
     return is_array($j) ? $j : ['ok' => false, 'description' => 'bad response'];
 }
 
+/** Скачивает файл по URL (для загрузки картинки multipart-ом). */
+function tg_fetch(string $url): string {
+    if (function_exists('curl_init')) {
+        $ch = curl_init($url);
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true, CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_TIMEOUT => 25, CURLOPT_USERAGENT => 'Mozilla/5.0 (ДомЭксперт TG)',
+        ]);
+        $data = (string) curl_exec($ch);
+        $code = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        return ($code >= 200 && $code < 300) ? $data : '';
+    }
+    return (string) @file_get_contents($url);
+}
+
+/**
+ * Пост с фото. Сначала пробуем быстрый путь — по URL (Telegram качает сам).
+ * Если Telegram не смог скачать URL ("failed to get HTTP URL content" — бывает
+ * из-за фильтра хостинга на IP Telegram) — качаем картинку сами и грузим файлом.
+ */
+function tg_send_photo(array $env, string $photoUrl, string $caption): array {
+    $res = tg_call($env['TG_BOT_TOKEN'], 'sendPhoto', [
+        'chat_id' => $env['TG_CHANNEL'], 'photo' => $photoUrl,
+        'caption' => $caption, 'parse_mode' => 'HTML',
+    ]);
+    if (!empty($res['ok'])) { return $res; }
+
+    if (function_exists('curl_file_create')) {
+        $img = tg_fetch($photoUrl);
+        if (strlen($img) > 100) {
+            $png = tempnam(sys_get_temp_dir(), 'tgph') . '.png';
+            if (@file_put_contents($png, $img) !== false) {
+                $res2 = tg_call($env['TG_BOT_TOKEN'], 'sendPhoto', [
+                    'chat_id' => $env['TG_CHANNEL'],
+                    'photo'   => curl_file_create($png, 'image/png', 'cover.png'),
+                    'caption' => $caption, 'parse_mode' => 'HTML',
+                ]);
+                @unlink($png);
+                if (!empty($res2['ok'])) { return $res2; }
+                return $res2;
+            }
+        }
+    }
+    return $res;
+}
+
 // ── основной ход ──────────────────────────────────────────────────────────
 $env  = tg_env();
 $meta = domexpert_all_articles_meta();
@@ -162,12 +209,7 @@ foreach ($slugs as $slug) {
 
     if ($dry) { $ok++; continue; }
 
-    $res = tg_call($env['TG_BOT_TOKEN'], 'sendPhoto', [
-        'chat_id'    => $env['TG_CHANNEL'],
-        'photo'      => $photo,
-        'caption'    => $caption,
-        'parse_mode' => 'HTML',
-    ]);
+    $res = tg_send_photo($env, $photo, $caption);
     if (!empty($res['ok'])) {
         $ok++;
         echo "   ✓ отправлено\n";
