@@ -26,3 +26,4 @@ __pycache__/
 /scripts/tg-state.json
 /scripts/tg.log
 .claude/
+/scripts/tg-content-state.json
