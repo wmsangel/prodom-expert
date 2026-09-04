@@ -86,23 +86,51 @@ usort($featuredArticles, static function ($a, $b) {
 $featuredArticles = array_slice($featuredArticles, 0, 12);
 ?>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <span class="hero-eyebrow">Ремонт в цифрах, а не на глаз</span>
-      <h1>Всё о ремонте и<br><em>обустройстве дома</em></h1>
-      <p class="hero-desc">
-        Разбираем ремонт до конкретных величин: допуски, сечения, уклоны, толщины и сроки высыхания.
-        Чтобы вы могли проверить работу подрядчика правилом и рулеткой, а не поверить на слово.
-      </p>
-      <div class="hero-actions">
-        <a href="/category/remont/" class="btn btn-primary">🔨 Статьи о ремонте</a>
-        <a href="/calculators/" class="btn btn-outline">🧮 Калькуляторы</a>
+<!-- HERO SLIDER: свежие статьи с обложками -->
+<?php $heroSlides = array_slice($featuredArticles, 0, 5); ?>
+<section class="hero-slider" aria-label="Новые статьи" aria-roledescription="карусель">
+  <h1 class="visually-hidden">ДомЭксперт — всё о ремонте и обустройстве дома в конкретных величинах</h1>
+  <div class="hero-slider-track" id="heroTrack">
+    <?php foreach ($heroSlides as $i => $s): $sCover = article_cover_web_path($s['slug']); ?>
+    <a class="hero-slide" href="/article/<?= htmlspecialchars($s['slug'], ENT_QUOTES, 'UTF-8') ?>/"
+       aria-label="<?= htmlspecialchars($s['title'], ENT_QUOTES, 'UTF-8') ?>">
+      <?php if ($sCover): ?>
+      <img class="hero-slide-bg" src="<?= htmlspecialchars($sCover, ENT_QUOTES, 'UTF-8') ?>"
+           alt="" <?= $i === 0 ? 'fetchpriority="high"' : 'loading="lazy"' ?> decoding="async">
+      <?php endif; ?>
+      <span class="hero-slide-shade"></span>
+      <div class="container">
+        <div class="hero-slide-cap">
+          <span class="hero-slide-badge"><?= htmlspecialchars($s['catLabel'], ENT_QUOTES, 'UTF-8') ?></span>
+          <h2><?= htmlspecialchars($s['title'], ENT_QUOTES, 'UTF-8') ?></h2>
+          <p><?= htmlspecialchars($s['desc'], ENT_QUOTES, 'UTF-8') ?></p>
+          <span class="hero-slide-cta">Читать статью →</span>
+        </div>
       </div>
-    </div>
+    </a>
+    <?php endforeach; ?>
   </div>
+  <button class="hero-slider-nav prev" type="button" aria-label="Предыдущая">‹</button>
+  <button class="hero-slider-nav next" type="button" aria-label="Следующая">›</button>
+  <div class="hero-slider-dots" id="heroDots" role="tablist"></div>
 </section>
+<script>
+(function(){
+  var track=document.getElementById('heroTrack'); if(!track) return;
+  var slides=track.children, n=slides.length, dots=document.getElementById('heroDots'), idx=0, timer=null;
+  if(n<2){ var p=document.querySelector('.hero-slider .prev'), q=document.querySelector('.hero-slider .next');
+           if(p)p.style.display='none'; if(q)q.style.display='none'; return; }
+  function go(i){ idx=(i+n)%n; track.style.transform='translateX(-'+(idx*100)+'%)';
+    for(var j=0;j<dots.children.length;j++) dots.children[j].setAttribute('aria-current', j===idx); }
+  function reset(){ if(timer) clearInterval(timer); timer=setInterval(function(){go(idx+1);},6000); }
+  for(var k=0;k<n;k++){ (function(j){ var b=document.createElement('button');
+    b.type='button'; b.setAttribute('role','tab'); b.setAttribute('aria-label','Слайд '+(j+1));
+    b.setAttribute('aria-current', j===0); b.onclick=function(){go(j);reset();}; dots.appendChild(b); })(k); }
+  document.querySelector('.hero-slider .prev').onclick=function(){go(idx-1);reset();};
+  document.querySelector('.hero-slider .next').onclick=function(){go(idx+1);reset();};
+  reset();
+})();
+</script>
 
 <!-- УТП: чем сайт отличается. Цифры берутся из реестров, вручную не правятся. -->
 <section class="usp" aria-labelledby="usp-title">

@@ -33,7 +33,7 @@
   --radius-lg: 12px;
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
-  --max-width: 1200px;
+  --max-width: 1400px;
   --sidebar-width: 300px;
   --transition: 0.25s ease;
 }
@@ -2012,3 +2012,63 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.3; color: 
   border-radius: 8px;
   display: block;
 }
+
+/* =====================================================================
+   РЕДИЗАЙН 2026-09 · крупнее / шире / визуальнее (наложение поверх базы)
+   ===================================================================== */
+
+/* --- Статья: крупнее текст, комфортная мера чтения, больше воздуха --- */
+.article-body { font-size: 1.15rem; line-height: 1.82; padding: 44px 52px; }
+.article-body > p,
+.article-body > ul,
+.article-body > ol { max-width: 74ch; }
+.article-body h2 { font-size: 1.8rem; margin: 46px 0 16px; }
+.article-body h3 { font-size: 1.3rem; margin-top: 28px; }
+.article-lead-figure img { max-height: min(60vh, 500px); }
+@media (max-width: 640px) {
+  .article-body { padding: 26px 20px; font-size: 1.08rem; }
+}
+
+/* --- Слайдер новых статей на главной (вместо текстового вступления) --- */
+.hero-slider { position: relative; overflow: hidden; background: #0d0b08;
+  --slideH: clamp(330px, 42vw, 520px); }
+.hero-slider-track { display: flex; transition: transform .55s cubic-bezier(.4,0,.2,1); }
+.hero-slide { position: relative; flex: 0 0 100%; height: var(--slideH);
+  display: block; text-decoration: none; overflow: hidden; }
+.hero-slide-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-slide-shade { position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(12,9,6,.9) 0%, rgba(12,9,6,.62) 44%, rgba(12,9,6,.12) 100%); }
+.hero-slide .container { position: relative; height: 100%; display: flex; align-items: center; }
+.hero-slide-cap { max-width: 600px; color: #fff; }
+.hero-slide-badge { display: inline-block; background: var(--brick); color: #fff;
+  font-size: .72rem; font-weight: 700; letter-spacing: .6px; text-transform: uppercase;
+  padding: 5px 13px; border-radius: 999px; margin-bottom: 14px; }
+.hero-slide-cap h2 { font-family: var(--font-display); color: #fff;
+  font-size: clamp(1.6rem, 3.2vw, 2.7rem); line-height: 1.14; margin: 0 0 12px;
+  text-shadow: 0 2px 18px rgba(0,0,0,.5); }
+.hero-slide-cap p { color: #e9dfd2; font-size: 1.05rem; line-height: 1.5; margin: 0 0 18px; max-width: 46ch; }
+.hero-slide-cta { display: inline-block; background: var(--brick); color: #fff;
+  font-weight: 700; padding: 12px 22px; border-radius: 10px; font-size: .95rem; transition: background .18s; }
+.hero-slide:hover .hero-slide-cta { background: var(--brick-dark); }
+.hero-slider-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 4;
+  width: 46px; height: 46px; border-radius: 50%; border: 0; background: rgba(0,0,0,.35);
+  color: #fff; font-size: 1.8rem; line-height: 1; cursor: pointer; transition: background .18s; }
+.hero-slider-nav:hover { background: var(--brick); }
+.hero-slider-nav.prev { left: 20px; } .hero-slider-nav.next { right: 20px; }
+.hero-slider-dots { position: absolute; left: 50%; transform: translateX(-50%); bottom: 16px;
+  z-index: 4; display: flex; gap: 9px; }
+.hero-slider-dots button { width: 32px; height: 5px; border-radius: 99px; border: 0;
+  background: rgba(255,255,255,.45); cursor: pointer; padding: 0; transition: .2s; }
+.hero-slider-dots button[aria-current="true"] { background: var(--brick-light); width: 44px; }
+@media (max-width: 640px) {
+  .hero-slide-cap p { display: none; }
+  .hero-slider-nav { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-slider-track { transition: none; }
+}
+
+/* Визуально скрытый, но доступный скринридерам (SEO h1 над слайдером) */
+.visually-hidden { position: absolute !important; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0; }
