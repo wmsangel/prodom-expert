@@ -27,3 +27,8 @@ __pycache__/
 /scripts/tg.log
 .claude/
 /scripts/tg-content-state.json
+
+# временные файлы редизайна/обложек
+/_covers-review.html
+scripts/articles.tsv
+scripts/ai-covers.log
