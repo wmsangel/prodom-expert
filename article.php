@@ -295,7 +295,7 @@ include __DIR__ . '/includes/header.php';
 <!-- PAGE WRAPPER -->
 <div class="page-wrapper">
   <div class="container">
-    <div class="main-layout">
+    <div class="main-layout main-layout--solo">
 
       <main id="main-content" role="main">
 
@@ -376,6 +376,16 @@ include __DIR__ . '/includes/header.php';
         <?php $calcArticleSlug = $slug; ?>
         <?php include __DIR__ . '/includes/article-calculators.php'; ?>
 
+        <!-- Монетизация в потоке (переехала из сайдбара при переходе на одну колонку):
+             контекстный партнёрский баннер + кросс-промо своих проектов. -->
+        <div class="article-aside-inline">
+          <?php
+            $inlineBannerMeta = domexpert_article_meta($slug);
+            echo domexpert_sidebar_banner([$slug, $inlineBannerMeta['catSlug'] ?? ($meta['catSlug'] ?? '')]);
+            echo domexpert_partner_ad('card', $slug, 1);
+          ?>
+        </div>
+
         <!-- Реклама переехала в середину статьи (см. $inArticleAd выше) — тут пусто. -->
 
 
@@ -440,11 +450,36 @@ include __DIR__ . '/includes/header.php';
 
       </main>
 
-      <?php $sidebarArticleSlug = $slug; ?>
-      <?php include __DIR__ . '/includes/sidebar.php'; ?>
+      <!-- Сайдбар убран: статья теперь одна широкая колонка.
+           Монетизация из сайдбара перенесена в поток (см. .article-aside-inline). -->
 
     </div>
   </div>
 </div>
+
+<!-- FAQ-аккордеон: собираем из «Частые вопросы» (h3+ответы) в <details>.
+     Прогрессивное улучшение: без JS остаётся обычный список; FAQPage-разметка
+     считается на сервере из исходника и от этого не зависит. -->
+<script>
+(function(){
+  try{
+    var body=document.querySelector('.article-body'); if(!body) return;
+    var h2s=body.querySelectorAll('h2'), faqH2=null;
+    for(var i=0;i<h2s.length;i++){ if(/частые вопросы/i.test(h2s[i].textContent)){ faqH2=h2s[i]; break; } }
+    if(!faqH2) return;
+    var node=faqH2.nextElementSibling, first=true;
+    while(node){
+      if(node.tagName==='H2') break;
+      if(node.tagName==='H3'){
+        var det=document.createElement('details'); det.className='faq-item'; if(first){det.open=true;first=false;}
+        var sum=document.createElement('summary'); sum.textContent=node.textContent; det.appendChild(sum);
+        var q=node, next=q.nextElementSibling;
+        while(next && next.tagName!=='H3' && next.tagName!=='H2'){ var mv=next; next=next.nextElementSibling; det.appendChild(mv); }
+        faqH2.parentNode.insertBefore(det, q); q.parentNode.removeChild(q); node=next;
+      } else { node=node.nextElementSibling; }
+    }
+  }catch(e){}
+})();
+</script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

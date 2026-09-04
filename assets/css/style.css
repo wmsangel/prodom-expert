@@ -2072,3 +2072,26 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.3; color: 
 .visually-hidden { position: absolute !important; width: 1px; height: 1px;
   padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0);
   white-space: nowrap; border: 0; }
+
+/* --- Статья «дожатая»: одна широкая колонка без сайдбара --- */
+.main-layout--solo { display: block; max-width: 880px; margin: 0 auto; padding: 44px 0 64px; }
+.main-layout--solo .article-body > p,
+.main-layout--solo .article-body > ul,
+.main-layout--solo .article-body > ol { max-width: none; }
+.article-aside-inline { max-width: 880px; margin: 28px auto 0; }
+.article-aside-inline .sidebar-widget,
+.article-aside-inline aside { margin: 0; }
+@media (max-width: 920px) { .main-layout--solo { max-width: 100%; } }
+
+/* --- FAQ как аккордеон (собирается JS из h2 «Частые вопросы» + h3/p) --- */
+.article-body details.faq-item { border-bottom: 1px solid var(--border); }
+.article-body details.faq-item:first-of-type { border-top: 1px solid var(--border); }
+.article-body details.faq-item > summary {
+  list-style: none; cursor: pointer; font-family: var(--font-display);
+  font-size: 1.22rem; color: var(--heading); padding: 16px 0;
+  display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.article-body details.faq-item > summary::-webkit-details-marker { display: none; }
+.article-body details.faq-item > summary::after { content: "+"; color: var(--brick); font-weight: 700; font-size: 1.4rem; line-height: 1; }
+.article-body details.faq-item[open] > summary::after { content: "\2013"; }
+.article-body details.faq-item > summary:hover { color: var(--brick-dark); }
+.article-body details.faq-item > *:not(summary) { margin-bottom: 14px; }
