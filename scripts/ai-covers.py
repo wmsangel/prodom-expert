@@ -52,6 +52,7 @@ KW = [
  ("тёплый пол","underfloor heating"),("теплый пол","underfloor heating"),
  ("стяжк","floor screed"),("плинтус","floor baseboard"),("наливн","self-leveling floor"),
  ("потол","ceiling"),("фотообои","accent wall with a large scenic photo mural"),
+ ("жидкие обои","wall finished with textured silk-plaster liquid wallpaper coating, soft matte"),
  ("обои","wallpaper on wall"),("покрас","painted walls"),
  ("штукатурк","decorative plaster wall"),("шпакл","wall putty"),("грунтов","wall priming"),
  ("микроцемент","microcement wall"),("венециан","venetian plaster wall"),
