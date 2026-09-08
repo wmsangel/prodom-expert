@@ -84,6 +84,19 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'icon'  => '🛏',
         'tags'  => ['kak-vybrat-krovat-i-matras', 'mebel-dlya-detskoy-komnaty', 'malenkaya-spalnya-dizayn'],
       ],
+      // ORMATEK — второй крупный производитель товаров для сна (матрасы, кровати),
+      // прямой конкурент Асконы. CPA (/g/, Paid order 8.19%), доставка по РФ. Ставим
+      // СРАЗУ после Асконы и на ТЕ ЖЕ теги: на sleep-страницах блок покажет обоих
+      // (Аскона + ORMATEK, лимит 2) — читатель сравнивает два бренда, как Петрович+МЕГАСТРОЙ.
+      [
+        'id'    => 'ormatek',
+        'title' => 'ORMATEK',
+        'desc'  => 'Матрасы и кровати ведущего российского бренда товаров для сна. Доставка по РФ, рассрочка.',
+        'cta'   => 'Смотреть матрасы ORMATEK',
+        'url'   => 'https://bednari.com/g/fbbbdbef6e5593ebc0481e828be52d/?erid=F7NfYUJRWmqqH8Yw2oAC',
+        'icon'  => '🛏',
+        'tags'  => ['kak-vybrat-krovat-i-matras', 'mebel-dlya-detskoy-komnaty', 'malenkaya-spalnya-dizayn'],
+      ],
       // Postel Deluxe — маркетплейс домашнего текстиля (постельное бельё, покрывала,
       // шторы), нац.доставка, CPA (/g/, 8.25–12.08%). Отдельной текстильной ниши у нас
       // не было — вешаем на текстиль/ковры/спальню/съёмную квартиру. Комплементарен
