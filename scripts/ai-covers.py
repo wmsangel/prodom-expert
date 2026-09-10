@@ -39,6 +39,8 @@ DEFAULT_TOPIC = {
 }
 # перевод частых русских терминов -> английская предметная сцена (по вхождению в заголовок)
 KW = [
+ ("на балконе","cozy glazed balcony with wood-look composite decking floor, plants, warm light"),
+ ("балкон","cozy glazed balcony with wood-look composite decking floor, plants, warm light"),
  ("кухонный гарнитур","kitchen cabinets"),("гарнитур","kitchen cabinets"),
  ("компьютерное кресло","ergonomic office chair"),("кресло","armchair"),
  ("диван","sofa"),("шкаф-купе","sliding wardrobe"),("шкаф","wardrobe"),

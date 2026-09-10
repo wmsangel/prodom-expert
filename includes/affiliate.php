@@ -210,7 +210,7 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'cta'   => 'Смотреть террасную доску',
         'url'   => 'https://dbnua.com/g/6zx21qevom5593ebc048c253dd3ed1/?erid=2bL9aMPo2e49hMef4rqyCzAiCX',
         'icon'  => '🪵',
-        'tags'  => ['dizayn-balkona-kak-komnaty', 'uteplenie-lodzhii', 'holodnoe-i-teploe-osteklenie-balkona'],
+        'tags'  => ['pol-na-balkone-i-lodzhii', 'dizayn-balkona-kak-komnaty', 'uteplenie-lodzhii', 'holodnoe-i-teploe-osteklenie-balkona'],
       ],
       [
         'id'    => 'petrovich',
