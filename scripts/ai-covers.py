@@ -69,6 +69,8 @@ KW = [
  ("освещен","modern home lighting"),("подсветк","led strip lighting"),
  ("люстр","ceiling chandelier"),("светильник","light fixture"),("лампа","light bulb"),
  ("кондиционер","wall air conditioner"),("вентиляц","ventilation"),("вытяжк","kitchen range hood"),
+ ("обогреватель","modern white electric convector heater on the wall of a cozy living room"),
+ ("конвектор","modern white electric convector heater in a cozy room"),
  ("котёл","heating boiler"),("котел","heating boiler"),("радиатор","heating radiator"),
  ("отоплен","heating radiator"),("водонагреват","water heater"),("бойлер","water heater"),
  ("варочн","cooktop"),("духов","built-in oven"),("посудомо","dishwasher"),
@@ -108,7 +110,18 @@ def fetch(slug, prompt, seed=7):
                 raise ValueError(f"too small {len(data)}b")
             with open(tmp, "wb") as f:
                 f.write(data)
-            # нормализуем до точных 1200x630 (sips — родной для macOS)
+            # Pollinations с сентября 2026 подмешивает вотемарк "pollinations.ai" в правый
+            # нижний угол даже при nologo=true. Убираем его центр-кропом: срезаем по 32px
+            # сверху и снизу (нижняя кромка с вотемарком уходит), ширину берём под 1.905,
+            # затем ресайз до точных 1200x630. Родной sips умеет только центр-кроп.
+            def dim(axis):
+                out = subprocess.run(["sips", "-g", axis, tmp], capture_output=True, text=True)
+                return int(out.stdout.strip().split()[-1])
+            H = dim("pixelHeight")
+            ch = max(200, H - 64)
+            cw = round(ch * 1200 / 630)
+            subprocess.run(["sips", "-c", str(ch), str(cw), tmp, "--out", tmp],
+                           check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             subprocess.run(["sips", "-s", "format", "jpeg", "-z", "630", "1200", tmp,
                             "--out", dst], check=True,
                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

@@ -162,7 +162,7 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'cta'   => 'Смотреть на Мегамаркете',
         'url'   => 'https://yyczo.com/g/apbut4et2w5593ebc0489371df1336/?erid=2bL9aMPo2e49hMef4rqxsS1r4P',
         'icon'  => '🛒',
-        'tags'  => ['elektrokotel-dlya-doma-vybor', 'kak-vybrat-konditsioner', 'vytyazhka-dlya-kuhni-vybor', 'podklyuchenie-varochnoy-paneli-i-duhovki', 'podklyuchenie-posudomoechnoy-mashiny',
+        'tags'  => ['obogrevatel-dlya-kvartiry-vybor', 'elektrokotel-dlya-doma-vybor', 'kak-vybrat-konditsioner', 'vytyazhka-dlya-kuhni-vybor', 'podklyuchenie-varochnoy-paneli-i-duhovki', 'podklyuchenie-posudomoechnoy-mashiny',
                     'bojler-nakopitelnyj-ili-protochnyj', 'vodonagrevatel-boyler-vybor-montazh',
                     'montazh-kondicionera-elektrika-trassa', 'umnyy-dom-osnovy',
                     'ventilyaciya-sanuzla-tyaga-i-ventilyator'],
