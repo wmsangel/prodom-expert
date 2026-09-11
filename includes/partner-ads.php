@@ -91,6 +91,14 @@ if (!function_exists('domexpert_partners')) {
         'url'   => 'https://bilimjol.com',
         'icon'  => '🎓',
       ],
+      [
+        'id'    => 'foldout',
+        'title' => 'Foldout',
+        'desc'  => 'Готовые шаблоны сайтов, писем и таблиц с чистым кодом: живое демо и бесплатное скачивание без регистрации.',
+        'cta'   => 'Открыть шаблоны',
+        'url'   => 'https://foldoutkit.com/',
+        'icon'  => '🧩',
+      ],
     ];
   }
 }
