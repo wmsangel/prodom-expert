@@ -50,6 +50,25 @@ ErrorDocument 500 /404.php
     ExpiresByType application/x-font-woff2 "access plus 1 year"
 </IfModule>
 
+# --- Прозрачная отдача WebP ---
+# Если браузер поддерживает WebP и рядом с .jpg/.png лежит .webp — отдаём его
+# (в 3-4 раза легче). Шаблоны не меняем: запрос идёт на .jpg, сервер подменяет
+# на .webp с правильным Content-Type. Соцсети-скрейперы без Accept:image/webp
+# получают исходный .jpg — og:image не ломается.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_ACCEPT} image/webp
+    RewriteCond %{DOCUMENT_ROOT}/$1.webp -f
+    RewriteRule ^(.+)\.(jpe?g|png)$ /$1.webp [T=image/webp,E=WEBP:1,L]
+</IfModule>
+<IfModule mod_headers.c>
+    # Прокси/CDN должны кэшировать jpg и webp раздельно (зависит от Accept)
+    Header append Vary Accept env=WEBP
+</IfModule>
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+</IfModule>
+
 # --- Запрет прямого доступа к includes ---
 <FilesMatch "^.*\.(php)$">
     <If "%{REQUEST_URI} =~ m|^/includes/|">

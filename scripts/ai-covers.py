@@ -126,6 +126,13 @@ def fetch(slug, prompt, seed=7):
                             "--out", dst], check=True,
                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             os.remove(tmp)
+            # WebP-версия рядом с jpg (в 3-4 раза легче) — .htaccess отдаёт её
+            # браузерам с поддержкой WebP автоматически. Без cwebp просто пропускаем.
+            try:
+                subprocess.run(["cwebp", "-quiet", "-q", "80", dst, "-o", dst[:-4] + ".webp"],
+                               check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            except Exception:
+                pass
             return len(data)
         except urllib.error.HTTPError as e:
             if e.code == 429:               # рейт-лимит Pollinations — долгая пауза

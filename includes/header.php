@@ -202,6 +202,7 @@ if (!function_exists('esc')) {
   <link rel="icon" href="/assets/img/favicon-16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/assets/img/favicon-120.png" type="image/png" sizes="120x120">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <!-- ═══ ТЕМА ОФОРМЛЕНИЯ ═══ -->
   <meta name="theme-color" content="#2C2C2C" media="(prefers-color-scheme: light)">

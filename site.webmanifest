@@ -1,0 +1,16 @@
+{
+  "name": "ДомЭксперт — ремонт и обустройство дома",
+  "short_name": "ДомЭксперт",
+  "description": "Практические руководства по ремонту квартиры с нормами, расчётами и калькуляторами.",
+  "lang": "ru",
+  "start_url": "/?utm_source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F5F0E8",
+  "theme_color": "#2C2C2C",
+  "icons": [
+    { "src": "/assets/img/favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "/assets/img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
