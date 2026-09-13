@@ -90,7 +90,15 @@ if ($articleCoverPath) {
       $ogImageHeight = (int) $gis[1];
     }
   }
+  // LCP-обложку грузим как WebP, если она есть: браузер с поддержкой WebP возьмёт
+  // именно её из <picture>, поэтому и preload должен вести на .webp (type отсеет
+  // браузеры без поддержки — они просто не будут прелоадить). Иначе — исходный jpg.
   $preloadLcpImage = SITE_CANONICAL . $articleCoverPath;
+  $webpFsLcp = $coverFs ? preg_replace('/\.(jpe?g|png)$/i', '.webp', $coverFs) : null;
+  if ($webpFsLcp && is_file($webpFsLcp)) {
+    $preloadLcpImage = SITE_CANONICAL . preg_replace('/\.(jpe?g|png)$/i', '.webp', $articleCoverPath);
+    $preloadLcpType  = 'image/webp';
+  }
   $ogImageAlt      = $meta['title'] . ' — иллюстрация к материалу на ДомЭксперт';
 }
 $isArticle = true;
@@ -309,13 +317,13 @@ include __DIR__ . '/includes/header.php';
 
           <?php if ($articleCoverPath): ?>
           <figure class="article-lead-figure">
-            <img itemprop="image"
-                 src="<?= htmlspecialchars($articleCoverPath, ENT_QUOTES, 'UTF-8') ?>"
-                 width="<?= (int) $ogImageWidth ?>"
-                 height="<?= (int) $ogImageHeight ?>"
-                 alt="<?= htmlspecialchars($ogImageAlt, ENT_QUOTES, 'UTF-8') ?>"
-                 decoding="async"
-                 fetchpriority="high">
+            <?= du_cover_picture($articleCoverPath, $ogImageAlt, [
+                  'itemprop'      => 'image',
+                  'width'         => (int) $ogImageWidth,
+                  'height'        => (int) $ogImageHeight,
+                  'decoding'      => 'async',
+                  'fetchpriority' => 'high',
+                ]) ?>
           </figure>
           <?php endif; ?>
 
@@ -418,10 +426,7 @@ include __DIR__ . '/includes/header.php';
             <article class="article-card">
               <div class="card-image">
                 <?php if ($relCover): ?>
-                  <img src="<?= htmlspecialchars($relCover, ENT_QUOTES, 'UTF-8') ?>"
-                       alt="<?= htmlspecialchars($rel['title'] . ' — превью статьи', ENT_QUOTES, 'UTF-8') ?>"
-                       loading="lazy"
-                       decoding="async">
+                  <?= du_cover_picture($relCover, $rel['title'] . ' — превью статьи', ['loading' => 'lazy', 'decoding' => 'async']) ?>
                 <?php else: ?>
                   <span class="card-image-placeholder"><?= htmlspecialchars($rel['icon'], ENT_QUOTES, 'UTF-8') ?></span>
                 <?php endif; ?>

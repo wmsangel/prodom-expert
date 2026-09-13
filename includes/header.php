@@ -68,7 +68,7 @@ if (!function_exists('esc')) {
   <link rel="canonical"     href="<?= esc($pageUrl) ?>">
   <link rel="alternate" hreflang="ru-RU" href="<?= esc($pageUrl) ?>">
   <?php if (!empty($preloadLcpImage)): ?>
-  <link rel="preload" as="image" href="<?= esc($preloadLcpImage) ?>">
+  <link rel="preload" as="image" href="<?= esc($preloadLcpImage) ?>"<?= !empty($preloadLcpType) ? ' type="' . esc($preloadLcpType) . '"' : '' ?>>
   <?php endif; ?>
 
   <!-- ═══ OPEN GRAPH ═══ -->

@@ -164,10 +164,7 @@ include __DIR__ . '/includes/header.php';
             <article class="article-list-item">
               <div class="list-item-image">
                 <?php if ($listCover): ?>
-                  <img src="<?= htmlspecialchars($listCover, ENT_QUOTES, 'UTF-8') ?>"
-                       alt="<?= htmlspecialchars($article['title'] . ' — превью статьи', ENT_QUOTES, 'UTF-8') ?>"
-                       loading="lazy"
-                       decoding="async">
+                  <?= du_cover_picture($listCover, $article['title'] . ' — превью статьи', ['loading' => 'lazy', 'decoding' => 'async']) ?>
                 <?php else: ?>
                   <?= $article['catIcon'] ?>
                 <?php endif; ?>

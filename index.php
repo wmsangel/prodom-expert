@@ -95,8 +95,12 @@ $featuredArticles = array_slice($featuredArticles, 0, 12);
     <a class="hero-slide" href="/article/<?= htmlspecialchars($s['slug'], ENT_QUOTES, 'UTF-8') ?>/"
        aria-label="<?= htmlspecialchars($s['title'], ENT_QUOTES, 'UTF-8') ?>">
       <?php if ($sCover): ?>
-      <img class="hero-slide-bg" src="<?= htmlspecialchars($sCover, ENT_QUOTES, 'UTF-8') ?>"
-           alt="" <?= $i === 0 ? 'fetchpriority="high"' : 'loading="lazy"' ?> decoding="async">
+      <?= du_cover_picture($sCover, '', array_filter([
+            'class'         => 'hero-slide-bg',
+            'decoding'      => 'async',
+            'fetchpriority' => $i === 0 ? 'high' : null,
+            'loading'       => $i === 0 ? null : 'lazy',
+          ])) ?>
       <?php endif; ?>
       <span class="hero-slide-shade"></span>
       <div class="container">
@@ -274,10 +278,7 @@ $featuredArticles = array_slice($featuredArticles, 0, 12);
           <article class="article-card">
             <div class="card-image">
               <?php if ($featCover): ?>
-                <img src="<?= htmlspecialchars($featCover, ENT_QUOTES, 'UTF-8') ?>"
-                     alt="<?= htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8') ?>"
-                     loading="lazy"
-                     decoding="async">
+                <?= du_cover_picture($featCover, $article['title'], ['loading' => 'lazy', 'decoding' => 'async']) ?>
               <?php else: ?>
                 <span class="card-image-placeholder"><?= $article['icon'] ?></span>
               <?php endif; ?>
