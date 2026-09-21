@@ -80,7 +80,7 @@ KW = [
  ("труб","plumbing pipes"),("канализац","sewage pipes"),("водоснабж","water supply pipes"),
  ("гидроизоляц","bathroom waterproofing"),("шумоизоляц","wall soundproofing"),
  ("звукоизоляц","wall soundproofing"),("акустическ","acoustic panels"),
- ("утеплен","thermal insulation"),("умный дом","smart home devices"),
+ ("утеплит","wall insulation with mineral wool and rigid foam boards during renovation"),("утеплен","thermal insulation"),("умный дом","smart home devices"),
  ("смет","renovation budget planning"),("планировк","apartment floor plan"),
  ("зониров","open plan room zoning"),("гостин","living room"),("спальн","bedroom"),
  ("кухн","modern kitchen"),("санузл","bathroom"),("гардероб","walk-in closet"),
