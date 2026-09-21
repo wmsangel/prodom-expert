@@ -50,10 +50,13 @@ echo " Запросов на стр. 1 (<10):    $ON_P1"
 echo " Порог: клики ≥ $MIN_CLICKS  и  запросов<20 ≥ $MIN_NEAR_P1"
 echo "────────────────────────────────────────────────"
 
+STATUS=red; CODE=20
 if [ "$CLICKS" -ge "$MIN_CLICKS" ] && [ "$NEAR_P1" -ge "$MIN_NEAR_P1" ]; then
+  STATUS=green; CODE=0
   echo " ✅ ПОРА ПОДАВАТЬ: трафик дорос до порога."
   echo "    Сайт технически готов давно — подавай заявку в AdSense."
 elif [ "$CLICKS" -ge 5 ]; then
+  STATUS=yellow; CODE=10
   echo " 🟡 БЛИЗКО: реальные клики пошли, но ещё ниже порога. Продолжаем"
   echo "    контент и перелинковку, проверяем через неделю-две."
 else
@@ -68,3 +71,7 @@ echo " Ближе всего к топу (дожать → быстрее кли
 q "SELECT '   '||key||'  ~поз '||ROUND(AVG(position),1)||', показов '||SUM(impressions)
    FROM gsc_breakdown WHERE project='$PROJECT' AND dimension='query' AND $W28
    GROUP BY key HAVING SUM(impressions)>=5 ORDER BY AVG(position) ASC LIMIT 8;"
+
+# Машиночитаемая строка для обёртки/крона (grep STATUS=…) и код выхода
+echo "STATUS=$STATUS CLICKS=$CLICKS NEAR_P1=$NEAR_P1"
+exit $CODE
