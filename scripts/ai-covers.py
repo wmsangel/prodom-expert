@@ -41,7 +41,7 @@ DEFAULT_TOPIC = {
 KW = [
  ("на балконе","cozy glazed balcony with wood-look composite decking floor, plants, warm light"),
  ("балкон","cozy glazed balcony with wood-look composite decking floor, plants, warm light"),
- ("кухонный гарнитур","kitchen cabinets"),("гарнитур","kitchen cabinets"),
+ ("встроенн","modern fitted kitchen with built-in oven, hob, hood and appliances"),("кухонный гарнитур","kitchen cabinets"),("гарнитур","kitchen cabinets"),
  ("компьютерное кресло","ergonomic office chair"),("кресло","armchair"),
  ("диван","sofa"),("шкаф-купе","sliding wardrobe"),("шкаф","wardrobe"),
  ("комод","chest of drawers"),("кровать","bed"),("детск","children's room"),
