@@ -15,8 +15,8 @@ if (!defined('SITE_CANONICAL')) {
  */
 if (!defined('DOMEXPERT_SOCIAL_PROFILES')) {
   define('DOMEXPERT_SOCIAL_PROFILES', json_encode([
+    'https://t.me/prodom_expert',
     // 'https://vk.com/…',
-    // 'https://t.me/…',
     // 'https://dzen.ru/…',
   ]));
 }

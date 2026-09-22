@@ -39,6 +39,8 @@ $currentYear = date('Y');
             <li><a href="/about.php">О сайте</a></li>
             <li><a href="/editorial.php">Редакционная политика</a></li>
             <li><a href="/contacts.php">Контакты</a></li>
+            <li><a href="/podderzhat.php">Поддержать проект</a></li>
+            <li><a href="https://t.me/prodom_expert" target="_blank" rel="noopener">Telegram-канал</a></li>
             <li><a href="/privacy.php">Политика конфиденциальности</a></li>
             <li><a href="/usloviya.php">Условия использования</a></li>
             <li><a href="/articles.php">Все статьи — архив</a></li>
@@ -52,7 +54,7 @@ $currentYear = date('Y');
       </div><!-- /.footer-grid -->
 
       <!-- Блок доверия: только проверяемые факты о том, как делается контент.
-           Компании и соцсетей у проекта нет, поэтому опираемся на прозрачность. -->
+           Из соцсетей — Telegram-канал (в списке «Информация»). -->
       <div class="footer-trust">
         <h3 class="footer-trust-heading">Как мы работаем</h3>
         <ul class="footer-trust-list">
