@@ -164,3 +164,87 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 });
+
+/* Плавающий виджет: отзыв/ошибка + поддержать (footer.php). Независимый модуль. */
+(function () {
+  var fab = document.getElementById('fab');
+  var toggle = document.getElementById('fabToggle');
+  if (!fab || !toggle) return;
+
+  function setOpen(open) {
+    fab.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Закрыть меню обратной связи' : 'Обратная связь и поддержка');
+  }
+
+  // Чтобы кнопку не перекрывал cookie-баннер (fixed, во всю ширину снизу),
+  // пока он виден — поднимаем FAB над ним; исчез — возвращаем в угол.
+  function avoidBanner() {
+    var banner = document.querySelector('.cookie-consent');
+    var visible = banner && banner.offsetParent !== null && banner.offsetHeight > 0;
+    fab.style.bottom = visible ? (banner.offsetHeight + 16) + 'px' : '';
+  }
+  avoidBanner();
+  try {
+    new MutationObserver(avoidBanner).observe(document.body, { childList: true, subtree: true, attributes: true });
+  } catch (e) {}
+  window.addEventListener('resize', avoidBanner);
+  toggle.addEventListener('click', function (e) { e.stopPropagation(); setOpen(!fab.classList.contains('open')); });
+  document.addEventListener('click', function (e) { if (!fab.contains(e.target)) setOpen(false); });
+
+  // Модалка
+  var modal = document.getElementById('fbModal');
+  var openBtn = document.getElementById('fabFeedback');
+  var closeBtn = document.getElementById('fbClose');
+  var form = document.getElementById('fbForm');
+  var status = document.getElementById('fbStatus');
+  var submit = document.getElementById('fbSubmit');
+  var msg = document.getElementById('fbMessage');
+  var pageField = document.getElementById('fbPage');
+  var lastFocus = null;
+
+  function openModal() {
+    if (!modal) return;
+    lastFocus = document.activeElement;
+    if (pageField) pageField.value = location.href;
+    modal.hidden = false; modal.classList.add('open');
+    setOpen(false);
+    setTimeout(function () { if (msg) msg.focus(); }, 40);
+  }
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('open'); modal.hidden = true;
+    if (status) { status.textContent = ''; status.className = 'fb-status'; }
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  if (openBtn) openBtn.addEventListener('click', openModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (modal) modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { if (modal && modal.classList.contains('open')) closeModal(); else setOpen(false); }
+  });
+
+  if (form) form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.textContent = ''; status.className = 'fb-status';
+    submit.disabled = true; submit.textContent = 'Отправляем…';
+    var data = new URLSearchParams(new FormData(form));
+    fetch('/feedback.php', { method: 'POST', body: data, headers: { 'X-Requested-With': 'fetch' } })
+      .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
+      .then(function (res) {
+        if (res && res.ok) {
+          status.textContent = 'Спасибо! Сообщение отправлено.'; status.className = 'fb-status ok';
+          form.reset();
+          setTimeout(closeModal, 1800);
+        } else {
+          status.textContent = 'Не удалось отправить. Напишите на info@prodom-expert.ru';
+          status.className = 'fb-status err';
+        }
+      })
+      .catch(function () {
+        status.textContent = 'Ошибка сети. Напишите на info@prodom-expert.ru';
+        status.className = 'fb-status err';
+      })
+      .finally(function () { submit.disabled = false; submit.textContent = 'Отправить'; });
+  });
+})();

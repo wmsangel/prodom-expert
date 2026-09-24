@@ -96,6 +96,43 @@ $currentYear = date('Y');
     </div>
   </footer>
 
+  <!-- Плавающий виджет: отзыв/ошибка + поддержать. Стили в style.css, логика в main.js. -->
+  <div class="fab" id="fab">
+    <div class="fab-actions" id="fabActions">
+      <button type="button" class="fab-action" id="fabFeedback"><span class="ic" aria-hidden="true">💬</span> Отзыв / ошибка</button>
+      <a class="fab-action" href="/podderzhat.php"><span class="ic" aria-hidden="true">☕</span> Поддержать</a>
+    </div>
+    <button type="button" class="fab-toggle" id="fabToggle"
+            aria-expanded="false" aria-controls="fabActions" aria-label="Обратная связь и поддержка">+</button>
+  </div>
+
+  <!-- Модалка обратной связи -->
+  <div class="fb-modal" id="fbModal" role="dialog" aria-modal="true" aria-labelledby="fbTitle" hidden>
+    <div class="fb-dialog">
+      <button type="button" class="fb-close" id="fbClose" aria-label="Закрыть">&times;</button>
+      <h2 id="fbTitle">Отзыв или сообщение об ошибке</h2>
+      <p class="fb-sub">Нашли неточность в цифрах или опечатку? Есть идея? Напишите — мы читаем и правим.</p>
+      <form id="fbForm">
+        <div class="fb-field">
+          <label for="fbMessage">Сообщение</label>
+          <textarea id="fbMessage" name="message" required maxlength="5000"
+                    placeholder="Что не так или что предложить…"></textarea>
+        </div>
+        <div class="fb-field">
+          <label for="fbEmail">Email для ответа <span style="font-weight:400;color:var(--text-muted)">(необязательно)</span></label>
+          <input type="email" id="fbEmail" name="email" autocomplete="email" placeholder="you@example.com">
+        </div>
+        <div class="fb-hp" aria-hidden="true">
+          <label>Не заполняйте это поле<input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <input type="hidden" name="page" id="fbPage" value="">
+        <button type="submit" class="fb-submit" id="fbSubmit">Отправить</button>
+        <div class="fb-status" id="fbStatus" role="status" aria-live="polite"></div>
+        <p class="fb-hint">Письмо уходит редакции на info@prodom-expert.ru. Email нужен только если хотите ответ.</p>
+      </form>
+    </div>
+  </div>
+
   <script src="<?= htmlspecialchars(du_asset('/assets/js/main.js'), ENT_QUOTES, 'UTF-8') ?>" defer></script>
 
   <!-- Google tag (gtag.js) — в конце body, не блокирует FCP -->

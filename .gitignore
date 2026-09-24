@@ -34,3 +34,4 @@ scripts/articles.tsv
 scripts/ai-covers.log
 scripts/adsense-readiness.log
 scripts/adsense-weekly.launchd.log
+scripts/feedback.log

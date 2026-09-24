@@ -2174,3 +2174,62 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.3; color: 
   align-items: stretch; max-width: 880px; margin: 32px auto 0; }
 .article-aside-inline > * { flex: 1 1 320px; max-width: 420px; margin: 0; }
 .article-aside-inline .aff-banner-widget { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+/* =====================================================================
+   Плавающий виджет (фидбек + поддержать), снизу справа. На всех страницах.
+   z-index кнопки умеренный (900) — не перекрывает cookie-баннер (9999) и
+   рекламу; модалка выше всего (10001).
+   ===================================================================== */
+.fab { position: fixed; right: 20px; bottom: 20px; z-index: 900;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.fab-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+  opacity: 0; transform: translateY(10px) scale(.96); pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease; }
+.fab.open .fab-actions { opacity: 1; transform: none; pointer-events: auto; }
+.fab-action { display: inline-flex; align-items: center; gap: 9px; white-space: nowrap;
+  text-decoration: none; cursor: pointer; border: 1px solid var(--border);
+  background: var(--white); color: var(--heading); font-weight: 600; font-size: .92rem;
+  padding: 11px 16px; border-radius: 999px; box-shadow: 0 6px 20px var(--shadow-md);
+  transition: transform .15s ease, border-color .15s ease; }
+.fab-action:hover { transform: translateY(-2px); border-color: var(--brick); }
+.fab-action .ic { font-size: 1.1rem; line-height: 1; }
+.fab-toggle { width: 56px; height: 56px; border-radius: 50%; border: 0; cursor: pointer;
+  background: linear-gradient(135deg, var(--brick), var(--brick-dark)); color: #fff;
+  font-size: 1.5rem; line-height: 1; box-shadow: 0 8px 24px rgba(192,57,43,.42);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .2s ease; align-self: flex-end; }
+.fab-toggle:hover { transform: scale(1.06); }
+.fab.open .fab-toggle { transform: rotate(45deg); }
+@media (max-width: 600px) { .fab { right: 14px; bottom: 14px; } .fab-toggle { width: 52px; height: 52px; } }
+@media (prefers-reduced-motion: reduce) { .fab-actions, .fab-toggle { transition: none; } }
+
+/* Модалка фидбека */
+.fb-modal { position: fixed; inset: 0; z-index: 10001; display: none;
+  align-items: center; justify-content: center; padding: 20px;
+  background: rgba(15,10,6,.55); backdrop-filter: blur(2px); }
+.fb-modal.open { display: flex; }
+.fb-dialog { background: var(--white); color: var(--text); width: 100%; max-width: 460px;
+  border-radius: var(--radius-lg); box-shadow: 0 24px 60px rgba(0,0,0,.4);
+  padding: 24px; position: relative; }
+.fb-dialog h2 { font-family: var(--font-display); color: var(--heading); font-size: 1.4rem; margin: 0 0 6px; }
+.fb-dialog p.fb-sub { color: var(--text-light); font-size: .92rem; margin: 0 0 16px; }
+.fb-close { position: absolute; top: 12px; right: 14px; border: 0; background: transparent;
+  font-size: 1.6rem; line-height: 1; color: var(--text-muted); cursor: pointer; }
+.fb-field { display: block; margin-bottom: 12px; }
+.fb-field label { display: block; font-size: .85rem; font-weight: 600; color: var(--heading); margin-bottom: 5px; }
+.fb-field textarea, .fb-field input[type="email"] {
+  width: 100%; box-sizing: border-box; font: inherit; color: var(--text);
+  background: var(--beige); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 10px 12px; resize: vertical; }
+.fb-field textarea { min-height: 110px; }
+.fb-field textarea:focus, .fb-field input:focus { outline: 2px solid var(--brick); border-color: var(--brick); }
+.fb-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.fb-submit { width: 100%; border: 0; border-radius: var(--radius); cursor: pointer;
+  background: var(--brick); color: #fff; font-weight: 700; font-size: 1rem; padding: 12px;
+  transition: background .18s ease; }
+.fb-submit:hover { background: var(--brick-dark); }
+.fb-submit:disabled { opacity: .6; cursor: default; }
+.fb-status { margin-top: 12px; font-size: .92rem; min-height: 1.2em; }
+.fb-status.ok { color: var(--ok, #3f7d4e); }
+.fb-status.err { color: var(--brick); }
+.fb-hint { font-size: .8rem; color: var(--text-muted); margin-top: 10px; }
