@@ -25,7 +25,9 @@ set -a; . "$ENV_FILE"; set +a
 : "${FTP_HOST:?}"; : "${FTP_USER:?}"; : "${FTP_PASS:?}"; : "${REMOTE_ROOT:?}"
 
 # Никогда не заливаем: секреты, служебные каталоги, локальные скрипты деплоя, логи.
-EXCLUDE_RE='^(\.git/|\.idea/|scripts/|node_modules/|\.DS_Store|.*/\.DS_Store|.*\.env$|.*/tg\.env$|config\.php$|.*\.log$|photos-inbox/|router\.php$)'
+# Не заливаем: секреты, служебные каталоги, локальные скрипты, логи,
+# внутренние доки (.md), shell-скрипты (.sh) и .gitignore — на проде не нужны.
+EXCLUDE_RE='^(\.git/|\.gitignore$|\.idea/|scripts/|node_modules/|\.DS_Store|.*/\.DS_Store|.*\.env$|.*/tg\.env$|config\.php$|.*\.log$|.*\.md$|.*\.sh$|photos-inbox/|router\.php$)'
 
 DRY=0; YES=0; MODE=""; SINCE=""; declare -a FILES=()
 while [ $# -gt 0 ]; do
