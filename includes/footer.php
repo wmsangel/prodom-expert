@@ -44,6 +44,7 @@ $currentYear = date('Y');
             <li><a href="/privacy.php">Политика конфиденциальности</a></li>
             <li><a href="/usloviya.php">Условия использования</a></li>
             <li><a href="/articles.php">Все статьи — архив</a></li>
+            <li><a href="/slovar/">Словарь терминов</a></li>
             <li><a href="/search.php">Поиск по сайту</a></li>
             <li><a href="/rss.php">RSS-лента</a></li>
             <li><a href="/sitemap.xml">Карта сайта</a></li>

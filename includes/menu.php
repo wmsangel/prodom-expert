@@ -12,6 +12,7 @@ $activeCat = isset($_GET['cat']) ? $_GET['cat'] : '';
 $scriptBase = basename(isset($_SERVER['SCRIPT_NAME']) ? (string) $_SERVER['SCRIPT_NAME'] : '');
 $isArticlesArchive = ($scriptBase === 'articles.php');
 $isCalculators     = ($scriptBase === 'calculators.php' || $scriptBase === 'calc.php');
+$isGlossary        = ($scriptBase === 'slovar.php' || $scriptBase === 'termin.php');
 ?>
 <ul>
   <li>
@@ -37,6 +38,13 @@ $isCalculators     = ($scriptBase === 'calculators.php' || $scriptBase === 'calc
        class="<?= $isCalculators ? 'active' : '' ?>"
        <?= $isCalculators ? 'aria-current="page"' : '' ?>>
       Калькуляторы
+    </a>
+  </li>
+  <li>
+    <a href="/slovar/"
+       class="<?= $isGlossary ? 'active' : '' ?>"
+       <?= $isGlossary ? 'aria-current="page"' : '' ?>>
+      Словарь
     </a>
   </li>
 </ul>

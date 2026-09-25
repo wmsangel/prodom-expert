@@ -187,9 +187,19 @@ ErrorDocument 500 /404.php
     RewriteCond %{THE_REQUEST} \s/+calculators\.php[\s?] [NC]
     RewriteRule ^ https://prodom-expert.ru/calculators/? [R=301,L]
 
+    # 301: /termin.php?slug=foo  →  /slovar/foo/
+    RewriteCond %{THE_REQUEST} \s/+termin\.php\?slug=([A-Za-z0-9-]+)[\s&] [NC]
+    RewriteRule ^ https://prodom-expert.ru/slovar/%1/? [R=301,L]
+
+    # 301: /slovar.php  →  /slovar/
+    RewriteCond %{THE_REQUEST} \s/+slovar\.php[\s?] [NC]
+    RewriteRule ^ https://prodom-expert.ru/slovar/? [R=301,L]
+
     # Внутренние переписывания ЧПУ → реальные скрипты (без редиректа)
     RewriteRule ^calculators/?$ calculators.php [L,QSA]
     RewriteRule ^calc/([A-Za-z0-9-]+)/?$ calc.php?slug=$1 [L,QSA]
+    RewriteRule ^slovar/?$ slovar.php [L,QSA]
+    RewriteRule ^slovar/([A-Za-z0-9-]+)/?$ termin.php?slug=$1 [L,QSA]
     RewriteRule ^article/([A-Za-z0-9-]+)/?$ article.php?slug=$1 [L,QSA]
     RewriteRule ^category/([A-Za-z0-9-]+)/page/([0-9]+)/?$ category.php?cat=$1&page=$2 [L,QSA]
     RewriteRule ^category/([A-Za-z0-9-]+)/?$ category.php?cat=$1 [L,QSA]
