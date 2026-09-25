@@ -48,7 +48,7 @@ KW = [
  ("письменн","writing desk"),("тумба","tv console"),("стеллаж","shelving unit"),
  ("полк","shelves"),("столешниц","kitchen countertop"),("стол","table"),
  ("прихож","hallway with storage"),("мойка","kitchen sink"),("смесител","faucet"),
- ("ванн","bathtub"),("унитаз","toilet"),
+ ("краска для ванной","modern bathroom with freshly painted walls, paint roller and paint bucket"),("ванн","bathtub"),("унитаз","toilet"),
  ("душевая система","modern shower system with large round rain shower head and hand shower on a wall bar in a tiled bathroom"),
  ("душевая стойка","modern shower system with rain shower head and hand shower bar in a tiled bathroom"),
  ("душев","shower cabin"),("душ","shower"),
