@@ -111,7 +111,7 @@ include __DIR__ . '/includes/header.php';
               </div>
               <div class="donate-addr-row">
                 <code class="donate-addr" id="addr-<?= esc(md5($w['addr'])) ?>"><?= esc($w['addr']) ?></code>
-                <button type="button" class="donate-copy" data-copy="<?= esc($w['addr']) ?>">Копировать</button>
+                <button type="button" class="donate-copy" data-copy="<?= esc($w['addr']) ?>" data-net="<?= esc($w['net']) ?>">Копировать</button>
               </div>
               <p class="donate-warn">⚠️ <?= $w['warn'] ?></p>
             </div>
@@ -135,17 +135,17 @@ include __DIR__ . '/includes/header.php';
           <h2>Бесплатные способы помочь</h2>
           <p>Не обязательно донатить — репост и ссылка помогают проекту не меньше денег:</p>
           <div class="help-actions">
-            <a class="help-btn" target="_blank" rel="noopener"
+            <a class="help-btn" target="_blank" rel="noopener" data-track="share_click" data-net="x"
                href="https://twitter.com/intent/tweet?text=<?= rawurlencode($shareText) ?>&url=<?= rawurlencode($shareUrl) ?>">𝕏 Поделиться в X</a>
-            <a class="help-btn" target="_blank" rel="noopener"
+            <a class="help-btn" target="_blank" rel="noopener" data-track="share_click" data-net="reddit"
                href="https://www.reddit.com/submit?url=<?= rawurlencode($shareUrl) ?>&title=<?= rawurlencode($shareText) ?>">Reddit</a>
-            <a class="help-btn tg" target="_blank" rel="noopener"
+            <a class="help-btn tg" target="_blank" rel="noopener" data-track="share_click" data-net="telegram"
                href="https://t.me/share/url?url=<?= rawurlencode($shareUrl) ?>&text=<?= rawurlencode($shareText) ?>">✈️ Поделиться в Telegram</a>
-            <button type="button" class="help-btn" data-copy="<?= esc($shareUrl) ?>">🔗 Скопировать ссылку</button>
+            <button type="button" class="help-btn" data-copy="<?= esc($shareUrl) ?>" data-track="share_click" data-net="copy_link">🔗 Скопировать ссылку</button>
           </div>
           <div class="help-actions">
-            <a class="help-btn tg" target="_blank" rel="noopener" href="<?= esc($tgUrl) ?>">✈️ Подписаться на Telegram-канал</a>
-            <a class="help-btn gh" target="_blank" rel="noopener" href="<?= esc($githubUrl) ?>">⭐ Star на GitHub</a>
+            <a class="help-btn tg" target="_blank" rel="noopener" data-track="tg_subscribe" href="<?= esc($tgUrl) ?>">✈️ Подписаться на Telegram-канал</a>
+            <a class="help-btn gh" target="_blank" rel="noopener" data-track="github_star" href="<?= esc($githubUrl) ?>">⭐ Star на GitHub</a>
           </div>
           <p style="color:var(--text-light); font-size:.92rem; margin-top:14px;">
             А ещё можно просто порекомендовать ДомЭксперт знакомым, которые затеяли ремонт, или
@@ -178,6 +178,7 @@ include __DIR__ . '/includes/header.php';
     btn.textContent = ok ? 'Скопировано ✓' : 'Не удалось';
     setTimeout(function () { btn.textContent = old; }, 1600);
   }
+  function track(name, params) { if (window.duTrack) window.duTrack(name, params || {}); }
   document.querySelectorAll('[data-copy]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var text = btn.getAttribute('data-copy');
@@ -191,6 +192,18 @@ include __DIR__ . '/includes/header.php';
           document.execCommand('copy'); document.body.removeChild(ta); flash(btn, true);
         } catch (e) { flash(btn, false); }
       }
+      // Аналитика: копирование адреса кошелька (data-net) или ссылки (data-track)
+      if (btn.hasAttribute('data-net') && !btn.hasAttribute('data-track')) {
+        track('copy_address', { net: btn.getAttribute('data-net') });
+      } else if (btn.getAttribute('data-track') === 'share_click') {
+        track('share_click', { net: btn.getAttribute('data-net') || 'copy_link' });
+      }
+    });
+  });
+  // Аналитика: клики по ссылкам-помощи (share/tg/github)
+  document.querySelectorAll('a[data-track]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      track(a.getAttribute('data-track'), { net: a.getAttribute('data-net') || '' });
     });
   });
 })();

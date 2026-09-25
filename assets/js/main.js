@@ -189,8 +189,15 @@ document.addEventListener('DOMContentLoaded', function () {
     new MutationObserver(avoidBanner).observe(document.body, { childList: true, subtree: true, attributes: true });
   } catch (e) {}
   window.addEventListener('resize', avoidBanner);
-  toggle.addEventListener('click', function (e) { e.stopPropagation(); setOpen(!fab.classList.contains('open')); });
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var willOpen = !fab.classList.contains('open');
+    setOpen(willOpen);
+    if (willOpen && window.duTrack) window.duTrack('fab_open', {});
+  });
   document.addEventListener('click', function (e) { if (!fab.contains(e.target)) setOpen(false); });
+  var donateLink = fab.querySelector('.fab-action[href="/podderzhat.php"]');
+  if (donateLink) donateLink.addEventListener('click', function () { if (window.duTrack) window.duTrack('donate_click', { from: 'fab' }); });
 
   // Модалка
   var modal = document.getElementById('fbModal');
@@ -209,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (pageField) pageField.value = location.href;
     modal.hidden = false; modal.classList.add('open');
     setOpen(false);
+    if (window.duTrack) window.duTrack('feedback_open', { page: location.pathname });
     setTimeout(function () { if (msg) msg.focus(); }, 40);
   }
   function closeModal() {
@@ -234,6 +242,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(function (res) {
         if (res && res.ok) {
           status.textContent = 'Спасибо! Сообщение отправлено.'; status.className = 'fb-status ok';
+          if (window.duTrack) window.duTrack('feedback_sent', { page: location.pathname });
           form.reset();
           setTimeout(closeModal, 1800);
         } else {
@@ -247,4 +256,34 @@ document.addEventListener('DOMContentLoaded', function () {
       })
       .finally(function () { submit.disabled = false; submit.textContent = 'Отправить'; });
   });
+})();
+
+/* ── Аналитика: единый хелпер событий в Метрику (reachGoal) и GA4 (event) ──
+   Уважает cookie-согласие (как метрика в footer.php). Ничего не шлёт при 'necessary'. */
+(function () {
+  var YM_ID = 108673434;
+  window.duTrack = function (name, params) {
+    try { if (localStorage.getItem('cookie_consent') === 'necessary') return; } catch (e) {}
+    try { if (typeof window.ym === 'function') window.ym(YM_ID, 'reachGoal', name, params || {}); } catch (e) {}
+    try { if (typeof window.gtag === 'function') window.gtag('event', name, params || {}); } catch (e) {}
+  };
+
+  // Делегированный трекинг кликов по партнёрским ссылкам и слайдам главной.
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (!a) return;
+    // Партнёрская ссылка «Где купить» (rel="sponsored …")
+    var rel = (a.getAttribute('rel') || '');
+    if (rel.indexOf('sponsored') !== -1) {
+      var host = ''; try { host = new URL(a.href).hostname; } catch (_) {}
+      window.duTrack('affiliate_click', { page: location.pathname, dest: host });
+      return;
+    }
+    // Слайд на главной
+    var slide = a.closest ? a.closest('.hero-slide') : null;
+    if (slide) {
+      var m = (a.getAttribute('href') || '').match(/\/article\/([a-z0-9-]+)/);
+      window.duTrack('slider_click', { slug: m ? m[1] : '' });
+    }
+  }, true);
 })();

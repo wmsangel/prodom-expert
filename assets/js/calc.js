@@ -111,7 +111,11 @@
       for (var i = 0; i < forms.length; i++) {
         (function (form) {
           var name = form.getAttribute('data-calc');
-          form.addEventListener('input', function () { self.run(name); });
+          form.addEventListener('input', function () {
+            self.run(name);
+            // Аналитика: одно событие «калькулятор использован» на форму за загрузку
+            if (!form._duTracked) { form._duTracked = true; if (window.duTrack) window.duTrack('calc_submit', { calc: name }); }
+          });
           form.addEventListener('change', function () { self.run(name); });
           form.addEventListener('submit', function (e) { e.preventDefault(); self.run(name); });
           // Кнопка «сбросить» возвращает значения по умолчанию и пересчитывает
