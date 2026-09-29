@@ -204,6 +204,41 @@ include __DIR__ . '/includes/header.php';
         </section>
         <?php endif; ?>
 
+        <?php if ($calcFile):
+          $embedUrl = SITE_CANONICAL . '/embed/calc/' . $slug . '/';
+          $embedSnippet =
+            '<!-- Калькулятор «' . $calc['h1'] . '» — ДомЭксперт (prodom-expert.ru) -->' . "\n" .
+            '<iframe src="' . $embedUrl . '" title="' . $calc['h1'] . '" loading="lazy" data-prodom="' . $slug . '" style="width:100%;max-width:680px;border:0;height:760px"></iframe>' . "\n" .
+            '<p style="font:13px/1.4 sans-serif;max-width:680px">Калькулятор от <a href="' . $pageUrl . '" target="_blank" rel="noopener">ДомЭксперт</a> — ремонт в цифрах.</p>' . "\n" .
+            '<script>window.addEventListener("message",function(e){if(e.data&&e.data.type==="prodom-embed"&&e.data.slug==="' . $slug . '"){var f=document.querySelector(\'iframe[data-prodom="' . $slug . '"]\');if(f&&e.data.height)f.style.height=e.data.height+"px";}});</script>';
+        ?>
+        <section class="calc-embed-cta" aria-label="Встроить калькулятор на свой сайт">
+          <h2 class="section-title">🧩 Встроить калькулятор на свой сайт</h2>
+          <p>Бесплатно и с активной ссылкой на источник. Вставьте код на свою страницу, в статью или на форум — калькулятор будет считать прямо у вас, а высота подстроится автоматически.</p>
+          <textarea class="embed-code" readonly rows="6" spellcheck="false" onclick="this.select()"><?= htmlspecialchars($embedSnippet, ENT_QUOTES, 'UTF-8') ?></textarea>
+          <button type="button" class="btn btn-primary" data-embed-copy>Скопировать код</button>
+        </section>
+        <script>
+        (function () {
+          var btn = document.querySelector('[data-embed-copy]');
+          var ta  = document.querySelector('.embed-code');
+          if (!btn || !ta) return;
+          btn.addEventListener('click', function () {
+            ta.focus(); ta.select();
+            var ok = false;
+            try {
+              if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(ta.value); ok = true; }
+              else { ok = document.execCommand('copy'); }
+            } catch (e) {}
+            var old = btn.textContent;
+            btn.textContent = ok ? 'Скопировано ✓' : 'Выделено — нажмите Ctrl+C';
+            setTimeout(function () { btn.textContent = old; }, 1800);
+            if (window.duTrack) window.duTrack('embed_copy', { calc: <?= json_encode($slug) ?> });
+          });
+        })();
+        </script>
+        <?php endif; ?>
+
         <?php if ($relatedArticles): ?>
         <section class="calc-links" aria-label="Статьи по теме">
           <h2 class="section-title">Разобраться подробнее</h2>

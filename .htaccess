@@ -20,6 +20,13 @@ ErrorDocument 500 /404.php
     Header set X-XSS-Protection "1; mode=block"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
 
+    # Встраиваемые калькуляторы (/embed/) должны открываться в чужих iframe:
+    # снимаем запрет фрейминга только для этого пути (остальной сайт — SAMEORIGIN).
+    <If "%{REQUEST_URI} =~ m#^/embed/#">
+        Header unset X-Frame-Options
+        Header set Content-Security-Policy "frame-ancestors *"
+    </If>
+
     # HSTS: браузер сам ходит по https, не дожидаясь редиректа, — минус один
     # хоп для пользователя и защита от подмены на первом переходе.
     # Срок намеренно 6 месяцев без includeSubDomains и preload: так правило
@@ -198,6 +205,7 @@ ErrorDocument 500 /404.php
     # Внутренние переписывания ЧПУ → реальные скрипты (без редиректа)
     RewriteRule ^calculators/?$ calculators.php [L,QSA]
     RewriteRule ^calc/([A-Za-z0-9-]+)/?$ calc.php?slug=$1 [L,QSA]
+    RewriteRule ^embed/calc/([A-Za-z0-9-]+)/?$ embed.php?slug=$1 [L,QSA]
     RewriteRule ^slovar/?$ slovar.php [L,QSA]
     RewriteRule ^slovar/([A-Za-z0-9-]+)/?$ termin.php?slug=$1 [L,QSA]
     RewriteRule ^article/([A-Za-z0-9-]+)/?$ article.php?slug=$1 [L,QSA]
