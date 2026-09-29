@@ -383,3 +383,25 @@ function du_calculator_url(string $slug): string
 {
   return SITE_CANONICAL . '/calc/' . $slug . '/';
 }
+
+/** Адрес встраиваемой (iframe) версии калькулятора. */
+function du_calculator_embed_url(string $slug): string
+{
+  return SITE_CANONICAL . '/embed/calc/' . $slug . '/';
+}
+
+/**
+ * Готовый код для встраивания калькулятора на чужой сайт: iframe + do-follow
+ * ссылка-атрибуция (беклинк) + мини-скрипт авто-высоты. Используется и на странице
+ * калькулятора (calc.php), и на лендинге виджетов (vidzhety.php).
+ */
+function du_embed_snippet(string $slug, string $h1): string
+{
+  $embedUrl = du_calculator_embed_url($slug);
+  $calcUrl  = du_calculator_url($slug);
+  return
+    '<!-- Калькулятор «' . $h1 . '» — ДомЭксперт (prodom-expert.ru) -->' . "\n" .
+    '<iframe src="' . $embedUrl . '" title="' . $h1 . '" loading="lazy" data-prodom="' . $slug . '" style="width:100%;max-width:680px;border:0;height:760px"></iframe>' . "\n" .
+    '<p style="font:13px/1.4 sans-serif;max-width:680px">Калькулятор от <a href="' . $calcUrl . '" target="_blank" rel="noopener">ДомЭксперт</a> — ремонт в цифрах.</p>' . "\n" .
+    '<script>window.addEventListener("message",function(e){if(e.data&&e.data.type==="prodom-embed"&&e.data.slug==="' . $slug . '"){var f=document.querySelector(\'iframe[data-prodom="' . $slug . '"]\');if(f&&e.data.height)f.style.height=e.data.height+"px";}});</script>';
+}

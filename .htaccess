@@ -14,18 +14,18 @@ ErrorDocument 403 /404.php
 ErrorDocument 500 /404.php
 
 # --- Заголовки безопасности ---
+# Встраиваемые калькуляторы (/embed/) должны открываться в чужих iframe, поэтому
+# для этого пути НЕ ставим X-Frame-Options, а разрешаем фрейминг через CSP.
+# Остальной сайт остаётся SAMEORIGIN. Через SetEnvIf, т.к. <If> в .htaccess недоступен.
+<IfModule mod_setenvif.c>
+    SetEnvIf Request_URI "^/embed" PRODOM_EMBED=1
+</IfModule>
 <IfModule mod_headers.c>
     Header set X-Content-Type-Options "nosniff"
-    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-Frame-Options "SAMEORIGIN" env=!PRODOM_EMBED
+    Header set Content-Security-Policy "frame-ancestors *" env=PRODOM_EMBED
     Header set X-XSS-Protection "1; mode=block"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
-
-    # Встраиваемые калькуляторы (/embed/) должны открываться в чужих iframe:
-    # снимаем запрет фрейминга только для этого пути (остальной сайт — SAMEORIGIN).
-    <If "%{REQUEST_URI} =~ m#^/embed/#">
-        Header unset X-Frame-Options
-        Header set Content-Security-Policy "frame-ancestors *"
-    </If>
 
     # HSTS: браузер сам ходит по https, не дожидаясь редиректа, — минус один
     # хоп для пользователя и защита от подмены на первом переходе.
@@ -194,6 +194,10 @@ ErrorDocument 500 /404.php
     RewriteCond %{THE_REQUEST} \s/+calculators\.php[\s?] [NC]
     RewriteRule ^ https://prodom-expert.ru/calculators/? [R=301,L]
 
+    # 301: /vidzhety.php  →  /vidzhety/
+    RewriteCond %{THE_REQUEST} \s/+vidzhety\.php[\s?] [NC]
+    RewriteRule ^ https://prodom-expert.ru/vidzhety/? [R=301,L]
+
     # 301: /termin.php?slug=foo  →  /slovar/foo/
     RewriteCond %{THE_REQUEST} \s/+termin\.php\?slug=([A-Za-z0-9-]+)[\s&] [NC]
     RewriteRule ^ https://prodom-expert.ru/slovar/%1/? [R=301,L]
@@ -204,6 +208,7 @@ ErrorDocument 500 /404.php
 
     # Внутренние переписывания ЧПУ → реальные скрипты (без редиректа)
     RewriteRule ^calculators/?$ calculators.php [L,QSA]
+    RewriteRule ^vidzhety/?$ vidzhety.php [L,QSA]
     RewriteRule ^calc/([A-Za-z0-9-]+)/?$ calc.php?slug=$1 [L,QSA]
     RewriteRule ^embed/calc/([A-Za-z0-9-]+)/?$ embed.php?slug=$1 [L,QSA]
     RewriteRule ^slovar/?$ slovar.php [L,QSA]

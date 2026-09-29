@@ -75,6 +75,10 @@ include __DIR__ . '/includes/header.php';
 
     <div class="content-wrapper">
       <div class="main-content">
+        <div class="embed-promo">
+          <p>🧩 <b>Ведёте сайт или блог?</b> Любой из этих калькуляторов можно бесплатно встроить к себе одним кодом.</p>
+          <a href="/vidzhety/" class="btn btn-outline">Калькуляторы для сайта →</a>
+        </div>
         <?php foreach ($groups as $groupSlug => $group): ?>
           <?php $inGroup = domexpert_calculators_by_group($groupSlug); ?>
           <?php if (!$inGroup) { continue; } ?>

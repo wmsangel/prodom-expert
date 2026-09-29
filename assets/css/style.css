@@ -2257,3 +2257,21 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.3; color: 
   border-radius: var(--radius);
   resize: vertical;
 }
+
+/* ── Лендинг виджетов (vidzhety.php) ── */
+.widget-card { display: flex; flex-direction: column; }
+.widget-actions { display: flex; align-items: center; gap: 14px; margin-top: auto; padding-top: 12px; }
+.widget-actions .btn { flex: 0 0 auto; }
+.widget-preview { color: var(--text-light); text-decoration: none; font-size: .9rem; font-weight: 600; }
+.widget-preview:hover { color: var(--brick); text-decoration: underline; }
+.widget-code-wrap { margin-top: 12px; }
+.widget-steps { margin: 0 0 12px; padding-left: 22px; }
+.widget-steps li { margin-bottom: 6px; }
+.widget-how { margin-bottom: 10px; }
+/* Промо-плашка «встроить» на /calculators/ */
+.embed-promo {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px;
+  margin: 0 0 24px; padding: 16px 20px;
+  background: var(--beige); border: 1px solid var(--border); border-radius: var(--radius-lg);
+}
+.embed-promo p { margin: 0; flex: 1 1 260px; }
