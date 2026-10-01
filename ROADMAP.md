@@ -46,6 +46,9 @@ self-deploy: scripts/deploy.sh (FTP, из чата)   аналитика: Мет
 
 Порядок = приоритет. Фон каждой сессии — ежедневная статья + расширение словаря (см. ниже).
 
+- **SEO: дубли статей в индексе** — Google выбрал canonical `article.php?slug=dogovor-podryada-remont` и `article.php?slug=smeta-remonta-kvartiry` вместо `/article/<slug>/`, плюс дубль транслита `regulirovka-plastikovyh-okon` vs наш `regulirovka-plastikovykh-okon`: 301 с `article.php?slug=…` и со старого слага на ЧПУ (.htaccess), убрать ссылки на старые адреса. (SEO, 2026-10-01)
+- **SEO: быстрые победы калькуляторов** — `/calc/osveshchenie/` (53 показа, поз. 6.8, 0 кликов) и `/calc/elektricheskiy-teplyy-pol/` (35 показов, поз. 6.2, 0 кликов): докрутить title/description под формулировки запросов из GSC, добавить внутренние ссылки из профильных статей. (SEO, 2026-10-01)
+
 1. ✅ **СДЕЛАНО 29.09: Embed-виджеты калькуляторов — MVP.** `/embed/calc/<slug>/` (без
    обвязки, noindex+canonical, авто-ресайз через postMessage), блок «Встроить» с готовым
    кодом и do-follow атрибуцией на всех 26 калькуляторах. X-Frame снят только для `/embed/`
