@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/includes/load-seo.php';
+$showAds = false; // служебная/лендинг — без рекламы (карта плотности AdSense)
 $pageTitle = 'Контакты | ДомЭксперт';
 $pageDesc  = 'Свяжитесь с редакцией ДомЭксперт по вопросам сотрудничества, размещения статей или рекламы.';
 $pageUrl   = SITE_CANONICAL . '/contacts.php';

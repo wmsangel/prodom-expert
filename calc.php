@@ -12,6 +12,7 @@ require_once __DIR__ . '/includes/load-seo.php';
 require_once __DIR__ . '/includes/all-calculators-meta.php';
 require_once __DIR__ . '/includes/all-articles-meta.php';
 require_once __DIR__ . '/includes/affiliate.php';
+require_once __DIR__ . '/includes/ads.php';
 
 $rawSlug = isset($_GET['slug']) ? $_GET['slug'] : '';
 $slug    = preg_replace('/[^a-z0-9\-]/', '', strtolower($rawSlug));
@@ -174,6 +175,9 @@ include __DIR__ . '/includes/header.php';
 
           <!-- Партнёрский блок «Где купить» (пусто, пока в реестре нет офферов) -->
           <?= domexpert_affiliate_block([$slug, $calc['group'] ?? ''], 2) ?>
+
+          <!-- Реклама: один блок под калькулятором (карта плотности) -->
+          <?= du_ad('под калькулятором') ?>
         <?php else: ?>
           <div class="empty-state">
             <div class="icon">🧮</div>

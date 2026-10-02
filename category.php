@@ -7,6 +7,7 @@
 require_once __DIR__ . '/includes/load-seo.php';
 require_once __DIR__ . '/includes/article-cover.php';
 require_once __DIR__ . '/includes/all-articles-meta.php';
+require_once __DIR__ . '/includes/ads.php';
 
 $allArticlesMeta = domexpert_all_articles_meta();
 $validCategories = domexpert_categories();
@@ -193,6 +194,8 @@ include __DIR__ . '/includes/header.php';
             <?php endforeach; ?>
           </div>
 
+          <!-- Реклама: один блок в категории (карта плотности) -->
+          <?= du_ad('категория') ?>
 
           <?php if ($totalPages > 1): ?>
           <nav aria-label="Навигация по страницам" style="display:flex;justify-content:center;gap:8px;margin-top:8px;flex-wrap:wrap;">

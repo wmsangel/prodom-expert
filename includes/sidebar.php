@@ -11,6 +11,7 @@
 require_once __DIR__ . '/all-articles-meta.php';
 require_once __DIR__ . '/partner-ads.php';
 require_once __DIR__ . '/affiliate.php';
+require_once __DIR__ . '/ads.php';
 
 // Позиции 4–8 в подборе похожих: первые три заняты блоком «Читайте также»,
 // повторять их в сайдбаре незачем.
@@ -37,6 +38,9 @@ foreach ($catConfig as $catSlugSide => $cfg) {
 }
 ?>
 <aside class="sidebar" role="complementary" aria-label="Дополнительная информация">
+
+  <!-- Реклама (AdSense) — выводится по карте плотности, кроме служебных страниц -->
+  <?= du_ad('сайдбар') ?>
 
   <!-- Материалы по теме статьи, а вне статьи — свежие -->
   <div class="sidebar-widget">

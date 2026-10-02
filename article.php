@@ -10,6 +10,7 @@ require_once __DIR__ . '/includes/all-articles-meta.php';
 require_once __DIR__ . '/includes/article-toc.php';
 require_once __DIR__ . '/includes/partner-ads.php';
 require_once __DIR__ . '/includes/affiliate.php';
+require_once __DIR__ . '/includes/ads.php';
 
 // === Безопасная обработка slug (защита от path traversal) ===
 $rawSlug = isset($_GET['slug']) ? $_GET['slug'] : '';
@@ -204,12 +205,12 @@ $articleToc    = $articleParsed['toc'];
 // «Где купить»; если офферов под страницу нет — кросс-промо своих проектов.
 // TOC уже посчитан выше, поэтому в оглавление реклама не попадёт.
 if (!$articleMissing) {
+  // В теле — только реальные партнёрские офферы «где купить» (прямая монетизация).
+  // Кросс-промо своих проектов из тела убрано (вариант A): теперь место под рекламу/офферы,
+  // а бренд-сеть остаётся одной карточкой в основном сайдбаре (sidebar.php).
   $inArticleAd = domexpert_product_shelf_block([$slug, $meta['catSlug'] ?? '']);
   if ($inArticleAd === '') {
     $inArticleAd = domexpert_affiliate_block([$slug, $meta['catSlug'] ?? ''], 2);
-  }
-  if ($inArticleAd === '') {
-    $inArticleAd = domexpert_partner_ad('banner', $slug, 0);
   }
   if ($inArticleAd !== '' && preg_match_all('/<h2[ >]/i', $articleHtml, $mH2, PREG_OFFSET_CAPTURE)) {
     $h2pos = array_column($mH2[0], 1);
@@ -223,6 +224,11 @@ if (!$articleMissing) {
       $articleHtml .= "\n" . $inArticleAd;
     }
   }
+}
+
+// AdSense: рекламные блоки по объёму статьи (карта плотности), между разделами <h2>.
+if (!$articleMissing) {
+  $articleHtml = du_inject_ads($articleHtml, du_article_ad_count($articleHtml));
 }
 
 // === JSON-LD: FAQPage (из блока «Частые вопросы» статьи) ===
@@ -390,7 +396,7 @@ include __DIR__ . '/includes/header.php';
           <?php
             $inlineBannerMeta = domexpert_article_meta($slug);
             echo domexpert_sidebar_banner([$slug, $inlineBannerMeta['catSlug'] ?? ($meta['catSlug'] ?? '')]);
-            echo domexpert_partner_ad('card', $slug, 1);
+            echo du_ad('сайдбар статьи');
           ?>
         </div>
 

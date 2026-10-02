@@ -6,6 +6,7 @@
  */
 
 require_once __DIR__ . '/includes/load-seo.php';
+$showAds = false; // служебная/лендинг — без рекламы (карта плотности AdSense)
 require_once __DIR__ . '/includes/all-calculators-meta.php';
 
 $groups   = domexpert_calculator_groups();
