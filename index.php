@@ -48,6 +48,25 @@ $articleJsonLd = json_encode([
   ],
 ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 
+// ItemList последних статей главной — структурный сигнал для поиска (schema.org).
+$__homeList = domexpert_latest_articles(12);
+$__li = []; $__pos = 1;
+foreach ($__homeList as $__a) {
+  if (empty($__a['slug'])) { continue; }
+  $__li[] = [
+    '@type'    => 'ListItem',
+    'position' => $__pos++,
+    'url'      => du_article_url($__a['slug']),
+    'name'     => $__a['title'] ?? '',
+  ];
+}
+$listingJsonLd = json_encode([
+  '@context'        => 'https://schema.org',
+  '@type'           => 'ItemList',
+  'name'            => 'Последние статьи ДомЭксперт',
+  'itemListElement' => $__li,
+], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+
 include __DIR__ . '/includes/header.php';
 
 // Карточки-статьи для главной: строим из общего реестра мета и сортируем по дате (свежие сверху)
