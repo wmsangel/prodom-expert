@@ -82,13 +82,31 @@ fi
 
 ok=0; fail=0
 for f in "${UP[@]}"; do
+  dst="$REMOTE_ROOT/$f"
+  tmp="$dst.uptmp"
+  # Безопасная заливка: пишем во временный файл, затем атомарно заменяем рабочий
+  # через rename. Так прерванная/зависшая передача портит только .uptmp, а живой
+  # файл на проде остаётся целым (иначе curl -T обнуляет файл при фейле → прод падает).
   code=$(curl -s --show-error --max-time 60 --ftp-pasv --ftp-create-dirs \
-              -u "$FTP_USER:$FTP_PASS" -T "$f" "ftp://$FTP_HOST$REMOTE_ROOT/$f" \
+              -u "$FTP_USER:$FTP_PASS" -T "$f" "ftp://$FTP_HOST$tmp" \
               -w '%{http_code}' -o /dev/null 2>/dev/null) || code="ERR"
   if [ "$code" = "226" ] || [ "$code" = "213" ] || [ "$code" = "250" ]; then
-    echo "  ✓ $f"; ok=$((ok+1))
+    # Удаляем старый файл отдельным вызовом (ошибку «нет файла» игнорируем),
+    # затем отдельным вызовом переименовываем temp → рабочий. Раздельно — чтобы
+    # порядок команд не путался (curl -Q с префиксом меняет тайминг).
+    curl -s --max-time 30 --ftp-pasv -u "$FTP_USER:$FTP_PASS" \
+         "ftp://$FTP_HOST$REMOTE_ROOT/" -Q "DELE $dst" -o /dev/null 2>/dev/null || true
+    if curl -s --show-error --max-time 40 --ftp-pasv -u "$FTP_USER:$FTP_PASS" \
+            "ftp://$FTP_HOST$REMOTE_ROOT/" -Q "RNFR $tmp" -Q "RNTO $dst" -o /dev/null 2>/dev/null; then
+      echo "  ✓ $f"; ok=$((ok+1))
+    else
+      curl -s --max-time 20 --ftp-pasv -u "$FTP_USER:$FTP_PASS" "ftp://$FTP_HOST$REMOTE_ROOT/" -Q "DELE $tmp" -o /dev/null 2>/dev/null || true
+      echo "  ✗ $f  (rename не удался — прод-файл не изменён)"; fail=$((fail+1))
+    fi
   else
-    echo "  ✗ $f  (код $code)"; fail=$((fail+1))
+    # Заливка temp не удалась — рабочий файл НЕ тронут; подчистим temp.
+    curl -s --max-time 20 --ftp-pasv -u "$FTP_USER:$FTP_PASS" "ftp://$FTP_HOST$REMOTE_ROOT/" -Q "DELE $tmp" -o /dev/null 2>/dev/null || true
+    echo "  ✗ $f  (код $code — прод-файл не изменён)"; fail=$((fail+1))
   fi
 done
 echo "Готово: ✓ $ok, ✗ $fail"
