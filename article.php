@@ -11,6 +11,7 @@ require_once __DIR__ . '/includes/article-toc.php';
 require_once __DIR__ . '/includes/partner-ads.php';
 require_once __DIR__ . '/includes/affiliate.php';
 require_once __DIR__ . '/includes/ads.php';
+require_once __DIR__ . '/includes/self-promo.php';
 
 // === Безопасная обработка slug (защита от path traversal) ===
 $rawSlug = isset($_GET['slug']) ? $_GET['slug'] : '';
@@ -229,6 +230,18 @@ if (!$articleMissing) {
 // AdSense: рекламные блоки по объёму статьи (карта плотности), между разделами <h2>.
 if (!$articleMissing) {
   $articleHtml = du_inject_ads($articleHtml, du_article_ad_count($articleHtml));
+}
+
+// Наше промо: один блок в теле статьи (одноколоночная, без сайдбара), не sticky.
+if (!$articleMissing) {
+  $promoHtml = domexpert_self_promo_block(du_article_path($slug), false);
+  if ($promoHtml !== '' && preg_match_all('/<h2[ >]/i', $articleHtml, $mSP, PREG_OFFSET_CAPTURE)) {
+    $spH2 = array_column($mSP[0], 1);
+    $spAt = count($spH2) >= 4 ? (int) $spH2[3] : (count($spH2) >= 1 ? (int) $spH2[count($spH2) - 1] : -1);
+    if ($spAt >= 0) {
+      $articleHtml = substr($articleHtml, 0, $spAt) . "\n" . $promoHtml . "\n" . substr($articleHtml, $spAt);
+    }
+  }
 }
 
 // === JSON-LD: FAQPage (из блока «Частые вопросы» статьи) ===

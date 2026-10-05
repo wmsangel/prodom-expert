@@ -272,6 +272,9 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('click', function (e) {
     var a = e.target && e.target.closest ? e.target.closest('a') : null;
     if (!a) return;
+    // Явная метка трекинга (наше промо и т.п.): data-track="событие"
+    var dt = a.getAttribute('data-track');
+    if (dt) { window.duTrack(dt, { net: a.getAttribute('data-net') || '', page: location.pathname }); }
     // Партнёрская ссылка «Где купить» (rel="sponsored …")
     var rel = (a.getAttribute('rel') || '');
     if (rel.indexOf('sponsored') !== -1) {

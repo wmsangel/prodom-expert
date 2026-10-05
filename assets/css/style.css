@@ -2287,3 +2287,25 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.3; color: 
   border: 1px dashed var(--brick); border-radius: var(--radius);
   color: var(--brick); font-size: .82rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
 }
+
+/* ── Собственное промо (self-promo.php): «Рекомендуем» своё, sticky ── */
+.selfpromo {
+  display: flex; flex-direction: column; gap: 6px;
+  background: var(--beige);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--brick);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px; margin: 0 0 22px;
+}
+.selfpromo--sticky { position: sticky; top: 88px; }
+.selfpromo-badge {
+  font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--brick);
+}
+.selfpromo-icon { font-size: 1.7rem; line-height: 1; }
+.selfpromo-title { font-weight: 700; font-size: 1.05rem; color: var(--heading); }
+.selfpromo-desc { font-size: .9rem; line-height: 1.45; color: var(--text-light); }
+.selfpromo-cta {
+  margin-top: 6px; font-weight: 700; color: var(--brick); text-decoration: none; align-self: flex-start;
+}
+.selfpromo-cta:hover { text-decoration: underline; }
