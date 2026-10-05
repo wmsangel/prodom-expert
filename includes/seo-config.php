@@ -16,7 +16,7 @@ if (!defined('SITE_CANONICAL')) {
  *            только впишете slot. Для предпросмотра расстановки см. DOMEXPERT_ADS_PREVIEW.
  */
 if (!defined('DOMEXPERT_ADSENSE_CLIENT')) define('DOMEXPERT_ADSENSE_CLIENT', 'ca-pub-5535516142831006');
-if (!defined('DOMEXPERT_ADSENSE_SLOT'))   define('DOMEXPERT_ADSENSE_SLOT', '');
+if (!defined('DOMEXPERT_ADSENSE_SLOT'))   define('DOMEXPERT_ADSENSE_SLOT', '6468792657');
 /** true → вместо реальных блоков рисуются видимые плейсхолдеры (для оценки расстановки). */
 if (!defined('DOMEXPERT_ADS_PREVIEW'))    define('DOMEXPERT_ADS_PREVIEW', false);
 
