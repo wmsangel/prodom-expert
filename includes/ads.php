@@ -21,13 +21,20 @@ if (!function_exists('du_ads_enabled')) {
   }
 }
 
-/** Один рекламный блок (AdSense ins). Пустая строка, если реклама выключена или slot не задан. */
+/**
+ * Один рекламный блок AdSense. Пустая строка, если реклама выключена или slot не задан.
+ * @param string $type 'display' (медийный, адаптивный — сайдбар/калькулятор/главная/категории)
+ *                     или 'in-article' (нативный fluid — в тело статьи).
+ */
 if (!function_exists('du_ad')) {
-  function du_ad(string $label = ''): string {
+  function du_ad(string $label = '', string $type = 'display'): string {
     if (!du_ads_enabled()) {
       return '';
     }
-    $slot   = defined('DOMEXPERT_ADSENSE_SLOT') ? DOMEXPERT_ADSENSE_SLOT : '';
+    $inArticle = ($type === 'in-article');
+    $slot = $inArticle
+      ? (defined('DOMEXPERT_ADSENSE_SLOT_INARTICLE') ? DOMEXPERT_ADSENSE_SLOT_INARTICLE : '')
+      : (defined('DOMEXPERT_ADSENSE_SLOT') ? DOMEXPERT_ADSENSE_SLOT : '');
     $preview = defined('DOMEXPERT_ADS_PREVIEW') && DOMEXPERT_ADS_PREVIEW;
 
     if ($slot === '') {
@@ -41,6 +48,18 @@ if (!function_exists('du_ad')) {
     $client = defined('DOMEXPERT_ADSENSE_CLIENT') ? DOMEXPERT_ADSENSE_CLIENT : '';
     $c = htmlspecialchars($client, ENT_QUOTES, 'UTF-8');
     $s = htmlspecialchars($slot, ENT_QUOTES, 'UTF-8');
+
+    if ($inArticle) {
+      // Нативный in-article (fluid) — рекомендован Google для тела статьи.
+      return '<div class="ad-slot ad-slot--inarticle">'
+           . '<ins class="adsbygoogle" style="display:block;text-align:center" '
+           . 'data-ad-layout="in-article" data-ad-format="fluid" '
+           . 'data-ad-client="' . $c . '" data-ad-slot="' . $s . '"></ins>'
+           . '<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>'
+           . '</div>';
+    }
+
+    // Медийный адаптивный (сайдбар, калькулятор, главная, категории).
     return '<div class="ad-slot">'
          . '<ins class="adsbygoogle" style="display:block" data-ad-client="' . $c . '" '
          . 'data-ad-slot="' . $s . '" data-ad-format="auto" data-full-width-responsive="true"></ins>'
@@ -87,7 +106,7 @@ if (!function_exists('du_inject_ads')) {
       $points = array_keys($chosen);
       rsort($points); // вставляем с конца, чтобы смещения не сбивались
       foreach ($points as $p) {
-        $html = substr($html, 0, $p) . du_ad('в статье') . substr($html, $p);
+        $html = substr($html, 0, $p) . du_ad('в статье', 'in-article') . substr($html, $p);
       }
       return $html;
     }
@@ -98,7 +117,7 @@ if (!function_exists('du_inject_ads')) {
     while (($p = stripos($html, '</p>', $off)) !== false) { $paras[] = $p + 4; $off = $p + 4; }
     if (count($paras) >= 2) {
       $mid = $paras[(int) floor(count($paras) / 2)];
-      $html = substr($html, 0, $mid) . du_ad('в статье') . substr($html, $mid);
+      $html = substr($html, 0, $mid) . du_ad('в статье', 'in-article') . substr($html, $mid);
     }
     return $html;
   }
