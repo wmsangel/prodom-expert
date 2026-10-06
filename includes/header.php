@@ -252,13 +252,33 @@ if (!function_exists('esc')) {
     } catch (e) {}
   </script>
 
-  <!-- Yandex РСЯ Autoplacement 19600856 -->
-  <script src="https://yandex.ru/ads/system/context.js" async></script>
-  <script data-page-id="19600856" src="https://yandex.ru/ads/system/ap-loader.js" async></script>
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5535516142831006"
-       crossorigin="anonymous"></script>
+  <!-- Реклама (AdSense + Яндекс РСЯ) грузится ЛЕНИВО: после первого взаимодействия/скролла
+       или через 3 с. Так первый экран рендерится без тяжёлых рекламных скриптов — мобильная
+       скорость/Core Web Vitals заметно лучше. Наши <ins class="adsbygoogle"> складывают push()
+       в очередь window.adsbygoogle заранее — скрипт обработает её при подгрузке. -->
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="preconnect" href="https://yandex.ru">
+  <link rel="dns-prefetch" href="https://mc.yandex.ru">
+  <script>
+  (function () {
+    var done = false;
+    function add(src, attrs) {
+      var s = document.createElement('script'); s.async = true; s.src = src;
+      if (attrs) { for (var k in attrs) { s.setAttribute(k, attrs[k]); } }
+      document.head.appendChild(s);
+    }
+    function loadAds() {
+      if (done) { return; } done = true;
+      add('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5535516142831006', { crossorigin: 'anonymous' });
+      add('https://yandex.ru/ads/system/context.js');
+      add('https://yandex.ru/ads/system/ap-loader.js', { 'data-page-id': '19600856' });
+    }
+    var evs = ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'];
+    function once() { loadAds(); evs.forEach(function (e) { window.removeEventListener(e, once, { passive: true }); }); }
+    evs.forEach(function (e) { window.addEventListener(e, once, { passive: true }); });
+    setTimeout(loadAds, 3000); // fallback для пассивных читателей
+  })();
+  </script>
 </head>
 <body>
 
