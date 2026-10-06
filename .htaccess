@@ -213,6 +213,10 @@ ErrorDocument 500 /404.php
     RewriteRule ^embed/calc/([A-Za-z0-9-]+)/?$ embed.php?slug=$1 [L,QSA]
     RewriteRule ^slovar/?$ slovar.php [L,QSA]
     RewriteRule ^slovar/([A-Za-z0-9-]+)/?$ termin.php?slug=$1 [L,QSA]
+    # 301: склейка дублей (слабая страница → сильная), перед общим правилом статей
+    RewriteRule ^article/vybor-remontnoj-brigady/?$ https://prodom-expert.ru/article/kak-vybrat-brigadu-dlya-remonta/ [R=301,L]
+    RewriteRule ^article/bojler-nakopitelnyj-ili-protochnyj/?$ https://prodom-expert.ru/article/vodonagrevatel-boyler-vybor-montazh/ [R=301,L]
+
     RewriteRule ^article/([A-Za-z0-9-]+)/?$ article.php?slug=$1 [L,QSA]
     RewriteRule ^category/([A-Za-z0-9-]+)/page/([0-9]+)/?$ category.php?cat=$1&page=$2 [L,QSA]
     RewriteRule ^category/([A-Za-z0-9-]+)/?$ category.php?cat=$1 [L,QSA]
