@@ -12,6 +12,7 @@ require_once __DIR__ . '/includes/partner-ads.php';
 require_once __DIR__ . '/includes/affiliate.php';
 require_once __DIR__ . '/includes/ads.php';
 require_once __DIR__ . '/includes/self-promo.php';
+require_once __DIR__ . '/includes/all-glossary-meta.php';
 
 // === Безопасная обработка slug (защита от path traversal) ===
 $rawSlug = isset($_GET['slug']) ? $_GET['slug'] : '';
@@ -402,6 +403,22 @@ include __DIR__ . '/includes/header.php';
         <!-- КАЛЬКУЛЯТОРЫ ПО ТЕМЕ (строится из реестра, разметку статей не трогает) -->
         <?php $calcArticleSlug = $slug; ?>
         <?php include __DIR__ . '/includes/article-calculators.php'; ?>
+
+        <!-- ТЕРМИНЫ ПО ТЕМЕ (из словаря /slovar/, обратная перелинковка статья → термины) -->
+        <?php
+          $articleTerms = $articleMissing ? [] : domexpert_terms_for_text($articleSource !== '' ? $articleSource : $articleHtml, '', 8);
+          if ($articleTerms):
+        ?>
+        <section class="article-terms" aria-label="Термины из статьи">
+          <h2 class="section-title">📖 Термины из статьи</h2>
+          <p class="article-terms-note">Встретилось незнакомое слово? Короткие определения в нашем словаре:</p>
+          <div class="article-terms-chips">
+            <?php foreach ($articleTerms as $tSlug => $tMeta): ?>
+              <a class="article-term-chip" href="<?= htmlspecialchars(du_term_path($tSlug), ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($tMeta['term'], ENT_QUOTES, 'UTF-8') ?></a>
+            <?php endforeach; ?>
+          </div>
+        </section>
+        <?php endif; ?>
 
         <!-- Монетизация в потоке (переехала из сайдбара при переходе на одну колонку):
              контекстный партнёрский баннер + кросс-промо своих проектов. -->

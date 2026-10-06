@@ -2309,3 +2309,15 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.3; color: 
   margin-top: 6px; font-weight: 700; color: var(--brick); text-decoration: none; align-self: flex-start;
 }
 .selfpromo-cta:hover { text-decoration: underline; }
+
+/* ── «Термины из статьи» (обратная перелинковка в словарь) ── */
+.article-terms { margin: 32px 0; padding: 20px 22px; background: var(--beige); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.article-terms .section-title { margin-top: 0; }
+.article-terms-note { margin: 0 0 12px; color: var(--text-light); font-size: .95rem; }
+.article-terms-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.article-term-chip {
+  display: inline-block; padding: 7px 14px; font-size: .95rem; font-weight: 600;
+  color: var(--brick); background: var(--white); border: 1px solid var(--border);
+  border-radius: 999px; text-decoration: none; transition: background var(--transition), color var(--transition);
+}
+.article-term-chip:hover { background: var(--brick); color: var(--on-dark); }
