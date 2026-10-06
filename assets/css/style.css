@@ -2278,6 +2278,8 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.3; color: 
 
 /* ── Рекламные слоты (AdSense, includes/ads.php) ── */
 .ad-slot { margin: 28px 0; text-align: center; overflow: hidden; clear: both; min-height: 100px; }
+/* Если AdSense не отдал рекламу (unfilled) — не держим пустой резерв места */
+.ad-slot:has(ins[data-ad-status="unfilled"]) { min-height: 0; margin: 0; }
 .ad-slot ins { display: block; }
 .sidebar .ad-slot { margin: 0 0 20px; }
 /* Плейсхолдер — только в режиме предпросмотра расстановки (DOMEXPERT_ADS_PREVIEW) */
