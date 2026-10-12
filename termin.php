@@ -66,8 +66,10 @@ foreach ($term['related_terms'] ?? [] as $s) {
 
 // === SEO ===
 $aliasText = !empty($term['aliases']) ? ' (' . implode(', ', $term['aliases']) . ')' : '';
-$pageTitle = $term['term'] . ' — что это такое простыми словами | ДомЭксперт';
-$pageDesc  = $term['short'];
+// Опциональные seo_title/seo_desc в реестре термина перекрывают шаблон (для докрутки
+// под конкретный поисковый интент); без них — дефолт «X — что это такое простыми словами».
+$pageTitle = ($term['seo_title'] ?? ($term['term'] . ' — что это такое простыми словами')) . ' | ДомЭксперт';
+$pageDesc  = $term['seo_desc'] ?? $term['short'];
 $pageUrl   = du_term_url($slug);
 $ogTitle   = $pageTitle;
 $ogDesc    = $pageDesc;
