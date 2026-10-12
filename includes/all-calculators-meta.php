@@ -355,15 +355,87 @@ function domexpert_calculators_by_group(string $group): array
  * Обратный индекс: какие калькуляторы показать на странице статьи.
  * Строится из поля related, поэтому связь всегда двусторонняя и не расходится.
  */
-function domexpert_calculators_for_article(string $articleSlug): array
+/**
+ * Карта ключевых стемов для АВТО-матчинга калькулятора к статье по её тексту
+ * (дополняет курированное поле related). Стемы — в нижнем регистре, ищутся как
+ * подстрока в тексте статьи, поэтому берём усечённую основу (склонения ловятся сами).
+ * Калькуляторы с размытыми ключами (планировщик, смета за м², бюджет, мощность/группы)
+ * оставлены ТОЛЬКО на related, чтобы не ловить ложные совпадения.
+ */
+function domexpert_calculator_match_keywords(): array
 {
+  return [
+    'smeta-remonta'             => ['смет'],
+    'oboi'                      => ['обоев', 'оклейк', 'поклейк'],
+    'kraska'                    => ['краск'],
+    'gidroizolyaciya'           => ['гидроизоляц'],
+    'plintus'                   => ['плинтус'],
+    'shtukaturka'               => ['штукатур', 'шпаклёвк', 'шпаклевк'],
+    'plitka'                    => ['плитк', 'керамогранит', 'кафел'],
+    'styazhka'                  => ['стяжк', 'наливн'],
+    'peregorodka-bloki'         => ['перегородк', 'газоблок', 'пеноблок', 'газобетон'],
+    'natyazhnoy-potolok'        => ['натяжн'],
+    'sechenie-kabelya'          => ['сечени'],
+    'elektricheskiy-teplyy-pol' => ['нагреват мат', 'тёплый пол', 'тёплого пол'],
+    'sekcii-radiatorov'         => ['радиатор'],
+    'obem-boylera'              => ['водонагрев', 'бойлер'],
+    'vozduhoobmen'              => ['воздухообмен', 'вытяжк', 'вентиляц'],
+    'laminat'                   => ['ламинат', 'подложк'],
+    'gipsokarton'               => ['гипсокартон'],
+    'osveshchenie'              => ['освещени', 'светильник', 'люмен'],
+    'moshchnost-kondicionera'   => ['кондиционер', 'сплит-систем'],
+    'uteplitel-tolshchina'      => ['утеплител', 'утеплен'],
+    'tochka-rosy'               => ['точк рос', 'конденсат'],
+  ];
+}
+
+/**
+ * Калькуляторы для статьи: сначала курированные (related), затем авто-матчинг по
+ * тексту статьи через карту ключевых слов. Результат ограничен $limit, related в приоритете.
+ *
+ * @param string $articleSlug слаг статьи
+ * @param string $text        текст/HTML статьи для авто-матчинга (можно пустой)
+ * @param int    $limit       максимум калькуляторов в блоке
+ */
+function domexpert_calculators_for_article(string $articleSlug, string $text = '', int $limit = 4): array
+{
+  $all   = domexpert_all_calculators_meta();
   $found = [];
-  foreach (domexpert_all_calculators_meta() as $slug => $calc) {
+
+  // Уровень 1 — курированные related (приоритет, порядок реестра).
+  foreach ($all as $slug => $calc) {
     if (in_array($articleSlug, $calc['related'], true)) {
       $found[$slug] = $calc;
     }
   }
-  return $found;
+
+  // Уровень 2 — авто-матчинг по ключевым стемам в тексте статьи. Кандидаты ранжируем
+  // по числу упоминаний (центральная тема статьи выходит вперёд), затем добираем до лимита.
+  if ($text !== '' && count($found) < $limit) {
+    $low = mb_strtolower(strip_tags($text), 'UTF-8');
+    $scored = [];
+    foreach (domexpert_calculator_match_keywords() as $slug => $stems) {
+      if (isset($found[$slug]) || !isset($all[$slug])) {
+        continue;
+      }
+      $score = 0;
+      foreach ($stems as $stem) {
+        $score += substr_count($low, $stem);
+      }
+      if ($score > 0) {
+        $scored[$slug] = $score;
+      }
+    }
+    arsort($scored);
+    foreach ($scored as $slug => $score) {
+      if (count($found) >= $limit) {
+        break;
+      }
+      $found[$slug] = $all[$slug];
+    }
+  }
+
+  return $limit > 0 ? array_slice($found, 0, $limit, true) : $found;
 }
 
 /**

@@ -22,7 +22,8 @@ if (isset($calcArticleSlug) && $calcArticleSlug !== '') {
 }
 $calcSlugSource = preg_replace('/[^a-z0-9\-]/', '', strtolower($calcSlugSource));
 
-$articleCalcs = domexpert_calculators_for_article($calcSlugSource);
+$calcArticleText = isset($calcArticleText) ? (string) $calcArticleText : '';
+$articleCalcs = domexpert_calculators_for_article($calcSlugSource, $calcArticleText, 4);
 
 if ($articleCalcs):
 ?>

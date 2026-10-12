@@ -400,8 +400,8 @@ include __DIR__ . '/includes/header.php';
         <?php $photoArticleSlug = $slug; ?>
         <?php include __DIR__ . '/includes/article-photos.php'; ?>
 
-        <!-- КАЛЬКУЛЯТОРЫ ПО ТЕМЕ (строится из реестра, разметку статей не трогает) -->
-        <?php $calcArticleSlug = $slug; ?>
+        <!-- КАЛЬКУЛЯТОРЫ ПО ТЕМЕ (related из реестра + авто-матчинг по тексту статьи) -->
+        <?php $calcArticleSlug = $slug; $calcArticleText = $articleSource ?? ''; ?>
         <?php include __DIR__ . '/includes/article-calculators.php'; ?>
 
         <!-- ТЕРМИНЫ ПО ТЕМЕ (из словаря /slovar/, обратная перелинковка статья → термины) -->
