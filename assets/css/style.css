@@ -2275,11 +2275,16 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.3; color: 
   background: var(--beige); border: 1px solid var(--border); border-radius: var(--radius-lg);
 }
 .embed-promo p { margin: 0; flex: 1 1 260px; }
+/* Кнопка на светлой беж-полоске: .btn-outline по умолчанию белая (для тёмного героя)
+   и на беже невидима — переопределяем в брендовый кирпичный контур (виден и в тёмной теме). */
+.embed-promo .btn-outline { color: var(--brick); border-color: var(--brick); }
+.embed-promo .btn-outline:hover { background: var(--brick); color: var(--on-dark); border-color: var(--brick); }
 
 /* ── Рекламные слоты (AdSense, includes/ads.php) ── */
 .ad-slot { margin: 28px 0; text-align: center; overflow: hidden; clear: both; min-height: 100px; }
 /* Если AdSense не отдал рекламу (unfilled) — не держим пустой резерв места */
 .ad-slot:has(ins[data-ad-status="unfilled"]) { min-height: 0; margin: 0; }
+.ad-slot--empty { display: none; }
 .ad-slot ins { display: block; }
 .sidebar .ad-slot { margin: 0 0 20px; }
 /* Плейсхолдер — только в режиме предпросмотра расстановки (DOMEXPERT_ADS_PREVIEW) */

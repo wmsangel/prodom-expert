@@ -1,0 +1,28 @@
+## ДомЭксперт (ProdomExpert)
+- **URL:** https://prodom-expert.ru
+- **Languages:** ru (Russian only — no English or other locales on prod)
+- **One-liner:** A Russian apartment-renovation knowledge base built around 26 practical calculators, how-to guides, and a terms glossary.
+- **What it is:** ДомЭксперт is a content site about renovating apartments in Russia. It combines ~252 how-to articles with 26 interactive calculators (materials, electrics, climate) and a 55-term glossary. Its angle is "renovation in numbers" — not just advice, but concrete quantities, loads and costs you can compute before buying materials or hiring a contractor.
+- **Who it's for:** DIY renovators and homeowners in Russia planning or doing a renovation, who need to estimate quantities/costs, understand a term, or check a wiring/plumbing detail. People typically arrive from a search query like "how many bags of plaster per m²" or "what is a дифавтомат".
+- **What you can actually do (features):**
+  - Use 26 renovation calculators that run entirely in the browser: plaster and screed quantity, cable cross-section and load/breaker sizing, lighting (lumens and number of fixtures), electric and water underfloor heating, drywall, tiles, laminate, AC power by area, radiator sections, air exchange, a renovation cost estimate, a planner, and more.
+  - Read ~252 articles across electrics, plumbing, interior, furniture, windows/doors, materials and general advice, each with FAQ accordions and contextual internal links.
+  - Look up 55 renovation terms in the glossary (/slovar/) with live search and schema.org DefinedTerm markup.
+  - Embed any calculator on your own site via /embed/calc/<slug>/ (an iframe/snippet with automatic height resize and a source attribution link); a full catalog is at /vidzhety/.
+  - Browse Q&A hubs that answer common practical questions with FAQPage markup (currently one: apartment electrics).
+  - Follow the project's Telegram channel or support it via a donation page.
+- **Why it stands out:** The calculators are the differentiator. Most Russian renovation portals are article-only; ДомЭксперт turns the same topics into tools that output concrete numbers. The embeddable-widget feature (letting other sites reuse the calculators) is unusual for a content project. Everything is free, needs no sign-up, works on mobile, and calculations happen client-side.
+- **Access:** Free, no registration, no paywall. The site is ad-supported (Google AdSense + Yandex РСЯ) and uses affiliate links in some articles.
+- **Privacy / data:** Calculator inputs are processed client-side in the browser — a calculation does not send your data to a server. The site runs analytics (Yandex Metrika, Google Analytics 4) and ads, with its own cookie-consent banner and Google Consent Mode v2.
+- **Best use cases (examples):**
+  - Before a store run, compute how many bags of plaster, what cable cross-section, or how many ceiling spotlights a specific room needs.
+  - Quickly understand an unfamiliar term met in a contractor's estimate (e.g., "дифавтомат", "точка росы", "стяжка").
+  - Embed a working renovation calculator into your own blog post or forum thread.
+- **Key pages / entry points:**
+  - https://prodom-expert.ru/calculators/ (calculator catalog)
+  - https://prodom-expert.ru/slovar/ (glossary)
+  - https://prodom-expert.ru/vidzhety/ (embeddable widgets catalog)
+  - https://prodom-expert.ru/article/elektrika-v-kvartire-chastye-voprosy/ (Q&A hub example)
+- **Suggested tags/categories:** home renovation, DIY, construction calculators, interior design, electrics, plumbing, Russian-language, embeddable widgets, glossary
+- **Short blurb (~40 words):** ДомЭксперт is a Russian apartment-renovation site built around 26 in-browser calculators — plaster, cable, lighting, underfloor heating and more — plus ~252 how-to articles and a 55-term glossary. Free, no sign-up, and its calculators can be embedded on other sites.
+- **Do NOT claim:** Russian-only — there is no English or multilingual version. No user accounts, logins or saved projects. Do not describe idea/inspiration galleries or a new redesigned layout as live — they are planned, not shipped. Only one Q&A hub exists so far, not a full section. Do not present it as a large, high-traffic or established authority site, and do not cite specific traffic or revenue figures. No mobile app.

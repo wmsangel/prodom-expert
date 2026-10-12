@@ -179,7 +179,6 @@ if (!function_exists('esc')) {
   <!-- ═══ ПРОИЗВОДИТЕЛЬНОСТЬ — preconnect ═══ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="//yandex.ru">
   <link rel="dns-prefetch" href="//mc.yandex.ru">
 
   <!-- ═══ ШРИФТЫ ═══ -->
@@ -252,12 +251,11 @@ if (!function_exists('esc')) {
     } catch (e) {}
   </script>
 
-  <!-- Реклама (AdSense + Яндекс РСЯ) грузится ЛЕНИВО: после первого взаимодействия/скролла
+  <!-- Реклама (Google AdSense) грузится ЛЕНИВО: после первого взаимодействия/скролла
        или через 3 с. Так первый экран рендерится без тяжёлых рекламных скриптов — мобильная
        скорость/Core Web Vitals заметно лучше. Наши <ins class="adsbygoogle"> складывают push()
        в очередь window.adsbygoogle заранее — скрипт обработает её при подгрузке. -->
   <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-  <link rel="preconnect" href="https://yandex.ru">
   <link rel="dns-prefetch" href="https://mc.yandex.ru">
   <script>
   (function () {
@@ -270,8 +268,24 @@ if (!function_exists('esc')) {
     function loadAds() {
       if (done) { return; } done = true;
       add('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5535516142831006', { crossorigin: 'anonymous' });
-      add('https://yandex.ru/ads/system/context.js');
-      add('https://yandex.ru/ads/system/ap-loader.js', { 'data-page-id': '19600856' });
+      // РСЯ (Яндекс) отключён 2026-10-12 — у Яндекса проблемы с выдачей, остаёмся
+      // только на Google AdSense. Вернуть — восстановив context.js + ap-loader.js (page-id 19600856).
+      // Схлопнуть ПУСТЫЕ слоты, если реклама не пришла: AdSense при ограничении выдачи
+      // возвращает пусто без data-ad-status="unfilled" (CSS его не ловит) → остаётся
+      // серая коробка min-height. Через 6с прячем слоты без реального креатива.
+      setTimeout(collapseEmptyAds, 6000);
+    }
+    function collapseEmptyAds() {
+      // Креатив AdSense/РСЯ всегда рендерится в <iframe>. Пустой адаптивный слот
+      // может раздуться по высоте БЕЗ iframe — поэтому ориентир именно на iframe,
+      // а не на высоту. Нет iframe и нет data-ad-status="filled" → слот пустой.
+      var slots = document.querySelectorAll('.ad-slot');
+      for (var i = 0; i < slots.length; i++) {
+        var s = slots[i];
+        var ins = s.querySelector('ins.adsbygoogle');
+        var filled = !!s.querySelector('iframe') || (ins && ins.getAttribute('data-ad-status') === 'filled');
+        if (!filled) { s.classList.add('ad-slot--empty'); }
+      }
     }
     var evs = ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'];
     function once() { loadAds(); evs.forEach(function (e) { window.removeEventListener(e, once, { passive: true }); }); }

@@ -217,6 +217,16 @@ ErrorDocument 500 /404.php
     RewriteRule ^article/vybor-remontnoj-brigady/?$ https://prodom-expert.ru/article/kak-vybrat-brigadu-dlya-remonta/ [R=301,L]
     RewriteRule ^article/bojler-nakopitelnyj-ili-protochnyj/?$ https://prodom-expert.ru/article/vodonagrevatel-boyler-vybor-montazh/ [R=301,L]
 
+    # 301: опечаточные/битые слаги из GSC (были 404) → канонические ЧПУ.
+    # Варочная панель + духовка: podklyuchie→podklyuchenie, без -i-, dukhovki→duhovki.
+    RewriteRule ^article/podklyuchie-varochnoy-paneli-i-duhovki/?$ https://prodom-expert.ru/article/podklyuchenie-varochnoy-paneli-i-duhovki/ [R=301,L]
+    RewriteRule ^article/podklyuchenie-varochnoy-paneli-duhovki/?$ https://prodom-expert.ru/article/podklyuchenie-varochnoy-paneli-i-duhovki/ [R=301,L]
+    RewriteRule ^article/podklyuchenie-varochnoy-paneli-i-dukhovki/?$ https://prodom-expert.ru/article/podklyuchenie-varochnoy-paneli-i-duhovki/ [R=301,L]
+    # Коллекторная разводка: слаг с недотранслитом (raz + кириллица «водка» = %D0%B2%D0%BE%D0%B4%D0%BA%D0%B0).
+    # Матчим по THE_REQUEST — он хранит исходное процент-кодирование (общее правило ниже его не ловит: не ASCII).
+    RewriteCond %{THE_REQUEST} \s/+article/kollektornaya-raz%D0%B2%D0%BE%D0%B4%D0%BA%D0%B0-vody/?[\s?] [NC]
+    RewriteRule ^ https://prodom-expert.ru/article/kollektornaya-razvodka-vody/? [R=301,L]
+
     RewriteRule ^article/([A-Za-z0-9-]+)/?$ article.php?slug=$1 [L,QSA]
     RewriteRule ^category/([A-Za-z0-9-]+)/page/([0-9]+)/?$ category.php?cat=$1&page=$2 [L,QSA]
     RewriteRule ^category/([A-Za-z0-9-]+)/?$ category.php?cat=$1 [L,QSA]

@@ -111,10 +111,23 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'tags'  => ['tekstil-shtory-v-gostinoy', 'kovry-v-interere-razmer-material',
                     'malenkaya-spalnya-dizayn', 'interer-semnoy-kvartiry'],
       ],
-      // Мебель (мягкая): Цвет Диванов (zvet.ru) и divanboss — обе нац.сети, CPA (/g/),
-      // высокий чек (divanboss 35000₽+). Стоят раньше широких interer-офферов (Евродом/
-      // Максидом), чтобы на мебельных статьях занять слот. Дают обе — «в ротацию»: на
-      // общих мебельных страницах блок покажет пару для сравнения (как Петрович+МЕГАСТРОЙ).
+      // Мебель (мягкая): три нац.сети, CPA (/g/). Блок берёт 2 оффера по порядку массива,
+      // поэтому ПЕРВЫМ ведёт Divan.ru — самый сильный по Admitad (eCPC 8.59 / CR 1.12),
+      // затем в ротацию Цвет Диванов и divanboss (высокий чек 35000₽+). На общих мебельных
+      // страницах блок покажет пару для сравнения (как Петрович+МЕГАСТРОЙ). У divanboss есть
+      // свои уникальные теги (компьютерное кресло, комод, шкаф-купе) — там он выходит в топ-2.
+      // Стоят раньше широких interer-офферов (Евродом/Максидом), чтобы занять мебельный слот.
+      [
+        'id'    => 'divanru',
+        'title' => 'Divan.ru',
+        'desc'  => 'Диваны, кровати и мягкая мебель федеральной сети. Доставка и подъём по РФ, рассрочка.',
+        'cta'   => 'Смотреть на Divan.ru',
+        'url'   => 'https://yknhc.com/g/uf1b8x6iow5593ebc048bdf11f4fb4/?erid=2bL9aMPo2e49hMef4piUHTPXWP',
+        'icon'  => '🛋',
+        'tags'  => ['kak-vybrat-divan', 'kak-vybrat-kreslo', 'kak-vybrat-krovat-i-matras', 'dizayn-gostinoy',
+                    'kuhnya-gostinaya-planirovka-zonirovanie', 'zonirovanie-studii-odnokomnatnoy',
+                    'interer-semnoy-kvartiry', 'malenkaya-spalnya-dizayn', 'mebel-dlya-detskoy-komnaty'],
+      ],
       [
         'id'    => 'zvet',
         'title' => 'Цвет Диванов',
@@ -136,6 +149,74 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'tags'  => ['kak-vybrat-kompyuternoe-kreslo', 'komod-i-sistemy-hraneniya', 'mebel-dlya-detskoy-komnaty', 'kak-vybrat-divan', 'shkaf-kupe-planirovka-napolnenie', 'dizayn-gostinoy', 'kuhnya-gostinaya-planirovka-zonirovanie',
                     'zonirovanie-studii-odnokomnatnoy', 'malenkaya-spalnya-dizayn'],
       ],
+      // Много Мебели (mnogomebeli.com) — бюджетный широкий магазин мебели (Indoleads, одобрен
+      // 2026-10-08, ~8%). Мягкую мебель уже держат Divan.ru/Цвет Диванов/Divan BOSS (блок берёт 2),
+      // поэтому теги — там, где свободно и где он реально выходит в топ-2: мебель на заказ/готовая,
+      // прихожая, детская, комоды/хранение (Много Мебели торгует и корпусом, и прихожими).
+      [
+        'id'    => 'mnogomebeli',
+        'title' => 'Много Мебели',
+        'desc'  => 'Мебель для всей квартиры по доступным ценам: диваны, кровати, шкафы, комоды, прихожие. Доставка по РФ.',
+        'cta'   => 'Смотреть в Много Мебели',
+        'url'   => 'https://ru.i07o.xyz/6ac72d1cea1ee?erid=2SDnjdX8eQi',
+        'icon'  => '🪑',
+        'tags'  => ['mebel-na-zakaz-ili-gotovaya-sravnenie', 'mebel-dlya-prihozhey',
+                    'dizayn-prihozhey-planirovka-hranenie', 'dizayn-detskoy-komnaty',
+                    'komod-i-sistemy-hraneniya'],
+      ],
+      // Hansgrohe (shop.hansgrohe.ru) — премиум-бренд смесителей и душевых систем (Indoleads,
+      // одобрен 2026-10-08, 4.53%). Профильный для страниц про смесители/души/термостаты →
+      // стоит ПЕРЕД Сантехника Тут: на этих страницах ведёт бренд, Сантехника Тут — вторым.
+      [
+        'id'    => 'hansgrohe',
+        'title' => 'Hansgrohe',
+        'desc'  => 'Смесители, душевые системы и термостаты премиум-бренда. Гарантия, доставка по РФ.',
+        'cta'   => 'Смотреть Hansgrohe',
+        'url'   => 'https://ru.i07o.xyz/6ac72cb14e6e1?erid=2SDnjdpUriu',
+        'icon'  => '🚰',
+        'tags'  => ['kak-vybrat-smesitel', 'umnye-smesiteli-ekonomiya-vody', 'termostat-dlya-dusha-i-vanny',
+                    'dushevaya-sistema-vybor', 'dushevaya-lejka-shlang-vybor',
+                    'dushevoe-ograzhdenie-i-poddon-vybor', 'gigienicheskiy-dush-podklyucheniye',
+                    'vynosnaya-kolonna-smestitelya-vanna'],
+      ],
+      // Aquanet (aquanet.ru) — мебель для ванной, раковины, ванны, зеркала (Indoleads, одобрен
+      // 2026-10-08, 4.85%). Профильный для страниц про раковины/ванны/дизайн ванной → ПЕРЕД
+      // Сантехника Тут. Теги не пересекаются с Hansgrohe (у того — смесители/души).
+      [
+        'id'    => 'aquanet',
+        'title' => 'Aquanet',
+        'desc'  => 'Мебель для ванной, раковины, ванны и зеркала. Доставка и сборка по РФ.',
+        'cta'   => 'Смотреть Aquanet',
+        'url'   => 'https://ru.gettracker.net/6ac72cd364948?erid=2SDnjdK8ZkK',
+        'icon'  => '🛁',
+        'tags'  => ['ustanovka-rakoviny-i-sifona', 'dizayn-vannoy', 'remont-vannoy-komnaty-s-nulya-gid',
+                    'dush-ili-vanna-dlya-malogo-santeuzla'],
+      ],
+      // СМГ-Кухни (smg-kitchen.ru) — кухни на заказ (Indoleads, одобрен 2026-10-08, 4.84%).
+      // Профильный для кухонных страниц (гарнитур, ремонт/интерьер кухни). Вертикаль «кухни»
+      // раньше была пустой. Теги — только про кухонный гарнитур, без пересечения с мебелью/interer.
+      [
+        'id'    => 'smgkitchen',
+        'title' => 'СМГ-Кухни',
+        'desc'  => 'Кухни на заказ: фасады, столешницы, фурнитура. Замер, проект и доставка по РФ.',
+        'cta'   => 'Смотреть кухни на заказ',
+        'url'   => 'https://ru.z02o.xyz/6ac72cfba367e?erid=2SDnjboxQA5',
+        'icon'  => '🍽',
+        'tags'  => ['kuhonnyy-garnitur-fasady-stoleshnitsa', 'remont-kuhni-poryadok-rabot', 'interer-kuhni'],
+      ],
+      // KitchenTrade (kitchentrade.ru) — встраиваемая кухонная техника (Indoleads, одобрен
+      // 2026-10-08, 3.09%). Не пересекается с СМГ-Кухни (та — гарнитуры на заказ): теги — про
+      // встройку (варочная панель/духовка, посудомойка, вытяжка, встроенная техника).
+      [
+        'id'    => 'kitchentrade',
+        'title' => 'KitchenTrade',
+        'desc'  => 'Встраиваемая кухонная техника: варочные панели, духовые шкафы, вытяжки, посудомоечные машины. Доставка по РФ.',
+        'cta'   => 'Смотреть кухонную технику',
+        'url'   => 'https://ru.io10.info/6ac75c65623b0?erid=2SDnjcwzhKe',
+        'icon'  => '🍳',
+        'tags'  => ['vstroennaya-tehnika-dlya-kuhni', 'podklyuchenie-varochnoy-paneli-i-duhovki',
+                    'podklyuchenie-posudomoechnoy-mashiny', 'vytyazhka-dlya-kuhni-vybor'],
+      ],
       // Сантехника Тут — профильный интернет-гипермаркет сантехники, доставка по РФ,
       // средний чек 30000₽ → CPA (/g/, 3.36%). Стоит раньше Петровича: на статьях
       // про сантехнику (унитаз, раковина, смеситель, бойлер, душ) профильный магазин
@@ -148,6 +229,52 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'url'   => 'https://dorinebeaumont.com/g/nxgdto54265593ebc048eb6db1b093/?erid=25H8d7vbP8SRTvGZQfQ5kD',
         'icon'  => '🚿',
         'tags'  => ['santehnika'],
+      ],
+      // Мир Климата (mircli.ru) — профильный магазин климата/отопления (Indoleads, одобрен
+      // 2026-10-08). Закрывает ранее ПУСТУЮ вертикаль: кондиционеры, обогреватели, тёплый пол,
+      // водонагреватели, радиаторы, вентиляция. Теги — по статьям темы И по слагам профильных
+      // калькуляторов (кондиционер, тёплый пол ×2, радиаторы, воздухообмен), блок рендерится и
+      // в calc.php. Стоит ПЕРЕД широкими офферами (AliExpress/Петрович), чтобы вести на своих
+      // страницах как профильный магазин (как Сантехника Тут на сантех-страницах).
+      [
+        'id'    => 'mircli',
+        'title' => 'Мир Климата',
+        'desc'  => 'Климатическая техника и отопление: кондиционеры, обогреватели, тёплый пол, водонагреватели, радиаторы, вентиляция. Доставка по РФ.',
+        'cta'   => 'Смотреть в Мир Климата',
+        'url'   => 'https://ru.z05o.xyz/6ac72b541437a?erid=2SDnjdZedpF',
+        'icon'  => '🌡️',
+        'tags'  => ['kak-vybrat-konditsioner', 'montazh-kondicionera-elektrika-trassa',
+                    'obogrevatel-dlya-kvartiry-vybor', 'elektrokotel-dlya-doma-vybor',
+                    'teplyy-pol', 'vodyanoy-teplyy-pol-v-kvartire', 'vodonagrevatel-boyler-vybor-montazh',
+                    'zamena-radiatorov-otopleniya', 'rekuperator-pritochnaya-ventilyaciya-kvartiry',
+                    'ventilyaciya-sanuzla-tyaga-i-ventilyator',
+                    'moshchnost-kondicionera', 'elektricheskiy-teplyy-pol', 'vodyanoy-teplyy-pol',
+                    'sekcii-radiatorov', 'vozduhoobmen'],
+      ],
+      // ВсеИнструменты (vseinstrumenti.ru) — лидер рынка инструмента/DIY (Indoleads, одобрен
+      // 2026-10-08). Профильный магазин на инструментальных страницах → стоит ПЕРЕД AliExpress,
+      // чтобы вести слот (AliExpress уходит на второй). Большие чеки компенсируют % (1–1.5%).
+      [
+        'id'    => 'vseinstrumenti',
+        'title' => 'ВсеИнструменты',
+        'desc'  => 'Крупнейший магазин инструмента и оборудования: дрели, перфораторы, уровни, крепёж, расходники. Доставка по РФ.',
+        'cta'   => 'Смотреть во ВсеИнструменты',
+        'url'   => 'https://ru.trackerpro.org/6ac72c96d7811?erid=2SDnjcJ8CBq',
+        'icon'  => '🧰',
+        'tags'  => ['instrumenty-dlya-remonta', 'krepezh-v-stenu-dyubeli-i-ankery',
+                    'shtroblenie-sten-pod-provodku'],
+      ],
+      // Бигам (bigam.ru) — электро/садовая/климат-техника, генераторы, ИБП (Indoleads, одобрен
+      // 2026-10-08, 2.58%). Теги — уникальные для него страницы, где не конкурирует с
+      // ВсеИнструменты: генератор/ИБП для дома и повысительный насос.
+      [
+        'id'    => 'bigam',
+        'title' => 'Бигам',
+        'desc'  => 'Генераторы, ИБП, насосы, электро- и садовая техника. Доставка по РФ.',
+        'cta'   => 'Смотреть в Бигам',
+        'url'   => 'https://ru.i08o.xyz/6ac72d3482fa4?erid=2SDnjdZynVV',
+        'icon'  => '🔌',
+        'tags'  => ['ibp-i-generator-dlya-doma', 'povysitelnyy-nasos-v-kvartire'],
       ],
       // Мегамаркет (Сбер) УБРАН 2026-10-06: программа приостановлена (Program is suspended)
       // в партнёрской сети — ссылка не монетизировалась. На «технических» страницах теперь
@@ -173,6 +300,18 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'tags'  => ['kraska', 'pokraska-sten-kvartiry-sovety', 'podgotovka-sten-pod-pokrasku',
                     'potolok-pod-pokrasku-vyravnivanie', 'dekorativnaya-shtukaturka-faktury',
                     'gruntovka-sten-osnovy'],
+      ],
+      // Williams et Oliver (williams-oliver.ru) — премиум-посуда/кухонная утварь (Indoleads,
+      // одобрен 2026-10-08, 5.85–10%). Релевантная страница на ремонтном сайте по сути одна —
+      // выбор кухонного ножа; ставим перед Евродомом, чтобы там вести слот. Объём заведомо малый.
+      [
+        'id'    => 'williamsoliver',
+        'title' => 'Williams et Oliver',
+        'desc'  => 'Премиальная посуда, ножи и кухонная утварь мировых брендов. Доставка по РФ.',
+        'cta'   => 'Смотреть посуду',
+        'url'   => 'https://ru.z02o.xyz/6ac72d4180378?erid=2SDnjdALgLp',
+        'icon'  => '🍴',
+        'tags'  => ['kak-vybrat-kuhonnyy-nozh'],
       ],
       [
         'id'    => 'eurodom',
@@ -209,6 +348,21 @@ if (!function_exists('domexpert_affiliate_offers')) {
                     'byudzhet-kapitalnogo-remonta-raschet', 'raschet-materialov-dlya-remonta',
                     'chek-list-zakupok-do-nachala-remonta', 'instrumenty-dlya-remonta',
                     'zakupki-stroymaterialov-onlayn'],
+      ],
+      // Твой Дом (tvoydom.ru) — гипермаркет «дом/ремонт/сад», вся РФ, CPS 4.25–6.38% (Indoleads,
+      // одобрен 2026-10-08). Прямой профиль сайта — ставим сразу ПОСЛЕ Петровича, чтобы на общих
+      // ремонт/материальных страницах стабильно брать 2-й слот в паре с ним. МЕГАСТРОЙ сохраняет
+      // свои уникальные теги (mebel, zakupki-stroymaterialov-onlayn), поэтому не вытесняется совсем.
+      [
+        'id'    => 'tvoydom',
+        'title' => 'Твой Дом',
+        'desc'  => 'Гипермаркет для дома и ремонта: стройматериалы, инструмент, сантехника, товары для дома и сада. Доставка по РФ.',
+        'cta'   => 'Смотреть в Твой Дом',
+        'url'   => 'https://ru.i07o.xyz/6ac75c3dbbe7e?erid=2SDnjek8Bjn',
+        'icon'  => '🏬',
+        'tags'  => ['remont', 'materialy', 'raschet-materialov-dlya-remonta',
+                    'chek-list-zakupok-do-nachala-remonta', 'byudzhet-kapitalnogo-remonta-raschet',
+                    'smeta-remonta-kvartiry', 'smeta-remonta-chastnogo-doma'],
       ],
       // Максидом — DIY-гипермаркет (мебель, товары для дома, инструмент). Ссылка
       // тарифа CPC (/c/, ₽8/клик по РФ), а НЕ CPA: магазин гео-ограничен (СПб+Москва),
@@ -327,7 +481,7 @@ if (!function_exists('domexpert_sidebar_banner')) {
     $isFurniture = in_array('mebel', $tags, true);
     if (!$isFurniture) {
       foreach (domexpert_affiliate_pick($tags, 5) as $o) {
-        if (in_array($o['id'], ['divanboss', 'zvet'], true)) { $isFurniture = true; break; }
+        if (in_array($o['id'], ['divanboss', 'zvet', 'divanru'], true)) { $isFurniture = true; break; }
       }
     }
     if ($isFurniture) {
