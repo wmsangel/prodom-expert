@@ -193,11 +193,11 @@ document.addEventListener('DOMContentLoaded', function () {
     e.stopPropagation();
     var willOpen = !fab.classList.contains('open');
     setOpen(willOpen);
-    if (willOpen && window.duTrack) window.duTrack('fab_open', {});
+    if (willOpen && window.duTrack) window.duTrack('fab_open', { item: 'fab' });
   });
   document.addEventListener('click', function (e) { if (!fab.contains(e.target)) setOpen(false); });
   var donateLink = fab.querySelector('.fab-action[href="/podderzhat.php"]');
-  if (donateLink) donateLink.addEventListener('click', function () { if (window.duTrack) window.duTrack('donate_click', { from: 'fab' }); });
+  if (donateLink) donateLink.addEventListener('click', function () { if (window.duTrack) window.duTrack('donate_click', { item: 'donate', from: 'fab' }); });
 
   // Модалка
   var modal = document.getElementById('fbModal');
@@ -262,31 +262,55 @@ document.addEventListener('DOMContentLoaded', function () {
    Уважает cookie-согласие (как метрика в footer.php). Ничего не шлёт при 'necessary'. */
 (function () {
   var YM_ID = 108673434;
+  // Сетевое соглашение: у КАЖДОГО события есть параметр item (главный, строка — что именно
+  // произошло). Если явно не задан — выводим из осмысленного поля (calc/slug/dest/q/net/from).
   window.duTrack = function (name, params) {
     try { if (localStorage.getItem('cookie_consent') === 'necessary') return; } catch (e) {}
-    try { if (typeof window.ym === 'function') window.ym(YM_ID, 'reachGoal', name, params || {}); } catch (e) {}
-    try { if (typeof window.gtag === 'function') window.gtag('event', name, params || {}); } catch (e) {}
+    params = params || {};
+    if (params.item == null || params.item === '') {
+      params.item = params.calc || params.slug || params.dest || params.q || params.net || params.from || params.page || '';
+    }
+    try { if (typeof window.ym === 'function') window.ym(YM_ID, 'reachGoal', name, params); } catch (e) {}
+    try { if (typeof window.gtag === 'function') window.gtag('event', name, params); } catch (e) {}
   };
 
-  // Делегированный трекинг кликов по партнёрским ссылкам и слайдам главной.
+  // Трекер → сеть по домену партнёрской ссылки (для параметра platform).
+  function affPlatform(host) {
+    if (/^ru\.|xyz$|trackerpro|gettracker|io10|z0\d|i0\d/.test(host)) return 'indoleads';
+    if (/ytebb\.com/.test(host)) return 'sbermarketing';
+    return 'admitad';
+  }
+
+  var SITE_HOST = location.hostname.replace(/^www\./, '');
+
+  // Делегированный трекинг кликов.
   document.addEventListener('click', function (e) {
     var a = e.target && e.target.closest ? e.target.closest('a') : null;
     if (!a) return;
-    // Явная метка трекинга (наше промо и т.п.): data-track="событие"
+    var href = a.getAttribute('href') || '';
+    // Явная метка трекинга (наше промо, share, подписка и т.п.): data-track="событие"
     var dt = a.getAttribute('data-track');
-    if (dt) { window.duTrack(dt, { net: a.getAttribute('data-net') || '', page: location.pathname }); }
+    if (dt) {
+      window.duTrack(dt, { item: a.getAttribute('data-item') || a.getAttribute('data-net') || '', net: a.getAttribute('data-net') || '', page: location.pathname });
+    }
     // Партнёрская ссылка «Где купить» (rel="sponsored …")
     var rel = (a.getAttribute('rel') || '');
     if (rel.indexOf('sponsored') !== -1) {
       var host = ''; try { host = new URL(a.href).hostname; } catch (_) {}
-      window.duTrack('affiliate_click', { page: location.pathname, dest: host });
+      window.duTrack('affiliate_click', { item: a.getAttribute('data-ad') || host, placement: 'in_article', platform: affPlatform(host), page: location.pathname, dest: host });
       return;
     }
     // Слайд на главной
     var slide = a.closest ? a.closest('.hero-slide') : null;
     if (slide) {
-      var m = (a.getAttribute('href') || '').match(/\/article\/([a-z0-9-]+)/);
-      window.duTrack('slider_click', { slug: m ? m[1] : '' });
+      var m = href.match(/\/article\/([a-z0-9-]+)/);
+      window.duTrack('slider_click', { item: m ? m[1] : '', slug: m ? m[1] : '' });
+      return;
+    }
+    // Внешний переход (не партнёрский, не наш домен) → outbound_click
+    if (/^https?:\/\//i.test(href) && !dt) {
+      var oh = ''; try { oh = new URL(a.href).hostname.replace(/^www\./, ''); } catch (_) {}
+      if (oh && oh !== SITE_HOST) { window.duTrack('outbound_click', { item: oh }); }
     }
   }, true);
 })();

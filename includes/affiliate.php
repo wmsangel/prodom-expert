@@ -439,8 +439,9 @@ if (!function_exists('domexpert_affiliate_block')) {
       $desc  = htmlspecialchars($o['desc'] ?? '', ENT_QUOTES, 'UTF-8');
       $cta   = htmlspecialchars($o['cta'] ?? 'Перейти', ENT_QUOTES, 'UTF-8');
       $icon  = htmlspecialchars($o['icon'] ?? '🛒', ENT_QUOTES, 'UTF-8');
+      $id    = htmlspecialchars($o['id'] ?? '', ENT_QUOTES, 'UTF-8');
       $items .= <<<HTML
-    <a class="aff-item" href="{$url}" target="_blank" rel="{$rel}">
+    <a class="aff-item" href="{$url}" target="_blank" rel="{$rel}" data-ad="{$id}">
       <span class="aff-icon" aria-hidden="true">{$icon}</span>
       <span class="aff-text"><strong class="aff-title">{$title}</strong><span class="aff-desc">{$desc}</span></span>
       <span class="aff-cta">{$cta} →</span>
