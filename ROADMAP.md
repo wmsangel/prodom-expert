@@ -63,6 +63,10 @@ Q&A, галереи), где авторитет не нужен. Докрутк�
 - **JS-цели в Метрике** по именам событий (calc_submit, glossary_search, affiliate_click,
   slider_click, fab_open, donate_click, tg_subscribe…) — код уже шлёт. См. [[prodom-analytics-plan]].
 - **DMARC**-запись; соцсети в `DOMEXPERT_SOCIAL_PROFILES` (VK/Дзен).
+- **Завести соцсети (регистрация + ASO)** — чек-лист по каждой сети (Instagram, Pinterest-приоритет,
+  Дзен; Telegram уже есть) с шагами в хаб-артефакте «Соцсети» ([[prodom-social-module]]):
+  создать аккаунты, имя/аватар/описание под ASO, ссылка в профиле → prodom-expert.ru,
+  Pinterest — подтвердить сайт (Rich Pins) + доски. Аккаунты создаёт владелец.
 - **Выгрузки GSC + Яндекс.Вебмастер** за 12 мес (CSV) — свести спрос в `SEMANTIKA.md`.
 
 ### Сознательно НЕ делаем
