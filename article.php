@@ -426,9 +426,14 @@ include __DIR__ . '/includes/header.php';
           <?php
             $inlineBannerMeta = domexpert_article_meta($slug);
             echo domexpert_sidebar_banner([$slug, $inlineBannerMeta['catSlug'] ?? ($meta['catSlug'] ?? '')]);
-            echo du_ad('сайдбар статьи');
           ?>
         </div>
+        <?php
+          // Display-реклама — ОТДЕЛЬНЫМ блоком в потоке колонки, не flex-ребёнком
+          // .article-aside-inline: адаптивный AdSense внутри flex-элемента не может
+          // измерить ширину (availableWidth=0 → TagError, слот не заполняется).
+          echo du_ad('сайдбар статьи');
+        ?>
 
         <!-- Реклама переехала в середину статьи (см. $inArticleAd выше) — тут пусто. -->
 
