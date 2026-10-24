@@ -20,7 +20,7 @@ const sharp = require('sharp');
 const ROOT = path.resolve(__dirname, '../..');
 const OUT = path.join(__dirname, 'out');
 const COVERS = path.join(ROOT, 'assets/img/articles');
-const PLAN = require('./content-plan.js');
+const { POSTS } = require('./posts.js');
 
 // ── Палитра (графит сети + охра-акцент из HUB.md) ──
 const C = {
@@ -252,7 +252,7 @@ async function renderSlide(spec, size, outFile) {
 async function main() {
   if (!fs.existsSync(OUT)) fs.mkdirSync(OUT, { recursive: true });
   const only = new Set(process.argv.slice(2));
-  const posts = PLAN.posts.filter((p) => !only.size || only.has(p.id));
+  const posts = POSTS.filter((p) => !only.size || only.has(p.id));
   let n = 0;
   for (const post of posts) {
     const story = post.format === 'story';

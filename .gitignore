@@ -40,3 +40,6 @@ scripts/deploy.env
 # соцсети: зависимости и генерируемые слайды
 /node_modules/
 scripts/social/out/
+
+# соц-рассылка: токен бота (секрет)
+scripts/social/.telegram.json

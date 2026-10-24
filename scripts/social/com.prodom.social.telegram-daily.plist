@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Дневная соц-рассылка ДомЭксперт: раз в день присылает владельцу в Telegram
+  готовый пост для Instagram (медиа + подпись с хэштегами).
+
+  Установка (один раз, ПОСЛЕ заполнения scripts/social/.telegram.json):
+    cp scripts/social/com.prodom.social.telegram-daily.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.prodom.social.telegram-daily.plist
+
+  Управление:
+    launchctl list | grep prodom.social                    # загружен ли агент
+    launchctl start com.prodom.social.telegram-daily        # запустить сейчас (тест)
+    launchctl unload ~/Library/LaunchAgents/com.prodom.social.telegram-daily.plist
+    tail -f ~/Library/Logs/prodom-social-telegram-daily.log
+
+  ВАЖНО: пути абсолютные — launchd не читает профиль оболочки. Mac должен быть
+  включён в 08:05; если спал — launchd догонит запуск при пробуждении.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.prodom.social.telegram-daily</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/igorzagorodnyi/.nvm/versions/node/v20.18.0/bin/node</string>
+    <string>/Users/igorzagorodnyi/Sites/ad.domexpert/scripts/social/telegram-daily.mjs</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/igorzagorodnyi/Sites/ad.domexpert/scripts/social</string>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>8</integer>
+    <key>Minute</key>
+    <integer>5</integer>
+  </dict>
+  <key>StandardOutPath</key>
+  <string>/Users/igorzagorodnyi/Library/Logs/prodom-social-telegram-daily.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/igorzagorodnyi/Library/Logs/prodom-social-telegram-daily.log</string>
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
+</plist>

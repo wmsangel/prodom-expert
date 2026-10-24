@@ -5,11 +5,16 @@ Instagram (лента + сторис), Pinterest и Telegram. Стиль — г�
 шрифт IBM Plex Sans. RU-only, честный тон.
 
 ## Файлы
+- `posts.js` — **единый источник** контент-плана (неделя = 7 постов, Пн–Вс): id, день, формат
+  (post/carousel/story), рубрика, page/target, caption, хэштеги, sticker (сторис), slides[].
+  Используется и генератором слайдов, и дневной рассылкой — второй копии текста нет.
 - `gen-slides.js` — генератор слайдов (Node + sharp, SVG→PNG). Шаблоны: cover, text, list(✓/✗),
   cta, mythfact, story. Форматы 1080×1080 (лента) и 1080×1920 (сторис). Фото статей — реальные
   обложки `assets/img/articles/<slug>.(webp|jpg)`.
-- `content-plan.js` — контент-план (неделя = 7 постов): рубрика, формат, слайды, caption, хэштеги, target.
-- `out/` — сгенерированные PNG (p<id>-<n>.png). Регенерируемы, в git не нужны.
+- `scripts/telegram-daily.mjs` — дневная рассылка готового поста владельцу (см. ниже).
+- `.telegram.json.example` — образец конфига бота (сам `.telegram.json` — в .gitignore, секрет).
+- `com.prodom.social.telegram-daily.plist` — launchd-агент автозапуска (08:05).
+- `out/` — сгенерированные PNG (`<id>-<n>.png`). Регенерируемы, в git не нужны.
 
 ## Запуск
 ```bash
@@ -17,6 +22,25 @@ npm install sharp                      # один раз (IBM Plex Sans уже �
 node scripts/social/gen-slides.js      # все посты → scripts/social/out/
 node scripts/social/gen-slides.js p1 p3  # только выбранные
 ```
+
+## Дневная рассылка готового поста владельцу (Telegram)
+`scripts/telegram-daily.mjs` раз в день присылает владельцу в Telegram-бота ГОТОВЫЙ пост
+на сегодня, чтобы просто скачать и выложить в Instagram: сначала само медиа (картинка /
+карусель / видео) с короткой подписью-заголовком `🏠 ДомЭксперт · день · рубрика · формат`,
+затем ОТДЕЛЬНЫМ сообщением — полную подпись с хэштегами (копипаст) и, для сторис, какой
+нативный стикер добавить. Бот, скорее всего, один на всю сеть — поэтому имя проекта в каждом
+заголовке. Это НЕ канальный автопостер (см. ниже) — это личная рассылка владельцу.
+
+Node 20, без зависимостей (fetch + FormData + Blob). Источник — `posts.js`, слайды — из `out/`.
+
+Настройка (один раз):
+1. Создать бота в [@BotFather](https://t.me/BotFather) → `/newbot` → получить токен.
+2. `cp .telegram.json.example .telegram.json` и вставить `bot_token`. Нажать боту `/start`.
+3. Узнать `chat_id`: `curl -s "https://api.telegram.org/bot<ТОКЕН>/getUpdates" | grep -o '"chat":{"id":[0-9-]*'` → вписать в `.telegram.json`.
+4. Тест: `node scripts/telegram-daily.mjs p1` (конкретный пост) или без аргумента — пост на сегодня.
+5. Автозапуск: `cp com.prodom.social.telegram-daily.plist ~/Library/LaunchAgents/ && launchctl load ~/Library/LaunchAgents/com.prodom.social.telegram-daily.plist` (08:05; Mac должен быть включён).
+
+Конфиг: `.telegram.json` `{bot_token, chat_id}` или env `TG_BOT_TOKEN`/`TG_CHAT_ID`.
 
 ## Хаб-страница (артефакт)
 Публикуется как приватный артефакт: слайды картинками (files → `slides/<id>-<n>.png`),
