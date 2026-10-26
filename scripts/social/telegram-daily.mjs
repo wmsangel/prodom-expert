@@ -26,12 +26,15 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { POSTS } from './posts.js';
+import PROFILE from './profile.js';
 
 const PROJECT = 'ДомЭксперт';
 const SITE = 'prodom-expert.ru';
 const HUB_URL = 'https://claude.ai/artifact/8TbDJekuzJwP87TC1vQuhw';
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const OUT = join(ROOT, 'out');
+const PROFILE_DIR = join(ROOT, 'profile');
+const he = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const DOW = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 
 function config() {
@@ -116,9 +119,68 @@ async function sendText(bot, chat, text) {
   await tg(bot, 'sendMessage', form);
 }
 
+// Документ (без сжатия) — чтобы скачать оригинал PNG.
+async function sendDocument(bot, chat, path, caption) {
+  const form = new FormData();
+  form.append('chat_id', chat);
+  form.append('document', fileBlob(path), basename(path));
+  if (caption) form.append('caption', caption);
+  await tg(bot, 'sendDocument', form);
+}
+
+// Текст с тап-для-копирования: значение в <code>…</code> (parse_mode HTML).
+async function sendHTML(bot, chat, text) {
+  const form = new FormData();
+  form.append('chat_id', chat);
+  form.append('text', text);
+  form.append('parse_mode', 'HTML');
+  form.append('disable_web_page_preview', 'true');
+  await tg(bot, 'sendMessage', form);
+}
+
+// Полное оформление профиля — каждое отдельным сообщением (копипаст/скачать).
+async function runProfile(bot, chat) {
+  const avatar = join(PROFILE_DIR, 'avatar.png');
+  await sendText(bot, chat, `🏠 ${PROJECT} · Оформление профиля Instagram\nСкачай файлы и вставь по чек-листу (последнее сообщение). Тексты в серых блоках — тапни, чтобы скопировать.`);
+  // 1) Аватар: файл без сжатия + превью.
+  if (existsSync(avatar)) {
+    await sendDocument(bot, chat, avatar, '1) Аватар 1080×1080 — файл без сжатия');
+    await sendPhoto(bot, chat, avatar, '1) Аватар — превью');
+  }
+  // 2) Имя + @username.
+  await sendHTML(bot, chat, `2) Имя профиля (≤30, с ключевым словом для поиска):\n<code>${he(PROFILE.NAME)}</code>\n\nВарианты @username — занять первый свободный:\n` + PROFILE.USERNAMES.map((u) => `<code>${he(u)}</code>`).join('\n'));
+  // 3) Bio.
+  await sendHTML(bot, chat, `3) Описание (Bio, ≤150):\n<code>${he(PROFILE.BIO)}</code>`);
+  // 4) Ссылка с UTM.
+  await sendHTML(bot, chat, `4) Ссылка в профиле (с UTM):\n<code>${he(PROFILE.LINK)}</code>`);
+  // 5) Тип и категория.
+  await sendText(bot, chat, `5) Тип аккаунта: ${PROFILE.ACCOUNT_TYPE}\nКатегория: «${PROFILE.CATEGORY}»\n(Business — выбрать, если нужна кнопка «Эл. адрес» в профиле.)`);
+  // 6) Обложки «Актуального»: превью-альбом + файлы + названия.
+  const hls = PROFILE.HIGHLIGHTS.map((h) => ({ ...h, path: join(PROFILE_DIR, `hl-${h.id}.png`) })).filter((h) => existsSync(h.path));
+  if (hls.length) {
+    await sendAlbum(bot, chat, hls.map((h) => h.path), '6) Обложки «Актуального» — превью (без текста, круг обрезает)');
+    for (const h of hls) await sendDocument(bot, chat, h.path, `Актуальное: ${h.name}`);
+    await sendText(bot, chat, '6) Названия «Актуального» (по порядку):\n' + hls.map((h, i) => `${i + 1}. ${h.name}`).join('\n'));
+  }
+  // 7) Контакт.
+  await sendHTML(bot, chat, `7) Контакт (рабочая почта):\n<code>${he(PROFILE.CONTACT_EMAIL)}</code>`);
+  // 8) Закрепить 3 поста.
+  const pinLine = PROFILE.PINS.map((p) => { const post = POSTS.find((x) => x.id === p.id); return `• ${post ? `${post.rubric} (${post.day})` : p.id} — ${p.why}`; }).join('\n');
+  await sendText(bot, chat, `8) Закрепить 3 поста:\n${pinLine}`);
+  // 9) Чек-лист.
+  await sendText(bot, chat, '9) Чек-лист «что нажать в Instagram»:\n' + PROFILE.CHECKLIST.map((s, i) => `${i + 1}. ${s}`).join('\n'));
+  console.log('Профиль отправлен в Telegram.');
+}
+
 // ─── main ───
 const { bot, chat } = config();
 const arg = process.argv[2];
+
+if (arg === '--profile') {
+  try { await runProfile(bot, chat); process.exit(0); }
+  catch (e) { console.error('Telegram ошибка:', e.message); process.exit(1); }
+}
+
 const today = DOW[new Date().getDay()];
 const post = arg ? POSTS.find((p) => p.id === arg) : POSTS.find((p) => p.day === today);
 
