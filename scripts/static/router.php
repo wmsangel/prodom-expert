@@ -2,9 +2,14 @@
 /**
  * router.php — для `php -S 127.0.0.1:PORT -t . scripts/static/router.php`.
  * Эмулирует .htaccess-переписывание чистых URL в PHP-страницы, чтобы собрать
- * статическую копию сайта локальным обходом (см. build-static.php).
+ * статическую копию сайта локальным обходом (см. build.sh).
  * Только для сборки статики; на прод не идёт.
+ *
+ * Канонический домен билда можно задать env STATIC_CANONICAL (по умолч. .com) —
+ * тогда canonical/OG/JSON-LD/внутренние абсолютные URL рендерятся под новый домен.
  */
+define('SITE_CANONICAL', getenv('STATIC_CANONICAL') ?: 'https://prodom-expert.com');
+
 $root = $_SERVER['DOCUMENT_ROOT'] ?: getcwd();
 $uri  = rawurldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 

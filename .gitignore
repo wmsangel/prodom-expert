@@ -43,3 +43,6 @@ scripts/social/out/
 
 # соц-рассылка: токен бота (секрет)
 scripts/social/.telegram.json
+
+# статический билд (генерируется)
+scripts/static/dist/
