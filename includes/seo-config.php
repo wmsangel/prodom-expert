@@ -4,7 +4,9 @@
  * При смене основного домена правьте только значение ниже.
  */
 if (!defined('SITE_CANONICAL')) {
-  define('SITE_CANONICAL', 'https://prodom-expert.ru');
+  // env SITE_CANONICAL позволяет собрать статику под другой домен (prodom-expert.com)
+  // без правки файла; на проде переменной нет — остаётся .ru.
+  define('SITE_CANONICAL', getenv('SITE_CANONICAL') ?: 'https://prodom-expert.ru');
 }
 
 /**

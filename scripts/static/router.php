@@ -5,11 +5,9 @@
  * статическую копию сайта локальным обходом (см. build.sh).
  * Только для сборки статики; на прод не идёт.
  *
- * Канонический домен билда можно задать env STATIC_CANONICAL (по умолч. .com) —
- * тогда canonical/OG/JSON-LD/внутренние абсолютные URL рендерятся под новый домен.
+ * Канонический домен билда задаётся env SITE_CANONICAL (seo-config.php его читает) —
+ * здесь ничего пре-определять не нужно, иначе seo-config.php не подключится.
  */
-define('SITE_CANONICAL', getenv('STATIC_CANONICAL') ?: 'https://prodom-expert.com');
-
 $root = $_SERVER['DOCUMENT_ROOT'] ?: getcwd();
 $uri  = rawurldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
