@@ -49,8 +49,9 @@ $CALCS
 cp -R assets "$OUT/assets"
 cp favicon.ico ads.txt "$OUT/" 2>/dev/null || true
 
-# 3a) Cloudflare Pages Functions (форма обратной связи → Telegram).
-cp -R scripts/static/functions "$OUT/functions"
+# 3a) Cloudflare Pages Functions (форма → Telegram) НЕ кладём в dist: wrangler
+# ищет ./functions рядом с папкой ассетов. Деплой — из scripts/static/:
+#   cd scripts/static && npx wrangler pages deploy dist --project-name=prodom-expert
 # JS формы на статике шлёт на /api/feedback (Function), а не на PHP.
 sed -i '' 's#/feedback\.php#/api/feedback#g' "$OUT/assets/js/main.js" 2>/dev/null || \
   sed -i 's#/feedback\.php#/api/feedback#g' "$OUT/assets/js/main.js"
