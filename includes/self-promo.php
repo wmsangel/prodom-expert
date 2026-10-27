@@ -40,14 +40,41 @@ if (!function_exists('domexpert_self_promo_targets')) {
   }
 }
 
+if (!function_exists('domexpert_self_promo_pin')) {
+  /**
+   * РУЧНОЙ PIN: переопределяет недельную ротацию на одну выбранную страницу —
+   * точечное внутреннее do-follow усиление near-ranking (страница на поз. ~8–20,
+   * которой не хватает веса). Пин показывается во всём промо-блоке на ВСЕХ
+   * страницах, кроме самой пин-страницы.
+   *
+   * Чтобы ЗАКРЕПИТЬ: верни массив ['icon','title','desc','cta','url'] (url — путь
+   * на сайте, с ведущим «/»). Чтобы СНЯТЬ пин: верни null (обычная ротация).
+   * Правь только эту функцию.
+   */
+  function domexpert_self_promo_pin(): ?array {
+    return null;
+    // Пример (раскомментировать и подставить свою near-ranking страницу):
+    // return [
+    //   'icon' => '📄', 'title' => 'Отлив с капельником на окне',
+    //   'desc' => 'Как делают отлив из оцинковки, уклон и монтаж — без потёков на фасаде.',
+    //   'cta'  => 'Читать разбор', 'url' => '/article/otlivy-i-kapelnaya-liniya-okna/',
+    // ];
+  }
+}
+
 if (!function_exists('domexpert_self_promo_pick')) {
-  /** Цель недели; если совпадает с текущей страницей — берём следующую. */
+  /** Пин (если задан) переопределяет ротацию; иначе — цель недели по ISO-неделе. */
   function domexpert_self_promo_pick(string $currentPath = ''): array {
+    $cur = rtrim($currentPath, '/');
+    // Ручной пин имеет приоритет (кроме самой пин-страницы).
+    $pin = domexpert_self_promo_pin();
+    if (is_array($pin) && !empty($pin['url']) && rtrim($pin['url'], '/') !== $cur) {
+      return $pin;
+    }
     $t = domexpert_self_promo_targets();
     $n = count($t);
     if ($n === 0) { return []; }
     $idx = ((int) date('W')) % $n;
-    $cur = rtrim($currentPath, '/');
     for ($i = 0; $i < $n; $i++) {
       $cand = $t[($idx + $i) % $n];
       if ($cur === '' || rtrim($cand['url'], '/') !== $cur) {
