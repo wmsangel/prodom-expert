@@ -79,9 +79,10 @@ if (!function_exists('du_article_ad_count')) {
 }
 
 /**
- * Вставляет $n рекламных блоков в тело статьи, равномерно между разделами <h2>.
- * Не ставит перед первым разделом (реклама не до начала чтения) и перед последним
- * (обычно «Частые вопросы»/«Итог»). Если <h2> мало — вставляет один блок в середину по </p>.
+ * Вставляет $n рекламных блоков в тело статьи. ПЕРВЫЙ — высоко, перед первым
+ * разделом <h2> (сразу после вводного абзаца); остальные (n-1) — равномерно со
+ * второго <h2> по предпоследний. Общее число блоков = $n (по объёму, du_article_ad_count).
+ * Если <h2> нет вовсе — один блок в середину по границе абзаца.
  */
 if (!function_exists('du_inject_ads')) {
   function du_inject_ads(string $html, int $n): string {
@@ -93,25 +94,32 @@ if (!function_exists('du_inject_ads')) {
     $off = 0;
     while (($p = stripos($html, '<h2', $off)) !== false) { $pos[] = $p; $off = $p + 3; }
 
-    if (count($pos) >= 3) {
-      // кандидаты: со второго <h2> по предпоследний
+    $points = [];
+    if (count($pos) >= 1) {
+      // Первый блок — ВЫСОКО: перед первым разделом (сразу после вводного абзаца).
+      $points[$pos[0]] = true;
+    }
+    if ($n > 1 && count($pos) >= 3) {
+      // Остальные (n-1) — равномерно со второго <h2> по предпоследний.
       $cand = array_slice($pos, 1, count($pos) - 2);
       if (empty($cand)) { $cand = array_slice($pos, 1); }
-      $n = min($n, count($cand));
-      $chosen = [];
-      for ($i = 1; $i <= $n; $i++) {
-        $idx = (int) floor($i * count($cand) / ($n + 1));
-        $chosen[$cand[min($idx, count($cand) - 1)]] = true;
+      $rest = min($n - 1, count($cand));
+      for ($i = 1; $i <= $rest; $i++) {
+        $idx = (int) floor($i * count($cand) / ($rest + 1));
+        $points[$cand[min($idx, count($cand) - 1)]] = true;
       }
-      $points = array_keys($chosen);
-      rsort($points); // вставляем с конца, чтобы смещения не сбивались
-      foreach ($points as $p) {
+    }
+
+    if (!empty($points)) {
+      $pts = array_keys($points);
+      rsort($pts); // вставляем с конца, чтобы смещения не сбивались
+      foreach ($pts as $p) {
         $html = substr($html, 0, $p) . du_ad('в статье', 'in-article') . substr($html, $p);
       }
       return $html;
     }
 
-    // Мало разделов: один блок примерно в середину по границе абзаца.
+    // Нет разделов вовсе: один блок примерно в середину по границе абзаца.
     $paras = [];
     $off = 0;
     while (($p = stripos($html, '</p>', $off)) !== false) { $paras[] = $p + 4; $off = $p + 4; }
