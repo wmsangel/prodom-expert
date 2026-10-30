@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-ai-covers.py — генерация AI-обложек статей prodom-expert через Pollinations (бесплатно, без ключа).
-Кладёт assets/img/articles/{slug}.jpg (1200x630). Пропускает уже готовые jpg (докачка).
+ai-covers.py — генерация AI-обложек статей prodom-expert через Cloudflare Workers AI
+(модель flux-1-schnell, бесплатный дневной лимит). Кладёт assets/img/articles/{slug}.jpg
+(1200x630) + .webp. Пропускает уже готовые jpg (докачка).
+
+С 30.10.2026 провайдер — Cloudflare Workers AI (Pollinations закрыл бесплатную генерацию,
+стал отдавать HTTP 402). Аккаунт тот же, что под Pages (prodom-expert). Нужен:
+  CF_ACCOUNT_ID   — по умолчанию прошит (d6d43b8e...); можно переопределить env.
+  CF_API_TOKEN    — токен с правом Workers AI. Если не задан env — берётся oauth_token
+                    из конфига wrangler (тот же, что деплоит Pages; права Workers AI есть).
 
 Использование:
   python3 scripts/ai-covers.py            # все статьи из реестра (кроме уже с jpg)
@@ -12,12 +19,29 @@ ai-covers.py — генерация AI-обложек статей prodom-expert
 Промпт строится: сцена по категории + перевод ключевых слов из заголовка.
 Все картинки ВСЁ РАВНО смотреть глазами перед заливкой (AI иногда даёт артефакты).
 """
-import os, sys, time, subprocess, urllib.parse, urllib.request, urllib.error
+import os, sys, time, json, base64, glob, re, subprocess, urllib.parse, urllib.request, urllib.error
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TSV  = os.path.join(ROOT, "scripts", "articles.tsv")   # slug \t cat \t label \t title
 OUT  = os.path.join(ROOT, "assets", "img", "articles")
 FORCE = os.environ.get("FORCE") == "1"
+
+CF_ACCOUNT_ID = os.environ.get("CF_ACCOUNT_ID", "d6d43b8e4c7d1d4858991c524843db4c")
+CF_MODEL = os.environ.get("CF_AI_MODEL", "@cf/black-forest-labs/flux-1-schnell")
+
+def _cf_token():
+    """Токен Workers AI: env CF_API_TOKEN или oauth_token из конфига wrangler."""
+    t = os.environ.get("CF_API_TOKEN")
+    if t:
+        return t.strip()
+    pats = ["~/Library/Preferences/.wrangler/config/*.toml",
+            "~/.wrangler/config/*.toml", "~/.config/.wrangler/config/*.toml"]
+    for pat in pats:
+        for p in glob.glob(os.path.expanduser(pat)):
+            m = re.search(r'oauth_token\s*=\s*"([^"]+)"', open(p).read())
+            if m:
+                return m.group(1)
+    return None
 
 BASE = ("photorealistic, professional architectural interior photography, DSLR photo, warm natural light, "
         "ultra sharp focus, crisp, high detail, 4k, realistic textures, "
@@ -99,38 +123,45 @@ def build_prompt(cat, title):
     return scene + ", " + BASE
 
 def fetch(slug, prompt, seed=7):
-    enc = urllib.parse.quote(prompt, safe="")
-    url = (f"https://image.pollinations.ai/prompt/{enc}"
-           f"?width=1200&height=630&nologo=true&seed={seed}&model=flux")
+    token = _cf_token()
+    if not token:
+        print(f"  ✗ {slug}: нет токена Cloudflare (CF_API_TOKEN или wrangler login)", flush=True)
+        return 0
+    url = f"https://api.cloudflare.com/client/v4/accounts/{CF_ACCOUNT_ID}/ai/run/{CF_MODEL}"
+    body = json.dumps({"prompt": prompt, "steps": 6}).encode("utf-8")
     tmp = os.path.join(OUT, slug + ".tmp.jpg")
     dst = os.path.join(OUT, slug + ".jpg")
     for attempt in range(1, 7):
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 prodom-cover"})
+            req = urllib.request.Request(url, data=body, method="POST", headers={
+                "Authorization": f"Bearer {token}",
+                "Content-Type": "application/json"})
             with urllib.request.urlopen(req, timeout=120) as r:
-                data = r.read()
+                payload = json.loads(r.read())
+            # flux-1-schnell отдаёт {"result":{"image":"<base64 jpeg>"}}, ~1024x1024.
+            b64 = (payload.get("result") or {}).get("image")
+            if not b64:
+                raise ValueError("нет image в ответе")
+            data = base64.b64decode(b64)
             if len(data) < 6000:
                 raise ValueError(f"too small {len(data)}b")
             with open(tmp, "wb") as f:
                 f.write(data)
-            # Pollinations с сентября 2026 подмешивает вотемарк "pollinations.ai" в правый
-            # нижний угол даже при nologo=true. Убираем его центр-кропом: срезаем по 32px
-            # сверху и снизу (нижняя кромка с вотемарком уходит), ширину берём под 1.905,
-            # затем ресайз до точных 1200x630. Родной sips умеет только центр-кроп.
+            # Квадрат 1024x1024 → центр-кроп до соотношения 1.905 (1024x538) → ресайз 1200x630.
+            # Вотемарка нет (в отличие от Pollinations), верх/низ не срезаем.
             def dim(axis):
                 out = subprocess.run(["sips", "-g", axis, tmp], capture_output=True, text=True)
                 return int(out.stdout.strip().split()[-1])
-            H = dim("pixelHeight")
-            ch = max(200, H - 64)
-            cw = round(ch * 1200 / 630)
-            subprocess.run(["sips", "-c", str(ch), str(cw), tmp, "--out", tmp],
+            W = dim("pixelWidth")
+            ch = round(W * 630 / 1200)
+            subprocess.run(["sips", "-c", str(ch), str(W), tmp, "--out", tmp],
                            check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             subprocess.run(["sips", "-s", "format", "jpeg", "-z", "630", "1200", tmp,
                             "--out", dst], check=True,
                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             os.remove(tmp)
-            # WebP-версия рядом с jpg (в 3-4 раза легче) — .htaccess отдаёт её
-            # браузерам с поддержкой WebP автоматически. Без cwebp просто пропускаем.
+            # WebP-версия рядом с jpg (в 3-4 раза легче) — сайт отдаёт её через <picture>.
+            # Без cwebp просто пропускаем.
             try:
                 subprocess.run(["cwebp", "-quiet", "-q", "80", dst, "-o", dst[:-4] + ".webp"],
                                check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -138,13 +169,18 @@ def fetch(slug, prompt, seed=7):
                 pass
             return len(data)
         except urllib.error.HTTPError as e:
-            if e.code == 429:               # рейт-лимит Pollinations — долгая пауза
+            detail = ""
+            try:
+                detail = " " + e.read().decode("utf-8", "ignore")[:160]
+            except Exception:
+                pass
+            if e.code == 429:               # рейт-лимит/исчерпан дневной лимит Workers AI
                 if attempt == 6:
-                    print(f"  ✗ {slug}: 429 (сдаюсь)", flush=True); return 0
+                    print(f"  ✗ {slug}: 429 (лимит Workers AI, сдаюсь)", flush=True); return 0
                 time.sleep(20 * attempt)
             else:
                 if attempt == 6:
-                    print(f"  ✗ {slug}: HTTP {e.code}", flush=True); return 0
+                    print(f"  ✗ {slug}: HTTP {e.code}{detail}", flush=True); return 0
                 time.sleep(5 * attempt)
         except Exception as e:
             if attempt == 6:
