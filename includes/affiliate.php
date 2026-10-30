@@ -403,6 +403,48 @@ if (!function_exists('domexpert_affiliate_offers')) {
   }
 }
 
+if (!function_exists('domexpert_go_targets')) {
+  /**
+   * Карта id → партнёрский deeplink для редиректора /go/<id>.
+   * Единственный источник целей: сами офферы + инлайновые баннеры сайдбара.
+   * Её же билд выгружает в JSON для Cloudflare Pages Function (.com).
+   */
+  function domexpert_go_targets(): array {
+    $map = [];
+    foreach (domexpert_affiliate_offers() as $o) {
+      if (!empty($o['id']) && !empty($o['url'])) { $map[$o['id']] = $o['url']; }
+    }
+    // Баннеры сайдбара (у них своя ссылка с ?i=4, не из реестра офферов):
+    $map['banner-divanboss'] = 'https://zallj.com/g/g3odrskrah5593ebc048fb3b97602e/?i=4&erid=2bL9aMPo2e49hMef4rqUKy1pYL';
+    $map['banner-profi']     = 'https://dkfrh.com/g/9oieanlurm5593ebc0487e4bf1243c/?i=4&erid=2bL9aMPo2e49hMef4rqyCujmBL';
+    return $map;
+  }
+}
+
+if (!function_exists('domexpert_affiliate_url_by_id')) {
+  /** Deeplink по id оффера/баннера, либо null. Используется go.php (.ru). */
+  function domexpert_affiliate_url_by_id(string $id): ?string {
+    $map = domexpert_go_targets();
+    return $map[$id] ?? null;
+  }
+}
+
+if (!function_exists('domexpert_go_href')) {
+  /**
+   * Внутренняя ссылка-редиректор вместо прямого deeplink в разметке.
+   * Все партнёрские клики идут через /go/<id> — так боты, которые ходят по
+   * ссылкам из своего списка URL, не доходят до партнёра (go.php/Function
+   * отдаёт им 204 без Location), и сеть не засчитывает их как клики людей.
+   * $pageSlug подмешивается как ?p=<slug> → subid на стороне редиректора.
+   */
+  function domexpert_go_href(string $id, string $pageSlug = ''): string {
+    $href = '/go/' . rawurlencode($id);
+    $ps = preg_replace('/[^A-Za-z0-9_-]/', '', $pageSlug);
+    if ($ps !== '') { $href .= '?p=' . rawurlencode($ps); }
+    return $href;
+  }
+}
+
 if (!function_exists('domexpert_affiliate_pick')) {
   /**
    * Выбор офферов под теги страницы. Оффер подходит, если у него есть тег 'all'
@@ -431,10 +473,12 @@ if (!function_exists('domexpert_affiliate_block')) {
     $offers = domexpert_affiliate_pick($tags, $limit);
     if (!$offers) { return ''; }
 
+    $pageSlug = $tags[0] ?? '';
     $rel = 'sponsored nofollow noopener';
     $items = '';
     foreach ($offers as $o) {
-      $url   = htmlspecialchars($o['url'],   ENT_QUOTES, 'UTF-8');
+      // href — внутренний /go/<id> (фильтр ботов), а не прямой deeplink.
+      $url   = htmlspecialchars(domexpert_go_href($o['id'] ?? '', $pageSlug), ENT_QUOTES, 'UTF-8');
       $title = htmlspecialchars($o['title'], ENT_QUOTES, 'UTF-8');
       $desc  = htmlspecialchars($o['desc'] ?? '', ENT_QUOTES, 'UTF-8');
       $cta   = htmlspecialchars($o['cta'] ?? 'Перейти', ENT_QUOTES, 'UTF-8');
@@ -475,12 +519,15 @@ if (!function_exists('domexpert_sidebar_banner')) {
         if (in_array($o['id'], ['divanboss', 'zvet', 'divanru'], true)) { $isFurniture = true; break; }
       }
     }
+    // href — внутренний /go/<id> (фильтр ботов). Картинка баннера грузится
+    // напрямую с aflink.ru (это показ, не клик); сам клик идёт через /go.
+    $pageSlug = $tags[0] ?? '';
     if ($isFurniture) {
-      $href = 'https://zallj.com/g/g3odrskrah5593ebc048fb3b97602e/?i=4&erid=2bL9aMPo2e49hMef4rqUKy1pYL';
+      $href = domexpert_go_href('banner-divanboss', $pageSlug);
       $img  = 'https://aflink.ru/b/g3odrskrah5593ebc048fb3b97602e/';
       $alt  = 'Divan BOSS — мягкая и корпусная мебель от производителя';
     } else {
-      $href = 'https://dkfrh.com/g/9oieanlurm5593ebc0487e4bf1243c/?i=4&erid=2bL9aMPo2e49hMef4rqyCujmBL';
+      $href = domexpert_go_href('banner-profi', $pageSlug);
       $img  = 'https://aflink.ru/b/9oieanlurm5593ebc0487e4bf1243c/';
       $alt  = 'Профи.ру — проверенные мастера для ремонта';
     }

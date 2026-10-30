@@ -56,6 +56,19 @@ cp favicon.ico ads.txt "$OUT/" 2>/dev/null || true
 sed -i '' 's#/feedback\.php#/api/feedback#g' "$OUT/assets/js/main.js" 2>/dev/null || \
   sed -i 's#/feedback\.php#/api/feedback#g' "$OUT/assets/js/main.js"
 
+# 3a-bis) Карта партнёрских целей для Function /go/<id> — выгружаем из affiliate.php,
+# чтобы .com редиректил на те же deeplink, что и .ru (единый источник правды).
+php -r '
+require "includes/affiliate.php";
+$m = domexpert_go_targets();
+$json = json_encode($m, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
+$out = "// АВТО-ГЕНЕРАЦИЯ build.sh из includes/affiliate.php — руками не править.\n";
+$out .= "// Карта id → партнёрский deeplink для functions/go/[id].js (.com).\n";
+$out .= "export const OFFERS = ".$json.";\n";
+file_put_contents("scripts/static/functions/go/offers.js", $out);
+fwrite(STDERR, "  ✓ offers.js: ".count($m)." партнёрских целей для /go\n");
+'
+
 # 3b) Поиск: статический индекс Pagefind + его UI на странице /search.php.
 if npx -y pagefind --site "$OUT" >/tmp/pagefind.log 2>&1 && [ -f "$OUT/search.php" ]; then
   python3 - "$OUT/search.php" <<'PY'

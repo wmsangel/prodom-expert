@@ -1,0 +1,32 @@
+// АВТО-ГЕНЕРАЦИЯ build.sh из includes/affiliate.php — руками не править.
+// Карта id → партнёрский deeplink для functions/go/[id].js (.com).
+export const OFFERS = {
+    "samura": "https://xmknb.com/g/4jfy3qmkf25593ebc048c0c6052a6b/?erid=2bL9aMPo2e49hMef4rqU6oVXgA",
+    "luru": "https://thevospad.com/g/muxydgfucg5593ebc048ca00fd3984/?erid=5jtCeReNwxHpfQTDurBMqTr",
+    "ormatek": "https://bednari.com/g/fbbbdbef6e5593ebc0481e828be52d/?erid=F7NfYUJRWmqqH8Yw2oAC",
+    "postel": "https://dkfrh.com/g/4f5bbwmspn5593ebc0485e55659f09/?erid=2bL9aMPo2e49hMef4rqytKpfaC",
+    "divanru": "https://yknhc.com/g/uf1b8x6iow5593ebc048bdf11f4fb4/?erid=2bL9aMPo2e49hMef4piUHTPXWP",
+    "zvet": "https://thevospad.com/g/67570bafb65593ebc04866146bcf1d/?erid=5jtCeReLm1S3Xx3Lfj3wyRM",
+    "divanboss": "https://zallj.com/g/b5fs3128w25593ebc048fb3b97602e/?erid=2bL9aMPo2e49hMef4peV7UGo33",
+    "mnogomebeli": "https://ru.i07o.xyz/6ac72d1cea1ee?erid=2SDnjdX8eQi",
+    "hansgrohe": "https://ru.i07o.xyz/6ac72cb14e6e1?erid=2SDnjdpUriu",
+    "aquanet": "https://ru.gettracker.net/6ac72cd364948?erid=2SDnjdK8ZkK",
+    "smgkitchen": "https://ru.z02o.xyz/6ac72cfba367e?erid=2SDnjboxQA5",
+    "kitchentrade": "https://ru.io10.info/6ac75c65623b0?erid=2SDnjcwzhKe",
+    "santehnikatut": "https://dorinebeaumont.com/g/nxgdto54265593ebc048eb6db1b093/?erid=25H8d7vbP8SRTvGZQfQ5kD",
+    "mircli": "https://ru.z05o.xyz/6ac72b541437a?erid=2SDnjdZedpF",
+    "vseinstrumenti": "https://ru.trackerpro.org/6ac72c96d7811?erid=2SDnjcJ8CBq",
+    "bigam": "https://ru.i08o.xyz/6ac72d3482fa4?erid=2SDnjdZynVV",
+    "aliexpress": "https://rzekl.com/g/1e8d1144945593ebc04816525dc3e8/",
+    "malare": "https://hvjjg.com/g/km68poc2w35593ebc048e1ad5bc072/?erid=2bL9aMPo2e49hMef4rqUn6AAV2",
+    "williamsoliver": "https://ru.z02o.xyz/6ac72d4180378?erid=2SDnjdALgLp",
+    "eurodom": "https://yynbx.com/g/wxsxy74ehc5593ebc0482a9bafdd81/?erid=MvGzQC98w3Z1gMq1mSxY8C15",
+    "woodgrand": "https://dbnua.com/g/6zx21qevom5593ebc048c253dd3ed1/?erid=2bL9aMPo2e49hMef4rqyCzAiCX",
+    "petrovich": "https://dhwnh.com/g/fjtv2ijs435593ebc0483d96fce434/?erid=25H8d7vbP8SRTvG4XfhAnc",
+    "tvoydom": "https://ru.i07o.xyz/6ac75c3dbbe7e?erid=2SDnjek8Bjn",
+    "maxidom": "https://uuwgc.com/c/vw6dqabpgk5593ebc048b6a2cdd7f0/?erid=25H8d7vbP8SRTvH4HtSZJ1",
+    "profi": "https://dkfrh.com/g/zqyi8ot6o25593ebc0487e4bf1243c/?erid=MvGzQC98w3Z1gMq1kwWR4fyN",
+    "megastroy": "https://bednari.com/g/xcawb6ikii5593ebc048161cbbe6df/?erid=5jtCeReNwxHpfQTEQWKMenp",
+    "banner-divanboss": "https://zallj.com/g/g3odrskrah5593ebc048fb3b97602e/?i=4&erid=2bL9aMPo2e49hMef4rqUKy1pYL",
+    "banner-profi": "https://dkfrh.com/g/9oieanlurm5593ebc0487e4bf1243c/?i=4&erid=2bL9aMPo2e49hMef4rqyCujmBL"
+};

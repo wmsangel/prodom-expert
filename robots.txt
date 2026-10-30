@@ -5,6 +5,8 @@ Allow: /
 Disallow: /includes/
 Disallow: /assets/js/
 Disallow: /photos-inbox/
+# Партнёрский редиректор — не для индексации (служебные ссылки для кликов со страниц)
+Disallow: /go/
 
 # Разрешаем CSS/JS для рендеринга
 Allow: /assets/css/
