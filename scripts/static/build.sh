@@ -95,11 +95,8 @@ sed "s#$OLD#$NEW#g" robots.txt > "$OUT/robots.txt"
 
 # 5) Cloudflare Pages: .php отдаём как HTML; rss.php — как XML
 cat > "$OUT/_headers" <<'HED'
-# ВРЕМЕННО (до 301-катовера): новый сайт на .com/*.pages.dev закрыт от индексации,
-# чтобы поисковики не сочли его дублем живого prodom-expert.ru. На .ru НЕ влияет
-# (другой хост). СНЯТЬ этот блок /* при катовере (тогда .com начнёт индексироваться).
-/*
-  X-Robots-Tag: noindex
+# 301-катовер выполнен 31.10.2026: .com — основной домен, индексируется.
+# (Редиректор /go/ ставит свой X-Robots-Tag: noindex в самой Function.)
 /*.php
   Content-Type: text/html; charset=utf-8
 /rss.php

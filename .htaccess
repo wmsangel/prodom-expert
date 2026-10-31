@@ -57,6 +57,17 @@ ErrorDocument 500 /404.php
     ExpiresByType application/x-font-woff2 "access plus 1 year"
 </IfModule>
 
+# --- 301-КАТОВЕР: prodom-expert.ru → prodom-expert.com (переезд 31.10.2026) ---
+# Весь трафик .ru (www и без) 301-редиректом на .com тем же путём. Стоит ПЕРВЫМ
+# среди rewrite, чтобы ловить все запросы (включая картинки) до прочих правил.
+# Причина переезда: РФ требует подтверждения домена на Госуслугах, владелец — КГ-ИП.
+# .ru держим живым с этим 301 как можно дольше (мост для передачи веса на .com).
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_HOST} ^(www\.)?prodom-expert\.ru$ [NC]
+    RewriteRule ^ https://prodom-expert.com%{REQUEST_URI} [R=301,L]
+</IfModule>
+
 # --- Прозрачная отдача WebP ---
 # Если браузер поддерживает WebP и рядом с .jpg/.png лежит .webp — отдаём его
 # (в 3-4 раза легче). Шаблоны не меняем: запрос идёт на .jpg, сервер подменяет
