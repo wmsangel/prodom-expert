@@ -137,32 +137,9 @@ $currentYear = date('Y');
 
   <script src="<?= htmlspecialchars(du_asset('/assets/js/main.js'), ENT_QUOTES, 'UTF-8') ?>" defer></script>
 
-  <!-- Google tag (gtag.js) — в конце body, не блокирует FCP -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-35WXXKG90T"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-35WXXKG90T');
-  </script>
-
-  <!-- Yandex.Metrika — один счётчик, после отрисовки страницы.
-       Не запускается, если пользователь выбрал «Только необходимые». -->
-  <script>
-    (function(){
-      var __noAnalytics = false;
-      try { __noAnalytics = localStorage.getItem('cookie_consent') === 'necessary'; } catch (e) {}
-      if (__noAnalytics) { return; }
-      (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-      })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=108673434', 'ym');
-      ym(108673434, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:'dataLayer', referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-    })();
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/108673434" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- Веб-аналитика (GA4 + Яндекс.Метрика). Проверка хоста + региональный opt-in
+       Метрики — вынесено в отдельный компонент, см. includes/analytics.php. -->
+  <?php include __DIR__ . '/analytics.php'; ?>
 
   <?php
     // Свой баннер согласия — только пока не подключён CMP Ezoic (см. DOMEXPERT_CMP

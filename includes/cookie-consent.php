@@ -50,6 +50,10 @@
         gtag('consent','update',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});
       }
     }
+    // Метрика не поддерживает Consent Mode: в ЕС/Британии/Швейцарии она не грузится
+    // до согласия. Нажали «Принять всё» → подгружаем её сразу (идемпотентно), не
+    // дожидаясь следующей страницы. На зеркале/localhost duLoadMetrika не определён.
+    if (choice === 'all' && typeof window.duLoadMetrika === 'function') { window.duLoadMetrika(); }
   }
   function choose(choice){
     try { localStorage.setItem(KEY, choice); } catch (e) {}

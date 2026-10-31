@@ -259,6 +259,11 @@ if (!function_exists('esc')) {
   <link rel="dns-prefetch" href="https://mc.yandex.ru">
   <script>
   (function () {
+    // Проверка хоста: реклама — только на боевых доменах, не на зеркалах
+    // (*.pages.dev), localhost и превью-деплоях. Так зеркало не крутит AdSense
+    // (политика/невалидный трафик) и не грузит рекламные скрипты.
+    var PROD_HOSTS = ['prodom-expert.com','www.prodom-expert.com','prodom-expert.ru','www.prodom-expert.ru'];
+    if (PROD_HOSTS.indexOf(location.hostname) === -1) { return; }
     var done = false;
     function add(src, attrs) {
       var s = document.createElement('script'); s.async = true; s.src = src;
