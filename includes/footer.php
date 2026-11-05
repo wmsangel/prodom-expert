@@ -79,7 +79,7 @@ $currentYear = date('Y');
           </li>
           <li>
             <strong>Нашли ошибку — исправим.</strong> Пишите на
-            <a href="mailto:info@prodom-expert.ru">info@prodom-expert.ru</a>, порядок правок описан
+            <a href="mailto:info@prodom-expert.com">info@prodom-expert.com</a>, порядок правок описан
             в <a href="/editorial.php">редполитике</a>.
           </li>
         </ul>
@@ -130,7 +130,7 @@ $currentYear = date('Y');
         <input type="hidden" name="page" id="fbPage" value="">
         <button type="submit" class="fb-submit" id="fbSubmit">Отправить</button>
         <div class="fb-status" id="fbStatus" role="status" aria-live="polite"></div>
-        <p class="fb-hint">Письмо уходит редакции на info@prodom-expert.ru. Email нужен только если хотите ответ.</p>
+        <p class="fb-hint">Письмо уходит редакции на info@prodom-expert.com. Email нужен только если хотите ответ.</p>
       </form>
     </div>
   </div>

@@ -18,18 +18,18 @@ $articleJsonLd = json_encode([
     '@type'         => 'Organization',
     'name'          => 'ДомЭксперт',
     'url'           => SITE_CANONICAL . '/',
-    'email'         => 'info@prodom-expert.ru',
+    'email'         => 'info@prodom-expert.com',
     'contactPoint'  => [
       [
         '@type'         => 'ContactPoint',
         'contactType'   => 'customer support',
-        'email'         => 'info@prodom-expert.ru',
+        'email'         => 'info@prodom-expert.com',
         'availableLanguage' => ['Russian'],
       ],
       [
         '@type'         => 'ContactPoint',
         'contactType'   => 'sales',
-        'email'         => 'ads@prodom-expert.ru',
+        'email'         => 'ads@prodom-expert.com',
         'availableLanguage' => ['Russian'],
       ],
     ],
@@ -63,8 +63,8 @@ include __DIR__ . '/includes/header.php';
           <h2>Напишите нам</h2>
           <p>По вопросам сотрудничества, размещения материалов и рекламы:</p>
           <ul>
-            <li>📧 Email: <a href="mailto:info@prodom-expert.ru">info@prodom-expert.ru</a></li>
-            <li>📧 Реклама: <a href="mailto:ads@prodom-expert.ru">ads@prodom-expert.ru</a></li>
+            <li>📧 Email: <a href="mailto:info@prodom-expert.com">info@prodom-expert.com</a></li>
+            <li>📧 Реклама: <a href="mailto:ads@prodom-expert.com">ads@prodom-expert.com</a></li>
             <li>✈️ Telegram-канал: <a href="https://t.me/prodom_expert" target="_blank" rel="noopener">@prodom_expert</a></li>
           </ul>
           <h2>Время ответа</h2>
