@@ -49,6 +49,11 @@ $CALCS
 cp -R assets "$OUT/assets"
 cp favicon.ico ads.txt "$OUT/" 2>/dev/null || true
 
+# 3-404) Страница 404. Cloudflare Pages отдаёт dist/404.html со статусом 404 на
+# любой несуществующий путь (иначе Pages отдавал бы главную 200 = soft-404).
+# Рендерим 404.php локально (сервер отдаёт её с кодом 404 — пишем тело как есть).
+curl -s "$BASE/404.php" -o "$OUT/404.html"
+
 # 3a) Cloudflare Pages Functions (форма → Telegram) НЕ кладём в dist: wrangler
 # ищет ./functions рядом с папкой ассетов. Деплой — из scripts/static/:
 #   cd scripts/static && npx wrangler pages deploy dist --project-name=prodom-expert
