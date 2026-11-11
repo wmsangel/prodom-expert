@@ -142,6 +142,18 @@ function domexpert_all_calculators_meta(): array
                      'dekorativnaya-shtukaturka-faktury', 'otkosy-okon-shtukaturka-gkl-sendvich',
                      'vysota-potolka-chistovaya-otmetka'],
     ],
+
+    'shpaklevka' => [
+      'group'    => 'materialy',
+      'title'    => 'Калькулятор шпаклёвки под покраску: старт, финиш, грунт',
+      'h1'       => 'Расчёт шпаклёвки под покраску',
+      'desc'     => 'Сколько стартовой и финишной шпаклёвки, грунтовки и шлифовальной сетки нужно под покраску — по площади, толщине стартового слоя и числу финишных слоёв. Отдельно для стен, потолка и гипсокартона.',
+      'lead'     => 'Под покраску шпаклёвка идёт в два материала: старт выравнивает, финиш создаёт гладкость. Калькулятор считает каждый отдельно — в килограммах и мешках.',
+      'level'    => 'простой',
+      'related'  => ['shpaklevka-sten-pod-oboi-i-pokrasku', 'podgotovka-sten-pod-pokrasku',
+                     'potolok-pod-pokrasku-vyravnivanie', 'gipsokarton-peregorodki-i-potolki',
+                     'gruntovka-sten-osnovy'],
+    ],
     'plitka' => [
       'group'    => 'materialy',
       'title'    => 'Калькулятор плитки: количество, подрезка, клей и затирка',
@@ -370,7 +382,8 @@ function domexpert_calculator_match_keywords(): array
     'kraska'                    => ['краск'],
     'gidroizolyaciya'           => ['гидроизоляц'],
     'plintus'                   => ['плинтус'],
-    'shtukaturka'               => ['штукатур', 'шпаклёвк', 'шпаклевк'],
+    'shtukaturka'               => ['штукатур'],
+    'shpaklevka'                => ['шпаклёвк', 'шпаклевк', 'шпатлёвк', 'шпатлевк'],
     'plitka'                    => ['плитк', 'керамогранит', 'кафел'],
     'styazhka'                  => ['стяжк', 'наливн'],
     'peregorodka-bloki'         => ['перегородк', 'газоблок', 'пеноблок', 'газобетон'],

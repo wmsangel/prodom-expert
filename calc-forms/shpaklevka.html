@@ -1,0 +1,159 @@
+<form class="calc" data-calc="shpaklevka">
+  <fieldset>
+    <legend>Поверхность</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="shp-ploshchad">Площадь, м²</label>
+        <input type="number" id="shp-ploshchad" name="ploshchad" value="30" min="1" max="2000" step="0.5" inputmode="decimal">
+        <span class="calc-field-hint">Стены или потолок под покраску</span>
+      </div>
+      <div class="calc-field">
+        <label for="shp-baza">Основание</label>
+        <select id="shp-baza" name="baza">
+          <option value="start-finish" selected>Штукатурка / бетон — старт + финиш</option>
+          <option value="finish">Ровное основание — только финиш</option>
+          <option value="gkl">Гипсокартон — финиш сплошная + лента на швы</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Слои</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="shp-start-mm">Стартовый слой, мм</label>
+        <input type="number" id="shp-start-mm" name="startMm" value="2" min="0" max="15" step="0.5" inputmode="decimal">
+        <span class="calc-field-hint">Средняя толщина выравнивания (0 — старт не нужен)</span>
+      </div>
+      <div class="calc-field">
+        <label for="shp-finish-sloi">Слоёв финишной</label>
+        <select id="shp-finish-sloi" name="finishSloi">
+          <option value="1">1 слой</option>
+          <option value="2" selected>2 слоя — стандарт под покраску</option>
+          <option value="3">3 слоя — под глянец и косой свет</option>
+        </select>
+      </div>
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="shp-grunt" name="grunt" checked>
+        <label for="shp-grunt">Считать грунтовку между слоями</label>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Цены (необязательно)</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="shp-cena-start">Старт, ₽ за мешок 25 кг</label>
+        <input type="number" id="shp-cena-start" name="cenaStart" value="0" min="0" max="20000" step="10" inputmode="numeric">
+        <span class="calc-field-hint">0 — если стоимость не нужна</span>
+      </div>
+      <div class="calc-field">
+        <label for="shp-cena-finish">Финиш, ₽ за мешок 20 кг</label>
+        <input type="number" id="shp-cena-finish" name="cenaFinish" value="0" min="0" max="20000" step="10" inputmode="numeric">
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<div class="calc-result" data-calc-result="shpaklevka" role="status" aria-live="polite"></div>
+
+<section class="calc-article">
+  <h2>Что считает калькулятор</h2>
+  <p>Под покраску шпаклёвка идёт в два разных материала: стартовая выравнивает основание, финишная создаёт гладкую плоскость без фактуры. Калькулятор берёт площадь, среднюю толщину стартового слоя и число финишных слоёв, считает каждый материал отдельно в килограммах и мешках, добавляет грунтовку между слоями и 10% запаса на остатки в вёдрах и подрезку.</p>
+
+  <table>
+    <thead><tr><th>Материал</th><th>Расход</th><th>Фасовка</th></tr></thead>
+    <tbody>
+      <tr><td>Стартовая шпаклёвка</td><td>≈ 1,1 кг/м² на 1 мм слоя</td><td>мешок 25 кг</td></tr>
+      <tr><td>Финишная шпаклёвка</td><td>≈ 0,5 кг/м² на слой</td><td>мешок 20 кг</td></tr>
+      <tr><td>Грунтовка</td><td>≈ 0,15 л/м² на проход</td><td>канистра 5–10 л</td></tr>
+      <tr><td>Лента (серпянка) на швы ГКЛ</td><td>≈ 1,4 пог. м/м²</td><td>рулон 20–150 м</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Почему под покраску нельзя экономить на финише</h2>
+  <p>Краска, особенно матовая под боковым светом, не прощает ни одной раковины и царапины от шпателя: всё, что осталось на стене, читается тенью. Поэтому под покраску кладут минимум два тонких финишных слоя со шлифовкой между ними, а под глянец и там, где свет падает вдоль стены, — три. Один слой достаточен только под плотные обои, но не под краску.</p>
+
+  <h2>Правила, без которых пойдут полосы</h2>
+  <ul>
+    <li><strong>Грунтуйте перед каждым слоем</strong> — иначе материал тянет воду неравномерно и шпатель оставляет полосы.</li>
+    <li><strong>Финишный слой — тонкий</strong>, «на сдир»: толстый финиш трескается и плохо шлифуется.</li>
+    <li><strong>Шлифовка между финишными слоями</strong> — сеткой P120, последняя P180–P240 под боковым светом с лампой.</li>
+    <li><strong>Швы гипсокартона</strong> — только на ленту-серпянку с заделкой, иначе трещина по стыку неизбежна.</li>
+    <li><strong>Грунт перед покраской</strong> обязателен: он выравнивает впитываемость, и краска ложится без пятен.</li>
+  </ul>
+  <p>Подробный разбор материалов и техники — в статье про <a href="/article/shpaklevka-sten-pod-oboi-i-pokrasku/">шпаклёвку стен под обои и покраску</a>. Выравнивание до шпаклёвки — <a href="/article/podgotovka-sten-pod-pokrasku/">подготовка стен под покраску</a> и <a href="/article/potolok-pod-pokrasku-vyravnivanie/">выравнивание потолка под покраску</a>. Сколько нужно самой краски — <a href="/calc/kraska/">калькулятор краски</a>.</p>
+
+  <h2>Частые вопросы</h2>
+  <h3>Сколько шпаклёвки нужно на комнату под покраску?</h3>
+  <p>Для стен 30 м² с выравниванием 2 мм это примерно три мешка стартовой по 25 кг и два мешка финишной по 20 кг на два слоя. Точное число зависит от кривизны основания: чем толще стартовый слой, тем больше расход, поэтому в калькуляторе задаётся средняя толщина, а не фиксированная.</p>
+
+  <h3>Чем шпаклёвка отличается от штукатурки?</h3>
+  <p>Штукатурка выравнивает основание слоем от 5 мм и более, шпаклёвка — финишный материал слоем в доли миллиметра для гладкости под краску или обои. Если стена завалена на сантиметры, сначала нужна <a href="/calc/shtukaturka/">штукатурка</a>, а шпаклёвка идёт поверх.</p>
+
+  <h3>Нужна ли финишная шпаклёвка на гипсокартон?</h3>
+  <p>Да, под покраску — сплошная финишная по всей плоскости, а не только по швам. Иначе места заделки швов и шляпок саморезов проявятся другим оттенком и фактурой, когда стена высохнет под краской.</p>
+</section>
+
+<script>
+DomCalc.register('shpaklevka', function (v, f) {
+  var area = v.ploshchad || 0;
+  if (area <= 0) { return f.note('Укажите площадь поверхности — расчёт идёт от неё.'); }
+
+  var baza = v.baza || 'start-finish';
+  var startMm = (baza === 'finish') ? 0 : (v.startMm || 0);
+  var finishSloi = parseInt(v.finishSloi, 10) || 2;
+  var reserve = 1.10;
+
+  // Стартовая: ~1,1 кг/м² на 1 мм слоя
+  var startKg = area * 1.1 * startMm * reserve;
+  // Финишная: ~0,5 кг/м² на слой
+  var finishKg = area * 0.5 * finishSloi * reserve;
+
+  // Грунтовка: перед стартом (если есть), перед финишем, перед покраской
+  var gruntCoats = (startMm > 0 ? 1 : 0) + 1 + 1;
+  var gruntL = v.grunt ? area * 0.15 * gruntCoats : 0;
+
+  // Лента-серпянка на швы ГКЛ
+  var lentaM = (baza === 'gkl') ? area * 1.4 : 0;
+
+  // Шлифовальная сетка: лист ≈ 5 м², по разу на каждый финишный слой
+  var setka = Math.ceil(area / 5 * finishSloi);
+
+  var startBags = startKg > 0 ? Math.max(1, Math.ceil(startKg / 25)) : 0;
+  var finishBags = Math.max(1, Math.ceil(finishKg / 20));
+  var totalKg = startKg + finishKg;
+
+  var out = f.total('Всего шпаклёвки', f.num(totalKg, 0) + ' кг',
+    (startBags > 0 ? (startBags + ' меш. старт + ') : '') + finishBags + ' меш. финиш, с запасом 10%');
+
+  var trows = [];
+  if (startKg > 0) {
+    trows.push(f.row('Стартовая', f.num(startKg, 0) + ' кг',
+      '≈ ' + startBags + ' × 25 кг, слой ' + f.num(startMm, 1) + ' мм'));
+  }
+  trows.push(f.row('Финишная', f.num(finishKg, 0) + ' кг',
+    '≈ ' + finishBags + ' × 20 кг, ' + finishSloi + ' ' + (finishSloi === 1 ? 'слой' : 'слоя')));
+  if (gruntL > 0) {
+    trows.push(f.row('Грунтовка', f.num(gruntL, 1) + ' л', gruntCoats + ' прохода, 0,15 л/м²'));
+  }
+  if (lentaM > 0) {
+    trows.push(f.row('Лента на швы', f.num(lentaM, 0) + ' пог. м', 'серпянка по стыкам ГКЛ'));
+  }
+  trows.push(f.row('Шлифовальная сетка', setka + ' лист.', 'P120 между слоями, P180 финиш'));
+
+  var cost = 0;
+  if (v.cenaStart > 0 && startBags > 0) { cost += startBags * v.cenaStart; }
+  if (v.cenaFinish > 0) { cost += finishBags * v.cenaFinish; }
+  if (cost > 0) { trows.push(f.row('Стоимость шпаклёвки', f.money(cost), 'без грунта, сетки и работ')); }
+
+  out += f.table(trows, 'Как получилось');
+
+  out += f.note('Под покраску финиш кладут тонко и в два слоя со шлифовкой между ними, а под боковой свет — в три. ' +
+    'Грунтуйте перед каждым слоем и перед краской: это убирает полосы от неравномерного впитывания.');
+
+  return out;
+});
+</script>
