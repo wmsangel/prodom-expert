@@ -252,7 +252,7 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'url'   => 'https://ru.trackerpro.org/6ac72c96d7811?erid=2SDnjcJ8CBq',
         'icon'  => '🧰',
         'tags'  => ['instrumenty-dlya-remonta', 'krepezh-v-stenu-dyubeli-i-ankery',
-                    'shtroblenie-sten-pod-provodku'],
+                    'shtroblenie-sten-pod-provodku', 'elektrika', 'led-podsvetka-nishi-i-karnizov'],
       ],
       // Бигам (bigam.ru) — электро/садовая/климат-техника, генераторы, ИБП (Indoleads, одобрен
       // 2026-10-08, 2.58%). Теги — уникальные для него страницы, где не конкурирует с
@@ -266,20 +266,10 @@ if (!function_exists('domexpert_affiliate_offers')) {
         'icon'  => '🔌',
         'tags'  => ['ibp-i-generator-dlya-doma', 'povysitelnyy-nasos-v-kvartire'],
       ],
-      // Мегамаркет (Сбер) УБРАН 2026-10-06: программа приостановлена (Program is suspended)
-      // в партнёрской сети — ссылка не монетизировалась. На «технических» страницах теперь
-      // подхватывается следующий оффер (AliExpress). Вернуть — восстановив запись с рабочим deeplink.
-      [
-        'id'    => 'aliexpress',
-        'title' => 'AliExpress',
-        'desc'  => 'Инструмент, LED-подсветка, умный дом и фурнитура с доставкой.',
-        'cta'   => 'Смотреть на AliExpress',
-        'url'   => 'https://rzekl.com/g/1e8d1144945593ebc04816525dc3e8/',
-        'icon'  => '🛒',
-        'tags'  => ['elektrika', 'led-podsvetka-nishi-i-karnizov', 'svetovye-stsenarii-v-kvartire',
-                    'zamery-okon-dlya-zakaza', 'instrumenty-dlya-remonta',
-                    'dvernaya-furnitura-ruchki-zamki-petli', 'ukhod-za-furniturou-okon'],
-      ],
+      // Мегамаркет (Сбер) УБРАН 2026-10-06 (программа приостановлена).
+      // AliExpress УБРАН 2026-11-11 по правилу сети (AliExpress не используем; товарный
+      // diplink не держал цель — уходил на главную). Электрические/LED/инструментальные
+      // страницы теперь закрывает ВсеИнструменты (тег 'elektrika' добавлен выше).
       [
         'id'    => 'malare',
         'title' => 'Malare',
