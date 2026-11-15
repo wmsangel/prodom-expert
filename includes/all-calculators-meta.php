@@ -154,6 +154,18 @@ function domexpert_all_calculators_meta(): array
                      'potolok-pod-pokrasku-vyravnivanie', 'gipsokarton-peregorodki-i-potolki',
                      'gruntovka-sten-osnovy'],
     ],
+
+    'lak-dlya-pola' => [
+      'group'    => 'materialy',
+      'title'    => 'Калькулятор лака для паркета и пола: литры на слои',
+      'h1'       => 'Расчёт лака для пола',
+      'desc'     => 'Сколько литров паркетного лака и грунт-лака нужно на пол по площади и числу слоёв. Расход 10 м²/л, запас на первый слой по голому дереву, шлифовка между слоями и стоимость.',
+      'lead'     => 'Износ пола держит верхний слой лака, а не дерево. Калькулятор считает литры под 2–4 слоя, грунт-лак и число проходов шлифовки.',
+      'level'    => 'простой',
+      'related'  => ['ciklevka-parketa-svoimi-rukami', 'parketnaya-doska-montazh-i-uhod',
+                     'napolnye-pokrytiya-sravnenie-2026', 'probkovyy-pol-plyusy-minusy',
+                     'styk-napolnyh-pokrytiy-porogi'],
+    ],
     'plitka' => [
       'group'    => 'materialy',
       'title'    => 'Калькулятор плитки: количество, подрезка, клей и затирка',
@@ -384,6 +396,7 @@ function domexpert_calculator_match_keywords(): array
     'plintus'                   => ['плинтус'],
     'shtukaturka'               => ['штукатур'],
     'shpaklevka'                => ['шпаклёвк', 'шпаклевк', 'шпатлёвк', 'шпатлевк'],
+    'lak-dlya-pola'             => ['лакиров', 'циклёвк', 'циклевк', 'паркетн'],
     'plitka'                    => ['плитк', 'керамогранит', 'кафел'],
     'styazhka'                  => ['стяжк', 'наливн'],
     'peregorodka-bloki'         => ['перегородк', 'газоблок', 'пеноблок', 'газобетон'],
