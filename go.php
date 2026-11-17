@@ -40,8 +40,11 @@ if (!$url) {
 // на каждой навигации, а Referer на нашем хосте есть, т.к. ссылки идут с
 // rel="...noopener" БЕЗ noreferrer.
 $site = strtolower($_SERVER['HTTP_SEC_FETCH_SITE'] ?? '');
+$mode = strtolower($_SERVER['HTTP_SEC_FETCH_MODE'] ?? '');
 $ua   = $_SERVER['HTTP_USER_AGENT'] ?? '';
 $ref  = $_SERVER['HTTP_REFERER'] ?? '';
+$secPurpose    = strtolower($_SERVER['HTTP_SEC_PURPOSE'] ?? '');
+$legacyPurpose = strtolower($_SERVER['HTTP_PURPOSE'] ?? ($_SERVER['HTTP_X_MOZ'] ?? ($_SERVER['HTTP_X_PURPOSE'] ?? '')));
 
 $ourHosts = ['prodom-expert.ru', 'www.prodom-expert.ru',
              'prodom-expert.com', 'www.prodom-expert.com', 'prodom-expert.pages.dev'];
@@ -50,11 +53,16 @@ if ($ref !== '') {
   $h = parse_url($ref, PHP_URL_HOST);
   if ($h) { $sameHost = in_array(strtolower($h), $ourHosts, true); }
 }
+// Предзагрузка/предрендер браузера — не клик человека (главный источник накрутки).
+$isPrefetch   = (bool) preg_match('/prefetch|prerender/', $secPurpose)
+             || (bool) preg_match('/prefetch|prerender|preview/', $legacyPurpose);
 $cameFromUs   = ($site === 'same-origin' || $site === 'same-site' || $sameHost);
 $looksLikeBot = (stripos($ua, 'Mozilla') === false)
-             || preg_match('/\b(bot|crawler|spider|scrape|preview|headless|monitor)\b/i', $ua);
+             || preg_match('/\b(bot|crawler|spider|scrape|preview|headless|monitor|fetch|curl|wget|python|axios|java|go-http|okhttp|libwww)\b/i', $ua);
+// Не навигация верхнего уровня (fetch/XHR/iframe/скрипт) — не клик по ссылке.
+$notNavigation = ($mode !== '' && $mode !== 'navigate');
 
-if (!$cameFromUs || $looksLikeBot) {
+if ($isPrefetch || $looksLikeBot || !$cameFromUs || $notNavigation) {
   http_response_code(204);   // без Location — сеть не засчитает это как клик
   exit;
 }

@@ -22,16 +22,33 @@ export const onRequest = async ({ params, request }) => {
   let url = OFFERS[id];
   if (!url) return new Response("Not found", { status: 404, headers: NOINDEX });
 
-  const site = request.headers.get("sec-fetch-site");
-  const ua = request.headers.get("user-agent") ?? "";
-  const ref = request.headers.get("referer") ?? "";
+  const h = request.headers;
+  const site = h.get("sec-fetch-site");
+  const mode = h.get("sec-fetch-mode");
+  const ua = h.get("user-agent") ?? "";
+  const ref = h.get("referer") ?? "";
+  const secPurpose = (h.get("sec-purpose") || "").toLowerCase();
+  const legacyPurpose = (h.get("purpose") || h.get("x-moz") || h.get("x-purpose") || "").toLowerCase();
+
   let sameHost = false;
   try { sameHost = OUR_HOSTS.includes(new URL(ref).host.toLowerCase()); } catch { /* нет/мусор */ }
-  const cameFromUs = site === "same-origin" || site === "same-site" || sameHost;
-  const looksLikeBot = !/Mozilla/i.test(ua)
-    || /\b(bot|crawler|spider|scrape|preview|headless|monitor)\b/i.test(ua);
 
-  if (!cameFromUs || looksLikeBot) {
+  // Клик засчитываем ТОЛЬКО если это реальный человеческий переход с нашей страницы.
+  // Отсекаем (→204, сеть клик не видит):
+  // 1) предзагрузку/предрендер браузера — главный источник накрутки (Sec-Purpose: prefetch,
+  //    а также legacy Purpose/X-Moz/X-Purpose). Пользователь ссылку не открывал.
+  const isPrefetch = /prefetch|prerender/.test(secPurpose)
+    || /prefetch|prerender|preview/.test(legacyPurpose);
+  // 2) не-браузер / бот / наши curl-сканы по UA.
+  const looksLikeBot = !/Mozilla/i.test(ua)
+    || /\b(bot|crawler|spider|scrape|preview|headless|monitor|fetch|curl|wget|python|axios|java|go-http|okhttp|libwww)\b/i.test(ua);
+  // 3) переход не с нашей страницы (прямой заход по /go/<id>, чужой реферер).
+  const cameFromUs = site === "same-origin" || site === "same-site" || sameHost;
+  // 4) не навигация верхнего уровня: реальный клик по ссылке = Sec-Fetch-Mode navigate.
+  //    fetch/XHR/iframe/скрипт присылают cors/no-cors/same-origin — это не клик.
+  const notNavigation = mode !== null && mode !== "navigate";
+
+  if (isPrefetch || looksLikeBot || !cameFromUs || notNavigation) {
     return new Response(null, { status: 204, headers: NOINDEX });
   }
 
