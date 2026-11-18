@@ -265,11 +265,18 @@ document.addEventListener('DOMContentLoaded', function () {
   // Сетевое соглашение: у КАЖДОГО события есть параметр item (главный, строка — что именно
   // произошло). Если явно не задан — выводим из осмысленного поля (calc/slug/dest/q/net/from).
   window.duTrack = function (name, params) {
-    try { if (localStorage.getItem('cookie_consent') === 'necessary') return; } catch (e) {}
     params = params || {};
     if (params.item == null || params.item === '') {
       params.item = params.calc || params.slug || params.dest || params.q || params.net || params.from || params.page || '';
     }
+    // Сетевой маячок без куки (b.izntools.com): шлём ВСЕГДА — согласия не требует,
+    // сам отбирает стандартные ключи. Очередь — если b.js ещё не загрузился.
+    try {
+      if (window.iznTrack) window.iznTrack(name, params);
+      else (window.iznTrackQ = window.iznTrackQ || []).push([name, params]);
+    } catch (e) {}
+    // GA4 + Яндекс.Метрика (ставят куки) — уважают согласие.
+    try { if (localStorage.getItem('cookie_consent') === 'necessary') return; } catch (e) {}
     try { if (typeof window.ym === 'function') window.ym(YM_ID, 'reachGoal', name, params); } catch (e) {}
     try { if (typeof window.gtag === 'function') window.gtag('event', name, params); } catch (e) {}
   };
@@ -297,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var rel = (a.getAttribute('rel') || '');
     if (rel.indexOf('sponsored') !== -1) {
       var host = ''; try { host = new URL(a.href).hostname; } catch (_) {}
-      window.duTrack('affiliate_click', { item: a.getAttribute('data-ad') || host, placement: 'in_article', platform: affPlatform(host), page: location.pathname, dest: host });
+      window.duTrack('affiliate_click', { item: a.getAttribute('data-ad') || host, placement: 'in_article', network: affPlatform(host), platform: affPlatform(host), page: location.pathname, dest: host });
       return;
     }
     // Слайд на главной

@@ -74,6 +74,20 @@ file_put_contents("scripts/static/functions/go/offers.js", $out);
 fwrite(STDERR, "  ✓ offers.js: ".count($m)." партнёрских целей для /go\n");
 '
 
+# 3a-ter) Словарь инструментов для сетевого маячка: /izn-tools.json (slug → название).
+IZN_OUT="$OUT" php -r '
+require "includes/all-calculators-meta.php";
+$calcs = domexpert_all_calculators_meta();
+$tools = [];
+foreach ($calcs as $slug => $c) {
+  if (!is_array($c) || $slug === "related") { continue; }
+  $tools[$slug] = $c["h1"] ?? $c["title"] ?? $slug;
+}
+$json = json_encode(["site"=>"prodom-expert.com","tools"=>$tools], JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+file_put_contents(getenv("IZN_OUT")."/izn-tools.json", $json);
+fwrite(STDERR, "  ✓ izn-tools.json: ".count($tools)." инструментов\n");
+'
+
 # 3b) Поиск: статический индекс Pagefind + его UI на странице /search.php.
 if npx -y pagefind --site "$OUT" >/tmp/pagefind.log 2>&1 && [ -f "$OUT/search.php" ]; then
   python3 - "$OUT/search.php" <<'PY'

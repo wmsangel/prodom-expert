@@ -298,6 +298,13 @@ if (!function_exists('esc')) {
     setTimeout(loadAds, 3000); // fallback для пассивных читателей
   })();
   </script>
+
+  <!-- Сетевой маячок событий без куки (izn-beacon). Считает действия для ВСЕХ
+       посетителей, согласия не требует (не ставит куки/IP). Дублирует GA4, см.
+       izn.project.stats/beacon/README.md. Заглушка + очередь — чтобы ранние
+       события (duTrack в main.js/calc.js) не терялись до загрузки b.js. -->
+  <script>window.iznTrack=window.iznTrack||function(){(window.iznTrackQ=window.iznTrackQ||[]).push(arguments)}</script>
+  <script defer src="https://b.izntools.com/b.js"></script>
 </head>
 <body>
 

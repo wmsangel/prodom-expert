@@ -111,10 +111,12 @@
       for (var i = 0; i < forms.length; i++) {
         (function (form) {
           var name = form.getAttribute('data-calc');
+          // Аналитика (стандарт событий сети): инструмент открыт — одно событие на форму.
+          if (window.duTrack) window.duTrack('tool_opened', { tool: name });
           form.addEventListener('input', function () {
             self.run(name);
-            // Аналитика: одно событие «калькулятор использован» на форму за загрузку
-            if (!form._duTracked) { form._duTracked = true; if (window.duTrack) window.duTrack('calc_submit', { calc: name }); }
+            // Аналитика: инструмент сделал работу — одно событие на форму за загрузку.
+            if (!form._duTracked) { form._duTracked = true; if (window.duTrack) window.duTrack('tool_used', { tool: name, action: 'calc' }); }
           });
           form.addEventListener('change', function () { self.run(name); });
           form.addEventListener('submit', function (e) { e.preventDefault(); self.run(name); });
