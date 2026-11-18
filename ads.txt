@@ -1,4 +1,4 @@
-# ads.txt — авторизованные продавцы рекламы для prodom-expert.ru
+# ads.txt — авторизованные продавцы рекламы для prodom-expert.com
 
 # Google AdSense
 google.com, pub-5535516142831006, DIRECT, f08c47fec0942fa0
