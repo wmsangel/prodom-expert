@@ -432,8 +432,8 @@ if (!function_exists('domexpert_finance_offers')) {
       [
         'id'    => 'alfa-card',
         'kind'  => 'card',
-        'title' => 'Альфа-Карта с кешбэком',
-        'desc'  => 'Кешбэк на покупки и бесплатное обслуживание — удобно платить за стройматериалы и возвращать часть трат.',
+        'title' => 'Альфа-Карта с кэшбэком',
+        'desc'  => 'Кэшбэк на покупки и бесплатное обслуживание — удобно платить за стройматериалы и возвращать часть трат.',
         'cta'   => 'Оформить карту',
         'url'   => 'https://order.zaim-srochno24.ru/click/50387b594f6e7d1e4adb766783e80b90?erid=2W5zFJsuZWH',
         'erid'  => '2W5zFJsuZWH',
@@ -457,10 +457,47 @@ if (!function_exists('domexpert_finance_offers')) {
         'id'    => 'mts-card',
         'kind'  => 'card',
         'title' => 'МТС Деньги — дебетовая карта',
-        'desc'  => 'Кешбэк на повседневные покупки и бесплатное обслуживание. Выпуск и доставка по России.',
+        'desc'  => 'Кэшбэк на повседневные покупки и бесплатное обслуживание. Выпуск и доставка по России.',
         'cta'   => 'Оформить карту',
         'url'   => 'https://order.zaim-srochno24.ru/click/0b28a6f830379afdd3309a2f8b23459b?erid=2W5zFGWDkkh',
         'erid'  => '2W5zFGWDkkh',
+        'adv'   => 'ПАО «МТС-Банк»',
+        'icon'  => '💳',
+        'tags'  => $cardTags,
+      ],
+      [
+        'id'    => 'akbars-card',
+        'kind'  => 'card',
+        'title' => 'Ак Барс — дебетовая карта',
+        'desc'  => 'Кэшбэк на покупки и бесплатное обслуживание от надёжного банка. Выпуск и доставка по России.',
+        'cta'   => 'Оформить карту',
+        'url'   => 'https://order.zaim-srochno24.ru/click/514bebb3e1cae79466a44ab907f63b0a?erid=2W5zFJEyZdj',
+        'erid'  => '2W5zFJEyZdj',
+        'adv'   => 'ПАО «АК БАРС» БАНК',
+        'icon'  => '💳',
+        'tags'  => $cardTags,
+      ],
+      [
+        // ⚠️ Оффер ОТП требует написание «Кэшбэк» через «э» (правило рекламодателя).
+        'id'    => 'otp-card',
+        'kind'  => 'card',
+        'title' => 'ОТП — дебетовая карта',
+        'desc'  => 'Кэшбэк на повседневные и обязательные расходы, бесплатное обслуживание. Доставка по России.',
+        'cta'   => 'Оформить карту',
+        'url'   => 'https://order.zaim-srochno24.ru/click/7bbd0343f4b63415d690c098cfe2f26f?erid=2W5zFK65sSZ',
+        'erid'  => '2W5zFK65sSZ',
+        'adv'   => 'АО «ОТП Банк»',
+        'icon'  => '💳',
+        'tags'  => $cardTags,
+      ],
+      [
+        'id'    => 'mtsbank-card',
+        'kind'  => 'card',
+        'title' => 'МТС Банк «Скидка везде»',
+        'desc'  => 'Скидка на покупки в интернете и магазинах вместо кэшбэка. Бесплатное обслуживание, доставка по России.',
+        'cta'   => 'Оформить карту',
+        'url'   => 'https://order.zaim-srochno24.ru/click/846c326b177612a26fcd2ac2f9a99465?erid=2W5zFK35WgR',
+        'erid'  => '2W5zFK35WgR',
         'adv'   => 'ПАО «МТС-Банк»',
         'icon'  => '💳',
         'tags'  => $cardTags,
@@ -482,14 +519,23 @@ if (!function_exists('domexpert_finance_pick')) {
         return [$o];
       }
     }
+    // Кешбэк-карты: равномерная ротация по странице, чтобы все карты получали
+    // сопоставимый показ и EPC можно было сравнить. Собираем все подходящие, берём
+    // 2 со сдвигом от хэша страницы (детерминированно для статики — на одной странице
+    // всегда одна пара, но разные страницы крутят разные пары через весь набор).
     $cards = [];
     foreach ($all as $o) {
       if (($o['kind'] ?? '') === 'card' && array_intersect($o['tags'] ?? [], $tags)) {
         $cards[] = $o;
-        if (count($cards) >= 2) { break; }
       }
     }
-    return $cards;
+    $n = count($cards);
+    if ($n <= 2) { return $cards; }
+    $pageSlug = $tags[0] ?? '';
+    $off = abs(crc32($pageSlug)) % $n;
+    $out = [];
+    for ($i = 0; $i < 2; $i++) { $out[] = $cards[($off + $i) % $n]; }
+    return $out;
   }
 }
 
@@ -506,7 +552,7 @@ if (!function_exists('domexpert_finance_block')) {
 
     $kind      = $offers[0]['kind'] ?? 'card';
     $pageSlug  = $tags[0] ?? '';
-    $heading   = $kind === 'ipoteka' ? 'Ипотека на квартиру' : 'Кешбэк-карта на стройматериалы';
+    $heading   = $kind === 'ipoteka' ? 'Ипотека на квартиру' : 'Кэшбэк-карта на стройматериалы';
     $placement = $kind === 'ipoteka' ? 'finance_ipoteka' : 'finance_card';
     $rel = 'sponsored nofollow noopener';
 

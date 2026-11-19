@@ -308,7 +308,9 @@ document.addEventListener('DOMContentLoaded', function () {
       // иначе определяем по хосту. placement — из data-placement (финблоки) или 'in_article'.
       var net = a.getAttribute('data-net') || affPlatform(host);
       var placement = a.getAttribute('data-placement') || 'in_article';
-      window.duTrack('affiliate_click', { item: a.getAttribute('data-ad') || host, placement: placement, network: net, platform: net, page: location.pathname, dest: host });
+      var offer = a.getAttribute('data-ad') || '';
+      // offer — конкретный оффер/карта (для сравнения EPC по картам в ротации).
+      window.duTrack('affiliate_click', { item: offer || host, offer: offer, placement: placement, network: net, platform: net, page: location.pathname, dest: host });
       return;
     }
     // Слайд на главной

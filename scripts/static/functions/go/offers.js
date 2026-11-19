@@ -30,6 +30,9 @@ export const OFFERS = {
     "alfa-card": "https://order.zaim-srochno24.ru/click/50387b594f6e7d1e4adb766783e80b90?erid=2W5zFJsuZWH",
     "psb-card": "https://order.zaim-srochno24.ru/click/6f036a2a9b617bc2556a3d23c96540d3?erid=2W5zFFyE2ME",
     "mts-card": "https://order.zaim-srochno24.ru/click/0b28a6f830379afdd3309a2f8b23459b?erid=2W5zFGWDkkh",
+    "akbars-card": "https://order.zaim-srochno24.ru/click/514bebb3e1cae79466a44ab907f63b0a?erid=2W5zFJEyZdj",
+    "otp-card": "https://order.zaim-srochno24.ru/click/7bbd0343f4b63415d690c098cfe2f26f?erid=2W5zFK65sSZ",
+    "mtsbank-card": "https://order.zaim-srochno24.ru/click/846c326b177612a26fcd2ac2f9a99465?erid=2W5zFK35WgR",
     "banner-divanboss": "https://zallj.com/g/g3odrskrah5593ebc048fb3b97602e/?i=4&erid=2bL9aMPo2e49hMef4rqUKy1pYL",
     "banner-profi": "https://dkfrh.com/g/9oieanlurm5593ebc0487e4bf1243c/?i=4&erid=2bL9aMPo2e49hMef4rqyCujmBL"
 };
