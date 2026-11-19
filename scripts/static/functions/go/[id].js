@@ -52,13 +52,18 @@ export const onRequest = async ({ params, request }) => {
     return new Response(null, { status: 204, headers: NOINDEX });
   }
 
-  // subid — помечаем страницу-источник, только для Admitad-deeplink (/g/ или /c/).
+  // sub-id — помечаем страницу-источник. Формат метки зависит от сети:
+  //  • Admitad-deeplink (путь /g/ или /c/) → subid=<p>
+  //  • Leads.su (трекер order.zaim-srochno24.ru) → aff_sub1=<p>
   const p = (new URL(request.url)).searchParams.get("p") || "";
   const psafe = p.replace(/[^A-Za-z0-9_-]/g, "");
   if (psafe) {
     try {
-      if (/\/[gc]\//.test(new URL(url).pathname)) {
+      const u = new URL(url);
+      if (/\/[gc]\//.test(u.pathname)) {
         url += (url.includes("?") ? "&" : "?") + "subid=" + encodeURIComponent(psafe);
+      } else if (u.host.toLowerCase().indexOf("zaim-srochno24") !== -1) {
+        url += (url.includes("?") ? "&" : "?") + "aff_sub1=" + encodeURIComponent(psafe);
       }
     } catch { /* оставляем url как есть */ }
   }

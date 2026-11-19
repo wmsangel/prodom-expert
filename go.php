@@ -73,8 +73,12 @@ if ($isPrefetch || $looksLikeBot || !$cameFromUs || $notNavigation) {
 $p = isset($_GET['p']) ? preg_replace('/[^A-Za-z0-9_-]/', '', (string) $_GET['p']) : '';
 if ($p !== '') {
   $path = (string) parse_url($url, PHP_URL_PATH);
+  $host = strtolower((string) parse_url($url, PHP_URL_HOST));
   if (preg_match('#/[gc]/#', $path)) {
     $url .= (strpos($url, '?') !== false ? '&' : '?') . 'subid=' . rawurlencode($p);
+  } elseif (strpos($host, 'zaim-srochno24') !== false) {
+    // Leads.su: метка страницы — параметр aff_sub1.
+    $url .= (strpos($url, '?') !== false ? '&' : '?') . 'aff_sub1=' . rawurlencode($p);
   }
 }
 

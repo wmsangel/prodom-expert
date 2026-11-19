@@ -300,11 +300,15 @@ document.addEventListener('DOMContentLoaded', function () {
     if (dt) {
       window.duTrack(dt, { item: a.getAttribute('data-item') || a.getAttribute('data-net') || '', net: a.getAttribute('data-net') || '', page: location.pathname });
     }
-    // Партнёрская ссылка «Где купить» (rel="sponsored …")
+    // Партнёрская ссылка (rel="sponsored …"): «Где купить» и финансовые блоки.
     var rel = (a.getAttribute('rel') || '');
     if (rel.indexOf('sponsored') !== -1) {
       var host = ''; try { host = new URL(a.href).hostname; } catch (_) {}
-      window.duTrack('affiliate_click', { item: a.getAttribute('data-ad') || host, placement: 'in_article', network: affPlatform(host), platform: affPlatform(host), page: location.pathname, dest: host });
+      // Сеть берём из data-net (ссылка ведёт на /go/, хост — наш, не партнёрский),
+      // иначе определяем по хосту. placement — из data-placement (финблоки) или 'in_article'.
+      var net = a.getAttribute('data-net') || affPlatform(host);
+      var placement = a.getAttribute('data-placement') || 'in_article';
+      window.duTrack('affiliate_click', { item: a.getAttribute('data-ad') || host, placement: placement, network: net, platform: net, page: location.pathname, dest: host });
       return;
     }
     // Слайд на главной
@@ -320,4 +324,25 @@ document.addEventListener('DOMContentLoaded', function () {
       if (oh && oh !== SITE_HOST) { window.duTrack('outbound_click', { item: oh }); }
     }
   }, true);
+})();
+
+/* ── Гео-гейт блоков data-geo="RU": финансовые офферы (карты/ипотека) российские,
+   показываем только читателям из РФ. Один запрос к Cloudflare /cdn-cgi/trace
+   (loc=XX). RU → показываем (hidden→false); иначе удаляем блок из DOM. Сбой запроса
+   (не прод / не Cloudflare) → не-RU → блок убираем (на сайте не показывается). */
+(function () {
+  var geoEls = document.querySelectorAll('[data-geo="RU"]');
+  if (!geoEls.length) { return; }
+  function apply(cc) {
+    for (var i = 0; i < geoEls.length; i++) {
+      if (cc === 'RU') { geoEls[i].hidden = false; }
+      else if (geoEls[i].parentNode) { geoEls[i].parentNode.removeChild(geoEls[i]); }
+    }
+  }
+  try {
+    fetch('/cdn-cgi/trace', { cache: 'no-store' })
+      .then(function (r) { return r.text(); })
+      .then(function (t) { var m = /(?:^|\n)loc=([A-Z]{2})/.exec(t); apply(m ? m[1] : null); })
+      .catch(function () { apply(null); });
+  } catch (e) { apply(null); }
 })();

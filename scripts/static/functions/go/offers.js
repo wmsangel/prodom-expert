@@ -17,7 +17,6 @@ export const OFFERS = {
     "mircli": "https://ru.z05o.xyz/6ac72b541437a?erid=2SDnjdZedpF",
     "vseinstrumenti": "https://ru.trackerpro.org/6ac72c96d7811?erid=2SDnjcJ8CBq",
     "bigam": "https://ru.i08o.xyz/6ac72d3482fa4?erid=2SDnjdZynVV",
-    "aliexpress": "https://rzekl.com/g/1e8d1144945593ebc04816525dc3e8/",
     "malare": "https://hvjjg.com/g/km68poc2w35593ebc048e1ad5bc072/?erid=2bL9aMPo2e49hMef4rqUn6AAV2",
     "williamsoliver": "https://ru.z02o.xyz/6ac72d4180378?erid=2SDnjdALgLp",
     "eurodom": "https://yynbx.com/g/wxsxy74ehc5593ebc0482a9bafdd81/?erid=MvGzQC98w3Z1gMq1mSxY8C15",
@@ -27,6 +26,10 @@ export const OFFERS = {
     "maxidom": "https://uuwgc.com/c/vw6dqabpgk5593ebc048b6a2cdd7f0/?erid=25H8d7vbP8SRTvH4HtSZJ1",
     "profi": "https://dkfrh.com/g/zqyi8ot6o25593ebc0487e4bf1243c/?erid=MvGzQC98w3Z1gMq1kwWR4fyN",
     "megastroy": "https://bednari.com/g/xcawb6ikii5593ebc048161cbbe6df/?erid=5jtCeReNwxHpfQTEQWKMenp",
+    "alfa-ipoteka": "https://order.zaim-srochno24.ru/click/a6a5159ccf659cfa57090f935486a02b?erid=2W5zFJR6Pqb",
+    "alfa-card": "https://order.zaim-srochno24.ru/click/50387b594f6e7d1e4adb766783e80b90?erid=2W5zFJsuZWH",
+    "psb-card": "https://order.zaim-srochno24.ru/click/6f036a2a9b617bc2556a3d23c96540d3?erid=2W5zFFyE2ME",
+    "mts-card": "https://order.zaim-srochno24.ru/click/0b28a6f830379afdd3309a2f8b23459b?erid=2W5zFGWDkkh",
     "banner-divanboss": "https://zallj.com/g/g3odrskrah5593ebc048fb3b97602e/?i=4&erid=2bL9aMPo2e49hMef4rqUKy1pYL",
     "banner-profi": "https://dkfrh.com/g/9oieanlurm5593ebc0487e4bf1243c/?i=4&erid=2bL9aMPo2e49hMef4rqyCujmBL"
 };

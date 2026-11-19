@@ -393,6 +393,168 @@ if (!function_exists('domexpert_affiliate_offers')) {
   }
 }
 
+/* ── Финансовые офферы (Leads.su): кешбэк-карты и ипотека ──────────────────────
+ * Отдельный модуль от «Где купить»: своя разметка и ОБЯЗАТЕЛЬНАЯ маркировка
+ * (Реклама + рекламодатель + erid; маркировку ОРД сдаёт Leads). Гео-гейт на RU —
+ * офферы российские, не-RU читателям блок не показываем (data-geo="RU", скрытие
+ * до проверки страны в main.js). Клик идёт через /go/<id> (фильтр ботов); sub-id
+ * страницы шлюз добавляет как aff_sub1 (трекер order.zaim-srochno24.ru).
+ * События: affiliate_click{network:"leadssu", placement}. Ссылки собраны из
+ * кабинета Leads (площадка 1343118 «ДомЭксперт»).
+ */
+if (!function_exists('domexpert_finance_offers')) {
+  function domexpert_finance_offers(): array {
+    // Общие теги страниц для кешбэк-карт: смета/бюджет/материалы (оплата стройки).
+    $cardTags = [
+      'smeta', 'materialy',
+      'smeta-remonta-kvartiry', 'smeta-remonta-chastnogo-doma',
+      'otkuda-berutsya-ceny-na-remont', 'chto-vhodit-v-remont-pod-klyuch',
+      'raschet-materialov-dlya-remonta', 'chek-list-zakupok-do-nachala-remonta',
+      'zakupki-stroymaterialov-onlayn',
+    ];
+    return [
+      // Ипотека — на страницах про покупку/капремонт квартиры (крупная трата).
+      [
+        'id'    => 'alfa-ipoteka',
+        'kind'  => 'ipoteka',
+        'title' => 'Ипотека в Альфа-Банке',
+        'desc'  => 'Новостройка, вторичка и рефинансирование. Предварительное решение онлайн — чтобы спланировать бюджет покупки и ремонта.',
+        'cta'   => 'Рассчитать ипотеку',
+        'url'   => 'https://order.zaim-srochno24.ru/click/a6a5159ccf659cfa57090f935486a02b?erid=2W5zFJR6Pqb',
+        'erid'  => '2W5zFJR6Pqb',
+        'adv'   => 'АО «Альфа-Банк»',
+        'icon'  => '🏦',
+        'tags'  => ['remont-v-novostroyke-s-chego-nachat', 'remont-vtorichki-chto-menyat',
+                    'kapitalnyy-remont-kvartiry-polnyy-gid', 'byudzhet-kapitalnogo-remonta-raschet',
+                    'dizayn-proekt-kvartiry-sostav-cena'],
+      ],
+      // Кешбэк-карты — на страницах про смету/материалы («кешбэк на стройматериалы»).
+      [
+        'id'    => 'alfa-card',
+        'kind'  => 'card',
+        'title' => 'Альфа-Карта с кешбэком',
+        'desc'  => 'Кешбэк на покупки и бесплатное обслуживание — удобно платить за стройматериалы и возвращать часть трат.',
+        'cta'   => 'Оформить карту',
+        'url'   => 'https://order.zaim-srochno24.ru/click/50387b594f6e7d1e4adb766783e80b90?erid=2W5zFJsuZWH',
+        'erid'  => '2W5zFJsuZWH',
+        'adv'   => 'АО «Альфа-Банк»',
+        'icon'  => '💳',
+        'tags'  => $cardTags,
+      ],
+      [
+        'id'    => 'psb-card',
+        'kind'  => 'card',
+        'title' => 'ПСБ «Твой кешбэк»',
+        'desc'  => 'Дебетовая карта с кешбэком до 5% в выбранных категориях и бесплатным обслуживанием.',
+        'cta'   => 'Оформить карту',
+        'url'   => 'https://order.zaim-srochno24.ru/click/6f036a2a9b617bc2556a3d23c96540d3?erid=2W5zFFyE2ME',
+        'erid'  => '2W5zFFyE2ME',
+        'adv'   => 'ПАО «Промсвязьбанк»',
+        'icon'  => '💳',
+        'tags'  => $cardTags,
+      ],
+      [
+        'id'    => 'mts-card',
+        'kind'  => 'card',
+        'title' => 'МТС Деньги — дебетовая карта',
+        'desc'  => 'Кешбэк на повседневные покупки и бесплатное обслуживание. Выпуск и доставка по России.',
+        'cta'   => 'Оформить карту',
+        'url'   => 'https://order.zaim-srochno24.ru/click/0b28a6f830379afdd3309a2f8b23459b?erid=2W5zFGWDkkh',
+        'erid'  => '2W5zFGWDkkh',
+        'adv'   => 'ПАО «МТС-Банк»',
+        'icon'  => '💳',
+        'tags'  => $cardTags,
+      ],
+    ];
+  }
+}
+
+if (!function_exists('domexpert_finance_pick')) {
+  /**
+   * Выбор финансовых офферов под теги страницы. Ипотека приоритетнее: если
+   * страница про покупку/капремонт — показываем её (1 оффер). Иначе кешбэк-карты
+   * (до 2). Так на странице один связный блок одного вида, без мешанины.
+   */
+  function domexpert_finance_pick(array $tags = []): array {
+    $all = domexpert_finance_offers();
+    foreach ($all as $o) {
+      if (($o['kind'] ?? '') === 'ipoteka' && array_intersect($o['tags'] ?? [], $tags)) {
+        return [$o];
+      }
+    }
+    $cards = [];
+    foreach ($all as $o) {
+      if (($o['kind'] ?? '') === 'card' && array_intersect($o['tags'] ?? [], $tags)) {
+        $cards[] = $o;
+        if (count($cards) >= 2) { break; }
+      }
+    }
+    return $cards;
+  }
+}
+
+if (!function_exists('domexpert_finance_block')) {
+  /**
+   * Рендерит финансовый блок (кешбэк-карты или ипотека) под теги страницы.
+   * Пусто, если подходящих офферов нет. Скрыт (hidden, data-geo="RU") до проверки
+   * страны — показываем только RU-читателям. Каждый оффер несёт свою маркировку
+   * «Реклама · <рекламодатель> · erid», data-net="leadssu" и data-placement.
+   */
+  function domexpert_finance_block(array $tags = []): string {
+    $offers = domexpert_finance_pick($tags);
+    if (!$offers) { return ''; }
+
+    $kind      = $offers[0]['kind'] ?? 'card';
+    $pageSlug  = $tags[0] ?? '';
+    $heading   = $kind === 'ipoteka' ? 'Ипотека на квартиру' : 'Кешбэк-карта на стройматериалы';
+    $placement = $kind === 'ipoteka' ? 'finance_ipoteka' : 'finance_card';
+    $rel = 'sponsored nofollow noopener';
+
+    $items = '';
+    foreach ($offers as $o) {
+      $url   = htmlspecialchars(domexpert_go_href($o['id'] ?? '', $pageSlug), ENT_QUOTES, 'UTF-8');
+      $title = htmlspecialchars($o['title'], ENT_QUOTES, 'UTF-8');
+      $desc  = htmlspecialchars($o['desc'] ?? '', ENT_QUOTES, 'UTF-8');
+      $cta   = htmlspecialchars($o['cta'] ?? 'Перейти', ENT_QUOTES, 'UTF-8');
+      $icon  = htmlspecialchars($o['icon'] ?? '💳', ENT_QUOTES, 'UTF-8');
+      $id    = htmlspecialchars($o['id'] ?? '', ENT_QUOTES, 'UTF-8');
+      $erid  = htmlspecialchars($o['erid'] ?? '', ENT_QUOTES, 'UTF-8');
+      $adv   = htmlspecialchars($o['adv'] ?? '', ENT_QUOTES, 'UTF-8');
+      $mark  = 'Реклама' . ($adv !== '' ? ' · ' . $adv : '') . ($erid !== '' ? ' · erid: ' . $erid : '');
+      $items .= <<<HTML
+    <a class="fin-item" href="{$url}" target="_blank" rel="{$rel}" data-ad="{$id}" data-net="leadssu" data-placement="{$placement}">
+      <span class="fin-icon" aria-hidden="true">{$icon}</span>
+      <span class="fin-text"><strong class="fin-title">{$title}</strong><span class="fin-desc">{$desc}</span><span class="fin-mark">{$mark}</span></span>
+      <span class="fin-cta">{$cta} →</span>
+    </a>
+
+HTML;
+    }
+    $h = htmlspecialchars($heading, ENT_QUOTES, 'UTF-8');
+    return <<<HTML
+<aside class="fin-block" data-geo="RU" hidden aria-label="Финансовые предложения">
+  <p class="fin-head">{$h}</p>
+{$items}</aside>
+HTML;
+  }
+}
+
+if (!function_exists('domexpert_aff_network')) {
+  /**
+   * Партнёрская сеть по хосту реального deeplink (для data-net в разметке →
+   * корректный параметр network в affiliate_click). Зеркало affPlatform() из
+   * main.js, плюс leadssu (финансовые офферы).
+   */
+  function domexpert_aff_network(string $url): string {
+    $host = strtolower((string) parse_url($url, PHP_URL_HOST));
+    if ($host === '') { return 'admitad'; }
+    if (strpos($host, 'zaim-srochno24') !== false) { return 'leadssu'; }
+    if (preg_match('/^ru\.|\.xyz$|trackerpro|gettracker|io0\d|io10|z0\d|i0\d/', $host)) { return 'indoleads'; }
+    if (strpos($host, 'ytebb.com') !== false) { return 'sbermarketing'; }
+    return 'admitad';
+  }
+}
+
 if (!function_exists('domexpert_go_targets')) {
   /**
    * Карта id → партнёрский deeplink для редиректора /go/<id>.
@@ -402,6 +564,10 @@ if (!function_exists('domexpert_go_targets')) {
   function domexpert_go_targets(): array {
     $map = [];
     foreach (domexpert_affiliate_offers() as $o) {
+      if (!empty($o['id']) && !empty($o['url'])) { $map[$o['id']] = $o['url']; }
+    }
+    // Финансовые офферы (Leads.su) — тоже через /go/<id> (шлюз добавит aff_sub1).
+    foreach (domexpert_finance_offers() as $o) {
       if (!empty($o['id']) && !empty($o['url'])) { $map[$o['id']] = $o['url']; }
     }
     // Баннеры сайдбара (у них своя ссылка с ?i=4, не из реестра офферов):
@@ -474,8 +640,9 @@ if (!function_exists('domexpert_affiliate_block')) {
       $cta   = htmlspecialchars($o['cta'] ?? 'Перейти', ENT_QUOTES, 'UTF-8');
       $icon  = htmlspecialchars($o['icon'] ?? '🛒', ENT_QUOTES, 'UTF-8');
       $id    = htmlspecialchars($o['id'] ?? '', ENT_QUOTES, 'UTF-8');
+      $net   = htmlspecialchars(domexpert_aff_network($o['url'] ?? ''), ENT_QUOTES, 'UTF-8');
       $items .= <<<HTML
-    <a class="aff-item" href="{$url}" target="_blank" rel="{$rel}" data-ad="{$id}">
+    <a class="aff-item" href="{$url}" target="_blank" rel="{$rel}" data-ad="{$id}" data-net="{$net}">
       <span class="aff-icon" aria-hidden="true">{$icon}</span>
       <span class="aff-text"><strong class="aff-title">{$title}</strong><span class="aff-desc">{$desc}</span></span>
       <span class="aff-cta">{$cta} →</span>

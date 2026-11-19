@@ -226,6 +226,11 @@ if (!$articleMissing) {
       $articleHtml .= "\n" . $inArticleAd;
     }
   }
+  // Финансовый блок (Leads.su): ипотека на страницах покупки/капремонта, кешбэк-
+  // карты на смете/материалах. Внизу статьи, отдельной маркировкой. Скрыт до
+  // проверки страны — показывается только RU-читателям (data-geo="RU").
+  $financeAd = domexpert_finance_block([$slug, $meta['catSlug'] ?? '']);
+  if ($financeAd !== '') { $articleHtml .= "\n" . $financeAd; }
 }
 
 // AdSense: рекламные блоки по объёму статьи (карта плотности), между разделами <h2>.
