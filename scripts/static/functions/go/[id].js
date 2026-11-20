@@ -29,6 +29,7 @@ export const onRequest = async ({ params, request }) => {
   const ref = h.get("referer") ?? "";
   const secPurpose = (h.get("sec-purpose") || "").toLowerCase();
   const legacyPurpose = (h.get("purpose") || h.get("x-moz") || h.get("x-purpose") || "").toLowerCase();
+  const secUser = h.get("sec-fetch-user");
 
   let sameHost = false;
   try { sameHost = OUR_HOSTS.includes(new URL(ref).host.toLowerCase()); } catch { /* нет/мусор */ }
@@ -47,8 +48,13 @@ export const onRequest = async ({ params, request }) => {
   // 4) не навигация верхнего уровня: реальный клик по ссылке = Sec-Fetch-Mode navigate.
   //    fetch/XHR/iframe/скрипт присылают cors/no-cors/same-origin — это не клик.
   const notNavigation = mode !== null && mode !== "navigate";
+  // 5) навигация без жеста пользователя: реальный клик по ссылке = Sec-Fetch-User ?1.
+  //    Браузер шлёт его при навигации по действию пользователя; боты, подделавшие
+  //    Sec-Fetch-Mode=navigate, обычно не ставят ?1. Применяем только когда заголовок
+  //    прислан (mode=navigate и secUser не null), чтобы не резать старые браузеры.
+  const noUserGesture = mode === "navigate" && secUser !== null && secUser !== "?1";
 
-  if (isPrefetch || looksLikeBot || !cameFromUs || notNavigation) {
+  if (isPrefetch || looksLikeBot || !cameFromUs || notNavigation || noUserGesture) {
     return new Response(null, { status: 204, headers: NOINDEX });
   }
 

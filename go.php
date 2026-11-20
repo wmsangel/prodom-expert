@@ -45,6 +45,7 @@ $ua   = $_SERVER['HTTP_USER_AGENT'] ?? '';
 $ref  = $_SERVER['HTTP_REFERER'] ?? '';
 $secPurpose    = strtolower($_SERVER['HTTP_SEC_PURPOSE'] ?? '');
 $legacyPurpose = strtolower($_SERVER['HTTP_PURPOSE'] ?? ($_SERVER['HTTP_X_MOZ'] ?? ($_SERVER['HTTP_X_PURPOSE'] ?? '')));
+$secUser       = $_SERVER['HTTP_SEC_FETCH_USER'] ?? null;
 
 $ourHosts = ['prodom-expert.ru', 'www.prodom-expert.ru',
              'prodom-expert.com', 'www.prodom-expert.com', 'prodom-expert.pages.dev'];
@@ -61,8 +62,11 @@ $looksLikeBot = (stripos($ua, 'Mozilla') === false)
              || preg_match('/\b(bot|crawler|spider|scrape|preview|headless|monitor|fetch|curl|wget|python|axios|java|go-http|okhttp|libwww)\b/i', $ua);
 // Не навигация верхнего уровня (fetch/XHR/iframe/скрипт) — не клик по ссылке.
 $notNavigation = ($mode !== '' && $mode !== 'navigate');
+// Навигация без жеста пользователя: реальный клик = Sec-Fetch-User ?1. Применяем,
+// только когда заголовок прислан (mode=navigate и secUser не null) — не режем старые браузеры.
+$noUserGesture = ($mode === 'navigate' && $secUser !== null && $secUser !== '?1');
 
-if ($isPrefetch || $looksLikeBot || !$cameFromUs || $notNavigation) {
+if ($isPrefetch || $looksLikeBot || !$cameFromUs || $notNavigation || $noUserGesture) {
   http_response_code(204);   // без Location — сеть не засчитает это как клик
   exit;
 }
