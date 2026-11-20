@@ -49,10 +49,10 @@ export const onRequest = async ({ params, request }) => {
   //    fetch/XHR/iframe/скрипт присылают cors/no-cors/same-origin — это не клик.
   const notNavigation = mode !== null && mode !== "navigate";
   // 5) навигация без жеста пользователя: реальный клик по ссылке = Sec-Fetch-User ?1.
-  //    Браузер шлёт его при навигации по действию пользователя; боты, подделавшие
-  //    Sec-Fetch-Mode=navigate, обычно не ставят ?1. Применяем только когда заголовок
-  //    прислан (mode=navigate и secUser не null), чтобы не резать старые браузеры.
-  const noUserGesture = mode === "navigate" && secUser !== null && secUser !== "?1";
+  //    Браузер, присылающий Sec-Fetch-Mode=navigate, при клике человека шлёт и ?1;
+  //    его отсутствие/иное значение при mode=navigate = не клик (скрипт/бот) → 204.
+  //    Старые браузеры без Sec-Fetch шлют mode=null → сюда не попадают (ветка выше).
+  const noUserGesture = mode === "navigate" && secUser !== "?1";
 
   if (isPrefetch || looksLikeBot || !cameFromUs || notNavigation || noUserGesture) {
     return new Response(null, { status: 204, headers: NOINDEX });

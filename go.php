@@ -62,9 +62,10 @@ $looksLikeBot = (stripos($ua, 'Mozilla') === false)
              || preg_match('/\b(bot|crawler|spider|scrape|preview|headless|monitor|fetch|curl|wget|python|axios|java|go-http|okhttp|libwww)\b/i', $ua);
 // Не навигация верхнего уровня (fetch/XHR/iframe/скрипт) — не клик по ссылке.
 $notNavigation = ($mode !== '' && $mode !== 'navigate');
-// Навигация без жеста пользователя: реальный клик = Sec-Fetch-User ?1. Применяем,
-// только когда заголовок прислан (mode=navigate и secUser не null) — не режем старые браузеры.
-$noUserGesture = ($mode === 'navigate' && $secUser !== null && $secUser !== '?1');
+// Навигация без жеста пользователя: реальный клик = Sec-Fetch-User ?1. При mode=navigate
+// браузер человека шлёт ?1; его отсутствие/иное значение = не клик (скрипт/бот). Старые
+// браузеры без Sec-Fetch шлют mode='' → сюда не попадают (ветка $notNavigation выше их пускает).
+$noUserGesture = ($mode === 'navigate' && $secUser !== '?1');
 
 if ($isPrefetch || $looksLikeBot || !$cameFromUs || $notNavigation || $noUserGesture) {
   http_response_code(204);   // без Location — сеть не засчитает это как клик
