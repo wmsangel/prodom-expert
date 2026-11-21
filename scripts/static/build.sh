@@ -45,9 +45,9 @@ done <<< "$PATHS
 $CALCS
 /search.php"
 
-# 3) Статика: assets, favicon (ads.txt удалён 21.11.2026 — AdSense снят)
+# 3) Статика: assets, favicon, ads.txt (ads.txt пустой — AdSense снят 21.11.2026)
 cp -R assets "$OUT/assets"
-cp favicon.ico "$OUT/" 2>/dev/null || true
+cp favicon.ico ads.txt "$OUT/" 2>/dev/null || true
 
 # 3-404) Страница 404. Cloudflare Pages отдаёт dist/404.html со статусом 404 на
 # любой несуществующий путь (иначе Pages отдавал бы главную 200 = soft-404).
@@ -120,6 +120,9 @@ cat > "$OUT/_headers" <<'HED'
   Content-Type: text/html; charset=utf-8
 /rss.php
   Content-Type: application/rss+xml; charset=utf-8
+# ads.txt — короткий кэш: чтобы изменения (снятие AdSense) не висели на краю CF.
+/ads.txt
+  Cache-Control: public, max-age=300, s-maxage=300
 HED
 
 # 6) Отчёт
