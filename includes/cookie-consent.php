@@ -1,17 +1,17 @@
 <?php
 /**
  * includes/cookie-consent.php
- * Баннер согласия на cookie. Управляет рекламными и аналитическими cookie через
- * Google Consent Mode v2 — значения по умолчанию заданы в header.php ещё до
- * загрузки рекламы. Выбор сохраняется в localStorage; изменить его можно по
- * ссылке «Настройки cookie» в подвале (window.showCookieSettings).
+ * Баннер согласия на cookie. Управляет аналитическими cookie (GA4, Метрика)
+ * через Google Consent Mode v2 — значения по умолчанию заданы в header.php.
+ * (Рекламные cookie не ставятся: AdSense снят 21.11.2026.) Выбор сохраняется в
+ * localStorage; изменить его можно по ссылке «Настройки cookie» в подвале.
  */
 ?>
 <div id="cookie-consent" class="cookie-consent" role="dialog" aria-label="Согласие на использование cookie" aria-live="polite" hidden>
   <div class="cookie-consent__inner">
     <p class="cookie-consent__text">
-      Мы используем файлы cookie для аналитики и показа рекламы. Нажимая «Принять всё», вы
-      соглашаетесь на это. «Только необходимые» оставит работать сайт без рекламных и
+      Мы используем файлы cookie для аналитики. Нажимая «Принять всё», вы
+      соглашаетесь на это. «Только необходимые» оставит работать сайт без
       аналитических cookie. Подробнее — в <a href="/privacy.php">политике конфиденциальности</a>.
     </p>
     <div class="cookie-consent__actions">
