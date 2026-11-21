@@ -10,7 +10,6 @@ require_once __DIR__ . '/includes/all-articles-meta.php';
 require_once __DIR__ . '/includes/article-toc.php';
 require_once __DIR__ . '/includes/partner-ads.php';
 require_once __DIR__ . '/includes/affiliate.php';
-require_once __DIR__ . '/includes/ads.php';
 require_once __DIR__ . '/includes/self-promo.php';
 require_once __DIR__ . '/includes/all-glossary-meta.php';
 
@@ -233,11 +232,6 @@ if (!$articleMissing) {
   if ($financeAd !== '') { $articleHtml .= "\n" . $financeAd; }
 }
 
-// AdSense: рекламные блоки по объёму статьи (карта плотности), между разделами <h2>.
-if (!$articleMissing) {
-  $articleHtml = du_inject_ads($articleHtml, du_article_ad_count($articleHtml));
-}
-
 // Наше промо: один блок в теле статьи (одноколоночная, без сайдбара), не sticky.
 if (!$articleMissing) {
   $promoHtml = domexpert_self_promo_block(du_article_path($slug), false);
@@ -433,14 +427,6 @@ include __DIR__ . '/includes/header.php';
             echo domexpert_sidebar_banner([$slug, $inlineBannerMeta['catSlug'] ?? ($meta['catSlug'] ?? '')]);
           ?>
         </div>
-        <?php
-          // Display-реклама — ОТДЕЛЬНЫМ блоком в потоке колонки, не flex-ребёнком
-          // .article-aside-inline: адаптивный AdSense внутри flex-элемента не может
-          // измерить ширину (availableWidth=0 → TagError, слот не заполняется).
-          echo du_ad('сайдбар статьи');
-        ?>
-
-        <!-- Реклама переехала в середину статьи (см. $inArticleAd выше) — тут пусто. -->
 
 
         <!-- СОСЕДНИЕ СТАТЬИ КАТЕГОРИИ (по дате публикации) -->

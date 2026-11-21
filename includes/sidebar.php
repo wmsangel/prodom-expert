@@ -11,7 +11,6 @@
 require_once __DIR__ . '/all-articles-meta.php';
 require_once __DIR__ . '/partner-ads.php';
 require_once __DIR__ . '/affiliate.php';
-require_once __DIR__ . '/ads.php';
 require_once __DIR__ . '/self-promo.php';
 
 // Позиции 4–8 в подборе похожих: первые три заняты блоком «Читайте также»,
@@ -39,9 +38,6 @@ foreach ($catConfig as $catSlugSide => $cfg) {
 }
 ?>
 <aside class="sidebar" role="complementary" aria-label="Дополнительная информация">
-
-  <!-- Реклама (AdSense) — выводится по карте плотности, кроме служебных страниц -->
-  <?= du_ad('сайдбар') ?>
 
   <!-- Наше промо: рекомендуем свой раздел (ротация по неделям), sticky -->
   <?= domexpert_self_promo_block(strtok((string) ($_SERVER['REQUEST_URI'] ?? ''), '?'), true) ?>

@@ -2311,20 +2311,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.3; color: 
 .embed-promo .btn-outline { color: var(--brick); border-color: var(--brick); }
 .embed-promo .btn-outline:hover { background: var(--brick); color: var(--on-dark); border-color: var(--brick); }
 
-/* ── Рекламные слоты (AdSense, includes/ads.php) ── */
-.ad-slot { margin: 28px 0; text-align: center; overflow: hidden; clear: both; min-height: 100px; }
-/* Если AdSense не отдал рекламу (unfilled) — не держим пустой резерв места */
-.ad-slot:has(ins[data-ad-status="unfilled"]) { min-height: 0; margin: 0; }
-.ad-slot--empty { display: none; }
-.ad-slot ins { display: block; }
-.sidebar .ad-slot { margin: 0 0 20px; }
-/* Плейсхолдер — только в режиме предпросмотра расстановки (DOMEXPERT_ADS_PREVIEW) */
-.ad-slot--preview {
-  min-height: 90px; display: flex; align-items: center; justify-content: center;
-  background: repeating-linear-gradient(45deg, var(--beige), var(--beige) 12px, var(--beige-dark) 12px, var(--beige-dark) 24px);
-  border: 1px dashed var(--brick); border-radius: var(--radius);
-  color: var(--brick); font-size: .82rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
-}
+/* Рекламные слоты AdSense удалены 21.11.2026 (решение владельца). */
 
 /* ── Собственное промо (self-promo.php): «Рекомендуем» своё, sticky ── */
 .selfpromo {

@@ -251,53 +251,9 @@ if (!function_exists('esc')) {
     } catch (e) {}
   </script>
 
-  <!-- Реклама (Google AdSense) грузится ЛЕНИВО: после первого взаимодействия/скролла
-       или через 3 с. Так первый экран рендерится без тяжёлых рекламных скриптов — мобильная
-       скорость/Core Web Vitals заметно лучше. Наши <ins class="adsbygoogle"> складывают push()
-       в очередь window.adsbygoogle заранее — скрипт обработает её при подгрузке. -->
-  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <!-- Реклама Google удалена 21.11.2026 (решение владельца). Загрузчик и слоты
+       сняты; доход сайта — партнёрские блоки (Admitad, Leads.su, Indoleads). -->
   <link rel="dns-prefetch" href="https://mc.yandex.ru">
-  <script>
-  (function () {
-    // Проверка хоста: реклама — только на боевых доменах, не на зеркалах
-    // (*.pages.dev), localhost и превью-деплоях. Так зеркало не крутит AdSense
-    // (политика/невалидный трафик) и не грузит рекламные скрипты.
-    var PROD_HOSTS = ['prodom-expert.com','www.prodom-expert.com','prodom-expert.ru','www.prodom-expert.ru'];
-    if (PROD_HOSTS.indexOf(location.hostname) === -1) { return; }
-    var done = false;
-    function add(src, attrs) {
-      var s = document.createElement('script'); s.async = true; s.src = src;
-      if (attrs) { for (var k in attrs) { s.setAttribute(k, attrs[k]); } }
-      document.head.appendChild(s);
-    }
-    function loadAds() {
-      if (done) { return; } done = true;
-      add('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5535516142831006', { crossorigin: 'anonymous' });
-      // РСЯ (Яндекс) отключён 2026-10-12 — у Яндекса проблемы с выдачей, остаёмся
-      // только на Google AdSense. Вернуть — восстановив context.js + ap-loader.js (page-id 19600856).
-      // Схлопнуть ПУСТЫЕ слоты, если реклама не пришла: AdSense при ограничении выдачи
-      // возвращает пусто без data-ad-status="unfilled" (CSS его не ловит) → остаётся
-      // серая коробка min-height. Через 6с прячем слоты без реального креатива.
-      setTimeout(collapseEmptyAds, 6000);
-    }
-    function collapseEmptyAds() {
-      // Креатив AdSense/РСЯ всегда рендерится в <iframe>. Пустой адаптивный слот
-      // может раздуться по высоте БЕЗ iframe — поэтому ориентир именно на iframe,
-      // а не на высоту. Нет iframe и нет data-ad-status="filled" → слот пустой.
-      var slots = document.querySelectorAll('.ad-slot');
-      for (var i = 0; i < slots.length; i++) {
-        var s = slots[i];
-        var ins = s.querySelector('ins.adsbygoogle');
-        var filled = !!s.querySelector('iframe') || (ins && ins.getAttribute('data-ad-status') === 'filled');
-        if (!filled) { s.classList.add('ad-slot--empty'); }
-      }
-    }
-    var evs = ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'];
-    function once() { loadAds(); evs.forEach(function (e) { window.removeEventListener(e, once, { passive: true }); }); }
-    evs.forEach(function (e) { window.addEventListener(e, once, { passive: true }); });
-    setTimeout(loadAds, 3000); // fallback для пассивных читателей
-  })();
-  </script>
 
   <!-- Сетевой маячок событий без куки (izn-beacon). Считает действия для ВСЕХ
        посетителей, согласия не требует (не ставит куки/IP). Дублирует GA4, см.

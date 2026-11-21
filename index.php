@@ -8,7 +8,6 @@ require_once __DIR__ . '/includes/article-cover.php';
 require_once __DIR__ . '/includes/all-articles-meta.php';
 
 require_once __DIR__ . '/includes/all-calculators-meta.php';
-require_once __DIR__ . '/includes/ads.php';
 
 // Счётчик для блока УТП — берём из реестра, чтобы цифра не разъезжалась с фактом.
 $uspCalcCount = count(domexpert_all_calculators_meta());
@@ -327,9 +326,6 @@ $featuredArticles = array_slice($featuredArticles, 0, 12);
 
 
         <!-- Секция категорий -->
-        <!-- Реклама: один блок на главной между лентой и разделами (карта плотности) -->
-        <?= du_ad('главная') ?>
-
         <div class="section-header" style="margin-top: 10px;">
           <h2 class="section-title">Разделы сайта</h2>
         </div>

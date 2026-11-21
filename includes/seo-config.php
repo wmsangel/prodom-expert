@@ -9,19 +9,9 @@ if (!defined('SITE_CANONICAL')) {
   define('SITE_CANONICAL', getenv('SITE_CANONICAL') ?: 'https://prodom-expert.ru');
 }
 
-/**
- * Google AdSense. Loader подключён в header.php. Ручные блоки расставляются по
- * карте плотности (includes/ads.php, du_ad/du_inject_ads).
- *   CLIENT — издатель (ca-pub-…).
- *   SLOT   — id рекламного блока из кабинета AdSense (Медийный блок → data-ad-slot).
- *            Пока пусто — на проде блоки НЕ выводятся (безопасно), включатся как
- *            только впишете slot. Для предпросмотра расстановки см. DOMEXPERT_ADS_PREVIEW.
- */
-if (!defined('DOMEXPERT_ADSENSE_CLIENT')) define('DOMEXPERT_ADSENSE_CLIENT', 'ca-pub-5535516142831006');
-if (!defined('DOMEXPERT_ADSENSE_SLOT'))   define('DOMEXPERT_ADSENSE_SLOT', '6468792657');            // медийный (сайдбар, калькулятор, главная, категории)
-if (!defined('DOMEXPERT_ADSENSE_SLOT_INARTICLE')) define('DOMEXPERT_ADSENSE_SLOT_INARTICLE', '2761571221'); // нативный in-article (в теле статьи)
-/** true → вместо реальных блоков рисуются видимые плейсхолдеры (для оценки расстановки). */
-if (!defined('DOMEXPERT_ADS_PREVIEW'))    define('DOMEXPERT_ADS_PREVIEW', false);
+/* Google AdSense удалён 21.11.2026 (решение владельца: AdSense отказал в
+ * монетизации). Весь код загрузчика/слотов снят; доход сайта — партнёрские
+ * блоки (Admitad, Leads.su, Indoleads). Consent Mode для GA4 оставлен. */
 
 /**
  * Профили сайта во внешних сервисах — уходят в sameAs у Organization.
