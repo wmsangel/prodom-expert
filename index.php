@@ -117,6 +117,8 @@ $featuredArticles = array_slice($featuredArticles, 0, 12);
       <?= du_cover_picture($sCover, '', array_filter([
             'class'         => 'hero-slide-bg',
             'decoding'      => 'async',
+            'width'         => 1200,
+            'height'        => 630,
             'fetchpriority' => $i === 0 ? 'high' : null,
             'loading'       => $i === 0 ? null : 'lazy',
           ])) ?>
@@ -297,7 +299,7 @@ $featuredArticles = array_slice($featuredArticles, 0, 12);
           <article class="article-card">
             <div class="card-image">
               <?php if ($featCover): ?>
-                <?= du_cover_picture($featCover, $article['title'], ['loading' => 'lazy', 'decoding' => 'async']) ?>
+                <?= du_cover_picture($featCover, $article['title'], ['loading' => 'lazy', 'decoding' => 'async', 'width' => 1200, 'height' => 630]) ?>
               <?php else: ?>
                 <span class="card-image-placeholder"><?= $article['icon'] ?></span>
               <?php endif; ?>

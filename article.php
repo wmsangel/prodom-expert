@@ -458,7 +458,7 @@ include __DIR__ . '/includes/header.php';
             <article class="article-card">
               <div class="card-image">
                 <?php if ($relCover): ?>
-                  <?= du_cover_picture($relCover, $rel['title'] . ' — превью статьи', ['loading' => 'lazy', 'decoding' => 'async']) ?>
+                  <?= du_cover_picture($relCover, $rel['title'] . ' — превью статьи', ['loading' => 'lazy', 'decoding' => 'async', 'width' => 1200, 'height' => 630]) ?>
                 <?php else: ?>
                   <span class="card-image-placeholder"><?= htmlspecialchars($rel['icon'], ENT_QUOTES, 'UTF-8') ?></span>
                 <?php endif; ?>
