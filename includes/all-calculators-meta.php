@@ -177,6 +177,17 @@ function domexpert_all_calculators_meta(): array
                      'gidroizolyatsiya-vannoy', 'remont-vannoy-komnaty-s-nulya-gid',
                      'ustanovka-rakoviny-i-sifona'],
     ],
+    'plitochnyy-kley' => [
+      'group'    => 'materialy',
+      'title'    => 'Калькулятор плиточного клея и затирки: расход на м²',
+      'h1'       => 'Расчёт плиточного клея и затирки',
+      'desc'     => 'Сколько плиточного клея и затирки нужно по площади, размеру плитки и ширине шва — в килограммах и мешках по 25 кг, с запасом. Расход клея по рекомендованной гребёнке, затирка по формуле.',
+      'lead'     => 'Клей считается по размеру плитки (он задаёт гребёнку), затирка — по ширине шва и толщине плитки. Оба с запасом 10%.',
+      'level'    => 'простой',
+      'related'  => ['ukladka-plitki-v-vannoy', 'keramogranit-na-pol-ukladka',
+                     'kuhonnyy-fartuk-plitka-skinali', 'gidroizolyatsiya-vannoy',
+                     'remont-vannoy-komnaty-s-nulya-gid'],
+    ],
     'styazhka' => [
       'group'    => 'materialy',
       'title'    => 'Калькулятор стяжки и штукатурки: объём смеси и мешки',

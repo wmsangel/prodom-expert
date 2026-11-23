@@ -1,0 +1,162 @@
+<form class="calc" data-calc="plitochnyy-kley">
+  <fieldset>
+    <legend>Укладка</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="pk-ploshchad">Площадь укладки, м²</label>
+        <input type="number" id="pk-ploshchad" name="ploshchad" value="10" min="0.5" max="2000" step="0.5" inputmode="decimal">
+        <span class="calc-field-hint">Пол или стена под плитку</span>
+      </div>
+      <div class="calc-field">
+        <label for="pk-razmer">Размер плитки</label>
+        <select id="pk-razmer" name="razmer">
+          <option value="small">Мелкая / мозаика (до 15×15 см)</option>
+          <option value="p2030">20×30 см</option>
+          <option value="p3030" selected>30×30 см</option>
+          <option value="p3060">30×60 см</option>
+          <option value="p6060">60×60 см (керамогранит)</option>
+          <option value="large">Крупноформат (60×120 см и больше)</option>
+        </select>
+        <span class="calc-field-hint">Задаёт размер гребёнки и расход клея</span>
+      </div>
+      <div class="calc-field">
+        <label for="pk-osnovanie">Основание</label>
+        <select id="pk-osnovanie" name="osnovanie">
+          <option value="rovnoe" selected>Ровное (стяжка, ГКЛ) — тонкий слой</option>
+          <option value="perepady">С перепадами — клей толще</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Затирка швов</legend>
+    <div class="calc-fields">
+      <div class="calc-field calc-field--checkbox">
+        <input type="checkbox" id="pk-zatirka" name="zatirka" checked>
+        <label for="pk-zatirka">Считать затирку</label>
+      </div>
+      <div class="calc-field">
+        <label for="pk-shov">Ширина шва, мм</label>
+        <input type="number" id="pk-shov" name="shov" value="2" min="1" max="12" step="0.5" inputmode="decimal">
+        <span class="calc-field-hint">Обычно 1,5–3 мм, для керамогранита 2 мм</span>
+      </div>
+      <div class="calc-field">
+        <label for="pk-tolshchina">Толщина плитки, мм</label>
+        <input type="number" id="pk-tolshchina" name="tolshchina" value="0" min="0" max="25" step="0.5" inputmode="decimal">
+        <span class="calc-field-hint">0 — взять типичную для размера</span>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Цены (необязательно)</legend>
+    <div class="calc-fields">
+      <div class="calc-field">
+        <label for="pk-cena-kley">Клей, ₽ за мешок 25 кг</label>
+        <input type="number" id="pk-cena-kley" name="cenaKley" value="0" min="0" max="20000" step="10" inputmode="numeric">
+        <span class="calc-field-hint">0 — если стоимость не нужна</span>
+      </div>
+      <div class="calc-field">
+        <label for="pk-cena-zatirka">Затирка, ₽ за кг</label>
+        <input type="number" id="pk-cena-zatirka" name="cenaZatirka" value="0" min="0" max="20000" step="5" inputmode="numeric">
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<div class="calc-result" data-calc-result="plitochnyy-kley" role="status" aria-live="polite"></div>
+
+<section class="calc-article">
+  <h2>Что считает калькулятор</h2>
+  <p>Калькулятор берёт площадь укладки и размер плитки, подбирает рекомендованную гребёнку и считает расход плиточного клея в килограммах и мешках по 25 кг, а по ширине шва и толщине плитки — расход затирки. К обоим материалам добавляется 10% запаса на подрезку, бой и остатки в вёдрах. Для основания с перепадами клей берётся толще — расход растёт примерно на четверть.</p>
+
+  <table>
+    <thead><tr><th>Размер плитки</th><th>Гребёнка</th><th>Расход клея</th></tr></thead>
+    <tbody>
+      <tr><td>Мелкая / мозаика</td><td>6 мм</td><td>≈ 2,6 кг/м²</td></tr>
+      <tr><td>20×30 см</td><td>6–8 мм</td><td>≈ 3,0 кг/м²</td></tr>
+      <tr><td>30×30 см</td><td>8 мм</td><td>≈ 3,4 кг/м²</td></tr>
+      <tr><td>30×60 см</td><td>10 мм</td><td>≈ 4,2 кг/м²</td></tr>
+      <tr><td>60×60 см</td><td>10–12 мм</td><td>≈ 5,0 кг/м²</td></tr>
+      <tr><td>Крупноформат</td><td>12–15 мм</td><td>≈ 6,5 кг/м²</td></tr>
+    </tbody>
+  </table>
+  <p>Расход клея — ориентир для ровного основания и тонкого слоя. На кривой стяжке, при укладке «на весь гребень» и методом двойного нанесения (на пол и на плитку для керамогранита) клея уходит заметно больше — поэтому в калькуляторе есть переключатель «с перепадами».</p>
+
+  <h2>Как считается затирка</h2>
+  <p>Расход затирки зависит от четырёх величин: размера плитки, её толщины, ширины шва и плотности смеси. Чем крупнее плитка — тем меньше швов на квадратный метр и тем экономнее затирка; чем толще плитка и шире шов — тем больше. Формула:</p>
+  <p><strong>расход (кг/м²) = (A + B) / (A × B) × C × D × 1,6</strong>, где A и B — стороны плитки в мм, C — толщина плитки, D — ширина шва, 1,6 — плотность затирки (кг/дм³).</p>
+
+  <h2>Правила, без которых плитка отойдёт</h2>
+  <ul>
+    <li><strong>Гребёнка по размеру плитки.</strong> Мелкий зуб под крупную плитку не даёт сплошного контакта — появляются пустоты, по которым плитка трескается и отходит.</li>
+    <li><strong>Керамогранит 60×60 и больше</strong> кладут методом двойного нанесения: клей гребёнкой на основание и тонким слоем на тыл плитки — иначе заполнение под плиткой меньше нужных 90%.</li>
+    <li><strong>Клей живёт на стене 10–20 минут.</strong> Нанесли — и сразу кладите плитку: подсохший гребень («задубел») уже не держит, его надо снять и нанести заново.</li>
+    <li><strong>Во влажных зонах</strong> (душ, пол в санузле) — клей и затирка класса для влажных помещений, а под плиткой — <a href="/article/gidroizolyatsiya-vannoy/">гидроизоляция</a>.</li>
+    <li><strong>Швы затирают после высыхания клея</strong> — обычно через сутки, а не сразу.</li>
+  </ul>
+  <p>Сколько самой плитки с учётом подрезки — <a href="/calc/plitka/">калькулятор плитки</a>. Выравнивание основания до укладки — <a href="/calc/styazhka/">стяжка пола</a> и <a href="/calc/shtukaturka/">штукатурка стен</a>. Общая смета на санузел — <a href="/calc/smeta-remonta/">смета на ремонт</a>.</p>
+
+  <h2>Частые вопросы</h2>
+  <h3>Сколько плиточного клея нужно на 1 м²?</h3>
+  <p>Для плитки 30×30 см на ровном основании — около 3,4 кг готовой смеси на квадратный метр, то есть мешок 25 кг уходит примерно на 7 м². Под крупный керамогранит 60×60 расход вырастает до 5 кг/м² и выше, а на кривой стяжке — ещё на четверть больше.</p>
+
+  <h3>На сколько м² хватает мешка клея 25 кг?</h3>
+  <p>При расходе 3,4 кг/м² (плитка 30×30) мешка 25 кг хватает примерно на 7 м². Для мелкой плитки — до 9–10 м² с мешка, для крупноформата — 4–5 м². Калькулятор сразу переводит килограммы в мешки с округлением вверх.</p>
+
+  <h3>Чем затирка на широкий шов отличается от узкой?</h3>
+  <p>Для швов до 3–4 мм берут обычную цементную затирку, для широких (брусчатка, клинкер, шов 5 мм и более) — затирку с песком или специальную для широких швов: без наполнителя широкий шов растрескается. Эпоксидная затирка нужна во влажных зонах и там, где важна стойкость к грязи, но расход и цена у неё выше.</p>
+</section>
+
+<script>
+DomCalc.register('plitochnyy-kley', function (v, f) {
+  var area = v.ploshchad || 0;
+  if (area <= 0) { return f.note('Укажите площадь укладки — расчёт идёт от неё.'); }
+
+  var size = v.razmer || 'p3030';
+  // Расход клея по размеру плитки (рекомендованная гребёнка), кг/м², ровное основание.
+  var kleyRate = { small: 2.6, p2030: 3.0, p3030: 3.4, p3060: 4.2, p6060: 5.0, large: 6.5 };
+  var grebenka  = { small: '6 мм', p2030: '6–8 мм', p3030: '8 мм', p3060: '10 мм', p6060: '10–12 мм', large: '12–15 мм' };
+  // Типичные размеры (A×B мм) и толщина C для расчёта затирки.
+  var dims = { small: [150, 150, 7], p2030: [200, 300, 8], p3030: [300, 300, 8], p3060: [300, 600, 9], p6060: [600, 600, 10], large: [600, 1200, 11] };
+
+  var reserve = 1.10;
+  var baseMult = (v.osnovanie === 'perepady') ? 1.25 : 1.0;
+  var rate = (kleyRate[size] || 3.4) * baseMult;
+  var kleyKg = area * rate * reserve;
+  var kleyBags = Math.max(1, Math.ceil(kleyKg / 25));
+
+  var out = f.total('Плиточного клея', f.num(kleyKg, 0) + ' кг',
+    kleyBags + ' ' + (kleyBags === 1 ? 'мешок' : 'меш.') + ' по 25 кг, с запасом 10%');
+
+  var trows = [];
+  trows.push(f.row('Клей', f.num(kleyKg, 0) + ' кг',
+    '≈ ' + kleyBags + ' × 25 кг, гребёнка ' + (grebenka[size] || '8 мм')));
+
+  // Затирка: (A+B)/(A×B) × C × D × 1,6 (кг/м²).
+  var zatirkaKg = 0, zatirkaRate = 0;
+  if (v.zatirka) {
+    var d = dims[size] || [300, 300, 8];
+    var A = d[0], B = d[1];
+    var C = (v.tolshchina && v.tolshchina > 0) ? v.tolshchina : d[2];
+    var D = v.shov || 2;
+    zatirkaRate = (A + B) / (A * B) * C * D * 1.6;
+    zatirkaKg = area * zatirkaRate * reserve;
+    trows.push(f.row('Затирка', f.num(zatirkaKg, 1) + ' кг',
+      '≈ ' + f.num(zatirkaRate, 2) + ' кг/м², шов ' + f.num(D, 1) + ' мм'));
+  }
+
+  var cost = 0;
+  if (v.cenaKley > 0) { cost += kleyBags * v.cenaKley; }
+  if (v.cenaZatirka > 0 && zatirkaKg > 0) { cost += Math.ceil(zatirkaKg) * v.cenaZatirka; }
+  if (cost > 0) { trows.push(f.row('Стоимость материалов', f.money(cost), 'клей + затирка, без работ')); }
+
+  out += f.table(trows, 'Как получилось');
+
+  out += f.note('Расход клея дан для ровного основания и тонкого слоя. Под керамогранит 60×60 и больше ' +
+    'кладут двойным нанесением (на пол и на тыл плитки) — тогда клея уходит больше. Гребёнку берите по размеру плитки.');
+
+  return out;
+});
+</script>

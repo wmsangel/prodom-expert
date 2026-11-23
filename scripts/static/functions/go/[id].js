@@ -66,10 +66,14 @@ export const onRequest = async ({ params, request }) => {
   if (psafe) {
     try {
       const u = new URL(url);
+      const host = u.host.toLowerCase();
       if (/\/[gc]\//.test(u.pathname)) {
         url += (url.includes("?") ? "&" : "?") + "subid=" + encodeURIComponent(psafe);
-      } else if (u.host.toLowerCase().indexOf("zaim-srochno24") !== -1) {
+      } else if (host.indexOf("zaim-srochno24") !== -1) {
         url += (url.includes("?") ? "&" : "?") + "aff_sub1=" + encodeURIComponent(psafe);
+      } else if (/^ru\.|\.xyz$|trackerpro|gettracker|io0\d|io10|z0\d|i0\d/.test(host)) {
+        // Indoleads — метка страницы в параметре p1.
+        url += (url.includes("?") ? "&" : "?") + "p1=" + encodeURIComponent(psafe);
       }
     } catch { /* оставляем url как есть */ }
   }

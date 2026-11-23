@@ -84,6 +84,9 @@ if ($p !== '') {
   } elseif (strpos($host, 'zaim-srochno24') !== false) {
     // Leads.su: метка страницы — параметр aff_sub1.
     $url .= (strpos($url, '?') !== false ? '&' : '?') . 'aff_sub1=' . rawurlencode($p);
+  } elseif (preg_match('/^ru\.|\.xyz$|trackerpro|gettracker|io0\d|io10|z0\d|i0\d/', $host)) {
+    // Indoleads: метка страницы — параметр p1.
+    $url .= (strpos($url, '?') !== false ? '&' : '?') . 'p1=' . rawurlencode($p);
   }
 }
 
