@@ -118,7 +118,7 @@ include __DIR__ . '/includes/header.php';
         </div>
 
         <p class="glossary-foot">
-          Не нашли нужное слово? Напишите на <a href="mailto:info@prodom-expert.ru">info@prodom-expert.ru</a> —
+          Не нашли нужное слово? Напишите на <a href="mailto:info@prodom-expert.com">info@prodom-expert.com</a> —
           добавим термин в словарь.
         </p>
 

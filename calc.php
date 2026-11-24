@@ -203,7 +203,7 @@ include __DIR__ . '/includes/header.php';
             не сохраняются. Работы, связанные с газовым оборудованием, несущими конструкциями
             и подключением к электросетям, выполняются только специалистами с допуском —
             расчёт помогает поставить задачу, но не заменяет проект.
-            Заметили ошибку в цифрах? Напишите на <a href="mailto:info@prodom-expert.ru">info@prodom-expert.ru</a>.
+            Заметили ошибку в цифрах? Напишите на <a href="mailto:info@prodom-expert.com">info@prodom-expert.com</a>.
           </p>
         </section>
         <?php endif; ?>

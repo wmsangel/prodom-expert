@@ -74,7 +74,7 @@ include __DIR__ . '/includes/header.php';
           <p>Мы можем обновлять эту политику. Дата последнего изменения указана в начале страницы. Существенные изменения вступают в силу с момента публикации на этой странице.</p>
 
           <h2>10. Контакты</h2>
-          <p>По вопросам, связанным с обработкой персональных данных, обращайтесь: <a href="mailto:info@prodom-expert.ru">info@prodom-expert.ru</a></p>
+          <p>По вопросам, связанным с обработкой персональных данных, обращайтесь: <a href="mailto:info@prodom-expert.com">info@prodom-expert.com</a></p>
         </div>
       </main>
       <?php include __DIR__ . '/includes/sidebar.php'; ?>

@@ -125,7 +125,7 @@ include __DIR__ . '/includes/header.php';
           <p class="calc-links-note">
             Готовый интерактивный калькулятор повышает вовлечённость и время на странице,
             а вам не нужно ничего программировать. Хотите другой расчёт или свой стиль виджета —
-            напишите на <a href="mailto:info@prodom-expert.ru">info@prodom-expert.ru</a>.
+            напишите на <a href="mailto:info@prodom-expert.com">info@prodom-expert.com</a>.
             Все расчёты и их логика открыты в разделе <a href="/calculators/">калькуляторов</a>.
           </p>
         </section>

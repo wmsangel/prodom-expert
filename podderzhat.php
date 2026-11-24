@@ -163,7 +163,7 @@ include __DIR__ . '/includes/header.php';
 
           <p style="color:var(--text-muted); font-size:.9rem; margin-top:18px;">
             Спасибо, что читаете и поддерживаете. Вопросы — на
-            <a href="mailto:info@prodom-expert.ru">info@prodom-expert.ru</a>.
+            <a href="mailto:info@prodom-expert.com">info@prodom-expert.com</a>.
           </p>
 
         </div>

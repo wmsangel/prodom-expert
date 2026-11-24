@@ -65,6 +65,9 @@ ErrorDocument 500 /404.php
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{HTTP_HOST} ^(www\.)?prodom-expert\.ru$ [NC]
+    # Исключение: карта старых адресов (sitemap-move.xml) отдаётся на .ru с кодом 200,
+    # чтобы Google быстрее пересканировал старые адреса и увидел 301 (решение 24.11.2026).
+    RewriteCond %{REQUEST_URI} !^/sitemap-move\.xml$
     RewriteRule ^ https://prodom-expert.com%{REQUEST_URI} [R=301,L]
 </IfModule>
 

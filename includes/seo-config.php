@@ -29,7 +29,7 @@ if (!defined('DOMEXPERT_SOCIAL_PROFILES')) {
 
 /** Публичный контактный адрес — печатается в разметке Organization. */
 if (!defined('DOMEXPERT_CONTACT_EMAIL')) {
-  define('DOMEXPERT_CONTACT_EMAIL', 'info@prodom-expert.ru');
+  define('DOMEXPERT_CONTACT_EMAIL', 'info@prodom-expert.com');
 }
 
 /** Список профилей как массив; пустой, если ничего не задано. */

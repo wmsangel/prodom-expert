@@ -16,10 +16,9 @@ $pageUrl   = SITE_CANONICAL . '/search.php' . ($query ? '?q=' . urlencode($query
 $ogTitle   = $pageTitle;
 $ogDesc    = $pageDesc;
 
-// Страницы поиска с запросом не индексируем — это типовая SEO-практика
-if ($query !== '') {
-  $robotsMeta = 'noindex, follow';
-}
+// Страница поиска не индексируется никогда (с запросом и без): это служебная
+// страница без собственного содержания (решение 24.11.2026).
+$robotsMeta = 'noindex, follow';
 
 // Все статьи для поиска — единый реестр includes/all-articles-meta.php
 $allArticles = array_values(domexpert_all_articles_expanded());
