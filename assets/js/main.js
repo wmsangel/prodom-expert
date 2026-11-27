@@ -258,6 +258,25 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 })();
 
+/* ── Партнёрские ссылки, вариант B' (сетевой стандарт 27.11.2026): в статическом HTML
+   нет ни /go-URL, ни партнёрских URL — только <a data-go="id" data-gop="слаг">. Адрес
+   /go/<id>?p=<слаг> подставляется в момент нажатия (до перехода по ссылке): боты, которые
+   читают статический HTML, адреса не видят. Слушатели в capture-фазе, зарегистрированы
+   раньше аналитики ниже, чтобы href был готов к её чтению. ── */
+(function () {
+  function arm(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[data-go]') : null;
+    if (!a) return;
+    var id = a.getAttribute('data-go') || '';
+    if (!/^[A-Za-z0-9_-]+$/.test(id)) return;
+    var p = a.getAttribute('data-gop') || '';
+    var href = '/go/' + id + (p ? '?p=' + encodeURIComponent(p) : '');
+    if (a.getAttribute('href') !== href) a.setAttribute('href', href);
+  }
+  ['pointerdown', 'mousedown', 'touchstart', 'focusin', 'keydown', 'contextmenu', 'click', 'auxclick']
+    .forEach(function (t) { document.addEventListener(t, arm, true); });
+})();
+
 /* ── Аналитика: единый хелпер событий в Метрику (reachGoal) и GA4 (event) ──
    Уважает cookie-согласие (как метрика в footer.php). Ничего не шлёт при 'necessary'. */
 (function () {

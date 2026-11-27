@@ -559,6 +559,7 @@ if (!function_exists('domexpert_finance_block')) {
     $items = '';
     foreach ($offers as $o) {
       $url   = htmlspecialchars(domexpert_go_href($o['id'] ?? '', $pageSlug), ENT_QUOTES, 'UTF-8');
+      $goAttrs = domexpert_go_attrs($o['id'] ?? '', $pageSlug);
       $title = htmlspecialchars($o['title'], ENT_QUOTES, 'UTF-8');
       $desc  = htmlspecialchars($o['desc'] ?? '', ENT_QUOTES, 'UTF-8');
       $cta   = htmlspecialchars($o['cta'] ?? 'Перейти', ENT_QUOTES, 'UTF-8');
@@ -568,7 +569,7 @@ if (!function_exists('domexpert_finance_block')) {
       $adv   = htmlspecialchars($o['adv'] ?? '', ENT_QUOTES, 'UTF-8');
       $mark  = 'Реклама' . ($adv !== '' ? ' · ' . $adv : '') . ($erid !== '' ? ' · erid: ' . $erid : '');
       $items .= <<<HTML
-    <a class="fin-item" href="{$url}" target="_blank" rel="{$rel}" data-ad="{$id}" data-net="leadssu" data-placement="{$placement}">
+    <a class="fin-item" {$goAttrs} target="_blank" rel="{$rel}" data-ad="{$id}" data-net="leadssu" data-placement="{$placement}">
       <span class="fin-icon" aria-hidden="true">{$icon}</span>
       <span class="fin-text"><strong class="fin-title">{$title}</strong><span class="fin-desc">{$desc}</span><span class="fin-mark">{$mark}</span></span>
       <span class="fin-cta">{$cta} →</span>
@@ -631,6 +632,20 @@ if (!function_exists('domexpert_affiliate_url_by_id')) {
   }
 }
 
+if (!function_exists('domexpert_go_attrs')) {
+  /**
+   * Вариант B' (сетевой стандарт 27.11): в статическом HTML нет ни /go-URL, ни
+   * партнёрских URL — только id оффера и слаг страницы. Адрес /go/<id>?p=<слаг>
+   * подставляет main.js в момент нажатия (pointerdown/focus/click). Без JS ссылка
+   * никуда не ведёт — это и отсекает ботов, читающих статический HTML.
+   */
+  function domexpert_go_attrs(string $id, string $pageSlug = ''): string {
+    $ps = preg_replace('/[^A-Za-z0-9_-]/', '', $pageSlug);
+    return 'href="#" data-go="' . htmlspecialchars($id, ENT_QUOTES, 'UTF-8') . '"'
+         . ($ps !== '' ? ' data-gop="' . htmlspecialchars($ps, ENT_QUOTES, 'UTF-8') . '"' : '');
+  }
+}
+
 if (!function_exists('domexpert_go_href')) {
   /**
    * Внутренняя ссылка-редиректор вместо прямого deeplink в разметке.
@@ -681,6 +696,7 @@ if (!function_exists('domexpert_affiliate_block')) {
     foreach ($offers as $o) {
       // href — внутренний /go/<id> (фильтр ботов), а не прямой deeplink.
       $url   = htmlspecialchars(domexpert_go_href($o['id'] ?? '', $pageSlug), ENT_QUOTES, 'UTF-8');
+      $goAttrs = domexpert_go_attrs($o['id'] ?? '', $pageSlug);
       $title = htmlspecialchars($o['title'], ENT_QUOTES, 'UTF-8');
       $desc  = htmlspecialchars($o['desc'] ?? '', ENT_QUOTES, 'UTF-8');
       $cta   = htmlspecialchars($o['cta'] ?? 'Перейти', ENT_QUOTES, 'UTF-8');
@@ -688,7 +704,7 @@ if (!function_exists('domexpert_affiliate_block')) {
       $id    = htmlspecialchars($o['id'] ?? '', ENT_QUOTES, 'UTF-8');
       $net   = htmlspecialchars(domexpert_aff_network($o['url'] ?? ''), ENT_QUOTES, 'UTF-8');
       $items .= <<<HTML
-    <a class="aff-item" href="{$url}" target="_blank" rel="{$rel}" data-ad="{$id}" data-net="{$net}">
+    <a class="aff-item" {$goAttrs} target="_blank" rel="{$rel}" data-ad="{$id}" data-net="{$net}">
       <span class="aff-icon" aria-hidden="true">{$icon}</span>
       <span class="aff-text"><strong class="aff-title">{$title}</strong><span class="aff-desc">{$desc}</span></span>
       <span class="aff-cta">{$cta} →</span>
@@ -735,12 +751,13 @@ if (!function_exists('domexpert_sidebar_banner')) {
       $alt  = 'Профи.ру — проверенные мастера для ремонта';
     }
     $h = htmlspecialchars($href, ENT_QUOTES, 'UTF-8');
+    $goAttrs = domexpert_go_attrs($isFurniture ? 'banner-divanboss' : 'banner-profi', $pageSlug);
     $i = htmlspecialchars($img,  ENT_QUOTES, 'UTF-8');
     $a = htmlspecialchars($alt,  ENT_QUOTES, 'UTF-8');
     return <<<HTML
 <div class="sidebar-widget aff-banner-widget">
   <span class="aff-banner-label">Реклама</span>
-  <a class="aff-banner" href="{$h}" target="_blank" rel="sponsored nofollow noopener">
+  <a class="aff-banner" {$goAttrs} target="_blank" rel="sponsored nofollow noopener">
     <img src="{$i}" width="300" height="250" alt="{$a}" loading="lazy" decoding="async">
   </a>
 </div>
