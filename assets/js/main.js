@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Внешний переход (не партнёрский, не наш домен) → outbound_click
     if (/^https?:\/\//i.test(href) && !dt) {
       var oh = ''; try { oh = new URL(a.href).hostname.replace(/^www\./, ''); } catch (_) {}
-      if (oh && oh !== SITE_HOST) { window.duTrack('outbound_click', { item: oh }); }
+      if (oh && oh !== SITE_HOST) { window.duTrack('outbound_click', { item: oh, host: oh }); }
     }
   }, true);
 })();

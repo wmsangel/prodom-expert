@@ -70,7 +70,9 @@ if ($articleMissing) {
 
 // === SEO переменные ===
 $siteUrl   = SITE_CANONICAL;
-$pageTitle = $meta['title'] . ' | ДомЭксперт';
+// seo_title (необязательно) — короткий заголовок сниппета под главный запрос, ≤60 знаков,
+// идёт в <title> как есть, без хвоста бренда. H1 и og:title остаются из title.
+$pageTitle = !empty($meta['seo_title']) ? $meta['seo_title'] : $meta['title'] . ' | ДомЭксперт';
 $pageDesc  = $meta['desc'];
 $pageUrl   = du_article_url($slug);
 $ogTitle   = $meta['title'];

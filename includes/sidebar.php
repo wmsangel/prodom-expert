@@ -82,7 +82,11 @@ foreach ($catConfig as $catSlugSide => $cfg) {
   ?>
   <?= domexpert_sidebar_banner($bannerTags) ?>
 
-  <!-- Кросс-промо: наши проекты (пока нет AdSense) -->
+  <!-- Кросс-промо: наш проект из сети. Решение владельца 24.11.2026: ссылки на сайты
+       сети — не сквозные, только на главной и «О сайте» (и всегда nofollow). -->
+  <?php $sbPath = strtok((string) ($_SERVER['REQUEST_URI'] ?? ''), '?');
+  if (in_array($sbPath, ['/', '/index.php', '/about.php'], true)): ?>
   <?= domexpert_partner_ad('card', $sidebarArticleSlug ?? '', 1) ?>
+  <?php endif; ?>
 
 </aside>

@@ -86,7 +86,7 @@ $currentYear = date('Y');
       </div>
 
       <div class="footer-bottom">
-        <span>© <?= $currentYear ?> ДомЭксперт. Все права защищены.</span>
+        <span>© <?= $currentYear ?> ДомЭксперт. Все права защищены. <span class="footer-studio">Сделано студией <a href="https://izagorodnyi.dev" rel="nofollow noopener" target="_blank">izagorodnyi.dev</a></span></span>
         <div class="footer-bottom-links">
           <a href="/about.php">О сайте</a>
           <a href="/contacts.php">Контакты</a>
